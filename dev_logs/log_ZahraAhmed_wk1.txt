@@ -1,0 +1,5 @@
+Week 1 - Zahra Ahmed
+- Met up with group to discuss project ideas
+- Wrote up project proposal
+- Prepared for projet proposal presentation
+- Started working on recipe API

@@ -1,0 +1,15 @@
+Name: Afifa Asad
+
+Week 1:
+
+1. Getting familiar with git and Android Studio through internet and tutorials. 
+a. Time allocated: 10 hours/week
+2. Preparing the document for D1.
+a. Time allocated: 1.5 hour/week
+3. Preparing for class presentation.
+a. Time allocated: 1 hour/week
+4. Getting familiar with API(how the API works).
+a. Time allocated: 6 hours/week
+5. Learning how to integrate the API in our code.
+a. Time allocated: 4 hours/week
+

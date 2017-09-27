@@ -1,0 +1,11 @@
+Since I am a beginner for Android Studio, therefore i  am trying to learn from the internet and some Youtube video.
+
+I watched tutorial for most of the functions that is needed in this project
+1.StartActivity for Intent
+2.Drag and Drop functionality
+3.Setting up list
+4.Resize the image according to the screen size
+5.Screen switching animation
+6.Saving data in user phone
+7.Setting up drawer
+8.Setting up bottom bar
