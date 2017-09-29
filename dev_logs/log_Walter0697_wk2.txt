@@ -1,0 +1,18 @@
+I setup the basic user interface with the knowledge from the tutorials
+
+I am trying to make some fancy function so I didn't follow the coding that people do in the tutorials
+I modify it and try to code things by my own
+
+These are some that I successfully implemented:
+1. double drawer (both left and right)
+2. bottom bar with big button in the center
+3. changing image size according to the screen width (haven't tried on the other device so can't be sure about the effect)
+
+Here is the things that I am going to achieve:
+1. Cropping the image into circle and add the border on it
+2. expending the drawer header and get rid of the menu so that functionality doesn't have to be restricted by menu item
+3. Setting up class for filter and food information
+
+Here is the things that I may do when I finish most function:
+1. Making the dragging image not transparent
+2. Setting alpha of the image according to their position

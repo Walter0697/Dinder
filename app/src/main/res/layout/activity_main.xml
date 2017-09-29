@@ -43,11 +43,11 @@
 
                 <ImageView
                     android:id="@+id/centerImage"
-                    android:layout_height="150dp"
-                    android:layout_width="140dp"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:elevation="6dp"
                     android:layout_gravity="center"
-                    android:layout_marginBottom="-50dp"
+                    android:layout_marginBottom="0dp"
                     android:clickable="true"
                     android:src="@drawable/ic_build_black_24dp" />
 

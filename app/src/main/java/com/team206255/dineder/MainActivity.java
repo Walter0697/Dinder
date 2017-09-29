@@ -1,9 +1,11 @@
 package com.team206255.dineder;
 
+import android.graphics.Bitmap;
+import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -19,10 +21,13 @@ public class MainActivity extends AppCompatActivity {
     private MainScreen mainScreen = new MainScreen();
     private FavouriteScreen favouriteScreen = new FavouriteScreen();
 
+    private ImageProcessor imageProcessor = new ImageProcessor();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
         setContentView(R.layout.activity_main);
 
         //set up the view pager
@@ -34,6 +39,17 @@ public class MainActivity extends AppCompatActivity {
         searchButton = (ImageView) findViewById(R.id.leftfrag);
         favouriteButton = (ImageView) findViewById(R.id.rightfrag);
         mainFeatureButton = (ImageView) findViewById(R.id.centerImage);
+
+        //setup the icon of the image
+        Bitmap mainFeatureImage = imageProcessor.scaleImage(metrics, getResources(), R.drawable.internet, 0.42f);
+        mainFeatureButton.setImageBitmap(mainFeatureImage);
+        AppBarLayout.LayoutParams layoutParams = (AppBarLayout.LayoutParams)mainFeatureButton.getLayoutParams();
+        int dpValue = -100;
+        float den = getResources().getDisplayMetrics().density;
+        int margin = (int)(dpValue * den);
+        layoutParams.bottomMargin = margin;
+        mainFeatureButton.setLayoutParams(layoutParams);
+
 
         searchButton.setOnClickListener(fragmentListener);
         favouriteButton.setOnClickListener(fragmentListener);
