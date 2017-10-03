@@ -1,0 +1,1 @@
+Name:  Afifa AsadWeek 2:1. Browsing the Watson api tools on how to get started.2. Testing the api call.3. Understanding the structure of request and response for the standard query parser and ranking 
