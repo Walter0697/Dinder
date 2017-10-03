@@ -1,5 +1,6 @@
 package com.team206255.dineder;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
@@ -11,24 +12,38 @@ import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
 
+    //view pager and the button for their fragment page
     private NonSwipeableViewPager viewPager;
+    SectionsPagerAdapter adapter;
     private ImageView searchButton;
     private ImageView favouriteButton;
     private ImageView mainFeatureButton;
 
     //setting the class for different screen
-    private SearchScreen searchScreen = new SearchScreen();
-    private MainScreen mainScreen = new MainScreen();
-    private FavouriteScreen favouriteScreen = new FavouriteScreen();
+    private SearchScreen searchScreen;
+    private MainScreen mainScreen;
+    private FavouriteScreen favouriteScreen;
 
-    private ImageProcessor imageProcessor = new ImageProcessor();
+    //getting displaymetrics
+    private DisplayMetrics metrics;
+
+    //data for the app should store in the main activity, so that all fragments will call this
+    static RecipeFilter recipeFilter = new RecipeFilter();
+    static RecipeChoice recipeChoice = new RecipeChoice();
+    static RecipeList likeList = new RecipeList();
+    static RecipeList saveList = new RecipeList();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        DisplayMetrics metrics = this.getResources().getDisplayMetrics();
+        metrics = this.getResources().getDisplayMetrics();
         setContentView(R.layout.activity_main);
+
+        //creating new class
+        searchScreen = new SearchScreen();
+        mainScreen = new MainScreen();
+        favouriteScreen = new FavouriteScreen();
 
         //set up the view pager
         viewPager = (NonSwipeableViewPager) findViewById(R.id.container);
@@ -40,8 +55,9 @@ public class MainActivity extends AppCompatActivity {
         favouriteButton = (ImageView) findViewById(R.id.rightfrag);
         mainFeatureButton = (ImageView) findViewById(R.id.centerImage);
 
-        //setup the icon of the image
-        Bitmap mainFeatureImage = imageProcessor.scaleImage(metrics, getResources(), R.drawable.internet, 0.42f);
+        //setup the image of the icon
+        //set up the center image and push its position downward in order to have a better look
+        Bitmap mainFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.internet, 0.42f);
         mainFeatureButton.setImageBitmap(mainFeatureImage);
         AppBarLayout.LayoutParams layoutParams = (AppBarLayout.LayoutParams)mainFeatureButton.getLayoutParams();
         int dpValue = -100;
@@ -50,21 +66,30 @@ public class MainActivity extends AppCompatActivity {
         layoutParams.bottomMargin = margin;
         mainFeatureButton.setLayoutParams(layoutParams);
 
-
+        //set up the onclick listener in order to change the page in viewPager
         searchButton.setOnClickListener(fragmentListener);
         favouriteButton.setOnClickListener(fragmentListener);
         mainFeatureButton.setOnClickListener(fragmentListener);
+
+        //for testing the function
+        recipeChoice.addRecipe(new Recipe(0));
+        recipeChoice.addRecipe(new Recipe(1));
     }
 
+    //adding all the pages into the viewPager
     private void setUpViewPager(ViewPager viewPager)
     {
-        SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
+        adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(searchScreen);
         adapter.addFragment(mainScreen);
         adapter.addFragment(favouriteScreen);
         viewPager.setAdapter(adapter);
     }
 
+    //change to the corresponding page when button click
+    //0:searchScreen
+    //1:mainScreen
+    //2:favouriteScreen
     View.OnClickListener fragmentListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
@@ -82,4 +107,12 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        if (requestCode == InfoDefine.REQUEST_FOR_FILTER)
+            if (resultCode == RESULT_OK)
+                mainScreen.filterDrawerHandler.setValueByFilter(recipeFilter);
+    }
 }

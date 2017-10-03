@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.team206255.dineder.FilterScreen">
+
+    <Button
+        android:id="@+id/backButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="SAVE"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="7dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginEnd="7dp" />
+
+    <ImageView
+        android:id="@+id/filterScreenIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginStart="16dp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="17dp"
+        android:layout_marginTop="16dp"
+        android:text="Filter"
+        android:textSize="30dp"
+        app:layout_constraintLeft_toRightOf="@+id/filterScreenIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="17dp" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="551dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="31dp"
+        app:layout_constraintTop_toBottomOf="@+id/filterScreenIcon"
+        android:layout_marginRight="8dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!--DIFFICULTY-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Difficulty:  "
+                android:textSize="20dp"
+                android:layout_gravity="left" />
+            <RatingBar
+                android:id="@+id/advancedDifficultyBar"
+                android:layout_weight="0.65"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:isIndicator="false"
+                android:focusable="true"
+                android:numStars="5"
+                android:rating="1" />
+
+            <!--DURATION-->
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Duration:"
+                android:textSize="20dp"
+                android:layout_gravity="left"/>
+
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:weightSum="1">
+                <SeekBar
+                    android:id="@+id/advancedDurationSeekBar"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:layout_gravity="center"/>
+
+                <EditText
+                    android:id="@+id/advancedDurationNum"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="0.2"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="0"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <!--CALORIE-->
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_weight="0.35"
+                android:text="Calorie:"
+                android:textSize="20dp"
+                android:layout_gravity="left"/>
+            <LinearLayout
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_gravity="center"
+                android:weightSum="1">
+                <SeekBar
+                    android:id="@+id/advancedCalorieSeekBar"
+                    android:layout_height="wrap_content"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.8"
+                    android:layout_gravity="center"/>
+
+                <EditText
+                    android:id="@+id/advancedCalorieNum"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_weight="0.2"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:text="0"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

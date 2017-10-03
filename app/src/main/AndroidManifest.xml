@@ -21,7 +21,9 @@
             android:label="@string/title_activity_main_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SearchScreen" />
-        <activity android:name=".FavouriteScreen"></activity>
+        <activity android:name=".FavouriteScreen" />
+        <activity android:name=".FilterScreen" />
+        <activity android:name=".RecipeInformation"></activity>
     </application>
 
 </manifest>

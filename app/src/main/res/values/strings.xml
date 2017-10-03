@@ -6,4 +6,23 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <string-array name="cuisine">
+        <item>ALL</item>
+        <item>HONGKONG</item>
+        <item>CHINESE</item>
+        <item>JAPANESE</item>
+        <item>KOREAN</item>
+        <item>INDIAN</item>
+        <item>FRENCH</item>
+        <item>AMERICAN</item>
+        <item>ITALIAN</item>
+        <item>MEXICAN</item>
+    </string-array>
+
+    <string-array name="ingredient">
+        <item>Sugar</item>
+        <item>Salt</item>
+        <item>Oil</item>
+    </string-array>
 </resources>

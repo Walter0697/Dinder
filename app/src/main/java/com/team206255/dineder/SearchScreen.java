@@ -17,10 +17,9 @@ public class SearchScreen extends Fragment{
     {
         View view = inflater.inflate(R.layout.activity_search_screen, container, false);
         DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
-        ImageProcessor imageProcessor = new ImageProcessor();
 
         ImageView searchIcon = (ImageView) view.findViewById(R.id.SearchIcon);
-        Bitmap searchImage = imageProcessor.scaleImage(metrics, getResources(), R.drawable.search, 0.1f);
+        Bitmap searchImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.search, 0.1f);
         searchIcon.setImageBitmap(searchImage);
 
         return view;

@@ -17,10 +17,9 @@ public class FavouriteScreen extends Fragment {
     {
         View view = inflater.inflate(R.layout.activity_favourite_screen, container, false);
         DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
-        ImageProcessor imageProcessor = new ImageProcessor();
 
         ImageView favouriteIcon = (ImageView) view.findViewById(R.id.favouriteIcon);
-        Bitmap favouriteImage = imageProcessor.scaleImage(metrics, getResources(), R.drawable.star, 0.1f);
+        Bitmap favouriteImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.star, 0.1f);
         favouriteIcon.setImageBitmap(favouriteImage);
 
         return view;
