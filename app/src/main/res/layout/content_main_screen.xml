@@ -134,9 +134,9 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         app:srcCompat="@mipmap/ic_launcher"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="66dp"
         app:layout_constraintBottom_toTopOf="@+id/tickButton"
-        android:layout_marginRight="76dp"
+        android:layout_marginRight="28dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginEnd="76dp" />
 

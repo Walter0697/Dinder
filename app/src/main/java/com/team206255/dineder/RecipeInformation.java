@@ -41,7 +41,7 @@ public class RecipeInformation extends AppCompatActivity {
         cuisineText.setText(currentRecipe.getCuisine(getApplicationContext()));
 
         TextView durationText = (TextView) findViewById(R.id.durationView);
-        durationText.setText("Duration: " + currentRecipe.duration + "mins");
+        durationText.setText("Duration: " + currentRecipe.duration + " mins");
 
         TextView calorieText = (TextView) findViewById(R.id.calorieView);
         calorieText.setText("Calorie: " + currentRecipe.calorie);

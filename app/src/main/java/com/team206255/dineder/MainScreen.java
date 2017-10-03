@@ -20,9 +20,12 @@ import android.widget.ImageView;
 import android.widget.Space;
 import android.widget.TextView;
 
+import java.util.Date;
+
 public class MainScreen extends Fragment{
 
     private DrawerLayout drawer;
+    private View view;
 
     //all widgets for the drawer
     //left drawer
@@ -49,7 +52,7 @@ public class MainScreen extends Fragment{
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstance) {
-        View view = inflater.inflate(R.layout.activity_main_screen, container, false);
+        view = inflater.inflate(R.layout.activity_main_screen, container, false);
         metrics = getContext().getResources().getDisplayMetrics();
 
         //getting the drawerLayout from the view
@@ -59,6 +62,12 @@ public class MainScreen extends Fragment{
         ImageView tickButton = (ImageView) view.findViewById(R.id.tickButton);
         Bitmap tickImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.checked, 0.2f);
         tickButton.setImageBitmap(tickImage);
+        tickButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeLike();
+            }
+        });
 
         ImageView crossButton = (ImageView) view.findViewById(R.id.crossButton);
         Bitmap crossImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.unchecked, 0.2f);
@@ -221,16 +230,33 @@ public class MainScreen extends Fragment{
     private void swipeLike()
     {
         testing.setText("Like");
+        MainActivity.likeList.addRecipe(MainActivity.recipeChoice.getChoiceRecipe(), new Date());
+        MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        setFoodView();
     }
 
     private void swipeDislike()
     {
         testing.setText("Dislike");
+        MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        setFoodView();
     }
 
     private void swipeLove()
     {
         swipeLike();
         testing.setText("Love");
+    }
+
+    private void setFoodView()
+    {
+        Bitmap unsized = MainActivity.recipeChoice.getChoiceRecipe().getImage(getResources());
+        Bitmap foodImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.9f);
+        ImageView foregroundView = (ImageView) view.findViewById(R.id.foodView);
+        foregroundView.setImageBitmap(foodImage);
+        Bitmap backgroundUnsized = MainActivity.recipeChoice.getBackgroundRecipe().getImage(getResources());
+        Bitmap backgroundFoodImage = ImageProcessor.scaleImage(metrics, getResources(), backgroundUnsized, 0.9f);
+        ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
+        backgroundView.setImageBitmap(backgroundFoodImage);
     }
 }

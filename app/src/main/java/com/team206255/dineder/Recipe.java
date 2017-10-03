@@ -56,6 +56,18 @@ public class Recipe implements Serializable{
         {
             image = R.drawable.tester;
         }
+        else if (i == 2)
+        {
+            image = R.drawable.filter;
+        }
+        else if (i == 3)
+        {
+            image = R.drawable.heart;
+        }
+        else if (i == 4)
+        {
+            image = R.drawable.dinner;
+        }
     }
 
     public String getCuisine(Context context)

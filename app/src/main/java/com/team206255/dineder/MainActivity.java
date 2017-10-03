@@ -70,10 +70,6 @@ public class MainActivity extends AppCompatActivity {
         searchButton.setOnClickListener(fragmentListener);
         favouriteButton.setOnClickListener(fragmentListener);
         mainFeatureButton.setOnClickListener(fragmentListener);
-
-        //for testing the function
-        recipeChoice.addRecipe(new Recipe(0));
-        recipeChoice.addRecipe(new Recipe(1));
     }
 
     //adding all the pages into the viewPager
