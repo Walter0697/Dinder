@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class RecipeInformation extends AppCompatActivity {
 
-    Recipe curentRecipe = new Recipe();
+    Recipe currentRecipe = new Recipe();
 
     DisplayMetrics metrics;
 
@@ -24,18 +24,27 @@ public class RecipeInformation extends AppCompatActivity {
         metrics = getResources().getDisplayMetrics();
 
         if (getIntent().hasExtra("RECIPE"))
-            curentRecipe = (Recipe)getIntent().getSerializableExtra("RECIPE");
+            currentRecipe = (Recipe)getIntent().getSerializableExtra("RECIPE");
 
         ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
-        Bitmap unsized = curentRecipe.getImage(getResources());
+        Bitmap unsized = currentRecipe.getImage(getResources());
         Bitmap recipeImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.35f);
         recipeView.setImageBitmap(recipeImage);
 
         TextView nameText = (TextView) findViewById(R.id.recipeNameText);
-        nameText.setText(curentRecipe.name);
+        nameText.setText(currentRecipe.name);
 
         RatingBar difficultyBar = (RatingBar) findViewById(R.id.currentDifficultyBar);
-        difficultyBar.setRating(curentRecipe.difficulty);
+        difficultyBar.setRating(currentRecipe.difficulty);
+
+        TextView cuisineText = (TextView) findViewById(R.id.cuisineView);
+        cuisineText.setText(currentRecipe.getCuisine(getApplicationContext()));
+
+        TextView durationText = (TextView) findViewById(R.id.durationView);
+        durationText.setText("Duration: " + currentRecipe.duration + "mins");
+
+        TextView calorieText = (TextView) findViewById(R.id.calorieView);
+        calorieText.setText("Calorie: " + currentRecipe.calorie);
 
         Button backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {

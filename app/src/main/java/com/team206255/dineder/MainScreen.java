@@ -17,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Space;
 import android.widget.TextView;
 
 public class MainScreen extends Fragment{
@@ -35,11 +36,15 @@ public class MainScreen extends Fragment{
     ListDrawerHandler listDrawerHandler;
     FilterDrawerHandler filterDrawerHandler;
 
-    //just for testing
-    TextView testText;
+    //setting space for drag and drop features
+    Space likeArea;
+    Space dislikeArea;
+    Space loveArea;
 
     //getting display metrics
     private DisplayMetrics metrics;
+
+    TextView testing;
 
     @Nullable
     @Override
@@ -97,8 +102,7 @@ public class MainScreen extends Fragment{
         Bitmap unsized = MainActivity.recipeChoice.getChoiceRecipe().getImage(getResources());
         Bitmap foodImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.9f);
         foodView.setImageBitmap(foodImage);
-        //Bitmap drawable = ImageProcessor.LoadImageFromWebOperations(MainActivity.recipeChoice.getChoiceRecipe().pictureView);
-        //foodView.setImageBitmap(drawable);
+        //set drag and touch listener
         foodView.setOnTouchListener(touchListener);
         foodView.setOnDragListener(dragListener);
 
@@ -108,6 +112,18 @@ public class MainScreen extends Fragment{
         Bitmap unsizedBackground = MainActivity.recipeChoice.getBackgroundRecipe().getImage(getResources());
         Bitmap foodImageBackground = ImageProcessor.scaleImage(metrics, getResources(), unsizedBackground, 0.9f);
         backgroundView.setImageBitmap(foodImageBackground);
+
+        //space for the dragging and dropping event
+        dislikeArea = (Space) view.findViewById(R.id.dislikeSpace);
+        dislikeArea.setOnDragListener(dragListener);
+        likeArea = (Space) view.findViewById(R.id.likeSpace);
+        likeArea.setOnDragListener(dragListener);
+        loveArea = (Space) view.findViewById(R.id.loveSpace);
+        loveArea.setOnDragListener(dragListener);
+        //set the height and width to match parent for the space so that it can fit for every devices
+        dislikeArea.getLayoutParams().height = metrics.heightPixels;
+        likeArea.getLayoutParams().height = metrics.heightPixels;
+        loveArea.getLayoutParams().width = metrics.widthPixels;
 
         //getting the detail icon to handle viewing recipe information for now
         //might change it to touch the recipe image in the future
@@ -138,6 +154,9 @@ public class MainScreen extends Fragment{
                 getActivity().startActivityForResult(filterScreen, InfoDefine.REQUEST_FOR_FILTER);
             }
         });
+
+        //testing textview only
+        testing = (TextView) view.findViewById(R.id.testing);
 
         return view;
     }
@@ -171,17 +190,47 @@ public class MainScreen extends Fragment{
                     view.setAlpha(1);
                     view.setVisibility(View.VISIBLE);
                     break;
+                case DragEvent.ACTION_DROP:
+                    if (getTouchPosition(view, dragEvent).x >= likeArea.getX())
+                    {
+                        swipeLike();
+                    }
+                    else if (getTouchPosition(view, dragEvent).x <= dislikeArea.getX() + dislikeArea.getWidth())
+                    {
+                        swipeDislike();
+                    }
+                    //else if (getTouchPosition(view, dragEvent).y <= loveArea.getY() + loveArea.getHeight())
+                    //{
+                    //    swipeLove();
+                    //}
+                    break;
             }
             return true;
         }
     };
 
     //getting the point of the finger(touch position)
-    public static Point getTouchPosition(View item, DragEvent event){
+    private static Point getTouchPosition(View item, DragEvent event){
         Rect rItem = new Rect();
         item.getGlobalVisibleRect(rItem);
         return new Point(rItem.left + Math.round(event.getX()),
                          rItem.right + Math.round(event.getY()));
     }
     //end of drag and drop functionality
+
+    private void swipeLike()
+    {
+        testing.setText("Like");
+    }
+
+    private void swipeDislike()
+    {
+        testing.setText("Dislike");
+    }
+
+    private void swipeLove()
+    {
+        swipeLike();
+        testing.setText("Love");
+    }
 }

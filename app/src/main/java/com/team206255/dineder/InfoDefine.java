@@ -12,7 +12,7 @@ public class InfoDefine {
 
     public enum Cuisine {
         ALL, HONGKONG, CHINESE, JAPANESE, KOREAN,
-        INDIAN, FRENCH, AMERICAN, ITALIAN, MsEXICAN
+        INDIAN, FRENCH, AMERICAN, ITALIAN, MEXICAN
     }
 
     static final int REQUEST_FOR_FILTER = 0;

@@ -1,5 +1,6 @@
 package com.team206255.dineder;
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 
@@ -46,7 +47,7 @@ public class Recipe implements Serializable{
         difficulty = 1;
         duration = 10.f;
         calorie = 10.f;
-        type = Cuisine.HONGKONG;
+        type = Cuisine.INDIAN;
         if (i == 0)
         {
             image = R.drawable.testing;
@@ -55,6 +56,12 @@ public class Recipe implements Serializable{
         {
             image = R.drawable.tester;
         }
+    }
+
+    public String getCuisine(Context context)
+    {
+        String[] allType = context.getResources().getStringArray(R.array.cuisine);
+        return allType[type.ordinal()];
     }
 
     public Bitmap getImage(Resources res)

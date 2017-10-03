@@ -4,42 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.team206255.dineder.RecipeInformation">
+    tools:context="com.team206255.dineder.RecipeInformation"
+    tools:layout_editor_absoluteY="25dp"
+    tools:layout_editor_absoluteX="0dp">
 
     <ImageView
         android:id="@+id/RecipeView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="102dp"
+        android:layout_height="101dp"
+        app:srcCompat="@mipmap/ic_launcher"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginStart="8dp" />
 
     <TextView
         android:id="@+id/recipeNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="22dp"
-        android:layout_marginTop="8dp"
         android:text="Recipe Name"
         android:textSize="30dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/RecipeView"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp" />
 
     <RatingBar
         android:id="@+id/currentDifficultyBar"
         style="@android:style/Widget.Material.RatingBar.Small"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/recipeNameText"
-        app:layout_constraintLeft_toRightOf="@+id/RecipeView"
-        android:layout_marginLeft="22dp"
         android:isIndicator="true"
         android:focusable="false"
         android:numStars="5"
-        android:rating="1"/>
+        android:rating="1"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/RecipeView"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/RecipeView"
+        android:layout_marginStart="8dp" />
 
     <Button
         android:id="@+id/backButton"
@@ -48,6 +54,81 @@
         android:text="BACK"
         android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/cuisineView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="29dp"
+        android:text="Cuisine"
+        android:textSize="15dp"
+        app:layout_constraintLeft_toRightOf="@+id/RecipeView"
+        app:layout_constraintTop_toBottomOf="@+id/recipeNameText"
+        android:layout_marginStart="29dp" />
+
+    <TextView
+        android:id="@+id/durationView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Duration: "
+        android:textSize="15dp"
+        app:layout_constraintTop_toBottomOf="@+id/cuisineView"
+        app:layout_constraintLeft_toRightOf="@+id/RecipeView"
+        android:layout_marginLeft="29dp"
+        android:layout_marginStart="29dp" />
+
+    <TextView
+        android:id="@+id/calorieView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="29dp"
+        android:text="Calorie: "
+        android:textSize="15dp"
+        app:layout_constraintLeft_toRightOf="@+id/RecipeView"
+        app:layout_constraintTop_toBottomOf="@+id/durationView"
+        android:layout_marginStart="29dp" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/backButton"
+        android:layout_marginBottom="2dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginLeft="0dp"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/currentDifficultyBar"
+        android:layout_marginTop="5dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingredient: "
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="158dp" />
+
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Steps: "
+                android:textSize="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </android.support.constraint.ConstraintLayout>
