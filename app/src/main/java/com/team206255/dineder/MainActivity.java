@@ -20,9 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mainFeatureButton;
 
     //setting the class for different screen
-    private SearchScreen searchScreen;
-    private MainScreen mainScreen;
-    private FavouriteScreen favouriteScreen;
+    static SearchScreen searchScreen;
+    static MainScreen mainScreen;
+    static FavouriteScreen favouriteScreen;
 
     //getting displaymetrics
     private DisplayMetrics metrics;

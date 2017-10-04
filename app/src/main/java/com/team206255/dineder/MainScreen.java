@@ -16,7 +16,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Space;
 import android.widget.TextView;
 
@@ -51,7 +53,7 @@ public class MainScreen extends Fragment{
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstance) {
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable final Bundle savedInstance) {
         view = inflater.inflate(R.layout.activity_main_screen, container, false);
         metrics = getContext().getResources().getDisplayMetrics();
 
@@ -167,12 +169,23 @@ public class MainScreen extends Fragment{
         filterDrawerHandler = new FilterDrawerHandler(getActivity().getApplicationContext());
         filterDrawerHandler.handleDrawerSetup(rightView, MainActivity.recipeFilter);
 
+        //set up the button for filter screen and recipe detail screen
         TextView advancedFilter = (TextView) rightView.findViewById(R.id.advancedButton);
         advancedFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent filterScreen = new Intent(getActivity().getApplicationContext(), FilterScreen.class);
                 getActivity().startActivityForResult(filterScreen, InfoDefine.REQUEST_FOR_FILTER);
+            }
+        });
+
+        ListView likedListView = (ListView) leftView.findViewById(R.id.likedListView);
+        likedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
+                detailIntent.putExtra("RECIPE", MainActivity.likeList.getRecipe(i));
+                startActivity(detailIntent);
             }
         });
 
@@ -259,6 +272,7 @@ public class MainScreen extends Fragment{
     {
         MainActivity.saveList.addRecipe(MainActivity.recipeChoice.getChoiceRecipe(), new Date());
         MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        MainActivity.favouriteScreen.updateSaveList();
         setFoodView();
 
         testing.setText("Love");

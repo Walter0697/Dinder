@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/savedRecipeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/savedRecipeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="19dp"
+        android:text="Name"
+        android:textSize="25dp"
+        android:layout_alignTop="@+id/savedRecipeImage"
+        android:layout_toEndOf="@+id/savedRecipeImage" />
+
+    <TextView
+        android:id="@+id/savedDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/savedRecipeName"
+        android:layout_marginEnd="15dp"
+        android:text="YYYY/MM/DD" />
+
+    <TextView
+        android:id="@+id/savedCuisine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cuisine"
+        android:textSize="15dp"
+        android:layout_below="@+id/savedRecipeName"
+        android:layout_alignStart="@+id/savedRecipeName" />
+
+    <TextView
+        android:id="@+id/savedDuration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/savedCuisine"
+        android:layout_alignLeft="@+id/savedCuisine"
+        android:text="Duration"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/savedCalorie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/savedCuisine"
+        android:layout_toEndOf="@+id/savedDuration"
+        android:layout_marginStart="10dp"
+        android:text="Calorie"
+        android:textSize="15dp"/>
+
+    <RatingBar
+        android:id="@+id/savedDifficulty"
+        style="@android:style/Widget.Material.RatingBar.Small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/savedCuisine"
+        android:layout_below="@+id/savedDuration"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:rating="1" />
+
+    <ImageView
+        android:id="@+id/savedRemoveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/savedDate"
+        android:layout_below="@+id/savedDate"
+        android:layout_marginTop="5dp"
+        android:clickable="true"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+</RelativeLayout>

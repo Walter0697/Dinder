@@ -1,0 +1,4 @@
+Still working on the interface, finish setting up the drawer
+Drag and drop features working now
+listView for like View and also saved View are working fine right now
+Filter function is working, not completed but should be easy to add the rest of them
