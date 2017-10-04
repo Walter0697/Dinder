@@ -1,5 +1,7 @@
 package com.team206255.dineder;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,6 +10,8 @@ import java.util.Date;
  */
 
 public class RecipeList {
+    static DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+
     ArrayList<Recipe> lists = new ArrayList<>();
     ArrayList<Date> addTime = new ArrayList<>();
 
@@ -23,6 +27,11 @@ public class RecipeList {
         addTime.remove(position);
     }
 
+    public int getSize()
+    {
+        return lists.size();
+    }
+
     public Recipe getRecipe(int position)
     {
         return lists.get(position);
@@ -32,4 +41,6 @@ public class RecipeList {
     {
         return addTime.get(position);
     }
+
+    public String getDateToString(int position) { return dateFormat.format(addTime.get(position)); }
 }

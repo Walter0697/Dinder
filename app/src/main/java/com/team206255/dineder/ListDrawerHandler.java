@@ -4,8 +4,13 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
+
+import com.team206255.dineder.InfoDefine.*;
 
 /**
  * Created by walter on 2017-09-29.
@@ -14,6 +19,9 @@ import android.widget.LinearLayout;
 public class ListDrawerHandler {
 
     Context context;
+
+    ListView likedView;
+    CustomeAdapter customeAdapter;
 
     public ListDrawerHandler(Context c)
     {
@@ -35,5 +43,15 @@ public class ListDrawerHandler {
         Bitmap drawerImage = ImageProcessor.scaleImage(metrics, headerView.getResources(), R.drawable.list, 0.05f);
         drawerIcon.setImageBitmap(drawerImage);
 
+        //setting up the list view
+        customeAdapter = new CustomeAdapter(context, MainActivity.likeList, R.layout.liked_list_detail, ListType.LIKED_LIST);
+        likedView = (ListView) headerView.findViewById(R.id.likedListView);
+        likedView.setAdapter(customeAdapter);
+    }
+
+    public void updateLikedView()
+    {
+        likedView.invalidate();
+        ((BaseAdapter)likedView.getAdapter()).notifyDataSetChanged();
     }
 }

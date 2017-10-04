@@ -72,10 +72,22 @@ public class MainScreen extends Fragment{
         ImageView crossButton = (ImageView) view.findViewById(R.id.crossButton);
         Bitmap crossImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.unchecked, 0.2f);
         crossButton.setImageBitmap(crossImage);
+        crossButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeDislike();
+            }
+        });
 
         ImageView loveButton = (ImageView) view.findViewById(R.id.loveButton);
         Bitmap loveImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.heart, 0.2f);
         loveButton.setImageBitmap(loveImage);
+        loveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeLove();
+            }
+        });
 
         //getting the navigation view from the view and setting up listener for them
         leftNavigationView = (NavigationView) view.findViewById(R.id.nav_view);
@@ -232,6 +244,7 @@ public class MainScreen extends Fragment{
         testing.setText("Like");
         MainActivity.likeList.addRecipe(MainActivity.recipeChoice.getChoiceRecipe(), new Date());
         MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        listDrawerHandler.updateLikedView();
         setFoodView();
     }
 
@@ -244,7 +257,10 @@ public class MainScreen extends Fragment{
 
     private void swipeLove()
     {
-        swipeLike();
+        MainActivity.saveList.addRecipe(MainActivity.recipeChoice.getChoiceRecipe(), new Date());
+        MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        setFoodView();
+
         testing.setText("Love");
     }
 

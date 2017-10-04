@@ -41,7 +41,6 @@ public class Recipe implements Serializable{
     {
         pictureView = "https://cdn-images-1.medium.com/max/2000/1*-Yl16t7mr6dE9hKU-w4LGg.jpeg";
 
-        name = "Apple";
         steps = new String[1];
         steps[0] = "1.Just buy an apple";
         difficulty = 1;
@@ -51,22 +50,27 @@ public class Recipe implements Serializable{
         if (i == 0)
         {
             image = R.drawable.testing;
+            name = "Apple";
         }
         else if (i == 1)
         {
             image = R.drawable.tester;
+            name = "Banana";
         }
         else if (i == 2)
         {
             image = R.drawable.filter;
+            name = "Filter";
         }
         else if (i == 3)
         {
             image = R.drawable.heart;
+            name = "heart";
         }
         else if (i == 4)
         {
             image = R.drawable.dinner;
+            name = "dinner";
         }
     }
 

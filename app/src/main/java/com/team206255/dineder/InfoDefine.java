@@ -16,4 +16,8 @@ public class InfoDefine {
     }
 
     static final int REQUEST_FOR_FILTER = 0;
+
+    public enum ListType {
+        LIKED_LIST, SAVED_LIST, SEARCH_LIST
+    }
 }
