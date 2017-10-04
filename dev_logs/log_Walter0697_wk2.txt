@@ -2,6 +2,7 @@ I setup the basic user interface with the knowledge from the tutorials
 
 I am trying to make some fancy function so I didn't follow the coding that people do in the tutorials
 I modify it and try to code things by my own
+(5 hours per day)
 
 These are some that I successfully implemented:
 1. double drawer (both left and right)

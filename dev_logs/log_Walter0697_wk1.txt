@@ -1,4 +1,4 @@
-Since I am a beginner for Android Studio, therefore i  am trying to learn from the internet and some Youtube video.
+Since I am a beginner for Android Studio, therefore i  am trying to learn from the internet and some Youtube video. (5 hours per day)
 
 I watched tutorial for most of the functions that is needed in this project
 1.StartActivity for Intent
