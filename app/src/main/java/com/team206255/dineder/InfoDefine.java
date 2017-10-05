@@ -15,9 +15,13 @@ public class InfoDefine {
         INDIAN, FRENCH, AMERICAN, ITALIAN, MEXICAN
     }
 
+    public enum Ingredient {
+        SUGAR, SALT, OIL
+    }
+
     static final int REQUEST_FOR_FILTER = 0;
 
     public enum ListType {
-        LIKED_LIST, SAVED_LIST, SEARCH_LIST
+        LIKED_LIST, SAVED_LIST, SEARCH_LIST, INGREDIENT_BOX, CUISINE_BOX
     }
 }

@@ -27,6 +27,12 @@ public class RecipeList {
         addTime.remove(position);
     }
 
+    public void removeAll()
+    {
+        lists.clear();
+        addTime.clear();
+    }
+
     public int getSize()
     {
         return lists.size();

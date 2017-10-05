@@ -7,6 +7,7 @@ import android.graphics.Bitmap;
 import com.team206255.dineder.InfoDefine.*;
 
 import java.io.Serializable;
+import java.net.URL;
 
 /**
  * Created by walter on 2017-10-01.
@@ -14,15 +15,31 @@ import java.io.Serializable;
 
 public class Recipe implements Serializable{
 
-    int image;
+    URL imageLink;
+    int image; //temp variable, don't have to care
     //image not for final
     String pictureView;
     String name;
     String[] steps;
+    String[] ingredients;
     int difficulty;
     float duration;
     float calorie;
+    int serves;
+
     Cuisine type;
+
+    public Recipe(String name, String[] steps, String[] ingredients, int difficulty, float duration, float calorie, URL imageLink)
+    {
+        this.image = R.drawable.testing; //don't care about this
+        this.name = name;
+        this.steps = steps;
+        this.ingredients = ingredients;
+        this.difficulty = difficulty;
+        this.duration = duration;
+        this.calorie = calorie;
+        this.imageLink = imageLink;
+    }
 
     //this is just sample
     public Recipe(){

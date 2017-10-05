@@ -10,9 +10,8 @@ import java.io.Serializable;
 
 public class RecipeFilter implements Serializable{
 
-    final int ingredientsNum = 3;
     boolean[] cuisine = new boolean[Cuisine.values().length];
-    boolean[] ingredients = new boolean[ingredientsNum];
+    boolean[] ingredients = new boolean[Ingredient.values().length];
     int difficulty;
     float duration;
     float calorie;
@@ -20,7 +19,7 @@ public class RecipeFilter implements Serializable{
     public RecipeFilter()
     {
         cuisine_selected_by_spinner(0);
-        for (int i = 0; i < ingredientsNum; i++)
+        for (int i = 0; i < Ingredient.values().length; i++)
             ingredients[i] = true;
         duration = InfoDefine.maxDuration;
         calorie = InfoDefine.maxCalorie;

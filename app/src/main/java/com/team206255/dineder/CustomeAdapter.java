@@ -92,6 +92,7 @@ public class CustomeAdapter extends BaseAdapter {
                     public void onClick(View view) {
                         MainActivity.saveList.addRecipe(MainActivity.likeList.getRecipe(i), MainActivity.likeList.getDate(i));
                         MainActivity.likeList.removeRecipe(i);
+                        MainActivity.favouriteScreen.updateSaveList();
                         notifyDataSetChanged();
                     }
                 });

@@ -33,7 +33,7 @@ public class FavouriteScreen extends Fragment {
 
         CustomeAdapter customeAdapter = new CustomeAdapter(getContext(), MainActivity.saveList, R.layout.saved_list_detail, ListType.SAVED_LIST);
         savedView = (ListView) view.findViewById(R.id.saveListView);
-        savedView.getLayoutParams().height = (int)(metrics.heightPixels * 0.8);
+        savedView.getLayoutParams().height = (int)(metrics.heightPixels * 0.7);
         savedView.setAdapter(customeAdapter);
 
         savedView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

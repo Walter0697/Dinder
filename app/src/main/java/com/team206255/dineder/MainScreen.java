@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.Space;
 import android.widget.TextView;
 
@@ -95,8 +96,9 @@ public class MainScreen extends Fragment{
         leftNavigationView = (NavigationView) view.findViewById(R.id.nav_view);
         rightNavigationView = (NavigationView) view.findViewById(R.id.right_nav_view);
 
+        leftView = leftNavigationView.inflateHeaderView(R.layout.nav_header_main_screen);
         //getting the view object from the navigation view
-        leftView = leftNavigationView.getHeaderView(0);
+        //leftView = leftNavigationView.getHeaderView(0);
         rightView = rightNavigationView.getHeaderView(0);
 
         //setup the button(image) and resize them, then setup their listeners
@@ -179,6 +181,7 @@ public class MainScreen extends Fragment{
             }
         });
 
+        //list view for liked drawer
         ListView likedListView = (ListView) leftView.findViewById(R.id.likedListView);
         likedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -186,6 +189,44 @@ public class MainScreen extends Fragment{
                 Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
                 detailIntent.putExtra("RECIPE", MainActivity.likeList.getRecipe(i));
                 startActivity(detailIntent);
+            }
+        });
+        //disable scrolling for background but enable it for listview
+        likedListView.setOnTouchListener(new ListView.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int action = motionEvent.getAction();
+                switch(action)
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        view.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        view.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                view.onTouchEvent(motionEvent);
+                return true;
+            }
+        });
+
+        ScrollView filterView = (ScrollView) rightView.findViewById(R.id.filterScrollView);
+        //disable scrolling for background but enable it for listview
+        filterView.setOnTouchListener(new ScrollView.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int action = motionEvent.getAction();
+                switch(action)
+                {
+                    case MotionEvent.ACTION_DOWN:
+                        view.getParent().requestDisallowInterceptTouchEvent(true);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        view.getParent().requestDisallowInterceptTouchEvent(false);
+                        break;
+                }
+                view.onTouchEvent(motionEvent);
+                return true;
             }
         });
 
@@ -270,12 +311,11 @@ public class MainScreen extends Fragment{
 
     private void swipeLove()
     {
+        testing.setText("Love");
         MainActivity.saveList.addRecipe(MainActivity.recipeChoice.getChoiceRecipe(), new Date());
         MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
         MainActivity.favouriteScreen.updateSaveList();
         setFoodView();
-
-        testing.setText("Love");
     }
 
     private void setFoodView()

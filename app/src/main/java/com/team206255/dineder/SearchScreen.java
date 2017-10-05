@@ -9,8 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 
 public class SearchScreen extends Fragment{
+
+    ListView searchList;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstance)
@@ -21,6 +25,10 @@ public class SearchScreen extends Fragment{
         ImageView searchIcon = (ImageView) view.findViewById(R.id.SearchIcon);
         Bitmap searchImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.search, 0.1f);
         searchIcon.setImageBitmap(searchImage);
+
+        //CustomeAdapter customeAdapter = new CustomeAdapter(getContext(), )
+        searchList = (ListView) view.findViewById(R.id.searchListView);
+        searchList.getLayoutParams().height = (int)(metrics.heightPixels * 0.7);
 
         return view;
     }
