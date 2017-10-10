@@ -13,6 +13,7 @@ public class RandomRecipeGenerator {
 
     public static Recipe getRandomRecipe()
     {
+
         return new Recipe(rand.nextInt(5));
         //return JsonFactory.getRecipe();
     }
