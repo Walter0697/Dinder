@@ -27,9 +27,10 @@ public class RecipeInformation extends AppCompatActivity {
             currentRecipe = (Recipe)getIntent().getSerializableExtra("RECIPE");
 
         ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
-        Bitmap unsized = currentRecipe.getImage(getResources());
-        Bitmap recipeImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.35f);
-        recipeView.setImageBitmap(recipeImage);
+        currentRecipe.setBigImage(getApplicationContext(), recipeView);
+        //Bitmap unsized = currentRecipe.getImage(getApplicationContext(), recipeView);
+        //Bitmap recipeImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.35f);
+        //recipeView.setImageBitmap(recipeImage);
 
         TextView nameText = (TextView) findViewById(R.id.recipeNameText);
         nameText.setText(currentRecipe.name);

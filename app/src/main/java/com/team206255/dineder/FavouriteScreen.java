@@ -31,8 +31,8 @@ public class FavouriteScreen extends Fragment {
         Bitmap favouriteImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.star, 0.1f);
         favouriteIcon.setImageBitmap(favouriteImage);
 
-        CustomeAdapter customeAdapter = new CustomeAdapter(getContext(), MainActivity.saveList, R.layout.saved_list_detail, ListType.SAVED_LIST);
-        savedView = (ListView) view.findViewById(R.id.saveListView);
+        //CustomeAdapter customeAdapter = new CustomeAdapter(getContext(), MainActivity.saveList, R.layout.saved_list_detail, ListType.SAVED_LIST);
+        /*savedView = (ListView) view.findViewById(R.id.saveListView);
         savedView.getLayoutParams().height = (int)(metrics.heightPixels * 0.7);
         savedView.setAdapter(customeAdapter);
 
@@ -43,15 +43,9 @@ public class FavouriteScreen extends Fragment {
                 recipeIntent.putExtra("RECIPE", MainActivity.saveList.getRecipe(i));
                 startActivity(recipeIntent);
             }
-        });
+        });*/
 
 
         return view;
-    }
-
-    public void updateSaveList()
-    {
-        savedView.invalidate();
-        ((BaseAdapter)savedView.getAdapter()).notifyDataSetChanged();
     }
 }

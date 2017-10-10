@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     static RecipeFilter recipeFilter = new RecipeFilter();
     static RecipeChoice recipeChoice = new RecipeChoice();
     static RecipeList likeList = new RecipeList();
-    static RecipeList saveList = new RecipeList();
+    //static RecipeList saveList = new RecipeList();
 
 
     @Override

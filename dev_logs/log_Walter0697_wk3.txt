@@ -1,4 +1,14 @@
-Still working on the interface, finish setting up the drawer
-Drag and drop features working now
-listView for like View and also saved View are working fine right now
-Filter function is working, not completed but should be easy to add the rest of them
+Working on the interface and also trying to achieve things that I planned to do (5 hours per day)
+
+Finish things that I mentioned in last dev_log:
+1. Cropping the image into circle
+2. Expanding the drawer header and get ird of the menu
+3. Setting up the filter and food information, not completed but should be easy to add the rest of them
+4. Drag and Drop features
+5. Listview for like and saved view
+
+
+Here is the things that I am trying to achieve:
+1. Getting image from the internet instead of using the drawable
+2. Setting up search function
+3. Keep implementing features that I wanted

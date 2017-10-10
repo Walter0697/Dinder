@@ -90,9 +90,8 @@ public class CustomeAdapter extends BaseAdapter {
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        MainActivity.saveList.addRecipe(MainActivity.likeList.getRecipe(i), MainActivity.likeList.getDate(i));
+
                         MainActivity.likeList.removeRecipe(i);
-                        MainActivity.favouriteScreen.updateSaveList();
                         notifyDataSetChanged();
                     }
                 });
@@ -100,9 +99,10 @@ public class CustomeAdapter extends BaseAdapter {
                 break;
             case SAVED_LIST:
                 ImageView recipeImageView = (ImageView) v.findViewById(R.id.savedRecipeImage);
-                Bitmap unsized = items.getRecipe(i).getImage(context.getResources());
-                Bitmap recipeImage = ImageProcessor.scaleImage(metrics, context.getResources(), unsized, 0.23f);
-                recipeImageView.setImageBitmap(recipeImage);
+                items.getRecipe(i).setBigImage(context, recipeImageView);
+                //Bitmap unsized = items.getRecipe(i).getImage(context, recipeImageView);
+                //Bitmap recipeImage = ImageProcessor.scaleImage(metrics, context.getResources(), unsized, 0.23f);
+                //recipeImageView.setImageBitmap(recipeImage);
 
                 TextView savedRecipeName = (TextView) v.findViewById(R.id.savedRecipeName);
                 savedRecipeName.setText(items.getRecipe(i).name);
@@ -129,8 +129,8 @@ public class CustomeAdapter extends BaseAdapter {
                 savedRemoveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        MainActivity.saveList.removeRecipe(i);
-                        notifyDataSetChanged();
+                        //MainActivity.saveList.removeRecipe(i);
+                        //notifyDataSetChanged();
                     }
                 });
 

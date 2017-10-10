@@ -1,0 +1,11 @@
+I asked TA about our app (for 30-60mins?)
+I think I should make some changes for the interface
+
+Changes included:
+1. Changing the favourite screen to calendar. The reason is "liked list" and "saved list" is kinda similar for now
+2. Setting up something like "missing ingredients" so the app will show the recipe even tho you don't have enough ingredients
+3. Setting up timer to make the user more easier to calculate the time when cooking
+
+Challenges:
+1. Using Picasso SDK to get the image from the internet but it didn’t work quite well (about 1 week, still working on it)
+2. App cannot run in some phone because of the sdk version

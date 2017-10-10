@@ -124,9 +124,10 @@ public class MainScreen extends Fragment{
         //getting the recipe picture from the first recipe in the list
         //also set up the drag and drop listener for the food picture view
         ImageView foodView = (ImageView) view.findViewById(R.id.foodView);
-        Bitmap unsized = MainActivity.recipeChoice.getChoiceRecipe().getImage(getResources());
-        Bitmap foodImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.9f);
-        foodView.setImageBitmap(foodImage);
+        MainActivity.recipeChoice.getChoiceRecipe().setBigImage(getContext(), foodView);
+        //Bitmap unsized = MainActivity.recipeChoice.getChoiceRecipe().getImage(getContext(), foodView);
+        //Bitmap foodImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.9f);
+        //foodView.setImageBitmap(foodImage);
         //set drag and touch listener
         foodView.setOnTouchListener(touchListener);
         foodView.setOnDragListener(dragListener);
@@ -134,9 +135,10 @@ public class MainScreen extends Fragment{
         //getting the background recipe picture from the second recipe in the list
         //dont need to set up listener cuz it is just for the background
         ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        Bitmap unsizedBackground = MainActivity.recipeChoice.getBackgroundRecipe().getImage(getResources());
-        Bitmap foodImageBackground = ImageProcessor.scaleImage(metrics, getResources(), unsizedBackground, 0.9f);
-        backgroundView.setImageBitmap(foodImageBackground);
+        MainActivity.recipeChoice.getBackgroundRecipe().setBigImage(getContext(), backgroundView);
+        //Bitmap unsizedBackground = MainActivity.recipeChoice.getBackgroundRecipe().getImage(getContext(), backgroundView);
+        //Bitmap foodImageBackground = ImageProcessor.scaleImage(metrics, getResources(), unsizedBackground, 0.9f);
+        //backgroundView.setImageBitmap(foodImageBackground);
 
         //space for the dragging and dropping event
         dislikeArea = (Space) view.findViewById(R.id.dislikeSpace);
@@ -274,10 +276,10 @@ public class MainScreen extends Fragment{
                     {
                         swipeDislike();
                     }
-                    //else if (getTouchPosition(view, dragEvent).y <= loveArea.getY() + loveArea.getHeight())
-                    //{
-                    //    swipeLove();
-                    //}
+                    else if (getTouchPosition(view, dragEvent).y <= loveArea.getY() + loveArea.getHeight())
+                    {
+                        //swipeLove();
+                    }
                     break;
             }
             return true;
@@ -312,21 +314,22 @@ public class MainScreen extends Fragment{
     private void swipeLove()
     {
         testing.setText("Love");
-        MainActivity.saveList.addRecipe(MainActivity.recipeChoice.getChoiceRecipe(), new Date());
         MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
-        MainActivity.favouriteScreen.updateSaveList();
         setFoodView();
     }
 
     private void setFoodView()
     {
-        Bitmap unsized = MainActivity.recipeChoice.getChoiceRecipe().getImage(getResources());
-        Bitmap foodImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.9f);
+
         ImageView foregroundView = (ImageView) view.findViewById(R.id.foodView);
-        foregroundView.setImageBitmap(foodImage);
-        Bitmap backgroundUnsized = MainActivity.recipeChoice.getBackgroundRecipe().getImage(getResources());
-        Bitmap backgroundFoodImage = ImageProcessor.scaleImage(metrics, getResources(), backgroundUnsized, 0.9f);
+        MainActivity.recipeChoice.getChoiceRecipe().setBigImage(getContext(), foregroundView);
+        //Bitmap unsized = MainActivity.recipeChoice.getChoiceRecipe().getImage(getContext(), foregroundView);
+        //Bitmap foodImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.9f);
+        //foregroundView.setImageBitmap(foodImage);
         ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        backgroundView.setImageBitmap(backgroundFoodImage);
+        MainActivity.recipeChoice.getBackgroundRecipe().setBigImage(getContext(), backgroundView);
+        //Bitmap backgroundUnsized = MainActivity.recipeChoice.getBackgroundRecipe().getImage(getContext(), backgroundView);
+        //Bitmap backgroundFoodImage = ImageProcessor.scaleImage(metrics, getResources(), backgroundUnsized, 0.9f);
+        //backgroundView.setImageBitmap(backgroundFoodImage);
     }
 }

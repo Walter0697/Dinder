@@ -19,12 +19,24 @@ public class RecipeFilter implements Serializable{
     public RecipeFilter()
     {
         cuisine_selected_by_spinner(0);
-        for (int i = 0; i < Ingredient.values().length; i++)
-            ingredients[i] = true;
+        ingredientsSelectAll();
         duration = InfoDefine.maxDuration;
         calorie = InfoDefine.maxCalorie;
         difficulty = 1;
     }
+
+    public void ingredientsSelectAll()
+    {
+        for (int i = 0; i < Ingredient.values().length; i++)
+            ingredients[i] = true;
+    }
+
+    public void ingredientsSelectNone()
+    {
+        for (int i = 0; i < Ingredient.values().length; i++)
+            ingredients[i] = false;
+    }
+
 
     public void cuisine_selected_by_spinner(int position)
     {

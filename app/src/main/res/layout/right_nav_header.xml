@@ -40,7 +40,8 @@
     <ScrollView
         android:id="@+id/filterScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbarAlwaysDrawVerticalTrack="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -48,78 +49,79 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginLeft="10dp">
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="Cuisine: "
-                    android:textSize="20dp"
-                    android:layout_gravity="center"/>
+                    android:textSize="20dp" />
 
                 <Spinner
                     android:id="@+id/selectCuisine"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"/>
+                    android:layout_gravity="center" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="0.35"
                     android:text="Difficulty:  "
-                    android:textSize="20dp"
-                    android:layout_gravity="center" />
+                    android:textSize="20dp" />
 
                 <RatingBar
                     android:id="@+id/difficultyBar"
                     style="@android:style/Widget.Material.RatingBar.Small"
-                    android:layout_weight="0.65"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:isIndicator="false"
+                    android:layout_weight="0.65"
                     android:focusable="true"
+                    android:isIndicator="false"
                     android:numStars="5"
                     android:rating="1" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="0.35"
                     android:text="Duration:"
-                    android:textSize="20dp"
-                    android:layout_gravity="center"/>
+                    android:textSize="20dp" />
+
                 <SeekBar
                     android:id="@+id/durationSeekBar"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5" />
 
                 <EditText
                     android:id="@+id/durationNum"
@@ -128,35 +130,36 @@
                     android:layout_gravity="center"
                     android:layout_weight="0.15"
                     android:background="@android:color/white"
-                    android:textColor="@android:color/black"
                     android:ems="10"
                     android:inputType="number"
                     android:text="0"
+                    android:textColor="@android:color/black"
                     android:textSize="15dp" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal"
                 android:weightSum="1">
 
                 <TextView
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_weight="0.35"
                     android:text="Calorie:  "
-                    android:textSize="20dp"
-                    android:layout_gravity="center"/>
+                    android:textSize="20dp" />
+
                 <SeekBar
                     android:id="@+id/calorieSeekBar"
-                    android:layout_height="wrap_content"
                     android:layout_width="0dp"
-                    android:layout_weight="0.5"
-                    android:layout_gravity="center"/>
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="0.5" />
 
                 <EditText
                     android:id="@+id/calorieNum"
@@ -165,43 +168,41 @@
                     android:layout_gravity="center"
                     android:layout_weight="0.15"
                     android:background="@android:color/white"
-                    android:textColor="@android:color/black"
                     android:ems="10"
                     android:inputType="number"
                     android:text="0"
+                    android:textColor="@android:color/black"
                     android:textSize="15dp" />
 
             </LinearLayout>
 
             <TextView
-                android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:text="Ingredients:  "
-                android:textSize="20dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
-                android:layout_gravity="left"/>
+                android:text="Ingredients:  "
+                android:textSize="20dp" />
 
-            <GridView
-                android:id="@+id/ingredientView"
+            <com.team206255.dineder.ExpandedListView
+                android:id="@+id/ingredientList"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
                 android:layout_marginLeft="10dp"
-                android:layout_marginTop="5dp" />
+                android:layout_marginTop="5dp"/>
 
             <TextView
                 android:id="@+id/advancedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
                 android:layout_gravity="right"
-                android:text="Advanced Setting"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
                 android:clickable="true"
+                android:text="Advanced Setting"
                 android:textColor="@android:color/holo_blue_dark"
-                android:textStyle="bold"/>
-
+                android:textStyle="bold" />
         </LinearLayout>
     </ScrollView>
 

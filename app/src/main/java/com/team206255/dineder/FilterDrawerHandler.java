@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -171,6 +172,12 @@ public class FilterDrawerHandler {
                 recipeFilter.difficulty = (int)v;
             }
         });
+
+        ///////////////////////////////////////////////////////////////////
+        //INGREDIENT CHECK BOX
+        StringAdapter ingredientAdapter = new StringAdapter(context, R.layout.check_box_detail, context.getResources().getStringArray(R.array.ingredient), InfoDefine.ListType.INGREDIENT_BOX);
+        ListView ingredientView = (ListView) headerView.findViewById(R.id.ingredientList);
+        ingredientView.setAdapter(ingredientAdapter);
 
         setValueByFilter(recipeFilter);
     }
