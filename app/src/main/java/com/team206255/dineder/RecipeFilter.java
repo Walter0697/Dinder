@@ -18,7 +18,7 @@ public class RecipeFilter implements Serializable{
 
     public RecipeFilter()
     {
-        cuisine_selected_by_spinner(0);
+        cuisine_selected_by_position(0);
         ingredientsSelectAll();
         duration = InfoDefine.maxDuration;
         calorie = InfoDefine.maxCalorie;
@@ -38,11 +38,16 @@ public class RecipeFilter implements Serializable{
     }
 
 
-    public void cuisine_selected_by_spinner(int position)
+    public void cuisine_selected_by_position(int position)
     {
-        for (int i = 0; i < Cuisine.values().length; i++)
-            cuisine[i] = false;
-        cuisine[position] = true;
+        if (position == 0)
+            for (int i = 0; i < Cuisine.values().length; i++)
+                cuisine[i] = true;
+        else {
+            for (int i = 0; i < Cuisine.values().length; i++)
+                cuisine[i] = false;
+            cuisine[position] = true;
+        }
     }
 
     public int number_of_selected_cuisine()

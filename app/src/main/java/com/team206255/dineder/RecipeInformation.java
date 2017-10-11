@@ -7,6 +7,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -27,7 +28,7 @@ public class RecipeInformation extends AppCompatActivity {
             currentRecipe = (Recipe)getIntent().getSerializableExtra("RECIPE");
 
         ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
-        currentRecipe.setBigImage(getApplicationContext(), recipeView);
+        currentRecipe.setImage(getApplicationContext(), recipeView, 0.35f);
         //Bitmap unsized = currentRecipe.getImage(getApplicationContext(), recipeView);
         //Bitmap recipeImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.35f);
         //recipeView.setImageBitmap(recipeImage);
@@ -46,6 +47,14 @@ public class RecipeInformation extends AppCompatActivity {
 
         TextView calorieText = (TextView) findViewById(R.id.calorieView);
         calorieText.setText("Calorie: " + currentRecipe.calorie);
+
+        StringAdapter ingredientsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.ingredients, InfoDefine.ListType.INGREDIENT_LIST);
+        ListView ingredients = (ListView) findViewById(R.id.ingredientList);
+        ingredients.setAdapter(ingredientsAdapter);
+
+        StringAdapter stepsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.steps, InfoDefine.ListType.STEPS);
+        ListView steps = (ListView) findViewById(R.id.stepList);
+        steps.setAdapter(stepsAdapter);
 
         Button backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {

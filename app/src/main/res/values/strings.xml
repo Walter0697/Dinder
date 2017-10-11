@@ -25,5 +25,8 @@
         <item>Salt</item>
         <item>Oil</item>
         <item>Chicken</item>
+        <item>Beef</item>
+        <item>Pepper</item>
+        <item>Egg</item>
     </string-array>
 </resources>

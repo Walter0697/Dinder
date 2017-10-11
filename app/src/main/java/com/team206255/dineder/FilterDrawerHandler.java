@@ -63,7 +63,7 @@ public class FilterDrawerHandler {
         cuisineSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                recipeFilter.cuisine_selected_by_spinner(i);
+                recipeFilter.cuisine_selected_by_position(i);
             }
 
             @Override
@@ -78,7 +78,7 @@ public class FilterDrawerHandler {
         durationSeekBar = (SeekBar) headerView.findViewById(R.id.durationSeekBar);
         durationNum = (EditText) headerView.findViewById(R.id.durationNum);
         //setting up min and max range for the seekbar
-        durationSeekBar.setMin(InfoDefine.minDuration);
+        //durationSeekBar.setMin(InfoDefine.minDuration);
         durationSeekBar.setMax(InfoDefine.maxDuration);
         //setting up the on seekbar listener
         durationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -123,7 +123,7 @@ public class FilterDrawerHandler {
         calorieSeekBar = (SeekBar) headerView.findViewById(R.id.calorieSeekBar);
         calorieNum = (EditText) headerView.findViewById(R.id.calorieNum);
         //setting up min and max range for the seekbar
-        calorieSeekBar.setMin(InfoDefine.minCalorie);
+        //calorieSeekBar.setMin(InfoDefine.minCalorie);
         calorieSeekBar.setMax(InfoDefine.maxCalorie);
         //setting up the on seekbar listener
         calorieSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

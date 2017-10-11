@@ -1,10 +1,6 @@
 package com.team206255.dineder;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.icu.text.IDNA;
-import android.media.Rating;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
 
@@ -25,6 +22,11 @@ public class FilterScreen extends AppCompatActivity {
     private SeekBar calorieSeekBar;
     private EditText calorieNum;
 
+    private StringAdapter cuisineCheck;
+    private ListView cuisineList;
+
+    private StringAdapter ingredientCheck;
+    private ListView ingredientList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +56,7 @@ public class FilterScreen extends AppCompatActivity {
         durationSeekBar = (SeekBar) findViewById(R.id.advancedDurationSeekBar);
         durationNum = (EditText) findViewById(R.id.advancedDurationNum);
         //setting up range
-        durationSeekBar.setMin(InfoDefine.minDuration);
+        //durationSeekBar.setMin(InfoDefine.minDuration);
         durationSeekBar.setMax(InfoDefine.maxDuration);
         //setting up listener
         durationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -96,7 +98,7 @@ public class FilterScreen extends AppCompatActivity {
         calorieSeekBar = (SeekBar) findViewById(R.id.advancedCalorieSeekBar);
         calorieNum = (EditText) findViewById(R.id.advancedCalorieNum);
         //setting up range
-        calorieSeekBar.setMin(InfoDefine.minCalorie);
+        //calorieSeekBar.setMin(InfoDefine.minCalorie);
         calorieSeekBar.setMax(InfoDefine.maxCalorie);
         //setting up listener
         calorieSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -133,6 +135,16 @@ public class FilterScreen extends AppCompatActivity {
                 calorieSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
+
+        //set up the cuisine checkbox
+        cuisineCheck = new StringAdapter(this, R.layout.check_box_detail, getResources().getStringArray(R.array.cuisine), InfoDefine.ListType.CUISINE_BOX);
+        cuisineList = (ListView) findViewById(R.id.cuisineCheck);
+        cuisineList.setAdapter(cuisineCheck);
+
+        //set up the ingredients checkbox
+        ingredientCheck = new StringAdapter(this, R.layout.check_box_detail, getResources().getStringArray(R.array.ingredient), InfoDefine.ListType.INGREDIENT_BOX);
+        ingredientList = (ListView) findViewById(R.id.ingredientCheck);
+        ingredientList.setAdapter(ingredientCheck);
 
         //set up the widgets by value in filter
         setupByFilter(MainActivity.recipeFilter);

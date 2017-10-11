@@ -120,6 +120,11 @@
                 tools:layout_editor_absoluteX="16dp"
                 tools:layout_editor_absoluteY="158dp" />
 
+            <com.team206255.dineder.ExpandedListView
+                android:id="@+id/ingredientList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
             <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -127,6 +132,11 @@
                 android:textSize="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp" />
+
+            <com.team206255.dineder.ExpandedListView
+                android:id="@+id/stepList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
         </LinearLayout>
     </ScrollView>

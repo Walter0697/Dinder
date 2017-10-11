@@ -99,7 +99,7 @@ public class CustomeAdapter extends BaseAdapter {
                 break;
             case SAVED_LIST:
                 ImageView recipeImageView = (ImageView) v.findViewById(R.id.savedRecipeImage);
-                items.getRecipe(i).setBigImage(context, recipeImageView);
+                items.getRecipe(i).setImage(context, recipeImageView, 0.23f);
                 //Bitmap unsized = items.getRecipe(i).getImage(context, recipeImageView);
                 //Bitmap recipeImage = ImageProcessor.scaleImage(metrics, context.getResources(), unsized, 0.23f);
                 //recipeImageView.setImageBitmap(recipeImage);

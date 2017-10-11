@@ -16,12 +16,12 @@ public class InfoDefine {
     }
 
     public enum Ingredient {
-        SUGAR, SALT, OIL
+        SUGAR, SALT, OIL, CHICKEN, BEEF, PEPPER, EGG
     }
 
     static final int REQUEST_FOR_FILTER = 0;
 
     public enum ListType {
-        LIKED_LIST, SAVED_LIST, SEARCH_LIST, INGREDIENT_BOX, CUISINE_BOX
+        LIKED_LIST, SAVED_LIST, SEARCH_LIST, INGREDIENT_BOX, CUISINE_BOX, INGREDIENT_LIST, STEPS
     }
 }
