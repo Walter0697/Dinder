@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
     //setting the class for different screen
     static SearchScreen searchScreen;
     static MainScreen mainScreen;
-    static FavouriteScreen favouriteScreen;
+    //static FavouriteScreen favouriteScreen;
+    static CalendarScreen calendarScreen;
 
     //getting displaymetrics
     private DisplayMetrics metrics;
@@ -43,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //creating new class
         searchScreen = new SearchScreen();
         mainScreen = new MainScreen();
-        favouriteScreen = new FavouriteScreen();
+        calendarScreen = new CalendarScreen();
 
         //set up the view pager
         viewPager = (NonSwipeableViewPager) findViewById(R.id.container);
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         adapter = new SectionsPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(searchScreen);
         adapter.addFragment(mainScreen);
-        adapter.addFragment(favouriteScreen);
+        adapter.addFragment(calendarScreen);
         viewPager.setAdapter(adapter);
     }
 

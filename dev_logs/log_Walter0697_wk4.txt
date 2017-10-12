@@ -8,7 +8,7 @@ Changes included:
 
 Challenges:
 1. Using Picasso SDK to get the image from the internet but it didn’t work quite well (about 1 week, still working on it)
-2. App cannot run in some phone because of the sdk version
+2. App cannot run in some phone because of the sdk version (need API 24)
 
 Finished:
 1. Setting up expandable list view, working for ingredient list right now
