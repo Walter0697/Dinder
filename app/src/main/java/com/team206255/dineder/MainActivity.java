@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
     //static FavouriteScreen favouriteScreen;
     static CalendarScreen calendarScreen;
 
-    //getting displaymetrics
+    //getting display metrics
     private DisplayMetrics metrics;
 
     //data for the app should store in the main activity, so that all fragments will call this
@@ -41,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
         metrics = this.getResources().getDisplayMetrics();
         setContentView(R.layout.activity_main);
 
+        //setting up the context for the recipe filter so you can accesss R.string
+        recipeFilter.setUpContext(getApplicationContext());
         //creating new class
         searchScreen = new SearchScreen();
         mainScreen = new MainScreen();

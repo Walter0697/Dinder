@@ -1,5 +1,7 @@
 package com.team206255.dineder;
 
+import android.content.Context;
+
 import com.team206255.dineder.InfoDefine.*;
 
 import java.io.Serializable;
@@ -16,6 +18,8 @@ public class RecipeFilter implements Serializable{
     float duration;
     float calorie;
 
+    Context context;
+
     public RecipeFilter()
     {
         cuisine_selected_by_position(0);
@@ -23,6 +27,11 @@ public class RecipeFilter implements Serializable{
         duration = InfoDefine.maxDuration;
         calorie = InfoDefine.maxCalorie;
         difficulty = 1;
+    }
+
+    void setUpContext(Context c)
+    {
+        context = c;
     }
 
     public void ingredientsSelectAll()
@@ -67,8 +76,41 @@ public class RecipeFilter implements Serializable{
         return -1;
     }
 
-    public String toString()
+    public String ingredientToString()
     {
-        return Integer.toString((int)duration);
+        String result = "";
+        String[] list = context.getResources().getStringArray(R.array.ingredient);
+
+        for (int i = 0; i < list.length; i++)
+        {
+            if (ingredients[i])
+                result += list[i] + ", ";
+        }
+         result = result.substring(0, result.length() - 2);
+        return result;
+    }
+
+    public String cuisineToString()
+    {
+        String result = "";
+        String[] list = context.getResources().getStringArray(R.array.cuisine);
+
+        for (int i = 1; i < list.length; i++)
+        {
+            if (cuisine[i])
+                result += list[i] + ", ";
+        }
+        result = result.substring(0, result.length() - 2);
+        return result;
+    }
+
+    public String combineString(String a, String b, String middle)
+    {
+        return a + middle + b;
+    }
+
+    public String combineString(String a, String b)
+    {
+        return a + ", " + b;
     }
 }

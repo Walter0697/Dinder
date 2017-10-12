@@ -20,7 +20,7 @@ public class Recipe implements Serializable{
 
     int image; //temp variable, don't have to care
     //image not for final
-    String pictureView;
+    String pictureView; //url of the recipe view
     String name;
     String[] steps;
     String[] ingredients;

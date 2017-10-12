@@ -313,7 +313,8 @@ public class MainScreen extends Fragment{
 
     private void swipeLove()
     {
-        testing.setText("Love");
+        //testing.setText("Love");
+        testing.setText(MainActivity.recipeFilter.cuisineToString());
         MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
         setFoodView();
     }

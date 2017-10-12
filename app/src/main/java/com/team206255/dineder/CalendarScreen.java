@@ -24,6 +24,10 @@ public class CalendarScreen extends Fragment {
         Bitmap calendarImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinner, 0.1f);
         calendarIcon.setImageBitmap(calendarImage);
 
+        ImageView rightButton = (ImageView) view.findViewById(R.id.rightButton);
+
+        ImageView LeftButton = (ImageView) view.findViewById(R.id.leftButton);
+
         return view;
     }
 }
