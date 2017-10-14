@@ -168,7 +168,7 @@ public class MainScreen extends Fragment{
         });
 
         //setup both drawer and also their listener
-        listDrawerHandler = new ListDrawerHandler(getActivity().getApplicationContext());
+        listDrawerHandler = new ListDrawerHandler(getActivity().getApplicationContext(), getActivity());
         listDrawerHandler.handleDrawerSetup(leftView);
         filterDrawerHandler = new FilterDrawerHandler(getActivity().getApplicationContext());
         filterDrawerHandler.handleDrawerSetup(rightView, MainActivity.recipeFilter);

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -100,6 +101,8 @@ public class MainActivity extends AppCompatActivity {
                     viewPager.setCurrentItem(0, true);
                     break;
                 case R.id.rightfrag:
+                    calendarStorage.today();
+                    calendarScreen.updateCalendarView();
                     viewPager.setCurrentItem(2, true);
                     break;
                 case R.id.centerImage:
@@ -118,8 +121,7 @@ public class MainActivity extends AppCompatActivity {
         }
         else if (requestCode == InfoDefine.REQUEST_FOR_CALENDAR){
             if (resultCode == RESULT_OK) {
-                calendarScreen.calendarList.invalidate();
-                calendarScreen.adapter.notifyDataSetChanged();
+                calendarScreen.updateCalendarView();
             }
         }
     }

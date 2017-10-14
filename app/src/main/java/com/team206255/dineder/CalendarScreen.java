@@ -47,9 +47,7 @@ public class CalendarScreen extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity.calendarStorage.nextDay();
-                dateText.setText(MainActivity.calendarStorage.dateToString());
-                calendarList.invalidate();
-                adapter.notifyDataSetChanged();
+                updateCalendarView();
             }
         });
 
@@ -61,9 +59,7 @@ public class CalendarScreen extends Fragment {
             @Override
             public void onClick(View view) {
                 MainActivity.calendarStorage.lastDay();
-                dateText.setText(MainActivity.calendarStorage.dateToString());
-                calendarList.invalidate();
-                adapter.notifyDataSetChanged();
+                updateCalendarView();
             }
         });
 
@@ -80,5 +76,12 @@ public class CalendarScreen extends Fragment {
         });
 
         return view;
+    }
+
+    public void updateCalendarView()
+    {
+        dateText.setText(MainActivity.calendarStorage.dateToString());
+        calendarList.invalidate();
+        adapter.notifyDataSetChanged();
     }
 }

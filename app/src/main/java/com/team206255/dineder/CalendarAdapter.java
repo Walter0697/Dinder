@@ -55,7 +55,7 @@ public class CalendarAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         View v = inflater.inflate(R.layout.calendar_list_detail, null);
 
         if (i >= 4) return null;
@@ -84,6 +84,7 @@ public class CalendarAdapter extends BaseAdapter {
         TextView calendarCalorie = (TextView) v.findViewById(R.id.calendarCalorie);
         TextView calendarCuisine = (TextView) v.findViewById(R.id.calendarCuisine);
         RatingBar calendarDifficulty = (RatingBar) v.findViewById(R.id.calendarDifficulty);
+        ImageView removeButton = (ImageView) v.findViewById(R.id.removeButton);
 
         Recipe currentRecipe = (Recipe)getItem(i);
 
@@ -96,6 +97,8 @@ public class CalendarAdapter extends BaseAdapter {
             calendarCalorie.setVisibility(View.VISIBLE);
             calendarCuisine.setVisibility(View.VISIBLE);
             calendarDifficulty.setVisibility(View.VISIBLE);
+            removeButton.setVisibility(View.VISIBLE);
+
 
             currentRecipe.setImage(context, calendarImage, 0.2f);
             calendarName.setText(currentRecipe.name);
@@ -103,6 +106,15 @@ public class CalendarAdapter extends BaseAdapter {
             calendarCalorie.setText("Calorie: " + Float.toString(currentRecipe.calorie));
             calendarCuisine.setText(currentRecipe.getCuisine(context));
             calendarDifficulty.setRating(currentRecipe.difficulty);
+            Bitmap removeBitmap = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.05f);
+            removeButton.setImageBitmap(removeBitmap);
+            removeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    calendarStorage.removeRecipe(i);
+                    notifyDataSetChanged();
+                }
+            });
         }
         else
         {
@@ -114,6 +126,7 @@ public class CalendarAdapter extends BaseAdapter {
             calendarCalorie.setVisibility(View.INVISIBLE);
             calendarCuisine.setVisibility(View.INVISIBLE);
             calendarDifficulty.setVisibility(View.INVISIBLE);
+            removeButton.setVisibility(View.INVISIBLE);
         }
         return v;
     }

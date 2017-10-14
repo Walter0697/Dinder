@@ -1,6 +1,8 @@
 package com.team206255.dineder;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -23,6 +25,7 @@ import com.team206255.dineder.InfoDefine.*;
 public class CustomeAdapter extends BaseAdapter {
 
     Context context;
+    Activity activity;
     DisplayMetrics metrics;
     LayoutInflater inflater;
     RecipeList items;
@@ -41,6 +44,17 @@ public class CustomeAdapter extends BaseAdapter {
         inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         context = c;
         metrics = c.getResources().getDisplayMetrics();
+    }
+
+    public CustomeAdapter(Context c, RecipeList items, int layout, ListType type, Activity a)
+    {
+        this.type = type;
+        this.layout = layout;
+        this.items = items;
+        inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        context = c;
+        metrics = c.getResources().getDisplayMetrics();
+        activity = a;
     }
 
     @Override
@@ -90,8 +104,9 @@ public class CustomeAdapter extends BaseAdapter {
                 saveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-
-                        MainActivity.likeList.removeRecipe(i);
+                        Intent calendarIntent = new Intent(activity.getApplicationContext(), CalendarChoice.class);
+                        calendarIntent.putExtra("RECIPE", items.getRecipe(i));
+                        activity.startActivityForResult(calendarIntent, InfoDefine.REQUEST_FOR_CALENDAR);
                         notifyDataSetChanged();
                     }
                 });

@@ -1,5 +1,6 @@
 package com.team206255.dineder;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,12 +21,15 @@ import com.team206255.dineder.InfoDefine.*;
 public class ListDrawerHandler {
 
     Context context;
+    Activity activity;
 
     ListView likedView;
+    CustomeAdapter customeAdapter;
 
-    public ListDrawerHandler(Context c)
+    public ListDrawerHandler(Context c, Activity a)
     {
         this.context = c;
+        this.activity = a;
     }
 
     public void handleDrawerSetup(View headerView)
@@ -44,7 +48,7 @@ public class ListDrawerHandler {
         drawerIcon.setImageBitmap(drawerImage);
 
         //setting up the list view
-        CustomeAdapter customeAdapter = new CustomeAdapter(context, MainActivity.likeList, R.layout.liked_list_detail, ListType.LIKED_LIST);
+        customeAdapter = new CustomeAdapter(context, MainActivity.likeList, R.layout.liked_list_detail, ListType.LIKED_LIST, activity);
         likedView = (ListView) headerView.findViewById(R.id.likedListView);
         likedView.setAdapter(customeAdapter);
     }
