@@ -12,3 +12,4 @@ Challenges:
 
 Finished:
 1. Setting up expandable list view, working for ingredient list right now
+2. Finish the basic of the calendar (still buggy)

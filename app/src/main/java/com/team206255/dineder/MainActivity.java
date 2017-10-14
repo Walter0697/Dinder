@@ -20,10 +20,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageView mainFeatureButton;
 
     //setting the class for different screen
-    static SearchScreen searchScreen;
-    static MainScreen mainScreen;
+    SearchScreen searchScreen;
+    MainScreen mainScreen;
+    CalendarScreen calendarScreen;
     //static FavouriteScreen favouriteScreen;
-    static CalendarScreen calendarScreen;
+
 
     //getting display metrics
     private DisplayMetrics metrics;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     static RecipeFilter recipeFilter = new RecipeFilter();
     static RecipeChoice recipeChoice = new RecipeChoice();
     static RecipeList likeList = new RecipeList();
+    static CalendarStorage calendarStorage = new CalendarStorage();
     //static RecipeList saveList = new RecipeList();
 
 
@@ -110,8 +112,15 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
-        if (requestCode == InfoDefine.REQUEST_FOR_FILTER)
+        if (requestCode == InfoDefine.REQUEST_FOR_FILTER) {
             if (resultCode == RESULT_OK)
                 mainScreen.filterDrawerHandler.setValueByFilter(recipeFilter);
+        }
+        else if (requestCode == InfoDefine.REQUEST_FOR_CALENDAR){
+            if (resultCode == RESULT_OK) {
+                calendarScreen.calendarList.invalidate();
+                calendarScreen.adapter.notifyDataSetChanged();
+            }
+        }
     }
 }

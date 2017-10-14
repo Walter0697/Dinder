@@ -314,8 +314,11 @@ public class MainScreen extends Fragment{
     private void swipeLove()
     {
         //testing.setText("Love");
-        testing.setText(MainActivity.recipeFilter.cuisineToString());
-        MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        //testing.setText(MainActivity.recipeFilter.cuisineToString());
+        Intent calendarIntent = new Intent(getActivity().getApplicationContext(), CalendarChoice.class);
+        calendarIntent.putExtra("RECIPE", MainActivity.recipeChoice.getChoiceRecipe());
+        getActivity().startActivityForResult(calendarIntent, InfoDefine.REQUEST_FOR_CALENDAR);
+        //MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
         setFoodView();
     }
 

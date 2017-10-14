@@ -40,13 +40,14 @@
         app:layout_constraintTop_toTopOf="@+id/leftButton"
         android:layout_marginEnd="16dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/dateText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
+        android:textAlignment="center"
         app:layout_constraintRight_toLeftOf="@+id/rightButton"
         android:layout_marginRight="8dp"
         app:layout_constraintLeft_toRightOf="@+id/leftButton"
@@ -55,7 +56,7 @@
         app:layout_constraintHorizontal_bias="0.506"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:textSize="15dp"/>
+        android:textSize="25dp"/>
 
     <ListView
         android:id="@+id/calendarList"

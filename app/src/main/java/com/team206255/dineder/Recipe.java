@@ -3,7 +3,6 @@ package com.team206255.dineder;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
