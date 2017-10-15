@@ -14,7 +14,8 @@
         android:layout_marginTop="43dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@mipmap/ic_launcher"
+        android:layout_marginStart="16dp" />
 
     <ListView
         android:id="@+id/searchListView"
@@ -26,6 +27,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginRight="0dp"
-        app:layout_constraintRight_toRightOf="parent"/>
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="8dp" />
 </android.support.constraint.ConstraintLayout>
