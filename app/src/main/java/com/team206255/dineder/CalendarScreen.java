@@ -69,9 +69,11 @@ public class CalendarScreen extends Fragment {
         calendarList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent informationIntent = new Intent(getContext(), RecipeInformation.class);
-                informationIntent.putExtra("RECIPE", MainActivity.calendarStorage.getRecipe(i));
-                startActivity(informationIntent);
+                if (MainActivity.calendarStorage.getRecipe(i) != null) {
+                    Intent informationIntent = new Intent(getContext(), RecipeInformation.class);
+                    informationIntent.putExtra("RECIPE", MainActivity.calendarStorage.getRecipe(i));
+                    startActivity(informationIntent);
+                }
             }
         });
 

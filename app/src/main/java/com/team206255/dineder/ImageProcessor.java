@@ -26,7 +26,7 @@ public class ImageProcessor {
     //to scale the image according to the screen width
     public static Bitmap scaleImage(DisplayMetrics displayMetrics, Resources res, int pic, float ratio)
     {
-        Bitmap icon = BitmapFactory.decodeResource(res, pic);
+        Bitmap icon = ResourceDrawableToBitmap(res, pic);
         return scaleImage(displayMetrics, res, icon, ratio);
     }
 

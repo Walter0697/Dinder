@@ -96,6 +96,7 @@ public class CalendarStorage {
     {
         if (i >= 4) return null;
         Recipe[] current = getRecipe();
+        if (current == null) return null;
         return current[i];
     }
 

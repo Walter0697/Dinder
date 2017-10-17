@@ -5,9 +5,9 @@ package com.team206255.dineder;
  */
 
 public class InfoDefine {
-    static final int minDuration = 5;
+    //static final int minDuration = 5;
     static final int maxDuration = 100;
-    static final int minCalorie = 5;
+    //static final int minCalorie = 5;
     static final int maxCalorie = 100;
 
     public enum Cuisine {

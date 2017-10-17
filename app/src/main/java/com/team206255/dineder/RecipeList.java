@@ -48,5 +48,5 @@ public class RecipeList {
         return addTime.get(position);
     }
 
-    public String getDateToString(int position) { return dateFormat.format(addTime.get(position)); }
+    public String getDateToString(int position) { return dateFormat.format(getDate(position)); }
 }
