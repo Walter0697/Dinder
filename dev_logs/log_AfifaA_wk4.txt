@@ -1,0 +1,1 @@
+Name:  Afifa AsadWeek 4:1. Met with group members to discuss project progress (1 hour)2. Working on Generating Random Recipe from the api random recipe generator feature. (4 hour)
