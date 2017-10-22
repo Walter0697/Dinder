@@ -25,7 +25,6 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".SearchScreen" />
-        <activity android:name=".FavouriteScreen" />
         <activity android:name=".FilterScreen" />
         <activity android:name=".RecipeInformation" />
         <activity android:name="com.t.CalendarScreen" />

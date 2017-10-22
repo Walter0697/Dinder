@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     SearchScreen searchScreen;
     MainScreen mainScreen;
     CalendarScreen calendarScreen;
-    //static FavouriteScreen favouriteScreen;
 
 
     //getting display metrics

@@ -110,7 +110,6 @@ public class Recipe implements Serializable{
                 bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
                 bitmap = ImageProcessor.getCroppedBitmap(bitmap);
                 imageView.setImageBitmap(bitmap);
-
             }
 
             @Override

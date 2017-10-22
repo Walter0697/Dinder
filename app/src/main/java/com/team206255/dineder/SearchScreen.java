@@ -8,12 +8,15 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 public class SearchScreen extends Fragment{
 
     ListView searchList;
+    RecipeFilter searchFilter = new RecipeFilter();
+    RecipeList recipeList;
 
     @Nullable
     @Override
@@ -27,8 +30,16 @@ public class SearchScreen extends Fragment{
         searchIcon.setImageBitmap(searchImage);
 
         //CustomeAdapter customeAdapter = new CustomeAdapter(getContext(), )
-        searchList = (ListView) view.findViewById(R.id.searchListView);
+        searchList = (ListView) view.findViewById(R.id.searchList);
         searchList.getLayoutParams().height = (int)(metrics.heightPixels * 0.7);
+
+        Button searchButton = (Button) view.findViewById(R.id.searchButton);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
         return view;
     }

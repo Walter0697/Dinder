@@ -112,44 +112,6 @@ public class CustomeAdapter extends BaseAdapter {
                 });
 
                 break;
-            case SAVED_LIST:
-                ImageView recipeImageView = (ImageView) v.findViewById(R.id.savedRecipeImage);
-                items.getRecipe(i).setImage(context, recipeImageView, 0.23f);
-                //Bitmap unsized = items.getRecipe(i).getImage(context, recipeImageView);
-                //Bitmap recipeImage = ImageProcessor.scaleImage(metrics, context.getResources(), unsized, 0.23f);
-                //recipeImageView.setImageBitmap(recipeImage);
-
-                TextView savedRecipeName = (TextView) v.findViewById(R.id.savedRecipeName);
-                savedRecipeName.setText(items.getRecipe(i).name);
-
-                TextView savedRecipeCuisine = (TextView) v.findViewById(R.id.savedCuisine);
-                savedRecipeCuisine.setText(items.getRecipe(i).getCuisine(context));
-
-                TextView savedDate = (TextView) v.findViewById(R.id.savedDate);
-                savedDate.setText(items.getDateToString(i));
-
-                TextView savedDuration = (TextView) v.findViewById(R.id.savedDuration);
-                savedDuration.setText("Duration: " + items.getRecipe(i).duration + " mins");
-
-                TextView savedCalorie = (TextView) v.findViewById(R.id.savedCalorie);
-                savedCalorie.setText("Calorie: " + items.getRecipe(i).calorie);
-
-                RatingBar savedDifficulty = (RatingBar) v.findViewById(R.id.savedDifficulty);
-                savedDifficulty.setRating(items.getRecipe(i).difficulty);
-
-                ImageView savedRemoveButton = (ImageView) v.findViewById(R.id.savedRemoveButton);
-                Bitmap savedRemoveImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.05f);
-                savedRemoveButton.setImageBitmap(savedRemoveImage);
-
-                savedRemoveButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //MainActivity.saveList.removeRecipe(i);
-                        //notifyDataSetChanged();
-                    }
-                });
-
-                break;
             case SEARCH_LIST:
                 break;
         }
