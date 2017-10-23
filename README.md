@@ -11,7 +11,7 @@ Picasso : 'com.squareup.picasso.picasso:2.5.2'
 ##### Android related(Adapter/custom widgets):
 ###### CalendarAdapter.java
 - for list view in calendar screen
-CustomeAdapter.java
+###### CustomeAdapter.java
 - for list view in like list and search screen
 StringAdapter.java
 - for list view that only contain one string such as ingredients and cuisine
