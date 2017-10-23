@@ -116,7 +116,17 @@ public class MainActivity extends AppCompatActivity {
     {
         if (requestCode == InfoDefine.REQUEST_FOR_FILTER) {
             if (resultCode == RESULT_OK)
-                mainScreen.filterDrawerHandler.setValueByFilter(recipeFilter);
+                if (data != null) {
+                    recipeFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
+                    mainScreen.filterDrawerHandler.setValueByFilter(recipeFilter);
+                }
+        }
+        else if (requestCode == InfoDefine.REQUEST_FOR_SEARCH){
+            if (requestCode == RESULT_OK)
+                if (data != null)
+                {
+                    searchScreen.searchFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
+                }
         }
         else if (requestCode == InfoDefine.REQUEST_FOR_CALENDAR){
             if (resultCode == RESULT_OK) {

@@ -1,5 +1,6 @@
 package com.team206255.dineder;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,9 @@ public class FilterScreen extends AppCompatActivity {
     private StringAdapter ingredientCheck;
     private ListView ingredientList;
 
+    //storing the recipe filter for different usage
+    RecipeFilter recipeFilter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +40,7 @@ public class FilterScreen extends AppCompatActivity {
         //getting the display metrics
         DisplayMetrics metrics = getResources().getDisplayMetrics();
 
+        recipeFilter = new RecipeFilter();
 
         //setting up the icon image
         ImageView topIcon = (ImageView) findViewById(R.id.filterScreenIcon);
@@ -48,7 +53,7 @@ public class FilterScreen extends AppCompatActivity {
         difficultyBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                MainActivity.recipeFilter.difficulty = (int)v;
+                recipeFilter.difficulty = (int)v;
             }
         });
 
@@ -62,7 +67,7 @@ public class FilterScreen extends AppCompatActivity {
         durationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                MainActivity.recipeFilter.duration = i;
+                recipeFilter.duration = i;
                 durationNum.setText(Integer.toString(i));
             }
 
@@ -89,7 +94,7 @@ public class FilterScreen extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                MainActivity.recipeFilter.duration = Integer.parseInt(editable.toString());
+                recipeFilter.duration = Integer.parseInt(editable.toString());
                 durationSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
@@ -104,7 +109,7 @@ public class FilterScreen extends AppCompatActivity {
         calorieSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                MainActivity.recipeFilter.calorie = i;
+                recipeFilter.calorie = i;
                 calorieNum.setText(Integer.toString(i));
             }
 
@@ -131,7 +136,7 @@ public class FilterScreen extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                MainActivity.recipeFilter.calorie = Integer.parseInt(editable.toString());
+                recipeFilter.calorie = Integer.parseInt(editable.toString());
                 calorieSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
@@ -147,14 +152,16 @@ public class FilterScreen extends AppCompatActivity {
         ingredientList.setAdapter(ingredientCheck);
 
         //set up the widgets by value in filter
-        setupByFilter(MainActivity.recipeFilter);
+        setupByFilter(recipeFilter);
 
         //set up the button to save the recipe
         final Button backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setResult(RESULT_OK);
+                Intent output = new Intent();
+                output.putExtra("OUTPUTFILTER", recipeFilter);
+                setResult(RESULT_OK, output);
                 finish();
             }
         });

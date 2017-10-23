@@ -113,6 +113,27 @@ public class CustomeAdapter extends BaseAdapter {
 
                 break;
             case SEARCH_LIST:
+                TextView searchrecipeName = (TextView) v.findViewById(R.id.searchRecipeName);
+                searchrecipeName.setText(items.getRecipe(i).name);
+
+                TextView searchCuisine = (TextView) v.findViewById(R.id.searchCuisine);
+                searchCuisine.setText(items.getRecipe(i).getCuisine(context));
+
+                TextView searchDuration = (TextView) v.findViewById(R.id.searchDuration);
+                searchDuration.setText(Float.toString(items.getRecipe(i).duration) + " mins");
+
+                TextView searchCalorie = (TextView) v.findViewById(R.id.searchCalorie);
+                searchCalorie.setText("Calorie: " + Float.toString(items.getRecipe(i).calorie));
+
+                RatingBar searchDifficulty = (RatingBar) v.findViewById(R.id.searchDifficulty);
+                searchDifficulty.setRating(items.getRecipe(i).difficulty);
+
+                ImageView searchSaveButton = (ImageView) v.findViewById(R.id.searchSave);
+                Bitmap searchSaveImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.heart, 0.05f);
+                searchSaveButton.setImageBitmap(searchSaveImage);
+
+                ImageView searchRecipe = (ImageView) v.findViewById(R.id.searchRecipeImage);
+                items.getRecipe(i).setImage(context, searchRecipe, 0.2f);
                 break;
         }
         return v;

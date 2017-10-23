@@ -111,7 +111,7 @@ public class MainScreen extends Fragment{
                 drawer.openDrawer(Gravity.LEFT);
             }
         });
-        ImageView filterButton = (ImageView) view.findViewById(R.id.rightDrawer);
+        final ImageView filterButton = (ImageView) view.findViewById(R.id.rightDrawer);
         Bitmap filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filter, 0.12f);
         filterButton.setImageBitmap(filterImage);
         filterButton.setOnClickListener(new View.OnClickListener() {

@@ -21,6 +21,7 @@ public class InfoDefine {
 
     static final int REQUEST_FOR_FILTER = 0;
     static final int REQUEST_FOR_CALENDAR = 1;
+    static final int REQUEST_FOR_SEARCH = 2;
 
     public enum ListType {
         LIKED_LIST, SEARCH_LIST, INGREDIENT_BOX, CUISINE_BOX, INGREDIENT_LIST, STEPS
