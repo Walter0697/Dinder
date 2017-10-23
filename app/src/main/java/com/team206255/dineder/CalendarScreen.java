@@ -36,7 +36,7 @@ public class CalendarScreen extends Fragment {
 
         //setting up the text view
         dateText = (TextView) view.findViewById(R.id.dateText);
-        dateText.setText(MainActivity.calendarStorage.dateToString());
+        dateText.setText(Singleton.getInstance().getCalendarStorage().dateToString());
 
         //setting up the left and right button
         ImageView rightButton = (ImageView) view.findViewById(R.id.rightButton);
@@ -46,7 +46,7 @@ public class CalendarScreen extends Fragment {
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.calendarStorage.nextDay();
+                Singleton.getInstance().getCalendarStorage().nextDay();
                 updateCalendarView();
             }
         });
@@ -58,20 +58,20 @@ public class CalendarScreen extends Fragment {
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                MainActivity.calendarStorage.lastDay();
+                Singleton.getInstance().getCalendarStorage().lastDay();
                 updateCalendarView();
             }
         });
 
         calendarList = (ListView) view.findViewById(R.id.calendarList);
-        adapter = new CalendarAdapter(getContext(), MainActivity.calendarStorage);
+        adapter = new CalendarAdapter(getContext(), Singleton.getInstance().getCalendarStorage());
         calendarList.setAdapter(adapter);
         calendarList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (MainActivity.calendarStorage.getRecipe(i) != null) {
+                if (Singleton.getInstance().getCalendarStorage().getRecipe(i) != null) {
                     Intent informationIntent = new Intent(getContext(), RecipeInformation.class);
-                    informationIntent.putExtra("RECIPE", MainActivity.calendarStorage.getRecipe(i));
+                    informationIntent.putExtra("RECIPE", Singleton.getInstance().getCalendarStorage().getRecipe(i));
                     startActivity(informationIntent);
                 }
             }
@@ -82,7 +82,7 @@ public class CalendarScreen extends Fragment {
 
     public void updateCalendarView()
     {
-        dateText.setText(MainActivity.calendarStorage.dateToString());
+        dateText.setText(Singleton.getInstance().getCalendarStorage().dateToString());
         calendarList.invalidate();
         adapter.notifyDataSetChanged();
     }

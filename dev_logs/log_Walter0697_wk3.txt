@@ -2,7 +2,7 @@ Working on the interface and also trying to achieve things that I planned to do 
 
 Finish things that I mentioned in last dev_log:
 1. Cropping the image into circle
-2. Expanding the drawer header and get ird of the menu
+2. Expanding the drawer header and get rid of the menu
 3. Setting up the filter and food information, not completed but should be easy to add the rest of them
 4. Drag and Drop features
 5. Listview for like and saved view

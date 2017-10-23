@@ -48,7 +48,7 @@ public class ListDrawerHandler {
         drawerIcon.setImageBitmap(drawerImage);
 
         //setting up the list view
-        customeAdapter = new CustomeAdapter(context, MainActivity.likeList, R.layout.liked_list_detail, ListType.LIKED_LIST, activity);
+        customeAdapter = new CustomeAdapter(context, Singleton.getInstance().getRecipeList(), R.layout.liked_list_detail, ListType.LIKED_LIST, activity);
         likedView = (ListView) headerView.findViewById(R.id.likedListView);
         likedView.setAdapter(customeAdapter);
     }

@@ -95,7 +95,7 @@ public class CustomeAdapter extends BaseAdapter {
                 removeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        MainActivity.likeList.removeRecipe(i);
+                        Singleton.getInstance().getRecipeList().removeRecipe(i);
                         notifyDataSetChanged();
                     }
                 });
@@ -113,8 +113,8 @@ public class CustomeAdapter extends BaseAdapter {
 
                 break;
             case SEARCH_LIST:
-                TextView searchrecipeName = (TextView) v.findViewById(R.id.searchRecipeName);
-                searchrecipeName.setText(items.getRecipe(i).name);
+                TextView searchRecipeName = (TextView) v.findViewById(R.id.searchRecipeName);
+                searchRecipeName.setText(items.getRecipe(i).name);
 
                 TextView searchCuisine = (TextView) v.findViewById(R.id.searchCuisine);
                 searchCuisine.setText(items.getRecipe(i).getCuisine(context));
@@ -131,6 +131,15 @@ public class CustomeAdapter extends BaseAdapter {
                 ImageView searchSaveButton = (ImageView) v.findViewById(R.id.searchSave);
                 Bitmap searchSaveImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.heart, 0.05f);
                 searchSaveButton.setImageBitmap(searchSaveImage);
+                searchSaveButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent calendarIntent = new Intent(activity.getApplicationContext(), CalendarChoice.class);
+                        calendarIntent.putExtra("RECIPE", items.getRecipe(i));
+                        activity.startActivityForResult(calendarIntent, InfoDefine.REQUEST_FOR_CALENDAR);
+                        notifyDataSetChanged();
+                    }
+                });
 
                 ImageView searchRecipe = (ImageView) v.findViewById(R.id.searchRecipeImage);
                 items.getRecipe(i).setImage(context, searchRecipe, 0.2f);

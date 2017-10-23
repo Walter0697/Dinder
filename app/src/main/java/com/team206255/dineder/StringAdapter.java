@@ -54,11 +54,11 @@ public class StringAdapter extends BaseAdapter {
         if (type == ListType.INGREDIENT_BOX) {
             CheckBox checkBox = (CheckBox) v.findViewById(R.id.checkBox);
             checkBox.setText(items[i]);
-            checkBox.setChecked(MainActivity.recipeFilter.ingredients[i]);
+            checkBox.setChecked(Singleton.getInstance().getRecipeFilter().ingredients[i]);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    MainActivity.recipeFilter.ingredients[i] = b;
+                    Singleton.getInstance().getRecipeFilter().ingredients[i] = b;
                 }
             });
         }
@@ -73,14 +73,14 @@ public class StringAdapter extends BaseAdapter {
         else if (type == ListType.CUISINE_BOX){
             CheckBox checkBox = (CheckBox) v.findViewById(R.id.checkBox);
             checkBox.setText(items[i]);
-            checkBox.setChecked(MainActivity.recipeFilter.cuisine[i]);
+            checkBox.setChecked(Singleton.getInstance().getRecipeFilter().cuisine[i]);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if (i == 0 && b)
-                        MainActivity.recipeFilter.cuisine_selected_by_position(0);
+                        Singleton.getInstance().getRecipeFilter().cuisine_selected_by_position(0);
                     else
-                        MainActivity.recipeFilter.cuisine[i] = b;
+                        Singleton.getInstance().getRecipeFilter().cuisine[i] = b;
                 }
             });
 

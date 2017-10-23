@@ -6,6 +6,14 @@ Project Name : Dineder
 Picasso : 'com.squareup.picasso.picasso:2.5.2'
 - Use for processing the image from internet
 
+### Pattern and Style:
+####Pattern:
+-Singleton pattern
+-Observer pattern (possibly?)
+####Style:
+-Client and Server between the app and the api
+-blackbaord that communicate though central information (similar to Singleton?)
+
 ### Files include:
 
 ##### Android related(Adapter/custom widgets):
@@ -51,6 +59,8 @@ Picasso : 'com.squareup.picasso.picasso:2.5.2'
 - to save the recipes to the calendar
 
 ##### Storage type classes:
+###### Singleton.java
+- To keep all the information in the center so that we can have a better architecture.
 ###### CalendarStorage.java
 - to store the recipes inside the calendar
 ###### RecipeFilter.java
@@ -69,5 +79,3 @@ Picasso : 'com.squareup.picasso.picasso:2.5.2'
 - similar usage can be found in randomRecipeGenerator
 
 ##### Classes that will be added in the future:
-###### Singleton.java
-- To keep all the information in the center so that we can have a better architecture.

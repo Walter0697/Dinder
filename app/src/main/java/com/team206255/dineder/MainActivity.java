@@ -29,13 +29,6 @@ public class MainActivity extends AppCompatActivity {
     //getting display metrics
     private DisplayMetrics metrics;
 
-    //data for the app should store in the main activity, so that all fragments will call this
-    static RecipeFilter recipeFilter = new RecipeFilter();
-    static RecipeChoice recipeChoice = new RecipeChoice();
-    static RecipeList likeList = new RecipeList();
-    static CalendarStorage calendarStorage = new CalendarStorage();
-    //static RecipeList saveList = new RecipeList();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //setting up the context for the recipe filter so you can accesss R.string
-        recipeFilter.setUpContext(getApplicationContext());
+        Singleton.getInstance().getRecipeFilter().setUpContext(getApplicationContext());
         //creating new class
         searchScreen = new SearchScreen();
         mainScreen = new MainScreen();
@@ -100,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
                     viewPager.setCurrentItem(0, true);
                     break;
                 case R.id.rightfrag:
-                    calendarStorage.today();
+                    Singleton.getInstance().getCalendarStorage().today();
                     calendarScreen.updateCalendarView();
                     viewPager.setCurrentItem(2, true);
                     break;
@@ -117,8 +110,8 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == InfoDefine.REQUEST_FOR_FILTER) {
             if (resultCode == RESULT_OK)
                 if (data != null) {
-                    recipeFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
-                    mainScreen.filterDrawerHandler.setValueByFilter(recipeFilter);
+                    Singleton.getInstance().setRecipeFilter((RecipeFilter) data.getSerializableExtra("OUTPUTFILTER"));
+                    mainScreen.filterDrawerHandler.setValueByFilter(Singleton.getInstance().getRecipeFilter());
                 }
         }
         else if (requestCode == InfoDefine.REQUEST_FOR_SEARCH){

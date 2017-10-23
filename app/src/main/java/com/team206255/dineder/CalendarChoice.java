@@ -49,7 +49,7 @@ public class CalendarChoice extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setResult(RESULT_OK);
-                MainActivity.calendarStorage.addRecipe(currentDate, currentRecipe, index);
+                Singleton.getInstance().getCalendarStorage().addRecipe(currentDate, currentRecipe, index);
                 finish();
             }
         });

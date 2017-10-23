@@ -1,2 +1,17 @@
-Analysis the architecture of the app
-Mid term for the other coursesssss
+(3 hours per days)
+
+Finished List:
+-Ask TA tons of questions about the app
+-Adding the search screen
+-Deleting class that is not useful anymore
+-Start working on the Singleton class
+-Start testing app on friend’s phone(it works for now)
+-Image from the internet working for now but buggy duel to the library problem
+
+Haven’t done list:
+1. Buggy calendar
+2. Ugly layout for some activities (some information can’t be shown)
+3. Timer in recipes
+4. “Missing ingredients” features
+5. Adding border in the picture
+6. Adding shared Preference so the app will save user information
