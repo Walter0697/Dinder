@@ -9,7 +9,7 @@ Picasso : 'com.squareup.picasso.picasso:2.5.2'
 ### Files include:
 
 ##### Android related(Adapter/custom widgets):
-######CalendarAdapter.java
+###### CalendarAdapter.java
 - for list view in calendar screen
 CustomeAdapter.java
 - for list view in like list and search screen
