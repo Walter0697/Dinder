@@ -7,12 +7,12 @@ Picasso : 'com.squareup.picasso.picasso:2.5.2'
 - Use for processing the image from internet
 
 ### Pattern and Style:
-####Pattern:
--Singleton pattern
--Observer pattern (possibly?)
-####Style:
--Client and Server between the app and the api
--blackbaord that communicate though central information (similar to Singleton?)
+#### Pattern:
+- Singleton pattern
+- Observer pattern (possibly?)
+#### Style:
+- Client and Server between the app and the api
+- blackbaord that communicate though central information (similar to Singleton?)
 
 ### Files include:
 
