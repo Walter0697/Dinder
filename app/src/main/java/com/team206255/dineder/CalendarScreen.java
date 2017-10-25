@@ -31,7 +31,7 @@ public class CalendarScreen extends Fragment {
 
         //setting up the calendar icon
         final ImageView calendarIcon = (ImageView) view.findViewById(R.id.CalendarIcon);
-        Bitmap calendarImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinner, 0.1f);
+        Bitmap calendarImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.calendar_icon, 0.1f);
         calendarIcon.setImageBitmap(calendarImage);
 
         //setting up the text view

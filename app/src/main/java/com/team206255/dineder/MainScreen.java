@@ -63,7 +63,7 @@ public class MainScreen extends Fragment{
 
         //handle the tick and cross button
         ImageView tickButton = (ImageView) view.findViewById(R.id.tickButton);
-        Bitmap tickImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.checked, 0.2f);
+        Bitmap tickImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.like, 0.2f);
         tickButton.setImageBitmap(tickImage);
         tickButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +73,7 @@ public class MainScreen extends Fragment{
         });
 
         ImageView crossButton = (ImageView) view.findViewById(R.id.crossButton);
-        Bitmap crossImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.unchecked, 0.2f);
+        Bitmap crossImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dislike, 0.2f);
         crossButton.setImageBitmap(crossImage);
         crossButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +83,7 @@ public class MainScreen extends Fragment{
         });
 
         ImageView loveButton = (ImageView) view.findViewById(R.id.loveButton);
-        Bitmap loveImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.heart, 0.2f);
+        Bitmap loveImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.save, 0.2f);
         loveButton.setImageBitmap(loveImage);
         loveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,7 +103,7 @@ public class MainScreen extends Fragment{
 
         //setup the button(image) and resize them, then setup their listeners
         ImageView listButton = (ImageView) view.findViewById(R.id.leftDrawer);
-        Bitmap listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.list, 0.12f);
+        Bitmap listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.listdrawer, 0.12f);
         listButton.setImageBitmap(listImage);
         listButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,7 +112,7 @@ public class MainScreen extends Fragment{
             }
         });
         final ImageView filterButton = (ImageView) view.findViewById(R.id.rightDrawer);
-        Bitmap filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filter, 0.12f);
+        Bitmap filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filterdrawer, 0.12f);
         filterButton.setImageBitmap(filterImage);
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -155,7 +155,7 @@ public class MainScreen extends Fragment{
         //getting the detail icon to handle viewing recipe information for now
         //might change it to touch the recipe image in the future
         ImageView detailView = (ImageView) view.findViewById(R.id.detailIcon);
-        final Bitmap detailImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.icon, 0.1f);
+        final Bitmap detailImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.information, 0.1f);
         detailView.setImageBitmap(detailImage);
         detailView.setOnClickListener(new View.OnClickListener() {
             @Override

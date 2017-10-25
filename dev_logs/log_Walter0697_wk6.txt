@@ -1,7 +1,7 @@
 (3 hours per days)
 
 Finished List:
--Setting the icon of the app, making special features like, have color only when it is on click
+-Changing most of the icons in the app, making special features like, have color only when it is on click
 
 Haven’t done list:
 1. Buggy calendar

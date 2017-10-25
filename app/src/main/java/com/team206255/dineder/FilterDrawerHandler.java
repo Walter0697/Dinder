@@ -49,7 +49,7 @@ public class FilterDrawerHandler {
 
         //setting up the icon of the drawer
         ImageView drawerIcon = (ImageView) headerView.findViewById(R.id.drawerRightIcon);
-        Bitmap drawerImage = ImageProcessor.scaleImage(metrics, headerView.getResources(), R.drawable.filter, 0.05f);
+        Bitmap drawerImage = ImageProcessor.scaleImage(metrics, headerView.getResources(), R.drawable.filterdrawer, 0.1f);
         drawerIcon.setImageBitmap(drawerImage);
 
         ///////////////////////////////////////////////////////////////////

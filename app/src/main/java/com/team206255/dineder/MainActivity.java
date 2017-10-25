@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         mainFeatureButton = (ImageView) findViewById(R.id.centerImage);
 
         //setup the bitmap for all icons
-        mainFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.mainscreen_action, 0.42f);
+        mainFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.mainscreen, 0.42f);
         searchFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.searchscreen, 0.5f);
         calendarFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.calendar, 0.5f);
         mainFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.mainscreen_action, 0.42f);

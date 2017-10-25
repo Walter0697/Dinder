@@ -44,7 +44,7 @@ public class ListDrawerHandler {
 
         //setting up the icon of the drawer
         ImageView drawerIcon = (ImageView) headerView.findViewById(R.id.drawerLeftIcon);
-        Bitmap drawerImage = ImageProcessor.scaleImage(metrics, headerView.getResources(), R.drawable.list, 0.05f);
+        Bitmap drawerImage = ImageProcessor.scaleImage(metrics, headerView.getResources(), R.drawable.listdrawer, 0.1f);
         drawerIcon.setImageBitmap(drawerImage);
 
         //setting up the list view
