@@ -63,7 +63,7 @@ public class MainScreen extends Fragment{
 
         //handle the tick and cross button
         ImageView tickButton = (ImageView) view.findViewById(R.id.tickButton);
-        Bitmap tickImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.like, 0.2f);
+        Bitmap tickImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.checked, 0.2f);
         tickButton.setImageBitmap(tickImage);
         tickButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,7 +73,7 @@ public class MainScreen extends Fragment{
         });
 
         ImageView crossButton = (ImageView) view.findViewById(R.id.crossButton);
-        Bitmap crossImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dislike, 0.2f);
+        Bitmap crossImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.unchecked, 0.2f);
         crossButton.setImageBitmap(crossImage);
         crossButton.setOnClickListener(new View.OnClickListener() {
             @Override
