@@ -26,28 +26,33 @@ public class Recipe implements Serializable{
     int difficulty;
     float duration;
     float calorie;
-    int serves;
 
     Cuisine type;
 
     public Recipe(String name, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     {
+        pictureView = "https://www.nudefoodmovers.com.au/wp-content/uploads/2014/10/fruit-group.png";
         this.image = R.drawable.testing; //don't care about this
-        this.name = name;
-        this.steps = steps;
-        this.ingredients = ingredients;
-        this.difficulty = difficulty;
-        this.duration = duration;
-        this.calorie = calorie;
+        this.name = "Apple";
+        this.steps = new String[1];
+        this.steps[0] = "Just buy an apple";
+        this.ingredients = new String[1];
+        this.ingredients[0] = "apple";
+        this.difficulty = 1;
+        this.duration = 10.f;
+        this.calorie = 10.f;
+        this.type = Cuisine.HONGKONG;
     }
 
     //this is just sample
     public Recipe(){
         pictureView = "https://cdn-images-1.medium.com/max/2000/1*-Yl16t7mr6dE9hKU-w4LGg.jpeg";
-
+        this.image = R.drawable.testing; //don't care about this
         name = "Apple";
         steps = new String[1];
         steps[0] = "Just buy an apple";
+        this.ingredients = new String[1];
+        this.ingredients[0] = "apple";
         difficulty = 1;
         duration = 10.f;
         calorie = 10.f;
