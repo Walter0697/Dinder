@@ -2,13 +2,13 @@ package com.team206255.dineder;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.Image;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity {
@@ -25,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
     MainScreen mainScreen;
     CalendarScreen calendarScreen;
 
+    //storing the bitmap here so they don't have to reload afterward
+    Bitmap mainFeatureImage, mainFeatureClick;
+    Bitmap searchFeatureImage, searchFeatureClick;
+    Bitmap calendarFeatureImage, calendarFeatureClick;
 
     //getting display metrics
     private DisplayMetrics metrics;
@@ -53,16 +57,29 @@ public class MainActivity extends AppCompatActivity {
         favouriteButton = (ImageView) findViewById(R.id.rightfrag);
         mainFeatureButton = (ImageView) findViewById(R.id.centerImage);
 
+        //setup the bitmap for all icons
+        mainFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.mainscreen_action, 0.42f);
+        searchFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.searchscreen, 0.5f);
+        calendarFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.calendar, 0.5f);
+        mainFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.mainscreen_action, 0.42f);
+        searchFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.searchscreen_action, 0.5f);
+        calendarFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.calendar_action, 0.5f);
+
         //setup the image of the icon
         //set up the center image and push its position downward in order to have a better look
-        Bitmap mainFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.internet, 0.42f);
-        mainFeatureButton.setImageBitmap(mainFeatureImage);
+        mainFeatureButton.setImageBitmap(mainFeatureClick);
         AppBarLayout.LayoutParams layoutParams = (AppBarLayout.LayoutParams)mainFeatureButton.getLayoutParams();
         int dpValue = -100;
         float den = getResources().getDisplayMetrics().density;
         int margin = (int)(dpValue * den);
         layoutParams.bottomMargin = margin;
         mainFeatureButton.setLayoutParams(layoutParams);
+
+        //setup the image of the rest of the icons
+
+
+        searchButton.setImageBitmap(searchFeatureImage);
+        favouriteButton.setImageBitmap(calendarFeatureImage);
 
         //set up the onclick listener in order to change the page in viewPager
         searchButton.setOnClickListener(fragmentListener);
@@ -90,14 +107,29 @@ public class MainActivity extends AppCompatActivity {
             switch (view.getId())
             {
                 case R.id.leftfrag:
+                    //setting up the image
+                    searchButton.setImageBitmap(searchFeatureClick);
+                    mainFeatureButton.setImageBitmap(mainFeatureImage);
+                    favouriteButton.setImageBitmap(calendarFeatureImage);
+
                     viewPager.setCurrentItem(0, true);
                     break;
                 case R.id.rightfrag:
+                    //setting up the image
+                    searchButton.setImageBitmap(searchFeatureImage);
+                    mainFeatureButton.setImageBitmap(mainFeatureImage);
+                    favouriteButton.setImageBitmap(calendarFeatureClick);
+
                     Singleton.getInstance().getCalendarStorage().today();
                     calendarScreen.updateCalendarView();
                     viewPager.setCurrentItem(2, true);
                     break;
                 case R.id.centerImage:
+                    //setting up the image
+                    searchButton.setImageBitmap(searchFeatureImage);
+                    mainFeatureButton.setImageBitmap(mainFeatureClick);
+                    favouriteButton.setImageBitmap(calendarFeatureImage);
+
                     viewPager.setCurrentItem(1, true);
                     break;
             }

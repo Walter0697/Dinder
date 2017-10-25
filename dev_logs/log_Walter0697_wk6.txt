@@ -1,0 +1,12 @@
+(3 hours per days)
+
+Finished List:
+-Setting the icon of the app, making special features like, have color only when it is on click
+
+Haven’t done list:
+1. Buggy calendar
+2. Ugly layout for some activities (some information can’t be shown)
+3. Timer in recipes
+4. “Missing ingredients” features
+5. Adding border in the picture
+6. Adding shared Preference so the app will save user information
