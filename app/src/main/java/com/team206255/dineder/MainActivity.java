@@ -2,7 +2,6 @@ package com.team206255.dineder;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.media.Image;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;

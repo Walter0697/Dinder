@@ -98,7 +98,6 @@ public class MainScreen extends Fragment{
 
         leftView = leftNavigationView.inflateHeaderView(R.layout.nav_header_main_screen);
         //getting the view object from the navigation view
-        //leftView = leftNavigationView.getHeaderView(0);
         rightView = rightNavigationView.getHeaderView(0);
 
         //setup the button(image) and resize them, then setup their listeners
@@ -125,9 +124,6 @@ public class MainScreen extends Fragment{
         //also set up the drag and drop listener for the food picture view
         ImageView foodView = (ImageView) view.findViewById(R.id.foodView);
         Singleton.getInstance().getRecipeChoice().getChoiceRecipe().setImage(getContext(), foodView, 0.9f);
-        //Bitmap unsized = MainActivity.recipeChoice.getChoiceRecipe().getImage(getContext(), foodView);
-        //Bitmap foodImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.9f);
-        //foodView.setImageBitmap(foodImage);
         //set drag and touch listener
         foodView.setOnTouchListener(touchListener);
         foodView.setOnDragListener(dragListener);
@@ -136,9 +132,6 @@ public class MainScreen extends Fragment{
         //dont need to set up listener cuz it is just for the background
         ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
         Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().setImage(getContext(), backgroundView, 0.9f);
-        //Bitmap unsizedBackground = MainActivity.recipeChoice.getBackgroundRecipe().getImage(getContext(), backgroundView);
-        //Bitmap foodImageBackground = ImageProcessor.scaleImage(metrics, getResources(), unsizedBackground, 0.9f);
-        //backgroundView.setImageBitmap(foodImageBackground);
 
         //space for the dragging and dropping event
         dislikeArea = (Space) view.findViewById(R.id.dislikeSpace);
