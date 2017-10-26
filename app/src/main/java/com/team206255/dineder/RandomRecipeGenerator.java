@@ -8,11 +8,11 @@ import java.util.ArrayList;
  */
 
 public class RandomRecipeGenerator {
-    static Random rand = new Random();
+    Random rand = new Random();
 
-    static ArrayList<Recipe> list = new ArrayList<>();
+    ArrayList<Recipe> list = new ArrayList<>();
 
-    static String[] APsteps = {"Preheat oven to 425 degrees F (220 degrees C). " ,
+    String[] APsteps = {"Preheat oven to 425 degrees F (220 degrees C). " ,
             "Melt the butter in a saucepan. Stir in flour to form a paste. " ,
             "Add water, white sugar and brown sugar, and bring to a boil." ,
             "Reduce temperature and let simmer.","Place the bottom crust in your pan." ,
@@ -22,7 +22,7 @@ public class RandomRecipeGenerator {
             "Reduce the temperature to 350 degrees F (175 degrees C). " ,
             "Continue baking for 35 to 45 minutes, until apples are soft."};
 
-    static String[] APingredients = {"Crust",
+    String[] APingredients = {"Crust",
             "1/2 cup unsalted butter",
             "3 tbs flour",
             "1/4 cup water",
@@ -30,7 +30,7 @@ public class RandomRecipeGenerator {
             "1/2 cup brown sugar",
             "8 Apples"};
 
-    static String[] CCsteps = new String[]{"Preheat oven to 350 degrees F (175 degrees C)." +
+    String[] CCsteps = new String[]{"Preheat oven to 350 degrees F (175 degrees C)." +
             "Grease and flour two nine inch round pans.","In a large bowl," +
             "stir together the sugar, flour, cocoa, baking powder, baking soda and salt. " +
             "Add the eggs, milk, oil and vanilla, mix for 2 minutes on medium speed of mixer." +
@@ -38,7 +38,7 @@ public class RandomRecipeGenerator {
             "Pour evenly into the prepared pans.","Bake 30 to 35 minutes in the preheated oven," +
             "until the cake tests done with a toothpick. " +
             "Cool in the pans for 10 minutes, then remove to a wire rack to cool completely."};
-    static String[] CCingredients = new String [] {"1 3/4 cups flour",
+    String[] CCingredients = new String [] {"1 3/4 cups flour",
             "3/4 cup cocoa",
             "1 1/2 ts baking powder",
             "1 1/2 ts baking soda",
@@ -46,7 +46,7 @@ public class RandomRecipeGenerator {
             "1 cup milk",
             "2 ts vanilla"};
 
-    static String[] DHHWsteps = new String [] {"Preheat an outdoor grill for medium heat and lightly oil grate.",
+    String[] DHHWsteps = new String [] {"Preheat an outdoor grill for medium heat and lightly oil grate.",
             "Wash the wings well and pat dry with paper towel. " +
                     "Season the meat with cayenne, salt, and pepper.","Cook the chicken" +
             " wings on preheated grill until cooked through and juices run clear," +
@@ -55,20 +55,20 @@ public class RandomRecipeGenerator {
             "the butter, pour into a large bowl and mix in the remaining 1/2 cup of honey and hot sauce." +
             "Remove the wings from the grill and immediately toss them in the hot honey butter sauce to coat." +
             "Serve the wings 'wet' or return them to the grill for 1 minute per side to set the sauce."};
-    static String[] DHHWingredients = new String [] {"2 pounds chicken",
+    String[] DHHWingredients = new String [] {"2 pounds chicken",
             "1 ts cayenne",
             "salt and ground pepper",
             "1 cup honey",
             "1/2 cup butter",
             "1/2 cup hot sauce"};
 
-    static String[] GPsteps = new String [] {"Bring chicken broth to a boil. " +
+    String[] GPsteps = new String [] {"Bring chicken broth to a boil. " +
             "Add potatoes and cook until tender but still firm," +
             " about 15 minutes; drain, reserving broth.","Stir in garlic, cream and 1 to 2 tablespoons broth;" +
             " mash until creamy. Blend in sour cream, chives, salt and butter." +
             " Heat through and serve."};
 
-    static String[] GPingredients = new String[]{"chicken broth",
+    String[] GPingredients = new String[]{"chicken broth",
             "potatoes",
             "garlic",
             "cream",
@@ -76,11 +76,11 @@ public class RandomRecipeGenerator {
             "salt",
             "butter"};
 
-    static String[] BLTDsteps = new String[]{"Place bacon in a large, deep skillet." +
+    String[] BLTDsteps = new String[]{"Place bacon in a large, deep skillet." +
             " Cook over medium high heat until evenly brown. Drain on paper towels.","In a medium bowl," +
             " combine mayonnaise and sour cream. Crumble bacon into the sour cream and mayonnaise mixture." +
             " Mix in tomatoes just before serving."};
-    static String[] BLTDingredients = new String[]{"mayonnaise","sour cream","tomato","chicken"};
+    String[] BLTDingredients = new String[]{"mayonnaise","sour cream","tomato","chicken"};
 
 
 
@@ -94,11 +94,11 @@ public class RandomRecipeGenerator {
         //Recipe recipe5 = new Recipe("BLT Dip",BLTDsteps,BLTDingredients,1,25.f,30.f);
     }
 
-    public static Recipe getRandomRecipe()
+    public Recipe getRandomRecipe()
     {
-        Recipe recipe1 = new Recipe("Chocolate Cake",CCsteps,CCingredients,3,60.f,100.f);
-        list.add(recipe1);
-        //return new Recipe(rand.nextInt(5));
-        return list.get(rand.nextInt(list.size()));
+        //Recipe recipe1 = new Recipe("Chocolate Cake",CCsteps,CCingredients,3,60.f,100.f);
+        //list.add(recipe1);
+        return new Recipe(rand.nextInt(5));
+        //return list.get(rand.nextInt(list.size()));
     }
 }

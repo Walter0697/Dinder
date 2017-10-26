@@ -12,10 +12,6 @@ public class RecipeChoice {
     public RecipeChoice()
     {
         showlist = new Recipe[MAX_WAIT_CHOICE];
-        for (int i = 0; i < MAX_WAIT_CHOICE; i++)
-        {
-            addRecipe(RandomRecipeGenerator.getRandomRecipe());
-        }
     }
 
     public void addRecipe(Recipe recipe) {

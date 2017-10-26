@@ -299,7 +299,7 @@ public class MainScreen extends Fragment{
     {
         testing.setText("Like");
         Singleton.getInstance().getRecipeList().addRecipe(Singleton.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
-        Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        Singleton.getInstance().getRecipeChoice().addRecipe(Singleton.getInstance().getRandomRecipeGenerator().getRandomRecipe());
         listDrawerHandler.updateLikedView();
         setFoodView();
     }
@@ -307,7 +307,7 @@ public class MainScreen extends Fragment{
     private void swipeDislike()
     {
         testing.setText("Dislike");
-        Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        Singleton.getInstance().getRecipeChoice().addRecipe(Singleton.getInstance().getRandomRecipeGenerator().getRandomRecipe());
         setFoodView();
     }
 
