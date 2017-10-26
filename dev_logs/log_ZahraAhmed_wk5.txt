@@ -1,0 +1,10 @@
+Week 5
+
+- Met with group to discuss architecture and design
+ - 2 Tier architecture? Layer 1 being the app, Layer 2 being the API's db.
+ - Client-Server style
+ - Datbase centric style
+ - Observer pattern
+ - Singleton Pattern
+ - Factory Pattern
+- parsing JSON objects for app to use
