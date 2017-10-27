@@ -84,7 +84,7 @@ public class MainScreen extends Fragment{
         });
 
         ImageView loveButton = (ImageView) view.findViewById(R.id.loveButton);
-        Bitmap loveImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.save, 0.2f);
+        Bitmap loveImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.savebutton, 0.35f);
         loveButton.setImageBitmap(loveImage);
         loveButton.setOnClickListener(new View.OnClickListener() {
             @Override

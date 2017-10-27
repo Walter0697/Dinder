@@ -10,6 +10,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     //view pager and the button for their fragment page
@@ -58,11 +60,22 @@ public class MainActivity extends AppCompatActivity {
 
         //setup the bitmap for all icons
         mainFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.mainscreen, 0.42f);
-        searchFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.searchscreen, 0.5f);
+        searchFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.search, 0.5f);
         calendarFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.calendar, 0.5f);
         mainFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.mainscreen_action, 0.42f);
-        searchFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.searchscreen_action, 0.5f);
+        searchFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.search_action, 0.5f);
         calendarFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.calendar_action, 0.5f);
+
+        //just little fun feature, don't mind
+        Random rand = new Random();
+        if (rand.nextInt(100) < 10) {
+            searchFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.searchscreen, 0.5f);
+            searchFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.searchscreen_action, 0.5f);
+        }
+        if (rand.nextInt(100) < 10) {
+            calendarFeatureImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.menu, 0.5f);
+            calendarFeatureClick = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.menu_action, 0.5f);
+        }
 
         //setup the image of the icon
         //set up the center image and push its position downward in order to have a better look
