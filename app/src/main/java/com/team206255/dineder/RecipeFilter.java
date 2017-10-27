@@ -90,6 +90,12 @@ public class RecipeFilter implements Serializable{
         return result;
     }
 
+    public void combineRecipe(RecipeFilter other)
+    {
+        //do some shits
+        //later
+    }
+
     public String cuisineToString()
     {
         String result = "";

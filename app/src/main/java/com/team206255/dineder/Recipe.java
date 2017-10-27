@@ -31,14 +31,12 @@ public class Recipe implements Serializable{
     public Recipe(String name, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     {
         pictureView = "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg";
-        this.name = "Apple";
-        this.steps = new String[1];
-        this.steps[0] = "Just buy an apple";
-        this.ingredients = new String[1];
-        this.ingredients[0] = "apple";
-        this.difficulty = 1;
-        this.duration = 10.f;
-        this.calorie = 10.f;
+        this.name = name;
+        this.steps = steps;
+        this.ingredients = ingredients;
+        this.difficulty = difficulty;
+        this.duration = duration;
+        this.calorie = calorie;
         this.type = Cuisine.HONGKONG;
     }
 
@@ -69,27 +67,27 @@ public class Recipe implements Serializable{
         if (i == 0)
         {
             pictureView = "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg";
-            name = "Apple";
+            name = "Milk";
         }
         else if (i == 1)
         {
             pictureView = "https://spoonacular.com/cdn/ingredients_100x100/almonds.jpg";
-            name = "Banana";
+            name = "Almond";
         }
         else if (i == 2)
         {
-            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/coleslaw.png";
-            name = "Filter";
+            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/almonds.jpg";
+            name = "No reason but almond2";
         }
         else if (i == 3)
         {
             pictureView = "https://spoonacular.com/cdn/ingredients_100x100/cream-of-chicken-soup.jpg";
-            name = "heart";
+            name = "chicken soup";
         }
         else if (i == 4)
         {
             pictureView = "https://spoonacular.com/cdn/ingredients_100x100/green-onion.jpg";
-            name = "dinner";
+            name = "Green Onion";
         }
     }
 
@@ -99,12 +97,37 @@ public class Recipe implements Serializable{
         return allType[type.ordinal()];
     }
 
+    public void setFullImage(final Context context, final ImageView imageView)
+    {
+        final Target target = new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, 1.0f);
+                imageView.setImageBitmap(bitmap);
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+                Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                bitmap = ImageProcessor.getCroppedBitmap(bitmap);
+                imageView.setImageBitmap(bitmap);
+            }
+        };
+        Picasso.with(context).load(pictureView).into(target);
+    }
+
     public void setImage(final Context context, final ImageView imageView, final float scale) {
         final Target target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
                 bitmap = ImageProcessor.getCroppedBitmap(bitmap);
+                bitmap = ImageProcessor.drawCircleBorder(bitmap);
                 imageView.setImageBitmap(bitmap);
             }
 
