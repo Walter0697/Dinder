@@ -4,12 +4,12 @@ The project for 3004
 
 ### Quick guide:
 Codes inside:
-- ./app/src/main/java/com/team206255/dineder/
+- ./app/src/main/java/com/team206255/dineder/ <br/>
 Assets inside:
 - ./app/src/main/res/drawable/
 ### library include:
 Picasso : 'com.squareup.picasso.picasso:2.5.2'
-- Use for processing the image from internet
+- Use for processing the image from internet <br/>
 Gson : 'com.google.code.gson:gson:2.7'
 - Use for parsing object into json so that it can be used inside shared preference
 
