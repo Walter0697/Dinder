@@ -295,6 +295,8 @@ public class MainScreen extends Fragment{
         Singleton.getInstance().getRecipeList().addRecipe(Singleton.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
         Singleton.getInstance().getRecipeChoice().addRecipe(Singleton.getInstance().getRandomRecipeGenerator().getRandomRecipe());
         listDrawerHandler.updateLikedView();
+        //updating shared perference
+        Singleton.getInstance().updateSharedPreference();
         setFoodView();
     }
 
@@ -302,6 +304,8 @@ public class MainScreen extends Fragment{
     {
         testing.setText("Dislike");
         Singleton.getInstance().getRecipeChoice().addRecipe(Singleton.getInstance().getRandomRecipeGenerator().getRandomRecipe());
+        //updating shared perference
+        Singleton.getInstance().updateSharedPreference();
         setFoodView();
     }
 

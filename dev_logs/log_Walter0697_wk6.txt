@@ -1,14 +1,14 @@
 (5 hours per days in average)
 
 Finished List:
-- Changing most of the icons in the app, making special features like, have color only when it is on click
+- Changing most of the icons in the app, making special features like, have color only when it is on click, making some mystery feature~~~
 - changing some codes with the library so that it seems like it won’t have the result of the onPrepareLoad()
 - making the drag shader opaque non-0 so that it will be like dragging when user drag it
+- adding border to the image so that every images will be the same size
+- setting shared preference for most of the information
 
 Haven’t done list:
 1. Buggy calendar
 2. Ugly layout for some activities (some information can’t be shown)
 3. Timer in recipes
 4. “Missing ingredients” features
-5. Adding border in the picture
-6. Adding shared Preference so the app will save user information

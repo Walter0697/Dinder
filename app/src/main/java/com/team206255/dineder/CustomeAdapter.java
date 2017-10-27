@@ -85,11 +85,11 @@ public class CustomeAdapter extends BaseAdapter {
                 addedTime.setText(items.getDateToString(i));
 
                 ImageView saveButton = (ImageView) v.findViewById(R.id.saveButton);
-                Bitmap saveImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.heart, 0.03f);
+                Bitmap saveImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.heart, 0.035f);
                 saveButton.setImageBitmap(saveImage);
 
                 ImageView removeButton = (ImageView) v.findViewById(R.id.removeButton);
-                Bitmap removeImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.03f);
+                Bitmap removeImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.035f);
                 removeButton.setImageBitmap(removeImage);
 
                 removeButton.setOnClickListener(new View.OnClickListener() {
@@ -97,6 +97,8 @@ public class CustomeAdapter extends BaseAdapter {
                     public void onClick(View view) {
                         Singleton.getInstance().getRecipeList().removeRecipe(i);
                         notifyDataSetChanged();
+                        //update the shared preference
+                        Singleton.getInstance().updateSharedPreference();
                     }
                 });
 

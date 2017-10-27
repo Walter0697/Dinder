@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity {
         metrics = this.getResources().getDisplayMetrics();
         setContentView(R.layout.activity_main);
 
+        //setting up everything from the shared preference
+        Singleton.getInstance().setSharedPreferences(this);
+        //if for testing ,wanna reset everything inside the app
+        //Singleton.getInstance().resetSharedPreference();
+
         //setting up the context for the recipe filter so you can accesss R.string
         Singleton.getInstance().getRecipeFilter().setUpContext(getApplicationContext());
         //creating new class

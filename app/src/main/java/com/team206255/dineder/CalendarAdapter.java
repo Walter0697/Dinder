@@ -113,6 +113,8 @@ public class CalendarAdapter extends BaseAdapter {
                 public void onClick(View view) {
                     calendarStorage.removeRecipe(i);
                     notifyDataSetChanged();
+                    //update shared preference
+                    Singleton.getInstance().updateSharedPreference();
                 }
             });
         }
