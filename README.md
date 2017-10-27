@@ -1,6 +1,6 @@
 # Team-206255
 The project for 3004
-# Project Name : Dineder
+##### Project Name : Dineder
 
 ### Quick guide:
 Codes inside:
@@ -36,6 +36,7 @@ Picasso : 'com.squareup.picasso.picasso:2.5.2'
 - copied from stackoverflow
 - Use for preventing the view pager to swipe so that funcitonarlities won't be duplicated between the drag and drop features and the view pager.
 ###### DragContainer.java
+- copied from stackoverflow
 - to control the alpha of the drag shader so that it can simulate dragging effect for the app
 
 ##### Functional classes:
