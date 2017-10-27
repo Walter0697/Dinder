@@ -17,7 +17,6 @@ import java.io.Serializable;
 
 public class Recipe implements Serializable{
 
-    int image; //temp variable, don't have to care
     //image not for final
     String pictureView; //url of the recipe view
     String name;
@@ -31,8 +30,7 @@ public class Recipe implements Serializable{
 
     public Recipe(String name, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     {
-        pictureView = "https://www.nudefoodmovers.com.au/wp-content/uploads/2014/10/fruit-group.png";
-        this.image = R.drawable.testing; //don't care about this
+        pictureView = "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg";
         this.name = "Apple";
         this.steps = new String[1];
         this.steps[0] = "Just buy an apple";
@@ -46,8 +44,7 @@ public class Recipe implements Serializable{
 
     //this is just sample
     public Recipe(){
-        pictureView = "https://cdn-images-1.medium.com/max/2000/1*-Yl16t7mr6dE9hKU-w4LGg.jpeg";
-        this.image = R.drawable.testing; //don't care about this
+        pictureView = "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg";
         name = "Apple";
         steps = new String[1];
         steps[0] = "Just buy an apple";
@@ -71,32 +68,27 @@ public class Recipe implements Serializable{
         type = Cuisine.INDIAN;
         if (i == 0)
         {
-            image = R.drawable.testing;
-            pictureView = "https://www.nudefoodmovers.com.au/wp-content/uploads/2014/10/fruit-group.png";
+            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg";
             name = "Apple";
         }
         else if (i == 1)
         {
-            image = R.drawable.tester;
-            pictureView = "http://www.mccain.com/SiteCollectionImages/McCainCorporate/goodfood-products/McCain-Smiles-N-America.png";
+            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/almonds.jpg";
             name = "Banana";
         }
         else if (i == 2)
         {
-            image = R.drawable.filter;
-            pictureView = "https://static.pexels.com/photos/70497/pexels-photo-70497.jpeg";
+            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/coleslaw.png";
             name = "Filter";
         }
         else if (i == 3)
         {
-            image = R.drawable.heart;
-            pictureView = "http://www.2sfg.com/globalassets/corporate/home-page/2sisters-food-group-roast-banner5.jpg";
+            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/cream-of-chicken-soup.jpg";
             name = "heart";
         }
         else if (i == 4)
         {
-            image = R.drawable.dinner;
-            pictureView = "http://food.fnr.sndimg.com/content/dam/images/food/fullset/2012/2/22/0/BX0110H_orange-baked-ham_s4x3.jpg.rend.hgtvcom.966.725.suffix/1371606081476.jpeg";
+            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/green-onion.jpg";
             name = "dinner";
         }
     }
@@ -107,9 +99,8 @@ public class Recipe implements Serializable{
         return allType[type.ordinal()];
     }
 
-    public void setImage(final Context context, final ImageView imageView, final float scale)
-    {
-        Picasso.with(context).load(pictureView).into(new Target() {
+    public void setImage(final Context context, final ImageView imageView, final float scale) {
+        final Target target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
@@ -119,17 +110,18 @@ public class Recipe implements Serializable{
 
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
-                Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), image, scale);
+                Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
                 bitmap = ImageProcessor.getCroppedBitmap(bitmap);
                 imageView.setImageBitmap(bitmap);
             }
 
             @Override
             public void onPrepareLoad(Drawable placeHolderDrawable) {
-                Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), image, scale);
+                Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
                 bitmap = ImageProcessor.getCroppedBitmap(bitmap);
                 imageView.setImageBitmap(bitmap);
             }
-        });
+        };
+        Picasso.with(context).load(pictureView).into(target);
     }
 }

@@ -1,7 +1,9 @@
-(3 hours per days)
+(5 hours per days in average)
 
 Finished List:
--Changing most of the icons in the app, making special features like, have color only when it is on click
+- Changing most of the icons in the app, making special features like, have color only when it is on click
+- changing some codes with the library so that it seems like it won’t have the result of the onPrepareLoad()
+- making the drag shader opaque non-0 so that it will be like dragging when user drag it
 
 Haven’t done list:
 1. Buggy calendar

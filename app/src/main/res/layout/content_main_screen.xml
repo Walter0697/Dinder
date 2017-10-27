@@ -8,29 +8,57 @@
     tools:context="com.team206255.dineder.MainScreen"
     tools:showIn="@layout/app_bar_main_screen">
 
-    <Space
-        android:id="@+id/likeSpace"
-        android:layout_width="85dp"
-        android:layout_height="800dp"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Space
-        android:id="@+id/dislikeSpace"
-        android:layout_width="85dp"
-        android:layout_height="800dp"
+    <com.team206255.dineder.DragContainer xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/root"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintRight_toRightOf="parent">
 
-    <Space
-        android:id="@+id/loveSpace"
-        android:layout_width="600dp"
-        android:layout_height="85dp"
-        android:layout_marginLeft="0dp"
-        android:layout_marginRight="0dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintLeft_toRightOf="@+id/dislikeSpace"
-        app:layout_constraintRight_toLeftOf="@+id/likeSpace" />
+        <RelativeLayout
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+        <ImageView
+            android:id="@+id/background3foodView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="170dp"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/background2foodView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="170dp"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/backgroundfoodView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="170dp"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        <ImageView
+            android:id="@+id/foodView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:paddingBottom="170dp"
+            app:srcCompat="@mipmap/ic_launcher" />
+
+        </RelativeLayout>
+    </com.team206255.dineder.DragContainer>
 
     <ImageView
         android:id="@+id/leftDrawer"
@@ -95,40 +123,6 @@
         android:layout_marginEnd="8dp" />
 
     <ImageView
-        android:id="@+id/backgroundfoodView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/loveButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786"
-        app:srcCompat="@mipmap/ic_launcher"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <ImageView
-        android:id="@+id/foodView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/loveButton"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.786"
-        app:srcCompat="@mipmap/ic_launcher_round"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp" />
-
-    <ImageView
         android:id="@+id/detailIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -136,7 +130,7 @@
         app:srcCompat="@mipmap/ic_launcher"
         android:layout_marginBottom="66dp"
         app:layout_constraintBottom_toTopOf="@+id/tickButton"
-        android:layout_marginRight="28dp"
+        android:layout_marginRight="76dp"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginEnd="76dp" />
 
@@ -152,6 +146,8 @@
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,5 +1,7 @@
 package com.team206255.dineder;
 
+import android.content.ClipData;
+import android.content.ClipDescription;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Point;
@@ -42,10 +44,9 @@ public class MainScreen extends Fragment{
     ListDrawerHandler listDrawerHandler;
     FilterDrawerHandler filterDrawerHandler;
 
-    //setting space for drag and drop features
-    Space likeArea;
-    Space dislikeArea;
-    Space loveArea;
+    //drag container for the non-transparent drag shader
+    DragContainer dragContainer;
+    private static final String IMAGEVIEW_TAG = "icon bitmap";
 
     //getting display metrics
     private DisplayMetrics metrics;
@@ -124,26 +125,22 @@ public class MainScreen extends Fragment{
         //also set up the drag and drop listener for the food picture view
         ImageView foodView = (ImageView) view.findViewById(R.id.foodView);
         Singleton.getInstance().getRecipeChoice().getChoiceRecipe().setImage(getContext(), foodView, 0.9f);
+
         //set drag and touch listener
+        dragContainer = (DragContainer) view.findViewById(R.id.root);
+        foodView.setTag(IMAGEVIEW_TAG);
         foodView.setOnTouchListener(touchListener);
         foodView.setOnDragListener(dragListener);
+
 
         //getting the background recipe picture from the second recipe in the list
         //dont need to set up listener cuz it is just for the background
         ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
         Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().setImage(getContext(), backgroundView, 0.9f);
-
-        //space for the dragging and dropping event
-        dislikeArea = (Space) view.findViewById(R.id.dislikeSpace);
-        dislikeArea.setOnDragListener(dragListener);
-        likeArea = (Space) view.findViewById(R.id.likeSpace);
-        likeArea.setOnDragListener(dragListener);
-        loveArea = (Space) view.findViewById(R.id.loveSpace);
-        loveArea.setOnDragListener(dragListener);
-        //set the height and width to match parent for the space so that it can fit for every devices
-        dislikeArea.getLayoutParams().height = metrics.heightPixels;
-        likeArea.getLayoutParams().height = metrics.heightPixels;
-        loveArea.getLayoutParams().width = metrics.widthPixels;
+        ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
+        Singleton.getInstance().getRecipeChoice().showlist[2].setImage(getContext(), background2View, 0.9f);
+        ImageView background3View = (ImageView) view.findViewById(R.id.background3foodView);
+        Singleton.getInstance().getRecipeChoice().showlist[3].setImage(getContext(), background3View, 0.9f);
 
         //getting the detail icon to handle viewing recipe information for now
         //might change it to touch the recipe image in the future
@@ -228,25 +225,22 @@ public class MainScreen extends Fragment{
         //testing textview only
         testing = (TextView) view.findViewById(R.id.testing);
 
+        swipe();
+
         return view;
     }
 
     //Drag and drop functionality
     //need both touch and drag listener to handle this
-    View.OnTouchListener touchListener = new View.OnTouchListener(){
+    View.OnTouchListener touchListener = new View.OnTouchListener() {
 
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
-            int event = motionEvent.getAction();
-            switch (event) {
-                case MotionEvent.ACTION_DOWN:
-                    View.DragShadowBuilder dragShadowBuilder = new View.DragShadowBuilder(view);
-                    //dragging without original picture
-                    dragShadowBuilder.getView().setAlpha(0);
-                    view.startDragAndDrop(null, dragShadowBuilder, view, 0);
-            }
+            ClipData.Item item = new ClipData.Item((CharSequence) view.getTag());
+            ClipData dragData = new ClipData((CharSequence) view.getTag(), new String[] {ClipDescription.MIMETYPE_TEXT_PLAIN}, item);
+            view.setAlpha(0);
 
-            return true;
+            return dragContainer.startDragChild(view, dragData, null, 0);
         }
     };
 
@@ -261,17 +255,17 @@ public class MainScreen extends Fragment{
                     view.setVisibility(View.VISIBLE);
                     break;
                 case DragEvent.ACTION_DROP:
-                    if (getTouchPosition(view, dragEvent).x >= likeArea.getX())
+                    if (getTouchPosition(view, dragEvent).x >= (int)(metrics.widthPixels * 0.75))
                     {
                         swipeLike();
                     }
-                    else if (getTouchPosition(view, dragEvent).x <= dislikeArea.getX() + dislikeArea.getWidth())
+                    else if (getTouchPosition(view, dragEvent).x <= (int)(metrics.widthPixels * 0.25))
                     {
                         swipeDislike();
                     }
-                    else if (getTouchPosition(view, dragEvent).y <= loveArea.getY() + loveArea.getHeight())
+                    else if (getTouchPosition(view, dragEvent).y <= (int)(metrics.heightPixels * 0.15))
                     {
-                        //swipeLove();
+                        swipeLove();
                     }
                     break;
             }
@@ -287,6 +281,13 @@ public class MainScreen extends Fragment{
                          rItem.right + Math.round(event.getY()));
     }
     //end of drag and drop functionality
+
+    private void swipe()
+    {
+        testing.setText("Welcome");
+        Singleton.getInstance().getRecipeChoice().addRecipe(Singleton.getInstance().getRandomRecipeGenerator().getRandomRecipe());
+        setFoodView();
+    }
 
     private void swipeLike()
     {
@@ -306,13 +307,10 @@ public class MainScreen extends Fragment{
 
     private void swipeLove()
     {
-        //testing.setText("Love");
-        //testing.setText(MainActivity.recipeFilter.cuisineToString());
+        testing.setText("Save!");
         Intent calendarIntent = new Intent(getActivity().getApplicationContext(), CalendarChoice.class);
         calendarIntent.putExtra("RECIPE", Singleton.getInstance().getRecipeChoice().getChoiceRecipe());
         getActivity().startActivityForResult(calendarIntent, InfoDefine.REQUEST_FOR_CALENDAR);
-        //MainActivity.recipeChoice.addRecipe(RandomRecipeGenerator.getRandomRecipe());
-        setFoodView();
     }
 
     private void setFoodView()
@@ -323,5 +321,11 @@ public class MainScreen extends Fragment{
 
         ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
         Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().setImage(getContext(), backgroundView, 0.9f);
+
+        ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
+        Singleton.getInstance().getRecipeChoice().showlist[2].setImage(getContext(), background2View, 0.9f);
+
+        ImageView background3View = (ImageView) view.findViewById(R.id.background3foodView);
+        Singleton.getInstance().getRecipeChoice().showlist[3].setImage(getContext(), background3View, 0.9f);
     }
 }

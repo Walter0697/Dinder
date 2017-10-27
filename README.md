@@ -1,6 +1,6 @@
 # Team-206255
 The project for 3004
-Project Name : Dineder
+# Project Name : Dineder
 
 ### Quick guide:
 Codes inside:
@@ -35,6 +35,8 @@ Picasso : 'com.squareup.picasso.picasso:2.5.2'
 ###### NonSwipeableViewPager.java
 - copied from stackoverflow
 - Use for preventing the view pager to swipe so that funcitonarlities won't be duplicated between the drag and drop features and the view pager.
+###### DragContainer.java
+- to control the alpha of the drag shader so that it can simulate dragging effect for the app
 
 ##### Functional classes:
 ###### ImageProcessor.java
@@ -83,4 +85,3 @@ Picasso : 'com.squareup.picasso.picasso:2.5.2'
 ###### JsonFactory.java
 - similar usage can be found in randomRecipeGenerator
 
-##### Classes that will be added in the future:
