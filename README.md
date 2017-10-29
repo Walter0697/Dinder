@@ -88,3 +88,8 @@ The project for 3004
 ###### JsonFactory.java
 - similar usage can be found in randomRecipeGenerator
 
+##### Images/Icons from:
+- https://www.flaticon.com/authors/smashicons
+- https://www.flaticon.com/authors/freepik
+- https://www.flaticon.com/authors/eight-black-dots
+- from https://www.flaticon.com
