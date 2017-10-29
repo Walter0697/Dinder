@@ -87,18 +87,22 @@ public class RandomRecipeGenerator {
 
     //(String name, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     public RandomRecipeGenerator() {
+        Recipe recipe1 = new Recipe("Chocolate Cake","https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg", CCsteps,CCingredients,3,60.f,100.f);
+        Recipe recipe2 = new Recipe("Chocolate Cake","https://spoonacular.com/recipeImages/Grandmas-Apple-Crisp-645152.jpg",CCsteps,CCingredients,3,60.f,100.f);
+        Recipe recipe3 = new Recipe("Detroit Hot Honey Wings","https://spoonacular.com/recipeImages/Quick-Apple-Ginger-Pie-657563.jpg",DHHWsteps,DHHWingredients,2,30.f,60.f);
+        Recipe recipe4 = new Recipe("Garlic Potatoes","https://spoonacular.com/recipeImages/Cinnamon-Sugar-Fried-Apples-639487.jpg",GPsteps,GPingredients,5,20.f,80.f);
+        Recipe recipe5 = new Recipe("BLT Dip","https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg",BLTDsteps,BLTDingredients,1,25.f,30.f);
 
-        //Recipe recipe2 = new Recipe("Chocolate Cake",CCsteps,CCingredients,3,60.f,100.f);
-        //Recipe recipe3 = new Recipe("Detroit Hot Honey Wings",DHHWsteps,DHHWingredients,2,30.f,60.f);
-        //Recipe recipe4 = new Recipe("Garlic Potatoes",GPsteps,GPingredients,5,20.f,80.f);
-        //Recipe recipe5 = new Recipe("BLT Dip",BLTDsteps,BLTDingredients,1,25.f,30.f);
+        list.add(recipe1);
+        list.add(recipe2);
+        list.add(recipe3);
+        list.add(recipe4);
+        list.add(recipe5);
     }
 
     public Recipe getRandomRecipe()
     {
-        //Recipe recipe1 = new Recipe("Chocolate Cake",CCsteps,CCingredients,3,60.f,100.f);
-        //list.add(recipe1);
-        return new Recipe(rand.nextInt(5));
-        //return list.get(rand.nextInt(list.size()));
+        //return new Recipe(rand.nextInt(5));
+        return list.get(rand.nextInt(list.size()));
     }
 }

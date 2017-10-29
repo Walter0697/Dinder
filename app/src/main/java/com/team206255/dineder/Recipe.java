@@ -25,8 +25,11 @@ public class Recipe implements Serializable{
     int difficulty;
     float duration;
     float calorie;
-
     Cuisine type;
+
+    static Context context;
+
+    boolean loaded;
 
     public Recipe(String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     {
@@ -38,6 +41,8 @@ public class Recipe implements Serializable{
         this.duration = duration;
         this.calorie = calorie;
         this.type = Cuisine.HONGKONG;
+
+        loaded = false;
     }
 
     //this should be the recipe information when the recipe isn't passing thought the activity correctly
@@ -54,6 +59,8 @@ public class Recipe implements Serializable{
         duration = 10.f;
         calorie = 10.f;
         type = Cuisine.ALL;
+
+        loaded = true;
     }
 
     public Recipe(int i)
@@ -91,6 +98,8 @@ public class Recipe implements Serializable{
             pictureView = "https://spoonacular.com/cdn/ingredients_100x100/green-onion.jpg";
             name = "Green Onion";
         }
+
+        loaded = false;
     }
 
     public String getCuisine(Context context)
@@ -106,11 +115,14 @@ public class Recipe implements Serializable{
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, 1.0f);
                 imageView.setImageBitmap(bitmap);
+                loaded = true;
             }
 
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
-
+                Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                bitmap = ImageProcessor.getCroppedBitmap(bitmap);
+                imageView.setImageBitmap(bitmap);
             }
 
             @Override
@@ -120,7 +132,10 @@ public class Recipe implements Serializable{
                 imageView.setImageBitmap(bitmap);
             }
         };
-        Picasso.with(context).load(pictureView).into(target);
+        //in case if the picture is not loaded correctly, it will reload again
+        while (loaded == false)
+            Picasso.with(context).load(pictureView).into(target);
+        loaded = false;
     }
 
     public void setImage(final Context context, final ImageView imageView, final float scale) {
@@ -131,6 +146,7 @@ public class Recipe implements Serializable{
                 bitmap = ImageProcessor.getCroppedBitmap(bitmap);
                 bitmap = ImageProcessor.drawCircleBorder(bitmap);
                 imageView.setImageBitmap(bitmap);
+                loaded = true;
             }
 
             @Override
@@ -147,6 +163,9 @@ public class Recipe implements Serializable{
                 imageView.setImageBitmap(bitmap);
             }
         };
-        Picasso.with(context).load(pictureView).into(target);
+        //in case if the picture is not loaded correctly, it will reload again
+        while (loaded == false)
+            Picasso.with(context).load(pictureView).into(target);
+        loaded = false;
     }
 }

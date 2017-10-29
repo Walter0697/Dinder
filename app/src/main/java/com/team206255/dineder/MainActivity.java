@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //setting up everything from the shared preference
         Singleton.getInstance().setSharedPreferences(this);
         //if for testing ,wanna reset everything inside the app
-        //Singleton.getInstance().resetSharedPreference();
+        Singleton.getInstance().resetSharedPreference();
 
         //setting up the context for the recipe filter so you can accesss R.string
         Singleton.getInstance().getRecipeFilter().setUpContext(getApplicationContext());

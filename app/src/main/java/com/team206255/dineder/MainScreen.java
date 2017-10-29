@@ -234,8 +234,6 @@ public class MainScreen extends Fragment{
         //testing textview only
         testing = (TextView) view.findViewById(R.id.testing);
 
-        swipe();
-
         return view;
     }
 
