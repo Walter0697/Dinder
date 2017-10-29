@@ -128,6 +128,11 @@ public class MainScreen extends Fragment{
 
         //set drag and touch listener
         dragContainer = (DragContainer) view.findViewById(R.id.root);
+        ViewGroup.LayoutParams layoutParams = dragContainer.getLayoutParams();
+        layoutParams.height = metrics.heightPixels;
+        layoutParams.width = metrics.widthPixels;
+        dragContainer.setLayoutParams(layoutParams);
+
         foodView.setTag(IMAGEVIEW_TAG);
         foodView.setOnTouchListener(touchListener);
         foodView.setOnDragListener(dragListener);
@@ -222,6 +227,10 @@ public class MainScreen extends Fragment{
             }
         });
 
+        //icon of the app
+        ImageView mainIcon = (ImageView) view.findViewById(R.id.mainIcon);
+        Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dineder2special, 0.4f);
+        mainIcon.setImageBitmap(mainImage);
         //testing textview only
         testing = (TextView) view.findViewById(R.id.testing);
 
