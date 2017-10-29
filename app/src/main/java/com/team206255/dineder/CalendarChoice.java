@@ -31,6 +31,8 @@ public class CalendarChoice extends AppCompatActivity {
 
         if (getIntent().hasExtra("RECIPE"))
             currentRecipe = (Recipe)getIntent().getSerializableExtra("RECIPE");
+        else
+            currentRecipe = new Recipe();
 
         ImageView foodView = (ImageView) findViewById(R.id.recipeImage);
         currentRecipe.setImage(this, foodView, 0.75f);

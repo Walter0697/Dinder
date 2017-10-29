@@ -17,7 +17,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginStart="8dp" />
+        android:layout_marginStart="8dp"
+        android:clickable="true"/>
 
     <TextView
         android:id="@+id/recipeNameText"

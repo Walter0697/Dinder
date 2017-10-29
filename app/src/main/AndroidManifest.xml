@@ -29,7 +29,8 @@
         <activity android:name=".RecipeInformation" />
         <activity android:name="com.t.CalendarScreen" />
         <activity android:name=".CalendarScreen" />
-        <activity android:name=".CalendarChoice"></activity>
+        <activity android:name=".CalendarChoice" />
+        <activity android:name=".ImageViewScreen"></activity>
     </application>
 
 </manifest>

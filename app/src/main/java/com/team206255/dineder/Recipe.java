@@ -28,9 +28,9 @@ public class Recipe implements Serializable{
 
     Cuisine type;
 
-    public Recipe(String name, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
+    public Recipe(String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     {
-        pictureView = "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg";
+        pictureView = pictureUrl;
         this.name = name;
         this.steps = steps;
         this.ingredients = ingredients;
@@ -40,18 +40,20 @@ public class Recipe implements Serializable{
         this.type = Cuisine.HONGKONG;
     }
 
-    //this is just sample
+    //this should be the recipe information when the recipe isn't passing thought the activity correctly
+    //picture should be something like error picture
     public Recipe(){
-        pictureView = "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg";
-        name = "Apple";
-        steps = new String[1];
-        steps[0] = "Just buy an apple";
+        pictureView = "";
+        name = "No Recipe";
+        steps = new String[2];
+        steps[0] = "Opps, did you set something wrong?";
+        steps[1] = "We cannot find any recipe here!";
         this.ingredients = new String[1];
-        this.ingredients[0] = "apple";
+        this.ingredients[0] = "Unknown";
         difficulty = 1;
         duration = 10.f;
         calorie = 10.f;
-        type = Cuisine.HONGKONG;
+        type = Cuisine.ALL;
     }
 
     public Recipe(int i)

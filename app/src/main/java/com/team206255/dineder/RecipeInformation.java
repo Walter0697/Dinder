@@ -1,5 +1,6 @@
 package com.team206255.dineder;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,9 +30,14 @@ public class RecipeInformation extends AppCompatActivity {
 
         ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
         currentRecipe.setImage(getApplicationContext(), recipeView, 0.35f);
-        //Bitmap unsized = currentRecipe.getImage(getApplicationContext(), recipeView);
-        //Bitmap recipeImage = ImageProcessor.scaleImage(metrics, getResources(), unsized, 0.35f);
-        //recipeView.setImageBitmap(recipeImage);
+        recipeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent recipeImage = new Intent(getApplicationContext(), ImageViewScreen.class);
+                recipeImage.putExtra("RECIPE", currentRecipe);
+                startActivity(recipeImage);
+            }
+        });
 
         TextView nameText = (TextView) findViewById(R.id.recipeNameText);
         nameText.setText(currentRecipe.name);
