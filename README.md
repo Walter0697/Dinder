@@ -92,7 +92,6 @@ The project for 3004
 - https://www.flaticon.com/authors/smashicons
 - https://www.flaticon.com/authors/freepik
 - https://www.flaticon.com/authors/eight-black-dots
-- https://www.flaticon.com/authors/smashicons
 - from https://www.flaticon.com
 - Font :
 - https://www.dafont.com/grandstander.font
