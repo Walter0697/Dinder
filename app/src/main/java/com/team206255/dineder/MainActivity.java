@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         metrics = this.getResources().getDisplayMetrics();
         setContentView(R.layout.activity_main);
+
         //setting up the context for random recipe generator
         Singleton.getInstance().getRandomRecipeGenerator().context = this;
 

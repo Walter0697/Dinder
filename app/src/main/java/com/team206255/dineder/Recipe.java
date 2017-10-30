@@ -3,6 +3,7 @@ package com.team206255.dineder;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
@@ -123,6 +124,7 @@ public class Recipe implements Serializable{
                 Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
                 bitmap = ImageProcessor.getCroppedBitmap(bitmap);
                 imageView.setImageBitmap(bitmap);
+                loaded = true;
             }
 
             @Override
@@ -133,7 +135,7 @@ public class Recipe implements Serializable{
             }
         };
         //in case if the picture is not loaded correctly, it will reload again
-        //while (loaded == false)
+        while (loaded == false)
             Picasso.with(context).load(pictureView).into(target);
         loaded = false;
     }
@@ -154,6 +156,7 @@ public class Recipe implements Serializable{
                 Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
                 bitmap = ImageProcessor.getCroppedBitmap(bitmap);
                 imageView.setImageBitmap(bitmap);
+                loaded = true;
             }
 
             @Override
@@ -164,7 +167,7 @@ public class Recipe implements Serializable{
             }
         };
         //in case if the picture is not loaded correctly, it will reload again
-        //while (loaded == false)
+        while (loaded == false)
             Picasso.with(context).load(pictureView).into(target);
         loaded = false;
     }
