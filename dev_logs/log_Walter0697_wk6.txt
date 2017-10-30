@@ -7,6 +7,7 @@ Finished List:
 - adding border to the image so that every images will be the same size
 - setting shared preference for most of the information
 - I created an icon!!!!
+- setting up min and max for filter
 
 About the API:
 Some image url is weird, without https://www for random recipe search 

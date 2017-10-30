@@ -40,6 +40,9 @@ The project for 3004
 ###### DragContainer.java
 - copied from stackoverflow
 - to control the alpha of the drag shader so that it can simulate dragging effect for the app
+###### InputFilterMinMax.java
+- copied from stackoverflow
+- to control the maximum value and minimum value for text input like duration and calorie
 
 ##### Functional classes:
 ###### ImageProcessor.java
