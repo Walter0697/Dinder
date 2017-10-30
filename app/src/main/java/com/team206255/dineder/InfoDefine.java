@@ -16,7 +16,8 @@ public class InfoDefine {
     }
 
     public enum Ingredient {
-        SUGAR, SALT, OIL, CHICKEN, BEEF, PEPPER, EGG
+        CHICKEN, BEEF, SALMON, TOMATOES, POTATOES,
+        LETTUCE, OIL, BREAD, EGGS, FLOUR, RICE
     }
 
     static final int REQUEST_FOR_FILTER = 0;

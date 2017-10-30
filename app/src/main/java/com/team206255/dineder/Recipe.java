@@ -75,27 +75,27 @@ public class Recipe implements Serializable{
         type = Cuisine.INDIAN;
         if (i == 0)
         {
-            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/milk.jpg";
+            pictureView = "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg";
             name = "Milk";
         }
         else if (i == 1)
         {
-            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/almonds.jpg";
+            pictureView = "https://spoonacular.com/recipeImages/Grandmas-Apple-Crisp-645152.jpg";
             name = "Almond";
         }
         else if (i == 2)
         {
-            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/almonds.jpg";
+            pictureView = "https://spoonacular.com/recipeImages/Quick-Apple-Ginger-Pie-657563.jpg";
             name = "No reason but almond2";
         }
         else if (i == 3)
         {
-            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/cream-of-chicken-soup.jpg";
+            pictureView = "https://spoonacular.com/recipeImages/Cinnamon-Sugar-Fried-Apples-639487.jpg";
             name = "chicken soup";
         }
         else if (i == 4)
         {
-            pictureView = "https://spoonacular.com/cdn/ingredients_100x100/green-onion.jpg";
+            pictureView = "https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg";
             name = "Green Onion";
         }
 
@@ -133,7 +133,7 @@ public class Recipe implements Serializable{
             }
         };
         //in case if the picture is not loaded correctly, it will reload again
-        while (loaded == false)
+        //while (loaded == false)
             Picasso.with(context).load(pictureView).into(target);
         loaded = false;
     }
@@ -164,7 +164,7 @@ public class Recipe implements Serializable{
             }
         };
         //in case if the picture is not loaded correctly, it will reload again
-        while (loaded == false)
+        //while (loaded == false)
             Picasso.with(context).load(pictureView).into(target);
         loaded = false;
     }

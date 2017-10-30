@@ -21,12 +21,16 @@
     </string-array>
 
     <string-array name="ingredient">
-        <item>Sugar</item>
-        <item>Salt</item>
-        <item>Oil</item>
-        <item>Chicken</item>
-        <item>Beef</item>
-        <item>Pepper</item>
-        <item>Egg</item>
+        <item>chicken</item>
+        <item>beef</item>
+        <item>salmon</item>
+        <item>tomatoes</item>
+        <item>potatoes</item>
+        <item>lettuce</item>
+        <item>oil</item>
+        <item>bread</item>
+        <item>eggs</item>
+        <item>flour</item>
+        <item>rice</item>
     </string-array>
 </resources>
