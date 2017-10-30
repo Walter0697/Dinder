@@ -87,7 +87,7 @@ public class RandomRecipeGenerator {
 
     //(String name, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     public RandomRecipeGenerator() {
-        Recipe recipe1 = new Recipe("Chocolate Cake","https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg", CCsteps,CCingredients,3,60.f,100.f);
+        Recipe recipe1 = new Recipe("Chocolate Cake","https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg", APsteps, APingredients,3,60.f,100.f);
         Recipe recipe2 = new Recipe("Chocolate Cake","https://spoonacular.com/recipeImages/Grandmas-Apple-Crisp-645152.jpg",CCsteps,CCingredients,3,60.f,100.f);
         Recipe recipe3 = new Recipe("Detroit Hot Honey Wings","https://spoonacular.com/recipeImages/Quick-Apple-Ginger-Pie-657563.jpg",DHHWsteps,DHHWingredients,2,30.f,60.f);
         Recipe recipe4 = new Recipe("Garlic Potatoes","https://spoonacular.com/recipeImages/Cinnamon-Sugar-Fried-Apples-639487.jpg",GPsteps,GPingredients,5,20.f,80.f);

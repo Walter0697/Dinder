@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -60,6 +61,7 @@ public class FilterScreen extends AppCompatActivity {
         //duration seek bar and edit num
         durationSeekBar = (SeekBar) findViewById(R.id.advancedDurationSeekBar);
         durationNum = (EditText) findViewById(R.id.advancedDurationNum);
+        durationNum.setFilters(new InputFilter[] {new InputFilterMinMax(1, InfoDefine.maxDuration)});
         //setting up range
         //durationSeekBar.setMin(InfoDefine.minDuration);
         durationSeekBar.setMax(InfoDefine.maxDuration);
@@ -102,6 +104,7 @@ public class FilterScreen extends AppCompatActivity {
         //calorie seek bar and edit num
         calorieSeekBar = (SeekBar) findViewById(R.id.advancedCalorieSeekBar);
         calorieNum = (EditText) findViewById(R.id.advancedCalorieNum);
+        calorieNum.setFilters(new InputFilter[] {new InputFilterMinMax(1, InfoDefine.maxCalorie)});
         //setting up range
         //calorieSeekBar.setMin(InfoDefine.minCalorie);
         calorieSeekBar.setMax(InfoDefine.maxCalorie);

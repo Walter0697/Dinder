@@ -3,6 +3,7 @@ package com.team206255.dineder;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -77,6 +78,7 @@ public class FilterDrawerHandler {
         //setting up the seekbar and edittext for duration
         durationSeekBar = (SeekBar) headerView.findViewById(R.id.durationSeekBar);
         durationNum = (EditText) headerView.findViewById(R.id.durationNum);
+        durationNum.setFilters(new InputFilter[] {new InputFilterMinMax(1, InfoDefine.maxDuration)});
         //setting up min and max range for the seekbar
         //durationSeekBar.setMin(InfoDefine.minDuration);
         durationSeekBar.setMax(InfoDefine.maxDuration);
@@ -122,6 +124,7 @@ public class FilterDrawerHandler {
         //setting up the seekbar and edittext for duration
         calorieSeekBar = (SeekBar) headerView.findViewById(R.id.calorieSeekBar);
         calorieNum = (EditText) headerView.findViewById(R.id.calorieNum);
+        calorieNum.setFilters(new InputFilter[] {new InputFilterMinMax(1, InfoDefine.maxCalorie)});
         //setting up min and max range for the seekbar
         //calorieSeekBar.setMin(InfoDefine.minCalorie);
         calorieSeekBar.setMax(InfoDefine.maxCalorie);
