@@ -18,10 +18,10 @@ The project for 3004
 ### Pattern and Style:
 #### Pattern:
 - Singleton pattern
-- Observer pattern (possibly?)
+- Factory pattern
 #### Style:
 - Client and Server between the app and the api
-- blackbaord that communicate though central information (similar to Singleton?)
+- to be determined
 
 ### Files include:
 

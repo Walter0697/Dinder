@@ -14,7 +14,7 @@ public class RecipeChoice {
         showlist = new Recipe[MAX_WAIT_CHOICE];
         for (int i = 0; i < MAX_WAIT_CHOICE; i++)
         {
-            addRecipe(Singleton.getInstance().getRandomRecipeGenerator().getRandomRecipe());
+            addRecipe(RandomRecipeGenerator.getRandomRecipe());
         }
     }
 

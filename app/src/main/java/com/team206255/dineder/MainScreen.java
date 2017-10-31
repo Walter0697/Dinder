@@ -227,10 +227,11 @@ public class MainScreen extends Fragment{
 
         //icon of the app
         ImageView mainIcon = (ImageView) view.findViewById(R.id.mainIcon);
-        Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dineder2special, 0.4f);
+        Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinder2special, 0.4f);
         mainIcon.setImageBitmap(mainImage);
         //testing textview only
         testing = (TextView) view.findViewById(R.id.testing);
+        testing.setText("Welcome");
 
         return view;
     }
@@ -290,7 +291,7 @@ public class MainScreen extends Fragment{
     private void swipe()
     {
         testing.setText("Welcome");
-        Singleton.getInstance().getRecipeChoice().addRecipe(Singleton.getInstance().getRandomRecipeGenerator().getRandomRecipe());
+        Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
         setFoodView();
     }
 
@@ -298,7 +299,7 @@ public class MainScreen extends Fragment{
     {
         testing.setText("Like");
         Singleton.getInstance().getRecipeList().addRecipe(Singleton.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
-        Singleton.getInstance().getRecipeChoice().addRecipe(Singleton.getInstance().getRandomRecipeGenerator().getRandomRecipe());
+        Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
         listDrawerHandler.updateLikedView();
         //updating shared perference
         Singleton.getInstance().updateSharedPreference();
@@ -308,7 +309,7 @@ public class MainScreen extends Fragment{
     private void swipeDislike()
     {
         testing.setText("Dislike");
-        Singleton.getInstance().getRecipeChoice().addRecipe(Singleton.getInstance().getRandomRecipeGenerator().getRandomRecipe());
+        Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
         //updating shared perference
         Singleton.getInstance().updateSharedPreference();
         setFoodView();

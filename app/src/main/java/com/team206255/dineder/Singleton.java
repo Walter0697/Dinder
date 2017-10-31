@@ -12,18 +12,15 @@ import com.google.gson.Gson;
 public class Singleton {
     private static Singleton instance = null;
 
-    private RandomRecipeGenerator randomRecipeGenerator;
-    private RecipeChoice recipeChoice;
     private RecipeFilter recipeFilter;
+
+    private RecipeChoice recipeChoice;
     private RecipeList recipeList;
     private CalendarStorage calendarStorage;
 
     private SharedPreferences sharedPreferences;
 
-    private Singleton() {
-        //everything that need to be stored in this app
-        randomRecipeGenerator = new RandomRecipeGenerator();
-    }
+    private Singleton() { }
 
     public static Singleton getInstance()
     {
@@ -135,8 +132,6 @@ public class Singleton {
         return calendarStorage;
     }
 
-    public RandomRecipeGenerator getRandomRecipeGenerator() { return randomRecipeGenerator; }
-
     public void setRecipeChoice(RecipeChoice recipeChoice) { this.recipeChoice = recipeChoice; }
 
     public void setRecipeFilter(RecipeFilter recipeFilter) { this.recipeFilter = recipeFilter; }
@@ -144,6 +139,4 @@ public class Singleton {
     public void setRecipeList(RecipeList recipeList) { this.recipeList = recipeList; }
 
     public void setCalendarStorage(CalendarStorage calendarStorage) { this.calendarStorage = calendarStorage; }
-
-    public void setRandomRecipeGenerator(RandomRecipeGenerator randomRecipeGenerator) { this.randomRecipeGenerator = randomRecipeGenerator; }
 }
