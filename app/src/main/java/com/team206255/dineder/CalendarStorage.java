@@ -3,9 +3,10 @@ package com.team206255.dineder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by walter on 2017-10-12.
@@ -14,8 +15,7 @@ import java.util.Date;
 public class CalendarStorage {
     static DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
-    ArrayList<Recipe[]> calendar = new ArrayList<>();
-    ArrayList<Date> recipeDate = new ArrayList<>();
+    Map<String, Recipe[]> storage = new HashMap<>();
 
     Date currentDate = new Date();
 
@@ -27,31 +27,32 @@ public class CalendarStorage {
 
     public void addRecipe(Date selectedDate, Recipe addRecipe, int index)
     {
-        currentDate = selectedDate;
-        if (getRecipePosition() != -1)
+        String selectedDay = dateFormat.format(selectedDate);
+        if (storage.containsKey(selectedDay))
         {
-            Recipe[] currentRecipe = calendar.get(getRecipePosition());
+            Recipe[] currentRecipe = storage.get(selectedDay);
             currentRecipe[index] = addRecipe;
-            calendar.set(getRecipePosition(), currentRecipe);
+            storage.put(selectedDay, currentRecipe);
         }
+        //if not, put the new key
         else
         {
             Recipe[] currentRecipe = new Recipe[4];
             for (int i = 0; i < 4; i++)
                 currentRecipe[i] = null;
             currentRecipe[index] = addRecipe;
-            calendar.add(currentRecipe);
-            recipeDate.add(selectedDate);
+            storage.put(selectedDay, currentRecipe);
         }
     }
 
     public void removeRecipe(int index)
     {
-        if (getRecipePosition() != -1)
+        String selectedDay = dateFormat.format(currentDate);
+        if (storage.containsKey(selectedDay))
         {
-            Recipe[] currentRecipe = calendar.get(getRecipePosition());
+            Recipe[] currentRecipe = storage.get(selectedDay);
             currentRecipe[index] = null;
-            calendar.set(getRecipePosition(), currentRecipe);
+            storage.put(selectedDay, currentRecipe);
         }
     }
 
@@ -88,28 +89,20 @@ public class CalendarStorage {
 
     public Recipe[] getRecipe()
     {
-        if (getRecipePosition() == -1) return null;
-        return calendar.get(getRecipePosition());
+        String selectedDay = dateFormat.format(currentDate);
+        if (!storage.containsKey(selectedDay)) return null;
+        return storage.get(selectedDay);
     }
 
     public Recipe getRecipe(int i)
     {
+        //directly return if i is bigger than 4
         if (i >= 4) return null;
-        Recipe[] current = getRecipe();
-        if (current == null) return null;
-        return current[i];
-    }
+        //convert the date and find the corresponding string inside the map
+        String selectedDay = dateFormat.format(currentDate);
+        if (!storage.containsKey(selectedDay)) return null;
 
-    public int getRecipePosition()
-    {
-        for (int i = 0; i < recipeDate.size(); i++)
-        {
-            //cuz we just want to check the date but not the time
-            if (dateFormat.format(recipeDate.get(i)).equals(dateFormat.format(currentDate)))
-            {
-                return i;
-            }
-        }
-        return -1;
+        Recipe[] current = getRecipe();
+        return current[i];
     }
 }

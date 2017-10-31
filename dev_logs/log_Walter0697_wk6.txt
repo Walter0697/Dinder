@@ -8,6 +8,8 @@ Finished List:
 - setting shared preference for most of the information
 - I created an icon!!!!
 - setting up min and max for filter
+- fixing bug in calendar view (now it should work perfectly)
+- fixing some layout issues
 
 About the API:
 Some image url is weird, without https://www for random recipe search 
@@ -16,8 +18,8 @@ Then use “get Recipe Information”
 If want for ingredient -> “get Food information”
 
 Haven’t done list:
-1. Buggy calendar
-2. Ugly layout for some activities (some information can’t be shown)
-3. Timer in recipes <— could be difficult because it will duel with another widget type
-4. “Missing ingredients” features
-5. Cropped circle will have black background, not sure about the Paint and Canvas library
+1. Ugly layout for some activities (not sure if any left)
+2. Timer in recipes <— could be difficult because it will duel with another widget type
+3. “Missing ingredients” features
+4. Cropped circle will have black background, not sure about the Paint and Canvas library
+5. I think the picture loading is still buggy whenever we have new picture, weird but it is about the library

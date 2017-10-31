@@ -135,7 +135,7 @@ public class Recipe implements Serializable{
             }
         };
         //in case if the picture is not loaded correctly, it will reload again
-        while (loaded == false)
+        while (loaded == false && pictureView != "")
             Picasso.with(context).load(pictureView).into(target);
         loaded = false;
     }
@@ -167,7 +167,7 @@ public class Recipe implements Serializable{
             }
         };
         //in case if the picture is not loaded correctly, it will reload again
-        while (loaded == false)
+        while (loaded == false && pictureView != "")
             Picasso.with(context).load(pictureView).into(target);
         loaded = false;
     }

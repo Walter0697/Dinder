@@ -38,6 +38,7 @@ public class CalendarChoice extends AppCompatActivity {
         currentRecipe.setImage(this, foodView, 0.75f);
 
         //setting up the on click listener for button
+        //exiting
         Button cancelButton = (Button) findViewById(R.id.cancelButton);
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +47,7 @@ public class CalendarChoice extends AppCompatActivity {
             }
         });
 
+        //saving
         Button saveButton = (Button) findViewById(R.id.saveButton);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +81,7 @@ public class CalendarChoice extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int y, int m, int d) {
-                currentDate = new Date(y, m, d);
+                currentDate = new Date(y-1900, m, d);
             }
         });
 

@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //setting up the context for random recipe generator
-        Singleton.getInstance().getRandomRecipeGenerator().context = this;
+        //Singleton.getInstance().getRandomRecipeGenerator().context = this;
 
         //setting up everything from the shared preference
         Singleton.getInstance().setSharedPreferences(this);
