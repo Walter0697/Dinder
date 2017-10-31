@@ -12,6 +12,8 @@ The project for 3004
 - Use for processing the image from internet 
 ##### Gson : 'com.google.code.gson:gson:2.7'
 - Use for parsing object into json so that it can be used inside shared preference
+##### Volley : 'com.android.volley:volley:1.0.0'
+- Use for requesting the http request from the api
 
 ### Pattern and Style:
 #### Pattern:
