@@ -23,3 +23,5 @@ Haven’t done list:
 3. “Missing ingredients” features
 4. Cropped circle will have black background, not sure about the Paint and Canvas library
 5. I think the picture loading is still buggy whenever we have new picture, weird but it is about the library
+6. Animation for liking and disliking instead of just disappearing 
+7. If possible setting the aplha of the picture when dragging

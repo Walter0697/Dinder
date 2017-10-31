@@ -34,7 +34,6 @@ public class DragContainer extends ViewGroup {
     public DragContainer(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
     }
-
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         int i = getChildCount();

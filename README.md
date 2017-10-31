@@ -72,6 +72,8 @@ The project for 3004
 - searching the recipes according to ingredients or cuisines
 ###### CalendarChoice.java
 - to save the recipes to the calendar
+###### ImageViewScreen.java
+- to browse the image of the recipe
 
 ##### Storage type classes:
 ###### Singleton.java

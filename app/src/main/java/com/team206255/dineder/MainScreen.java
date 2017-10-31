@@ -144,8 +144,6 @@ public class MainScreen extends Fragment{
         Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().setImage(getContext(), backgroundView, 0.9f);
         ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
         Singleton.getInstance().getRecipeChoice().showlist[2].setImage(getContext(), background2View, 0.9f);
-        ImageView background3View = (ImageView) view.findViewById(R.id.background3foodView);
-        Singleton.getInstance().getRecipeChoice().showlist[3].setImage(getContext(), background3View, 0.9f);
 
         //getting the detail icon to handle viewing recipe information for now
         //might change it to touch the recipe image in the future
@@ -335,8 +333,5 @@ public class MainScreen extends Fragment{
 
         ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
         Singleton.getInstance().getRecipeChoice().showlist[2].setImage(getContext(), background2View, 0.9f);
-
-        ImageView background3View = (ImageView) view.findViewById(R.id.background3foodView);
-        Singleton.getInstance().getRecipeChoice().showlist[3].setImage(getContext(), background3View, 0.9f);
     }
 }
