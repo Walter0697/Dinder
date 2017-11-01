@@ -45,7 +45,7 @@ public class FilterScreen extends AppCompatActivity {
 
         //setting up the icon image
         ImageView topIcon = (ImageView) findViewById(R.id.filterScreenIcon);
-        Bitmap topImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filter, 0.2f);
+        Bitmap topImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filterdrawer, 0.2f);
         topIcon.setImageBitmap(topImage);
 
         //setting up everything just like the drawer

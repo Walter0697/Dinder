@@ -51,6 +51,8 @@ The project for 3004
 - For processing the image such as resizing and cropping to circle
 ###### InfoDefine.java
 - defining the value, such as list of ingredients, good for keeping useful values in the center.
+###### VolleyCallback.java
+- Interface for the Volley call back function
 
 ##### Layout related classes:
 ###### MainActivity.java

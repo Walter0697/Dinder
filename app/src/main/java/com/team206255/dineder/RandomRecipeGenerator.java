@@ -207,7 +207,7 @@ public class RandomRecipeGenerator {
         Recipe recipe3 = new Recipe("Detroit Hot Honey Wings","https://spoonacular.com/recipeImages/Quick-Apple-Ginger-Pie-657563.jpg",DHHWsteps,DHHWingredients,2,30.f,60.f);
         Recipe recipe4 = new Recipe("Garlic Potatoes","https://spoonacular.com/recipeImages/Cinnamon-Sugar-Fried-Apples-639487.jpg",GPsteps,GPingredients,5,20.f,80.f);
         Recipe recipe5 = new Recipe("BLT Dip","https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg",BLTDsteps,BLTDingredients,1,25.f,30.f);
-        Recipe recipe6 = new Recipe("Lemon Layer Cake", "https://spoonacular.com/productImages/428475-312x231.jpg",LLCsteps,LLCingredients,3,80.f,100.f);
+        Recipe recipe6 = new Recipe("Lemon Layer Cake", "https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg",LLCsteps,LLCingredients,3,80.f,100.f);
         Recipe recipe7 = new Recipe("German Egg Liqueue","https://spoonacular.com/recipeImages/621568-556x370.jpg",GELsteps,GELingredients,2,25.f,70.f);
         Recipe recipe8 = new Recipe("Fruit and Nut Bar","https://spoonacular.com/recipeImages/588330-556x370.jpg",FBsteps,FBingredients,3,45.f,60.f);
         Recipe recipe9 = new Recipe("Philly Cheesesteak Meatloaf","https://spoonacular.com/recipeImages/924481-556x370.jpg",PCMsteps,PCMingredients,4,45.f,120.f);

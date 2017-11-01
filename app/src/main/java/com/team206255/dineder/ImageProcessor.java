@@ -103,8 +103,8 @@ public class ImageProcessor {
         int h = bitmap.getHeight();
         int w = bitmap.getWidth();
 
-        int radius = w / 2; //since we are scaling the image by width, the radius should only be related to width
-        Bitmap output = Bitmap.createBitmap(w + 8, w + 8, Bitmap.Config.ARGB_8888);
+        int radius = h / 2; //since we are scaling the image by width, the radius should only be related to width
+        Bitmap output = Bitmap.createBitmap(h + 8, h + 8, Bitmap.Config.ARGB_8888);
 
         Paint p = new Paint();
         p.setAntiAlias(true);
@@ -113,15 +113,15 @@ public class ImageProcessor {
         c.drawARGB(0, 255, 255, 255);
         p.setStyle(Paint.Style.FILL);
 
-        c.drawCircle((w / 2) + 4, (w / 2) + 4, radius, p);
+        c.drawCircle((h / 2) + 4, (h / 2) + 4, radius, p);
         p.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
 
-        c.drawBitmap(bitmap, 4, (w / 2) - (h / 2), p);
+        c.drawBitmap(bitmap, 4, 4, p);
         p.setXfermode(null);
         p.setStyle(Paint.Style.STROKE);
         p.setColor(Color.BLUE);
-        p.setStrokeWidth(30);
-        c.drawCircle((w/2) + 4, (w / 2) + 4, radius, p);
+        p.setStrokeWidth(15);
+        c.drawCircle((h / 2) + 4, (h / 2) + 4, radius, p);
 
         return output;
     }
@@ -145,7 +145,7 @@ public class ImageProcessor {
 
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
-                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.failed, 0.1f);
                 view.setImageBitmap(bitmap);
                 loaded = true;
             }
@@ -169,16 +169,16 @@ public class ImageProcessor {
         final Target target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
                 bitmap = getCroppedBitmap(bitmap);
                 bitmap = drawCircleBorder(bitmap);
+                bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
                 view.setImageBitmap(bitmap);
                 loaded = true;
             }
 
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
-                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.failed, 0.1f);
                 view.setImageBitmap(bitmap);
                 loaded = true;
             }
