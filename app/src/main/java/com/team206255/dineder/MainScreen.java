@@ -8,6 +8,7 @@ import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -103,7 +104,7 @@ public class MainScreen extends Fragment{
 
         //setup the button(image) and resize them, then setup their listeners
         ImageView listButton = (ImageView) view.findViewById(R.id.leftDrawer);
-        Bitmap listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.listdrawer, 0.12f);
+        Bitmap listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.halloweenlist, 0.12f);
         listButton.setImageBitmap(listImage);
         listButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,8 +228,18 @@ public class MainScreen extends Fragment{
 
         //icon of the app
         ImageView mainIcon = (ImageView) view.findViewById(R.id.mainIcon);
-        Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinder2special, 0.4f);
+        Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinderhalloween, 0.4f);
         mainIcon.setImageBitmap(mainImage);
+
+        //things for halloween edition!!!!!
+        ImageView halloween1 = (ImageView) view.findViewById(R.id.halloween1);
+        Bitmap halloweenImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow2, 0.4f);
+        halloween1.setImageBitmap(halloweenImage);
+
+        ImageView halloween2 = (ImageView) view.findViewById(R.id.halloween2);
+        Bitmap halloweenImage2 = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow3, 0.4f);
+        halloween2.setImageBitmap(halloweenImage2);
+
         //testing textview only
         testing = (TextView) view.findViewById(R.id.testing);
         testing.setText("Welcome");

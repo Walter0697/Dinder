@@ -77,6 +77,11 @@ public class CalendarScreen extends Fragment {
             }
         });
 
+        //JUST FOR HALLOWEEEEEEEN
+        ImageView hallow = (ImageView) view.findViewById(R.id.halloween3);
+        Bitmap halloween = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow1, 0.4f);
+        hallow.setImageBitmap(halloween);
+
         return view;
     }
 
