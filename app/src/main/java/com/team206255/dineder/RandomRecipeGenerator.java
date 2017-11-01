@@ -1,5 +1,19 @@
 package com.team206255.dineder;
 
+import android.content.Context;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 import java.util.ArrayList;
 
@@ -9,6 +23,11 @@ import java.util.ArrayList;
 
 public class RandomRecipeGenerator {
     static Random rand = new Random();
+
+    //setting up the queue of the http request
+    static RequestQueue queue;
+    static String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1";
+    static String APIKey = "4WH5shG2ShmshNOHlTLcGuvisDXkp1FGULPjsnb2ImIUrqcMW6";
 
     static ArrayList<Recipe> list = new ArrayList<>();
 
@@ -176,6 +195,11 @@ public class RandomRecipeGenerator {
 
     }
 
+    public static void setUpQueue(Context context)
+    {
+        queue = new Volley().newRequestQueue(context);
+    }
+
     public static void setupDummy()
     {
         Recipe recipe1 = new Recipe("Apple Pie","http://41feasts.com/wp-content/uploads/2012/10/Baked-Alaska.jpg", APsteps, APingredients,3,60.f,100.f);
@@ -213,5 +237,30 @@ public class RandomRecipeGenerator {
     {
         //return new Recipe(rand.nextInt(5));
         return list.get(rand.nextInt(list.size()));
+    }
+
+    public static void getJSONObject(final VolleyCallback callback)
+    {
+        JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        callback.onSuccess(response);
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError{
+                Map<String, String> params = new HashMap<>();
+                params.put("X-Mashape-Key", APIKey);
+                return params;
+            }
+        };
+        queue.add(getRequest);
     }
 }

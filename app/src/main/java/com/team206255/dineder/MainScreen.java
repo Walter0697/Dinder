@@ -301,13 +301,6 @@ public class MainScreen extends Fragment{
     }
     //end of drag and drop functionality
 
-    private void swipe()
-    {
-        testing.setText("Welcome");
-        Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
-        setFoodView();
-    }
-
     private void swipeLike()
     {
         testing.setText("Like");
@@ -323,6 +316,7 @@ public class MainScreen extends Fragment{
     {
         testing.setText("Dislike");
         Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        Singleton.getInstance().getRecipeChoice().getRecipe();
         //updating shared perference
         Singleton.getInstance().updateSharedPreference();
         setFoodView();

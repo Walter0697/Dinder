@@ -1,12 +1,7 @@
 package com.team206255.dineder;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
 
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
 import com.team206255.dineder.InfoDefine.*;
 
 import java.io.Serializable;
@@ -107,37 +102,4 @@ public class Recipe implements Serializable{
         String[] allType = context.getResources().getStringArray(R.array.cuisine);
         return allType[type.ordinal()];
     }
-
-/*
-    public void setImage(final Context context, final ImageView imageView, final float scale) {
-        final Target target = new Target() {
-            @Override
-            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
-                bitmap = ImageProcessor.getCroppedBitmap(bitmap);
-                bitmap = ImageProcessor.drawCircleBorder(bitmap);
-                imageView.setImageBitmap(bitmap);
-                loaded = true;
-            }
-
-            @Override
-            public void onBitmapFailed(Drawable errorDrawable) {
-                Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
-                bitmap = ImageProcessor.getCroppedBitmap(bitmap);
-                imageView.setImageBitmap(bitmap);
-                loaded = true;
-            }
-
-            @Override
-            public void onPrepareLoad(Drawable placeHolderDrawable) {
-                Bitmap bitmap = ImageProcessor.scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
-                bitmap = ImageProcessor.getCroppedBitmap(bitmap);
-                imageView.setImageBitmap(bitmap);
-            }
-        };
-        //in case if the picture is not loaded correctly, it will reload again
-        while (loaded == false && pictureView != "")
-            Picasso.with(context).load(pictureView).into(target);
-        loaded = false;
-    }*/
 }
