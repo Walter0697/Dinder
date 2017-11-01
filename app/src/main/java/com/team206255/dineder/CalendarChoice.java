@@ -35,7 +35,7 @@ public class CalendarChoice extends AppCompatActivity {
             currentRecipe = new Recipe();
 
         ImageView foodView = (ImageView) findViewById(R.id.recipeImage);
-        currentRecipe.setImage(this, foodView, 0.75f);
+        ImageProcessor.setURLImage(this, currentRecipe.pictureView, foodView, 0.75f);
 
         //setting up the on click listener for button
         //exiting

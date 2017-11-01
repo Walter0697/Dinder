@@ -21,7 +21,7 @@ public class ImageViewScreen extends AppCompatActivity {
             viewRecipe = new Recipe();
 
         ImageView viewImage = (ImageView)findViewById(R.id.imageView);
-        viewRecipe.setFullImage(this, viewImage);
+        ImageProcessor.setFullURLImage(this, viewRecipe.pictureView, viewImage);
 
         Button backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {

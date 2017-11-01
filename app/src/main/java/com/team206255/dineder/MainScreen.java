@@ -125,7 +125,7 @@ public class MainScreen extends Fragment{
         //getting the recipe picture from the first recipe in the list
         //also set up the drag and drop listener for the food picture view
         ImageView foodView = (ImageView) view.findViewById(R.id.foodView);
-        Singleton.getInstance().getRecipeChoice().getChoiceRecipe().setImage(getContext(), foodView, 0.9f);
+        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, foodView, 0.9f);
 
         //set drag and touch listener
         dragContainer = (DragContainer) view.findViewById(R.id.root);
@@ -142,9 +142,11 @@ public class MainScreen extends Fragment{
         //getting the background recipe picture from the second recipe in the list
         //dont need to set up listener cuz it is just for the background
         ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().setImage(getContext(), backgroundView, 0.9f);
+        //Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().setImage(getContext(), backgroundView, 0.9f);
+        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, backgroundView, 0.9f);
         ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
-        Singleton.getInstance().getRecipeChoice().showlist[2].setImage(getContext(), background2View, 0.9f);
+        //Singleton.getInstance().getRecipeChoice().showlist[2].setImage(getContext(), background2View, 0.9f);
+        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().showlist[2].pictureView, background2View, 0.9f);
 
         //getting the detail icon to handle viewing recipe information for now
         //might change it to touch the recipe image in the future
@@ -338,12 +340,12 @@ public class MainScreen extends Fragment{
     {
 
         ImageView foregroundView = (ImageView) view.findViewById(R.id.foodView);
-        Singleton.getInstance().getRecipeChoice().getChoiceRecipe().setImage(getContext(), foregroundView, 0.9f);
+        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, foregroundView, 0.9f);
 
         ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().setImage(getContext(), backgroundView, 0.9f);
+        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, backgroundView, 0.9f);
 
         ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
-        Singleton.getInstance().getRecipeChoice().showlist[2].setImage(getContext(), background2View, 0.9f);
+        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().showlist[2].pictureView, background2View, 0.9f);
     }
 }

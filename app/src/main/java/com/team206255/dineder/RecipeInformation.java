@@ -29,7 +29,7 @@ public class RecipeInformation extends AppCompatActivity {
             currentRecipe = (Recipe)getIntent().getSerializableExtra("RECIPE");
 
         ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
-        currentRecipe.setImage(getApplicationContext(), recipeView, 0.35f);
+        ImageProcessor.setURLImage(getApplicationContext(), currentRecipe.pictureView, recipeView, 0.35f);
         recipeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

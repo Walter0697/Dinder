@@ -1,6 +1,7 @@
 package com.team206255.dineder;
 
 
+import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -13,12 +14,18 @@ import android.graphics.Rect;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 /**
  * Created by walter on 2017-09-25.
  */
 
 public class ImageProcessor {
+
+    static boolean loaded = false;
 
     //to scale the image according to the screen width
     public static Bitmap scaleImage(DisplayMetrics displayMetrics, Resources res, int pic, float ratio)
@@ -123,5 +130,69 @@ public class ImageProcessor {
     public static Bitmap ResourceDrawableToBitmap(Resources res, int image)
     {
         return BitmapFactory.decodeResource(res, image);
+    }
+
+    //setting the full image into the screen
+    public static void setFullURLImage(final Context context, final String url, final ImageView view)
+    {
+        final Target target = new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, 1.0f);
+                view.setImageBitmap(bitmap);
+                loaded = true;
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                view.setImageBitmap(bitmap);
+                loaded = true;
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                view.setImageBitmap(bitmap);
+            }
+        };
+        //in case if the picture is not loaded correctly, it will reload again
+        //risk for infinitely loop
+        while (loaded == false && url != "")
+            Picasso.with(context).load(url).into(target);
+        loaded = false;
+    }
+
+    //setting the scaled image into the imageview
+    public static void setURLImage(final Context context, final String url, final ImageView view, final float scale)
+    {
+        final Target target = new Target() {
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
+                bitmap = getCroppedBitmap(bitmap);
+                bitmap = drawCircleBorder(bitmap);
+                view.setImageBitmap(bitmap);
+                loaded = true;
+            }
+
+            @Override
+            public void onBitmapFailed(Drawable errorDrawable) {
+                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                view.setImageBitmap(bitmap);
+                loaded = true;
+            }
+
+            @Override
+            public void onPrepareLoad(Drawable placeHolderDrawable) {
+                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                view.setImageBitmap(bitmap);
+            }
+        };
+
+        //in case if the picture is not loaded correctly, it will reload again
+        while (loaded == false && url != "")
+            Picasso.with(context).load(url).into(target);
+        loaded = false;
     }
 }

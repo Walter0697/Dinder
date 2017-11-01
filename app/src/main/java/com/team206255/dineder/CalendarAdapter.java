@@ -99,8 +99,7 @@ public class CalendarAdapter extends BaseAdapter {
             calendarDifficulty.setVisibility(View.VISIBLE);
             removeButton.setVisibility(View.VISIBLE);
 
-
-            currentRecipe.setImage(context, calendarImage, 0.2f);
+            ImageProcessor.setURLImage(context, currentRecipe.pictureView, calendarImage, 0.2f);
             calendarName.setText(currentRecipe.name);
             calendarDuration.setText("Duration: " + Float.toString(currentRecipe.duration) + "mins");
             calendarCalorie.setText("Calorie: " + Float.toString(currentRecipe.calorie));
