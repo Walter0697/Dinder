@@ -4,6 +4,10 @@ import android.graphics.Bitmap;
 import android.icu.text.LocaleDisplayNames;
 import android.util.Log;
 
+//import com.google.gson.JsonObject;
+//import com.google.gson.JsonParser;
+
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Date;
@@ -40,7 +44,7 @@ public class RecipeChoice {
             @Override
             public void onSuccess(JSONObject result) {
                 //parsing into recipe
-                Log.d("result", result.toString());
+                //Log.d("result", result.toString());
 
 
                 //--->I set it so whenever you clicked dislike, it will get one recipe from the api
@@ -57,6 +61,32 @@ public class RecipeChoice {
                 //--->use this function here after parsing the recipes, so that you won't mess up with the main feature
                 //--->parsed Recipe should be found inside calendar screen
                 //Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), parsedRecipe, 0);
+
+
+                //JsonParser parser = new JsonParser();
+                //JSONArray recipes = result.getJSONArray("recipes");
+
+                JSONArray recipes = result.optJSONArray("recipes");
+                JSONObject rec = recipes.optJSONObject(0);
+                String title = rec.optString("title");
+                String URL = rec.optString("image");
+                String instructions = rec.optString("instructions");
+                JSONArray ingredients = rec.optJSONArray("extendedIngredients");
+
+                String[] ingred = new String[100];
+
+                for(int k = 0; k < ingredients.length(); k++)
+                {
+                    JSONObject indaviualIngred = ingredients.optJSONObject(k);
+                    ingred[k] = indaviualIngred.optString("originalString");
+                }
+
+                Log.d("TITLE",title);
+                Log.d("URL",URL);
+                Log.d("INSTRUCTIONS",instructions);
+                Log.d("ingredients",ingred[0]);
+
+
             }
 
             @Override
