@@ -239,7 +239,7 @@ public class RandomRecipeGenerator {
         return list.get(rand.nextInt(list.size()));
     }
 
-    public static void getJSONObject(final VolleyCallback callback)
+    public static void getJSONObject(final CallbackHelper callback)
     {
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {

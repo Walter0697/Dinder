@@ -35,7 +35,7 @@ public class RecipeChoice {
 
     public void getRecipe()
     {
-        RandomRecipeGenerator.getJSONObject(new VolleyCallback() {
+        RandomRecipeGenerator.getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
                 //parsing into recipe
