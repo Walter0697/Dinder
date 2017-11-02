@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.team206255.dineder.InfoDefine.*;
 
+import org.json.JSONObject;
+
 /**
  * Created by walter on 2017-10-03.
  */
@@ -89,7 +91,7 @@ public class CustomeAdapter extends BaseAdapter {
                 saveButton.setImageBitmap(saveImage);
 
                 ImageView removeButton = (ImageView) v.findViewById(R.id.removeButton);
-                Bitmap removeImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.04f);
+                final Bitmap removeImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.04f);
                 removeButton.setImageBitmap(removeImage);
 
                 removeButton.setOnClickListener(new View.OnClickListener() {
@@ -143,8 +145,19 @@ public class CustomeAdapter extends BaseAdapter {
                     }
                 });
 
-                ImageView searchRecipe = (ImageView) v.findViewById(R.id.searchRecipeImage);
-                ImageProcessor.setURLImage(context, items.getRecipe(i).pictureView, searchRecipe, 0.2f);
+                final ImageView searchRecipe = (ImageView) v.findViewById(R.id.searchRecipeImage);
+                ImageProcessor.setURLImage(context, items.getRecipe(i).pictureView, 0.2f,
+                        new CallbackHelper() {
+                            @Override
+                            public void onSuccess(JSONObject result) {
+
+                            }
+
+                            @Override
+                            public void onSuccess(Bitmap result) {
+                                searchRecipe.setImageBitmap(result);
+                            }
+                        });
                 break;
         }
         return v;

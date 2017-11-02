@@ -12,6 +12,8 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 public class RecipeInformation extends AppCompatActivity {
 
     Recipe currentRecipe = new Recipe();
@@ -28,8 +30,19 @@ public class RecipeInformation extends AppCompatActivity {
         if (getIntent().hasExtra("RECIPE"))
             currentRecipe = (Recipe)getIntent().getSerializableExtra("RECIPE");
 
-        ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
-        ImageProcessor.setURLImage(getApplicationContext(), currentRecipe.pictureView, recipeView, 0.35f);
+        final ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
+        ImageProcessor.setURLImage(getApplicationContext(), currentRecipe.pictureView, 0.35f,
+                new CallbackHelper() {
+                    @Override
+                    public void onSuccess(JSONObject result) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Bitmap result) {
+                        recipeView.setImageBitmap(result);
+                    }
+                });
         recipeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

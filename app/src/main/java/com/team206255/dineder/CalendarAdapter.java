@@ -12,6 +12,8 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import org.json.JSONObject;
+
 /**
  * Created by walter on 2017-10-13.
  */
@@ -78,7 +80,7 @@ public class CalendarAdapter extends BaseAdapter {
         //setting all widgets first
         TextView nullText = (TextView) v.findViewById(R.id.nullText);
 
-        ImageView calendarImage = (ImageView) v.findViewById(R.id.calendarFoodView);
+        final ImageView calendarImage = (ImageView) v.findViewById(R.id.calendarFoodView);
         TextView calendarName = (TextView) v.findViewById(R.id.calendarFoodName);
         TextView calendarDuration = (TextView) v.findViewById(R.id.calendarDuration);
         TextView calendarCalorie = (TextView) v.findViewById(R.id.calendarCalorie);
@@ -99,7 +101,18 @@ public class CalendarAdapter extends BaseAdapter {
             calendarDifficulty.setVisibility(View.VISIBLE);
             removeButton.setVisibility(View.VISIBLE);
 
-            ImageProcessor.setURLImage(context, currentRecipe.pictureView, calendarImage, 0.2f);
+            ImageProcessor.setURLImage(context, currentRecipe.pictureView, 0.2f,
+                    new CallbackHelper() {
+                        @Override
+                        public void onSuccess(JSONObject result) {
+
+                        }
+
+                        @Override
+                        public void onSuccess(Bitmap result) {
+                            calendarImage.setImageBitmap(result);
+                        }
+                    });
             calendarName.setText(currentRecipe.name);
             calendarDuration.setText("Duration: " + Float.toString(currentRecipe.duration) + "mins");
             calendarCalorie.setText("Calorie: " + Float.toString(currentRecipe.calorie));

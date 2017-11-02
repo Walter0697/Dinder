@@ -159,8 +159,8 @@ public class ImageProcessor {
         Picasso.with(context).load(url).into(target);
     }
 
-    //setting the scaled image into the imageview
-    public static void setURLImage(final Context context, final String url, final ImageView view, final float scale)
+    //setting the scaled cropped image into the imageview
+    public static void setURLImage(final Context context, final String url, final float scale, final CallbackHelper callback)
     {
         final Target target = new Target() {
             @Override
@@ -168,27 +168,22 @@ public class ImageProcessor {
                 bitmap = getCroppedBitmap(bitmap);
                 bitmap = drawCircleBorder(bitmap);
                 bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
-                view.setImageBitmap(bitmap);
-                loaded = true;
+                callback.onSuccess(bitmap);
             }
 
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
                 Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.failed, 0.1f);
-                view.setImageBitmap(bitmap);
-                loaded = true;
+                callback.onSuccess(bitmap);
             }
 
             @Override
             public void onPrepareLoad(Drawable placeHolderDrawable) {
                 Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
-                view.setImageBitmap(bitmap);
+                callback.onSuccess(bitmap);
             }
         };
 
-        //in case if the picture is not loaded correctly, it will reload again
-        while (loaded == false && url != "")
-            Picasso.with(context).load(url).into(target);
-        loaded = false;
+        Picasso.with(context).load(url).into(target);
     }
 }

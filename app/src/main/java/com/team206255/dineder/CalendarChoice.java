@@ -1,5 +1,6 @@
 package com.team206255.dineder;
 
+import android.graphics.Bitmap;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +11,8 @@ import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import org.json.JSONObject;
 
 import java.util.Date;
 
@@ -34,8 +37,19 @@ public class CalendarChoice extends AppCompatActivity {
         else
             currentRecipe = new Recipe();
 
-        ImageView foodView = (ImageView) findViewById(R.id.recipeImage);
-        ImageProcessor.setURLImage(this, currentRecipe.pictureView, foodView, 0.75f);
+        final ImageView foodView = (ImageView) findViewById(R.id.recipeImage);
+        ImageProcessor.setURLImage(this, currentRecipe.pictureView, 0.75f,
+                new CallbackHelper() {
+                    @Override
+                    public void onSuccess(JSONObject result) {
+
+                    }
+
+                    @Override
+                    public void onSuccess(Bitmap result) {
+                        foodView.setImageBitmap(result);
+                    }
+                });
 
         //setting up the on click listener for button
         //exiting
