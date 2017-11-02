@@ -1,0 +1,16 @@
+Week 6
+
+- Met with group to discuss architecture and design
+ - 2 Tier architecture? Layer 1 being the app, Layer 2 being the API's db.
+ - Client-Server style
+ - Datbase centric style
+ - Observer pattern?
+ - Singleton Pattern
+ - Factory Pattern
+- parsing JSON objects for app to use
+- created dummy data for app to use for demo
+ 	- mimics recipe data exactly as returned from the API
+	- there was a merge error on git and my commits did not show
+	  under my name but the code is there
+- wrote up D2 
+- prepared for demo
