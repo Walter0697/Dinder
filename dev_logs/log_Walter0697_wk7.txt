@@ -1,0 +1,14 @@
+(5 hours per days in average)
+
+Finished List:
+- figure out the issue about cropping the image
+
+Haven’t done list:
+1. Ugly layout for some activities (not sure if any left)
+2. Timer in recipes <— could be difficult because it will duel with another widget type
+3. “Missing ingredients” features
+4. I think the picture loading is still buggy whenever we have new picture, weird but it is about the library
+5. Animation for liking and disliking instead of just disappearing 
+6. If possible setting the aplha of the picture when dragging
+7. Starting/loading screen
+8. Notification for the app
