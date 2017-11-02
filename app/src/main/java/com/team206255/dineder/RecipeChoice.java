@@ -1,5 +1,6 @@
 package com.team206255.dineder;
 
+import android.graphics.Bitmap;
 import android.icu.text.LocaleDisplayNames;
 import android.util.Log;
 
@@ -56,6 +57,11 @@ public class RecipeChoice {
                 //--->use this function here after parsing the recipes, so that you won't mess up with the main feature
                 //--->parsed Recipe should be found inside calendar screen
                 //Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), parsedRecipe, 0);
+            }
+
+            @Override
+            public void onSuccess(Bitmap result) {
+                //do nothing here
             }
         });
     }

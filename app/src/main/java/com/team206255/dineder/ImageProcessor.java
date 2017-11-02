@@ -132,35 +132,31 @@ public class ImageProcessor {
         return BitmapFactory.decodeResource(res, image);
     }
 
-    //setting the full image into the screen
-    public static void setFullURLImage(final Context context, final String url, final ImageView view)
+    //setting the full iamge into the screen
+    public static void setFullURLImage(final Context context, final String url, final CallbackHelper callback)
     {
         final Target target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, 1.0f);
-                view.setImageBitmap(bitmap);
+                callback.onSuccess(bitmap);
                 loaded = true;
             }
 
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
                 Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.failed, 0.1f);
-                view.setImageBitmap(bitmap);
-                loaded = true;
+                callback.onSuccess(bitmap);
             }
 
             @Override
             public void onPrepareLoad(Drawable placeHolderDrawable) {
                 Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
-                view.setImageBitmap(bitmap);
+                callback.onSuccess(bitmap);
             }
         };
-        //in case if the picture is not loaded correctly, it will reload again
-        //risk for infinitely loop
-        while (loaded == false && url != "")
-            Picasso.with(context).load(url).into(target);
-        loaded = false;
+
+        Picasso.with(context).load(url).into(target);
     }
 
     //setting the scaled image into the imageview
