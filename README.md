@@ -95,6 +95,8 @@ The project for 3004
 - to store all the information of the recipes
 ###### RandomRecipeGenerator.java
 - to generate a random recipe from the API
+###### GetRequestURLGenerate.java
+- to generate url for get request
 
 ##### Classes that will be deleted soon:
 ###### JsonFactory.java

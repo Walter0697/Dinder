@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
         //like context
         RandomRecipeGenerator.setupDummy();
         RandomRecipeGenerator.setUpQueue(this);
+        //set up context for getrequestgenerator
+        GetRequestURLGenerate.setContact(this);
 
         //setting up everything from the shared preference
         Singleton.getInstance().setSharedPreferences(this);

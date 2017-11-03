@@ -31,19 +31,23 @@ public class RecipeFilter implements Serializable{
         difficulty = 1;
     }
 
+    //select all of the ingredients
+    //later might be useful for button
     public void ingredientsSelectAll()
     {
         for (int i = 0; i < Ingredient.values().length; i++)
             ingredients[i] = true;
     }
 
+    //select no ingredients
+    //that shouldn't be useful lol
     public void ingredientsSelectNone()
     {
         for (int i = 0; i < Ingredient.values().length; i++)
             ingredients[i] = false;
     }
 
-
+    //selected by spinner
     public void cuisine_selected_by_position(int position)
     {
         if (position == 0)
@@ -56,6 +60,7 @@ public class RecipeFilter implements Serializable{
         }
     }
 
+    //return the numbers of selected cuisine
     public int number_of_selected_cuisine()
     {
         int num = 0;
@@ -65,6 +70,17 @@ public class RecipeFilter implements Serializable{
         return num;
     }
 
+    //return the numbers of selected ingredients
+    public int number_of_selected_ingredients()
+    {
+        int num = 0;
+        for (int i = 0; i < Ingredient.values().length; i++)
+            if (ingredients[i])
+                num++;
+        return num;
+    }
+
+    //return the first cuisine(mainly for spinner)
     public int get_first_selected_cuisine()
     {
         for (int i = 0; i < Cuisine.values().length; i++)
@@ -88,7 +104,7 @@ public class RecipeFilter implements Serializable{
     public String[] ingredientToList(Context context, int num)
     {
         String[] output = new String[num];
-        String[] list = context.getResources().getStringArray(R.array.ingredient);
+        String[] list = selectedIngredients(context);
         Random rand = new Random();
         for (int i = 0; i < num; i++)
         {
@@ -97,6 +113,8 @@ public class RecipeFilter implements Serializable{
                 output[i] = userDefineIngredients.get(randnum - list.length);
             else
                 output[i] = list[randnum];
+
+            //check if duplicate
             for (int j = 0; j < i; j++)
             {
                 if (output[i] == output[j]) {
@@ -104,6 +122,19 @@ public class RecipeFilter implements Serializable{
                     break;
                 }
             }
+        }
+        return output;
+    }
+
+    public String[] selectedIngredients(Context context)
+    {
+        String[] list = context.getResources().getStringArray(R.array.ingredient);
+        String[] output = new String[number_of_selected_ingredients()];
+        int j = 0;
+        for (int i = 0; i < list.length; i++)
+        {
+            if (ingredients[i])
+                output[j++] = list[i];
         }
         return output;
     }

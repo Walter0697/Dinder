@@ -5,6 +5,7 @@ Finished List:
 - setting the callback function for the image, should work fine now
 - splash screen
 - user can define their own ingredients now
+- fixing recipe filter (now it can generate a request link for random ingredients)
 
 Haven’t done list:
 1. Ugly layout for some activities (not sure if any left)

@@ -244,6 +244,7 @@ public class RandomRecipeGenerator {
 
     public static void getJSONObject(final CallbackHelper callback)
     {
+        url = GetRequestURLGenerate.getRandomURL();
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override

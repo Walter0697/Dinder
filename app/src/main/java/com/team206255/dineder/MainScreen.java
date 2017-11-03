@@ -12,12 +12,15 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -49,6 +52,9 @@ public class MainScreen extends Fragment{
     //drag container for the non-transparent drag shader
     DragContainer dragContainer;
     private static final String IMAGEVIEW_TAG = "icon bitmap";
+
+    private ImageView foodView;
+    Animation animation;
 
     //getting display metrics
     private DisplayMetrics metrics;
@@ -126,7 +132,7 @@ public class MainScreen extends Fragment{
 
         //getting the recipe picture from the first recipe in the list
         //also set up the drag and drop listener for the food picture view
-        final ImageView foodView = (ImageView) view.findViewById(R.id.foodView);
+        foodView = (ImageView) view.findViewById(R.id.foodView);
         ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
@@ -262,6 +268,10 @@ public class MainScreen extends Fragment{
             }
         });
 
+        //disable scrollbar from drawer
+        leftView.setVerticalScrollBarEnabled(false);
+        rightView.setVerticalScrollBarEnabled(false);
+
         //icon of the app
         ImageView mainIcon = (ImageView) view.findViewById(R.id.mainIcon);
         Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinderhalloween, 0.4f);
@@ -312,6 +322,7 @@ public class MainScreen extends Fragment{
                 case DragEvent.ACTION_DROP:
                     if (getTouchPosition(view, dragEvent).x >= (int)(metrics.widthPixels * 0.75))
                     {
+                        animateImage(getTouchPosition(view, dragEvent).x, getTouchPosition(view, dragEvent).y, getTouchPosition(view, dragEvent).x, metrics.widthPixels, foodView);
                         swipeLike();
                     }
                     else if (getTouchPosition(view, dragEvent).x <= (int)(metrics.widthPixels * 0.25))
@@ -337,6 +348,15 @@ public class MainScreen extends Fragment{
     }
     //end of drag and drop functionality
 
+    private void animateImage(float startx, float starty, float endx, float endy, ImageView view)
+    {
+        animation = new TranslateAnimation(startx, starty, endx, endy);
+        animation.setDuration(1000);
+        animation.setRepeatCount(0);
+        view.setAnimation(animation);
+        animation.start();
+    }
+
     private void swipe()
     {
         Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
@@ -361,6 +381,7 @@ public class MainScreen extends Fragment{
         Singleton.getInstance().getRecipeChoice().getRecipe();
         //updating shared perference
         Singleton.getInstance().updateSharedPreference();
+        Log.d("link", GetRequestURLGenerate.getRandomURL());
         setFoodView();
     }
 
