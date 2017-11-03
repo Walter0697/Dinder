@@ -205,20 +205,20 @@ public class RandomRecipeGenerator {
 
     public static void setupDummy()
     {
-        Recipe recipe1 = new Recipe("Apple Pie","http://41feasts.com/wp-content/uploads/2012/10/Baked-Alaska.jpg", APsteps, APingredients,3,60.f,100.f);
-        Recipe recipe2 = new Recipe("Chocolate Cake","https://spoonacular.com/recipeImages/Grandmas-Apple-Crisp-645152.jpg",CCsteps,CCingredients,3,60.f,100.f);
-        Recipe recipe3 = new Recipe("Detroit Hot Honey Wings","https://spoonacular.com/recipeImages/Quick-Apple-Ginger-Pie-657563.jpg",DHHWsteps,DHHWingredients,2,30.f,60.f);
-        Recipe recipe4 = new Recipe("Garlic Potatoes","https://spoonacular.com/recipeImages/Cinnamon-Sugar-Fried-Apples-639487.jpg",GPsteps,GPingredients,5,20.f,80.f);
-        Recipe recipe5 = new Recipe("BLT Dip","https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg",BLTDsteps,BLTDingredients,1,25.f,30.f);
-        Recipe recipe6 = new Recipe("Lemon Layer Cake", "https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg",LLCsteps,LLCingredients,3,80.f,100.f);
-        Recipe recipe7 = new Recipe("German Egg Liqueue","https://spoonacular.com/recipeImages/621568-556x370.jpg",GELsteps,GELingredients,2,25.f,70.f);
-        Recipe recipe8 = new Recipe("Fruit and Nut Bar","https://spoonacular.com/recipeImages/588330-556x370.jpg",FBsteps,FBingredients,3,45.f,60.f);
-        Recipe recipe9 = new Recipe("Philly Cheesesteak Meatloaf","https://spoonacular.com/recipeImages/924481-556x370.jpg",PCMsteps,PCMingredients,4,45.f,120.f);
-        Recipe recipe10 = new Recipe("Pumpkin Pie","https://spoonacular.com/recipeImages/655525-556x370.jpg",APsteps,PPingredients,6,45.f,100.f);
-        Recipe recipe11 = new Recipe("Grilled Cheese","https://spoonacular.com/recipeImages/247051-556x370.jpeg",GCsteps,GCingredients,4,20.f,70.f);
-        Recipe recipe12 = new Recipe("Crab Rangoon","https://spoonacular.com/recipeImages/510597-556x370.jpg",CRsteps,CRingredients,8,45.f,100.f);
-        Recipe recipe13 = new Recipe("Rancheros","https://spoonacular.com/recipeImages/749525-556x370.jpeg",Rsteps,Ringredients,7,25.f,50.f);
-        Recipe recipe14 = new Recipe("Dagwood Sandwich","https://spoonacular.com/recipeImages/760918-556x370.jpg",DSsteps,DSingredients,5,30.f,70.f);
+        Recipe recipe1 = new Recipe(1, "Apple Pie","http://41feasts.com/wp-content/uploads/2012/10/Baked-Alaska.jpg", APsteps, APingredients,3,60.f,100.f);
+        Recipe recipe2 = new Recipe(2, "Chocolate Cake","https://spoonacular.com/recipeImages/Grandmas-Apple-Crisp-645152.jpg",CCsteps,CCingredients,3,60.f,100.f);
+        Recipe recipe3 = new Recipe(3, "Detroit Hot Honey Wings","https://spoonacular.com/recipeImages/Quick-Apple-Ginger-Pie-657563.jpg",DHHWsteps,DHHWingredients,2,30.f,60.f);
+        Recipe recipe4 = new Recipe(4, "Garlic Potatoes","https://spoonacular.com/recipeImages/Cinnamon-Sugar-Fried-Apples-639487.jpg",GPsteps,GPingredients,5,20.f,80.f);
+        Recipe recipe5 = new Recipe(5, "BLT Dip","https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg",BLTDsteps,BLTDingredients,1,25.f,30.f);
+        Recipe recipe6 = new Recipe(6, "Lemon Layer Cake", "https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg",LLCsteps,LLCingredients,3,80.f,100.f);
+        Recipe recipe7 = new Recipe(7, "German Egg Liqueue","https://spoonacular.com/recipeImages/621568-556x370.jpg",GELsteps,GELingredients,2,25.f,70.f);
+        Recipe recipe8 = new Recipe(8, "Fruit and Nut Bar","https://spoonacular.com/recipeImages/588330-556x370.jpg",FBsteps,FBingredients,3,45.f,60.f);
+        Recipe recipe9 = new Recipe(9, "Philly Cheesesteak Meatloaf","https://spoonacular.com/recipeImages/924481-556x370.jpg",PCMsteps,PCMingredients,4,45.f,120.f);
+        Recipe recipe10 = new Recipe(10, "Pumpkin Pie","https://spoonacular.com/recipeImages/655525-556x370.jpg",APsteps,PPingredients,6,45.f,100.f);
+        Recipe recipe11 = new Recipe(11, "Grilled Cheese","https://spoonacular.com/recipeImages/247051-556x370.jpeg",GCsteps,GCingredients,4,20.f,70.f);
+        Recipe recipe12 = new Recipe(12, "Crab Rangoon","https://spoonacular.com/recipeImages/510597-556x370.jpg",CRsteps,CRingredients,8,45.f,100.f);
+        Recipe recipe13 = new Recipe(13, "Rancheros","https://spoonacular.com/recipeImages/749525-556x370.jpeg",Rsteps,Ringredients,7,25.f,50.f);
+        Recipe recipe14 = new Recipe(14, "Dagwood Sandwich","https://spoonacular.com/recipeImages/760918-556x370.jpg",DSsteps,DSingredients,5,30.f,70.f);
 
         list.add(recipe1);
         list.add(recipe2);

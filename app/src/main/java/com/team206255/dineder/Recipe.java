@@ -12,7 +12,8 @@ import java.io.Serializable;
 
 public class Recipe implements Serializable{
 
-    //image not for final
+    int id;   //id according to the api
+
     String pictureView; //url of the recipe view
     String name;
     String[] steps;
@@ -24,8 +25,9 @@ public class Recipe implements Serializable{
 
     //add whatever you want
 
-    public Recipe(String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
+    public Recipe(int id, String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     {
+        this.id = id;
         pictureView = pictureUrl;
         this.name = name;
         this.steps = steps;
