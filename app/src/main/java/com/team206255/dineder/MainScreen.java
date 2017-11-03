@@ -381,14 +381,7 @@ public class MainScreen extends Fragment{
                     }
 
                     @Override
-                    public void onSuccess(Bitmap result) {
-                        //recursively
-                        //risky but it is important to show some picture in the beginning of the app
-                        if (result == null)
-                            setFoodView();
-                        else
-                            foregroundView.setImageBitmap(result);
-                    }
+                    public void onSuccess(Bitmap result) { foregroundView.setImageBitmap(result); }
                 });
 
         final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
