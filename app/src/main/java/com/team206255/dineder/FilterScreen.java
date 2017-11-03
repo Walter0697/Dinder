@@ -9,6 +9,7 @@ import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -30,6 +31,9 @@ public class FilterScreen extends AppCompatActivity {
     private StringAdapter ingredientCheck;
     private ListView ingredientList;
 
+    private EditText moreTextBox;
+    private Button moreButton;
+
     //storing the recipe filter for different usage
     RecipeFilter recipeFilter;
 
@@ -41,7 +45,10 @@ public class FilterScreen extends AppCompatActivity {
         //getting the display metrics
         DisplayMetrics metrics = getResources().getDisplayMetrics();
 
-        recipeFilter = new RecipeFilter();
+        if (getIntent().hasExtra("RECIPEFILTER"))
+            recipeFilter = (RecipeFilter)getIntent().getSerializableExtra("RECIPEFILTER");
+        else
+            recipeFilter = new RecipeFilter();
 
         //setting up the icon image
         ImageView topIcon = (ImageView) findViewById(R.id.filterScreenIcon);
@@ -154,6 +161,19 @@ public class FilterScreen extends AppCompatActivity {
         ingredientList = (ListView) findViewById(R.id.ingredientCheck);
         ingredientList.setAdapter(ingredientCheck);
 
+        //set up the add more ingredients text box
+        moreTextBox = (EditText) findViewById(R.id.moreTextbox);
+        moreButton = (Button) findViewById(R.id.moreButton);
+        moreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Singleton.getInstance().getRecipeFilter().addIngredient(moreTextBox.getText().toString());
+                ingredientList.invalidate();
+                ((BaseAdapter)ingredientList.getAdapter()).notifyDataSetChanged();
+                moreTextBox.setText("");
+            }
+        });
+
         //set up the widgets by value in filter
         setupByFilter(recipeFilter);
 
@@ -162,6 +182,8 @@ public class FilterScreen extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                recipeFilter.ingredients = Singleton.getInstance().getRecipeFilter().ingredients;
+                recipeFilter.userDefineIngredients = Singleton.getInstance().getRecipeFilter().userDefineIngredients;
                 Intent output = new Intent();
                 output.putExtra("OUTPUTFILTER", recipeFilter);
                 setResult(RESULT_OK, output);

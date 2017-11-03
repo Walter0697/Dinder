@@ -9,6 +9,7 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -32,13 +33,14 @@ public class FilterDrawerHandler {
     private SeekBar calorieSeekBar;
     private EditText calorieNum;
     private RatingBar difficultyBar;
+    private ListView ingredientView;
 
     public FilterDrawerHandler(Context c)
     {
         this.context = c;
     }
 
-    public void handleDrawerSetup(View headerView, final RecipeFilter recipeFilter)
+    public void handleDrawerSetup(View headerView)
     {
         DisplayMetrics metrics = headerView.getResources().getDisplayMetrics();
 
@@ -64,7 +66,7 @@ public class FilterDrawerHandler {
         cuisineSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                recipeFilter.cuisine_selected_by_position(i);
+                Singleton.getInstance().getRecipeFilter().cuisine_selected_by_position(i);
             }
 
             @Override
@@ -86,7 +88,7 @@ public class FilterDrawerHandler {
         durationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                recipeFilter.duration = i;
+                Singleton.getInstance().getRecipeFilter().duration = i;
                 durationNum.setText(Integer.toString(i));
             }
 
@@ -114,7 +116,7 @@ public class FilterDrawerHandler {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                recipeFilter.duration = Integer.parseInt(editable.toString());
+                Singleton.getInstance().getRecipeFilter().duration = Integer.parseInt(editable.toString());
                 durationSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
@@ -132,7 +134,7 @@ public class FilterDrawerHandler {
         calorieSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                recipeFilter.calorie = 1;
+                Singleton.getInstance().getRecipeFilter().calorie = 1;
                 calorieNum.setText(Integer.toString(i));
             }
 
@@ -160,7 +162,7 @@ public class FilterDrawerHandler {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                recipeFilter.calorie = Integer.parseInt(editable.toString());
+                Singleton.getInstance().getRecipeFilter().calorie = Integer.parseInt(editable.toString());
                 calorieSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
@@ -172,17 +174,17 @@ public class FilterDrawerHandler {
         difficultyBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                recipeFilter.difficulty = (int)v;
+                Singleton.getInstance().getRecipeFilter().difficulty = (int)v;
             }
         });
 
         ///////////////////////////////////////////////////////////////////
         //INGREDIENT CHECK BOX
         StringAdapter ingredientAdapter = new StringAdapter(context, R.layout.check_box_detail, context.getResources().getStringArray(R.array.ingredient), InfoDefine.ListType.INGREDIENT_BOX);
-        ListView ingredientView = (ListView) headerView.findViewById(R.id.ingredientList);
+        ingredientView = (ListView) headerView.findViewById(R.id.ingredientList);
         ingredientView.setAdapter(ingredientAdapter);
 
-        setValueByFilter(recipeFilter);
+        setValueByFilter(Singleton.getInstance().getRecipeFilter());
     }
 
     public void setValueByFilter(RecipeFilter filter)
@@ -202,5 +204,9 @@ public class FilterDrawerHandler {
         calorieSeekBar.setProgress((int)filter.calorie);
 
         difficultyBar.setRating((float)filter.difficulty);
+
+        ingredientView.invalidate();
+        ((StringAdapter)ingredientView.getAdapter()).items2 = filter.userDefineIngredients;
+        ((BaseAdapter)ingredientView.getAdapter()).notifyDataSetChanged();
     }
 }

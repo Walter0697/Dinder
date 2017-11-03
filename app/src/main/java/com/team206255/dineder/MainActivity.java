@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         Singleton.getInstance().resetSharedPreference();
 
         //setting up the context for the recipe filter so you can accesss R.string
-        Singleton.getInstance().getRecipeFilter().setUpContext(getApplicationContext());
+        //Singleton.getInstance().getRecipeFilter().setUpContext(getApplicationContext());
         //creating new class
         searchScreen = new SearchScreen();
         mainScreen = new MainScreen();
@@ -162,18 +162,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         if (requestCode == InfoDefine.REQUEST_FOR_FILTER) {
-            if (resultCode == RESULT_OK)
-                if (data != null) {
-                    Singleton.getInstance().setRecipeFilter((RecipeFilter) data.getSerializableExtra("OUTPUTFILTER"));
-                    mainScreen.filterDrawerHandler.setValueByFilter(Singleton.getInstance().getRecipeFilter());
-                }
+            if (resultCode == RESULT_OK) {
+                Singleton.getInstance().setRecipeFilter((RecipeFilter) data.getSerializableExtra("OUTPUTFILTER"));
+                mainScreen.filterDrawerHandler.setValueByFilter(Singleton.getInstance().getRecipeFilter());
+            }
         }
         else if (requestCode == InfoDefine.REQUEST_FOR_SEARCH){
             if (requestCode == RESULT_OK)
-                if (data != null)
-                {
-                    searchScreen.searchFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
-                }
+                searchScreen.searchFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
         }
         else if (requestCode == InfoDefine.REQUEST_FOR_CALENDAR){
             if (resultCode == RESULT_OK) {

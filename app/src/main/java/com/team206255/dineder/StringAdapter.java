@@ -10,6 +10,9 @@ import android.widget.CompoundButton;
 import android.widget.TextView;
 
 import com.team206255.dineder.InfoDefine.*;
+
+import java.util.ArrayList;
+
 /**
  * Created by walter on 2017-10-05.
  */
@@ -19,6 +22,7 @@ public class StringAdapter extends BaseAdapter {
     Context context;
     LayoutInflater inflater;
     String[] items;
+    ArrayList<String> items2 = null;
 
     int layout;
     ListType type;
@@ -31,15 +35,20 @@ public class StringAdapter extends BaseAdapter {
         this.type = type;
 
         inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        if (type == ListType.INGREDIENT_BOX)
+            items2 = Singleton.getInstance().getRecipeFilter().userDefineIngredients;
     }
 
     @Override
     public int getCount() {
+        if (items2 != null)
+            return items.length + items2.size();
         return items.length;
     }
 
     @Override
     public Object getItem(int i) {
+        if (i >= items.length) return items2.get(i-items.length);
         return items[i];
     }
 
@@ -53,14 +62,28 @@ public class StringAdapter extends BaseAdapter {
         View v = inflater.inflate(layout, null);
         if (type == ListType.INGREDIENT_BOX) {
             CheckBox checkBox = (CheckBox) v.findViewById(R.id.checkBox);
-            checkBox.setText(items[i]);
-            checkBox.setChecked(Singleton.getInstance().getRecipeFilter().ingredients[i]);
-            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                    Singleton.getInstance().getRecipeFilter().ingredients[i] = b;
-                }
-            });
+            if (i >= items.length)
+            {
+                checkBox.setText(items2.get(i-items.length));
+                checkBox.setChecked(true);
+                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        Singleton.getInstance().getRecipeFilter().removeIngredient(i-items.length);
+                        notifyDataSetChanged();
+                    }
+                });
+            }
+            else {
+                checkBox.setText(items[i]);
+                checkBox.setChecked(Singleton.getInstance().getRecipeFilter().ingredients[i]);
+                checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                        Singleton.getInstance().getRecipeFilter().ingredients[i] = b;
+                    }
+                });
+            }
         }
         else if (type == ListType.INGREDIENT_LIST) {
             TextView textView = (TextView) v.findViewById(R.id.textDetail);

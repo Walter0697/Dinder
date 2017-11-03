@@ -182,6 +182,34 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
+        <LinearLayout
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/moreTextbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:layout_gravity="left"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:textSize="15dp"
+                android:inputType="textPersonName"
+                android:hint="Add your own ingredients here!" />
+
+            <Button
+                android:id="@+id/moreButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="ADD"/>
+
+            </LinearLayout>
+
             <Space
                 android:layout_width="wrap_content"
                 android:layout_height="150dp" />

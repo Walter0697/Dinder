@@ -179,7 +179,7 @@ public class ImageProcessor {
 
             @Override
             public void onPrepareLoad(Drawable placeHolderDrawable) {
-                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 1.0f);
                 bitmap = getCroppedBitmap(bitmap);
                 bitmap = drawCircleBorder(bitmap);
                 bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);

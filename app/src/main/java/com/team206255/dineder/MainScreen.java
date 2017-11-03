@@ -27,6 +27,7 @@ import android.widget.TextView;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.Random;
 
 public class MainScreen extends Fragment{
 
@@ -53,6 +54,7 @@ public class MainScreen extends Fragment{
     private DisplayMetrics metrics;
 
     TextView testing;
+    Random rand = new Random();
 
     @Nullable
     @Override
@@ -198,7 +200,7 @@ public class MainScreen extends Fragment{
         listDrawerHandler = new ListDrawerHandler(getActivity().getApplicationContext(), getActivity());
         listDrawerHandler.handleDrawerSetup(leftView);
         filterDrawerHandler = new FilterDrawerHandler(getActivity().getApplicationContext());
-        filterDrawerHandler.handleDrawerSetup(rightView, Singleton.getInstance().getRecipeFilter());
+        filterDrawerHandler.handleDrawerSetup(rightView);
 
         //set up the button for filter screen and recipe detail screen
         TextView advancedFilter = (TextView) rightView.findViewById(R.id.advancedButton);
@@ -206,6 +208,7 @@ public class MainScreen extends Fragment{
             @Override
             public void onClick(View view) {
                 Intent filterScreen = new Intent(getActivity().getApplicationContext(), FilterScreen.class);
+                filterScreen.putExtra("RECIPEFILTER", Singleton.getInstance().getRecipeFilter());
                 getActivity().startActivityForResult(filterScreen, InfoDefine.REQUEST_FOR_FILTER);
             }
         });
@@ -315,7 +318,7 @@ public class MainScreen extends Fragment{
                     {
                         swipeDislike();
                     }
-                    else if (getTouchPosition(view, dragEvent).y <= (int)(metrics.heightPixels * 0.15))
+                    else if (getTouchPosition(view, dragEvent).y <= (int)(metrics.heightPixels * 0.5))
                     {
                         swipeLove();
                     }

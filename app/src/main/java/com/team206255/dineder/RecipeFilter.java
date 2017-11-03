@@ -5,6 +5,8 @@ import android.content.Context;
 import com.team206255.dineder.InfoDefine.*;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by walter on 2017-09-29.
@@ -18,7 +20,7 @@ public class RecipeFilter implements Serializable{
     float duration;
     float calorie;
 
-    Context context;
+    ArrayList<String> userDefineIngredients = new ArrayList<>();
 
     public RecipeFilter()
     {
@@ -27,11 +29,6 @@ public class RecipeFilter implements Serializable{
         duration = InfoDefine.maxDuration;
         calorie = InfoDefine.maxCalorie;
         difficulty = 1;
-    }
-
-    void setUpContext(Context c)
-    {
-        context = c;
     }
 
     public void ingredientsSelectAll()
@@ -76,18 +73,49 @@ public class RecipeFilter implements Serializable{
         return -1;
     }
 
-    public String ingredientToString()
+    //function for user define ingredient
+    public void addIngredient(String name)
     {
-        String result = "";
-        String[] list = context.getResources().getStringArray(R.array.ingredient);
+        userDefineIngredients.add(name);
+    }
 
-        for (int i = 0; i < list.length; i++)
+    public void removeIngredient(int n)
+    {
+        if (n >= userDefineIngredients.size()) return;
+        userDefineIngredients.remove(n);
+    }
+
+    public String[] ingredientToList(Context context, int num)
+    {
+        String[] output = new String[num];
+        String[] list = context.getResources().getStringArray(R.array.ingredient);
+        Random rand = new Random();
+        for (int i = 0; i < num; i++)
         {
-            if (ingredients[i])
-                result += list[i] + ", ";
+            int randnum = rand.nextInt(list.length + userDefineIngredients.size());
+            if (randnum >= list.length)
+                output[i] = userDefineIngredients.get(randnum - list.length);
+            else
+                output[i] = list[randnum];
+            for (int j = 0; j < i; j++)
+            {
+                if (output[i] == output[j]) {
+                    i--;
+                    break;
+                }
+            }
         }
-         result = result.substring(0, result.length() - 2);
-        return result;
+        return output;
+    }
+
+    public String toString(String[] test)
+    {
+        String output = "";
+        for (int i = 0; i < test.length; i++)
+        {
+            output += test[i] + ", ";
+        }
+        return output;
     }
 
     public void combineRecipe(RecipeFilter other)
@@ -96,7 +124,7 @@ public class RecipeFilter implements Serializable{
         //later
     }
 
-    public String cuisineToString()
+    public String cuisineToString(Context context)
     {
         String result = "";
         String[] list = context.getResources().getStringArray(R.array.cuisine);

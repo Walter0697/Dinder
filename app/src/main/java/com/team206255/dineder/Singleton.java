@@ -2,6 +2,7 @@ package com.team206255.dineder;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -76,7 +77,19 @@ public class Singleton {
             prefsEditor.commit();
         }
 
-        recipeFilter = new RecipeFilter();
+        if (sharedPreferences.contains("recipeFilter"))
+        {
+            String filterJson = sharedPreferences.getString("recipeFilter", "");
+            recipeFilter = gson.fromJson(filterJson, RecipeFilter.class);
+        }
+        else
+        {
+            recipeFilter = new RecipeFilter();
+            SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+            String filterJson = gson.toJson(recipeFilter);
+            prefsEditor.putString("recipeFilter", filterJson);
+            prefsEditor.commit();
+        }
     }
 
     //updating the shared preference
@@ -93,6 +106,9 @@ public class Singleton {
 
         String choiceJson = gson.toJson(recipeChoice);
         prefsEditor.putString("recipeChoice", choiceJson);
+
+        String filterJson = gson.toJson(recipeFilter);
+        prefsEditor.putString("recipeFilter", filterJson);
 
         prefsEditor.commit();
     }
@@ -117,10 +133,7 @@ public class Singleton {
         return recipeChoice;
     }
 
-    public RecipeFilter getRecipeFilter()
-    {
-        return recipeFilter;
-    }
+    public RecipeFilter getRecipeFilter() { return recipeFilter; }
 
     public RecipeList getRecipeList()
     {

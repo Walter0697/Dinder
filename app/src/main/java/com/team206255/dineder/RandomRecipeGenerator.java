@@ -29,6 +29,9 @@ public class RandomRecipeGenerator {
     static String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1";
     static String APIKey = "4WH5shG2ShmshNOHlTLcGuvisDXkp1FGULPjsnb2ImIUrqcMW6";
 
+    //setting up context
+    static Context mcontext;
+
     static ArrayList<Recipe> list = new ArrayList<>();
 
     static String[] APsteps = {"Preheat oven to 425 degrees F (220 degrees C). " ,
@@ -191,13 +194,13 @@ public class RandomRecipeGenerator {
 
 
     //(String name, String URL, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
-    public RandomRecipeGenerator() {
-
-    }
+    public RandomRecipeGenerator() {}
 
     public static void setUpQueue(Context context)
     {
         queue = new Volley().newRequestQueue(context);
+        mcontext = context;
+
     }
 
     public static void setupDummy()

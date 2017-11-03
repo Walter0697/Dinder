@@ -6,7 +6,6 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -107,7 +106,7 @@ public class DragContainer extends ViewGroup {
 
     @Override
     public boolean dispatchDragEvent(DragEvent event) {
-        Log.v("DragView", event.toString());
+        //Log.v("DragView", event.toString());
         switch (event.getAction()) {
             case DragEvent.ACTION_DRAG_STARTED:
                 int[] loc = new int[2];
