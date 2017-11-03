@@ -72,25 +72,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <!--DIFFICULTY-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0.35"
-                android:text="Difficulty:  "
-                android:textSize="20dp"
-                android:layout_gravity="left" />
-            <RatingBar
-                android:id="@+id/advancedDifficultyBar"
-                android:layout_weight="0.65"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:isIndicator="false"
-                android:focusable="true"
-                android:numStars="5"
-                android:rating="1" />
-
             <!--DURATION-->
             <TextView
                 android:layout_height="wrap_content"

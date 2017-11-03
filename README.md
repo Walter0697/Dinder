@@ -91,6 +91,8 @@ The project for 3004
 - to store a list of recipes, like liked list and search list
 ###### RecipeChoice.java
 - to store the first n(now it is 5) recipes that will show up in the main screen
+###### UserPreference.java
+- to store the user preference
 ###### Recipe.java
 - to store all the information of the recipes
 ###### RandomRecipeGenerator.java

@@ -6,6 +6,7 @@ Finished List:
 - splash screen
 - user can define their own ingredients now
 - fixing recipe filter (now it can generate a request link for random ingredients)
+- created a user preferences class lol
 
 Haven’t done list:
 1. Ugly layout for some activities (not sure if any left)
@@ -21,3 +22,4 @@ Haven’t done list:
 Challenge:
 1. Timer in recipes <— could be difficult because it will duel with another widget type
 2. Notification for the app <- might require me to use server/another api
+3. Can we set up a server for data-centric style?

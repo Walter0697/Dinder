@@ -381,7 +381,8 @@ public class MainScreen extends Fragment{
         Singleton.getInstance().getRecipeChoice().getRecipe();
         //updating shared perference
         Singleton.getInstance().updateSharedPreference();
-        Log.d("link", GetRequestURLGenerate.getRandomURL());
+
+        //Log.d("link", GetRequestURLGenerate.getRandomURL());
         setFoodView();
     }
 

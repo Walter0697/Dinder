@@ -52,17 +52,6 @@
         android:text="Calorie"
         android:textSize="15dp"/>
 
-    <RatingBar
-        android:id="@+id/searchDifficulty"
-        style="@android:style/Widget.Material.RatingBar.Small"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/searchCuisine"
-        android:layout_below="@+id/searchDuration"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:rating="1" />
-
     <ImageView
         android:id="@+id/searchSave"
         android:layout_width="wrap_content"

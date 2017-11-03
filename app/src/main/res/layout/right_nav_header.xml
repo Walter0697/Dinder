@@ -70,36 +70,6 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal"
-                android:weightSum="1">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.35"
-                    android:text="Difficulty:  "
-                    android:textSize="20dp" />
-
-                <RatingBar
-                    android:id="@+id/difficultyBar"
-                    style="@android:style/Widget.Material.RatingBar.Small"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_weight="0.65"
-                    android:focusable="true"
-                    android:isIndicator="false"
-                    android:numStars="5"
-                    android:rating="1" />
-
-            </LinearLayout>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

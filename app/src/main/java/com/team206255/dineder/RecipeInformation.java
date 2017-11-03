@@ -55,9 +55,6 @@ public class RecipeInformation extends AppCompatActivity {
         TextView nameText = (TextView) findViewById(R.id.recipeNameText);
         nameText.setText(currentRecipe.name);
 
-        RatingBar difficultyBar = (RatingBar) findViewById(R.id.currentDifficultyBar);
-        difficultyBar.setRating(currentRecipe.difficulty);
-
         TextView cuisineText = (TextView) findViewById(R.id.cuisineView);
         cuisineText.setText(currentRecipe.getCuisine(getApplicationContext()));
 

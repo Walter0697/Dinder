@@ -22,9 +22,7 @@ public class Recipe implements Serializable{
     float calorie;
     Cuisine type;
 
-    static Context context;
-
-    boolean loaded;
+    //add whatever you want
 
     public Recipe(String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     {
@@ -36,8 +34,6 @@ public class Recipe implements Serializable{
         this.duration = duration;
         this.calorie = calorie;
         this.type = Cuisine.HONGKONG;
-
-        loaded = false;
     }
 
     //this should be the recipe information when the recipe isn't passing thought the activity correctly
@@ -54,8 +50,6 @@ public class Recipe implements Serializable{
         duration = 10.f;
         calorie = 10.f;
         type = Cuisine.ALL;
-
-        loaded = true;
     }
 
     public Recipe(int i)
@@ -93,8 +87,6 @@ public class Recipe implements Serializable{
             pictureView = "https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg";
             name = "Green Onion";
         }
-
-        loaded = false;
     }
 
     public String getCuisine(Context context)

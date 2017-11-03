@@ -129,9 +129,6 @@ public class CustomeAdapter extends BaseAdapter {
                 TextView searchCalorie = (TextView) v.findViewById(R.id.searchCalorie);
                 searchCalorie.setText("Calorie: " + Float.toString(items.getRecipe(i).calorie));
 
-                RatingBar searchDifficulty = (RatingBar) v.findViewById(R.id.searchDifficulty);
-                searchDifficulty.setRating(items.getRecipe(i).difficulty);
-
                 ImageView searchSaveButton = (ImageView) v.findViewById(R.id.searchSave);
                 Bitmap searchSaveImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.heart, 0.05f);
                 searchSaveButton.setImageBitmap(searchSaveImage);

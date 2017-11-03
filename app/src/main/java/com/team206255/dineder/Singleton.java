@@ -18,6 +18,7 @@ public class Singleton {
     private RecipeChoice recipeChoice;
     private RecipeList recipeList;
     private CalendarStorage calendarStorage;
+    private Userpreference userpreference;
 
     private SharedPreferences sharedPreferences;
 
@@ -90,6 +91,20 @@ public class Singleton {
             prefsEditor.putString("recipeFilter", filterJson);
             prefsEditor.commit();
         }
+
+        if (sharedPreferences.contains("userPreference"))
+        {
+            String userJson = sharedPreferences.getString("userPreference", "");
+            userpreference = gson.fromJson(userJson, Userpreference.class);
+        }
+        else
+        {
+            userpreference = new Userpreference();
+            SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+            String userJson = gson.toJson(userpreference);
+            prefsEditor.putString("userPreference", userJson);
+            prefsEditor.commit();
+        }
     }
 
     //updating the shared preference
@@ -110,6 +125,9 @@ public class Singleton {
         String filterJson = gson.toJson(recipeFilter);
         prefsEditor.putString("recipeFilter", filterJson);
 
+        String userJson = gson.toJson(userpreference);
+        prefsEditor.putString("userPreference", userJson);
+
         prefsEditor.commit();
     }
 
@@ -124,6 +142,7 @@ public class Singleton {
         recipeFilter = new RecipeFilter();
         calendarStorage = new CalendarStorage();
         recipeList = new RecipeList();
+        userpreference = new Userpreference();
 
         updateSharedPreference();
     }

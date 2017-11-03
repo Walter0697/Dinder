@@ -16,7 +16,6 @@ public class RecipeFilter implements Serializable{
 
     boolean[] cuisine = new boolean[Cuisine.values().length];
     boolean[] ingredients = new boolean[Ingredient.values().length];
-    int difficulty;
     float duration;
     float calorie;
 
@@ -28,7 +27,6 @@ public class RecipeFilter implements Serializable{
         ingredientsSelectAll();
         duration = InfoDefine.maxDuration;
         calorie = InfoDefine.maxCalorie;
-        difficulty = 1;
     }
 
     //select all of the ingredients
@@ -139,34 +137,30 @@ public class RecipeFilter implements Serializable{
         return output;
     }
 
-    public String toString(String[] test)
+    public String[] selectedCuisine(Context context)
     {
-        String output = "";
-        for (int i = 0; i < test.length; i++)
+        String[] list = context.getResources().getStringArray(R.array.cuisine);
+        String[] output = new String[number_of_selected_cuisine()];
+        int j = 0;
+        for (int i = 0; i < list.length; i++)
         {
-            output += test[i] + ", ";
+            if (cuisine[i])
+                output[j++] = list[i];
         }
         return output;
+    }
+
+    public String randomSelectedCuisine(Context context)
+    {
+        String[] list = selectedCuisine(context);
+        Random rand = new Random();
+        return list[rand.nextInt(list.length)];
     }
 
     public void combineRecipe(RecipeFilter other)
     {
         //do some shits
         //later
-    }
-
-    public String cuisineToString(Context context)
-    {
-        String result = "";
-        String[] list = context.getResources().getStringArray(R.array.cuisine);
-
-        for (int i = 1; i < list.length; i++)
-        {
-            if (cuisine[i])
-                result += list[i] + ", ";
-        }
-        result = result.substring(0, result.length() - 2);
-        return result;
     }
 
     public String combineString(String a, String b, String middle)

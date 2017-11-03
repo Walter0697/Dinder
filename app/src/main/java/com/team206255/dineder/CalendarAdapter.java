@@ -85,7 +85,6 @@ public class CalendarAdapter extends BaseAdapter {
         TextView calendarDuration = (TextView) v.findViewById(R.id.calendarDuration);
         TextView calendarCalorie = (TextView) v.findViewById(R.id.calendarCalorie);
         TextView calendarCuisine = (TextView) v.findViewById(R.id.calendarCuisine);
-        RatingBar calendarDifficulty = (RatingBar) v.findViewById(R.id.calendarDifficulty);
         ImageView removeButton = (ImageView) v.findViewById(R.id.removeButton);
 
         Recipe currentRecipe = (Recipe)getItem(i);
@@ -98,7 +97,6 @@ public class CalendarAdapter extends BaseAdapter {
             calendarDuration.setVisibility(View.VISIBLE);
             calendarCalorie.setVisibility(View.VISIBLE);
             calendarCuisine.setVisibility(View.VISIBLE);
-            calendarDifficulty.setVisibility(View.VISIBLE);
             removeButton.setVisibility(View.VISIBLE);
 
             ImageProcessor.setURLImage(context, currentRecipe.pictureView, 0.2f,
@@ -117,7 +115,6 @@ public class CalendarAdapter extends BaseAdapter {
             calendarDuration.setText("Duration: " + Float.toString(currentRecipe.duration) + "mins");
             calendarCalorie.setText("Calorie: " + Float.toString(currentRecipe.calorie));
             calendarCuisine.setText(currentRecipe.getCuisine(context));
-            calendarDifficulty.setRating(currentRecipe.difficulty);
             Bitmap removeBitmap = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.05f);
             removeButton.setImageBitmap(removeBitmap);
             removeButton.setOnClickListener(new View.OnClickListener() {
@@ -139,7 +136,6 @@ public class CalendarAdapter extends BaseAdapter {
             calendarDuration.setVisibility(View.INVISIBLE);
             calendarCalorie.setVisibility(View.INVISIBLE);
             calendarCuisine.setVisibility(View.INVISIBLE);
-            calendarDifficulty.setVisibility(View.INVISIBLE);
             removeButton.setVisibility(View.INVISIBLE);
         }
         return v;

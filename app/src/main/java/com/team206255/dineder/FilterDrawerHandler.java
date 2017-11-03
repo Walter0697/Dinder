@@ -32,7 +32,6 @@ public class FilterDrawerHandler {
     private EditText durationNum;
     private SeekBar calorieSeekBar;
     private EditText calorieNum;
-    private RatingBar difficultyBar;
     private ListView ingredientView;
 
     public FilterDrawerHandler(Context c)
@@ -168,17 +167,6 @@ public class FilterDrawerHandler {
         });
 
         ///////////////////////////////////////////////////////////////////
-        //DIFFICULTY RATING BAR
-        //setting up the rating bar
-        difficultyBar = (RatingBar) headerView.findViewById(R.id.difficultyBar);
-        difficultyBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                Singleton.getInstance().getRecipeFilter().difficulty = (int)v;
-            }
-        });
-
-        ///////////////////////////////////////////////////////////////////
         //INGREDIENT CHECK BOX
         StringAdapter ingredientAdapter = new StringAdapter(context, R.layout.check_box_detail, context.getResources().getStringArray(R.array.ingredient), InfoDefine.ListType.INGREDIENT_BOX);
         ingredientView = (ListView) headerView.findViewById(R.id.ingredientList);
@@ -202,8 +190,6 @@ public class FilterDrawerHandler {
         //getting the value from the filter
         calorieNum.setText(Integer.toString((int)filter.calorie));
         calorieSeekBar.setProgress((int)filter.calorie);
-
-        difficultyBar.setRating((float)filter.difficulty);
 
         ingredientView.invalidate();
         ((StringAdapter)ingredientView.getAdapter()).items2 = filter.userDefineIngredients;

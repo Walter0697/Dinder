@@ -19,7 +19,6 @@ import android.widget.SeekBar;
 
 public class FilterScreen extends AppCompatActivity {
 
-    private RatingBar difficultyBar;
     private SeekBar durationSeekBar;
     private EditText durationNum;
     private SeekBar calorieSeekBar;
@@ -54,16 +53,6 @@ public class FilterScreen extends AppCompatActivity {
         ImageView topIcon = (ImageView) findViewById(R.id.filterScreenIcon);
         Bitmap topImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filterdrawer, 0.2f);
         topIcon.setImageBitmap(topImage);
-
-        //setting up everything just like the drawer
-        //difficultyBar
-        difficultyBar = (RatingBar) findViewById(R.id.advancedDifficultyBar);
-        difficultyBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar ratingBar, float v, boolean b) {
-                recipeFilter.difficulty = (int)v;
-            }
-        });
 
         //duration seek bar and edit num
         durationSeekBar = (SeekBar) findViewById(R.id.advancedDurationSeekBar);
@@ -194,8 +183,6 @@ public class FilterScreen extends AppCompatActivity {
 
     private void setupByFilter(RecipeFilter filter)
     {
-        difficultyBar.setRating(filter.difficulty);
-
         durationSeekBar.setProgress((int)filter.duration);
         durationNum.setText(Integer.toString((int)filter.duration));
 
