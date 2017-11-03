@@ -55,6 +55,9 @@ The project for 3004
 - Interface for the helping call back function
 
 ##### Layout related classes:
+###### SplashActivity.java
+- For starting screen
+
 ###### MainActivity.java
 - Contain three classes and a view pager, so that user can change pages in the bottom bar
 - Three classes include : MainScreen, SearchScreen, and CalendarScreen

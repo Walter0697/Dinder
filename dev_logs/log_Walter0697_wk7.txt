@@ -2,13 +2,21 @@
 
 Finished List:
 - figure out the issue about cropping the image
+- setting the callback function for the image, should work fine now
+- splash screen
 
 Haven’t done list:
 1. Ugly layout for some activities (not sure if any left)
-2. Timer in recipes <— could be difficult because it will duel with another widget type
-3. “Missing ingredients” features
-4. I think the picture loading is still buggy whenever we have new picture, weird but it is about the library
-5. Animation for liking and disliking instead of just disappearing 
-6. If possible setting the aplha of the picture when dragging
-7. Starting/loading screen
-8. Notification for the app
+2. “Missing ingredients” features
+3. Animation for liking and disliking instead of just disappearing 
+4. If possible, setting the aplha of the picture when dragging
+5. Starting/loading screen
+6. User should be able to add more ingredient if they wish
+7. User preferences
+   two ways to achieve this:
+       -randomly select one recipe, then pass it to SimilarRecipe Request
+       -increase chance for different type of food, and generate a recipefilter to combine with the user defined recipe filter
+
+Challenge:
+1. Timer in recipes <— could be difficult because it will duel with another widget type
+2. Notification for the app <- might require me to use server/another api
