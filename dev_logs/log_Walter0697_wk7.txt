@@ -10,9 +10,8 @@ Haven’t done list:
 2. “Missing ingredients” features
 3. Animation for liking and disliking instead of just disappearing 
 4. If possible, setting the aplha of the picture when dragging
-5. Starting/loading screen
-6. User should be able to add more ingredient if they wish
-7. User preferences
+5. User should be able to add more ingredient if they wish
+6. User preferences
    two ways to achieve this:
        -randomly select one recipe, then pass it to SimilarRecipe Request
        -increase chance for different type of food, and generate a recipefilter to combine with the user defined recipe filter
