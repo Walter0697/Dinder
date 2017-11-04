@@ -367,7 +367,9 @@ public class MainScreen extends Fragment{
     {
         testing.setText("Like");
         Singleton.getInstance().getRecipeList().addRecipe(Singleton.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
+        Singleton.getInstance().getUserpreference().likedID.add(Singleton.getInstance().getRecipeChoice().getChoiceRecipe().id);
         Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+
         listDrawerHandler.updateLikedView();
         //updating shared perference
         Singleton.getInstance().updateSharedPreference();

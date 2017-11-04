@@ -164,6 +164,8 @@ public class Singleton {
         return calendarStorage;
     }
 
+    public Userpreference getUserpreference() { return userpreference; }
+
     public void setRecipeChoice(RecipeChoice recipeChoice) { this.recipeChoice = recipeChoice; }
 
     public void setRecipeFilter(RecipeFilter recipeFilter) { this.recipeFilter = recipeFilter; }
@@ -171,4 +173,6 @@ public class Singleton {
     public void setRecipeList(RecipeList recipeList) { this.recipeList = recipeList; }
 
     public void setCalendarStorage(CalendarStorage calendarStorage) { this.calendarStorage = calendarStorage; }
+
+    public void setUserpreference(Userpreference userpreference) { this.userpreference = userpreference; }
 }
