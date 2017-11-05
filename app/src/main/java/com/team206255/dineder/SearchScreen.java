@@ -20,6 +20,8 @@ public class SearchScreen extends Fragment{
     RecipeFilter searchFilter = new RecipeFilter();
     RecipeList recipeList = new RecipeList();
 
+    CustomeAdapter customeAdapter;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstance)
@@ -31,7 +33,7 @@ public class SearchScreen extends Fragment{
         Bitmap searchImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.search_icon, 0.1f);
         searchIcon.setImageBitmap(searchImage);
 
-        CustomeAdapter customeAdapter = new CustomeAdapter(getContext(), recipeList, R.layout.search_list_detail, InfoDefine.ListType.SEARCH_LIST, getActivity());
+        customeAdapter = new CustomeAdapter(getContext(), recipeList, R.layout.search_list_detail, InfoDefine.ListType.SEARCH_LIST, getActivity());
         searchList = (ListView) view.findViewById(R.id.searchList);
         searchList.getLayoutParams().height = (int)(metrics.heightPixels * 0.7);
         searchList.setAdapter(customeAdapter);

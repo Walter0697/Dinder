@@ -41,18 +41,6 @@ public class MainActivity extends AppCompatActivity {
         metrics = this.getResources().getDisplayMetrics();
         setContentView(R.layout.activity_main);
 
-        //set up things for the random recipe generator
-        //like context
-        RandomRecipeGenerator.setupDummy();
-        RandomRecipeGenerator.setUpQueue(this);
-        //set up context for getrequestgenerator
-        GetRequestURLGenerate.setContact(this);
-
-        //setting up everything from the shared preference
-        Singleton.getInstance().setSharedPreferences(this);
-        //if for testing ,wanna reset everything inside the app
-        Singleton.getInstance().resetSharedPreference();
-
         //setting up the context for the recipe filter so you can accesss R.string
         //Singleton.getInstance().getRecipeFilter().setUpContext(getApplicationContext());
         //creating new class
@@ -124,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     //change to the corresponding page when button click
     //0:searchScreen
     //1:mainScreen
-    //2:favouriteScreen
+    //2:calendarScreen
     View.OnClickListener fragmentListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {

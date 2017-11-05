@@ -12,6 +12,18 @@ public class SplashActivity extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
 
+        //loading everything before getting inside the main screen
+        //set up things for the random recipe generator
+        RandomRecipeGenerator.setupDummy();
+        RandomRecipeGenerator.setUpQueue(this);
+        //set up context for getrequestgenerator
+        GetRequestURLGenerate.setContact(this);
+
+        //setting up everything from the shared preference
+        Singleton.getInstance().setSharedPreferences(this);
+        //if for testing ,wanna reset everything inside the app
+        Singleton.getInstance().resetSharedPreference();
+
         Thread startThread = new Thread(){
             @Override
             public void run(){
