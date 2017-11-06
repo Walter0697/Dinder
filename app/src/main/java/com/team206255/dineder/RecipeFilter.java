@@ -99,28 +99,24 @@ public class RecipeFilter implements Serializable{
         userDefineIngredients.remove(n);
     }
 
-    public String[] ingredientToList(Context context, int num)
+    public String[] ingredientToList(Context context)
     {
-        String[] output = new String[num];
-        String[] list = selectedIngredients(context);
-        Random rand = new Random();
-        for (int i = 0; i < num; i++)
-        {
-            int randnum = rand.nextInt(list.length + userDefineIngredients.size());
-            if (randnum >= list.length)
-                output[i] = userDefineIngredients.get(randnum - list.length);
-            else
-                output[i] = list[randnum];
+        String[] output = new String[ingredients.length + userDefineIngredients.size()];
+        String[] list = context.getResources().getStringArray(R.array.ingredient);
+        for (int i = 0; i < ingredients.length; i++)
+            output[i] = list[i];
+        for (int i = 0; i < userDefineIngredients.size(); i++)
+            output[i + ingredients.length] = userDefineIngredients.get(i);
+        return output;
+    }
 
-            //check if duplicate
-            for (int j = 0; j < i; j++)
-            {
-                if (output[i] == output[j]) {
-                    i--;
-                    break;
-                }
-            }
-        }
+    public boolean[] ingredientChance()
+    {
+        boolean[] output = new boolean[ingredients.length + userDefineIngredients.size()];
+        for (int i = 0 ;i < ingredients.length; i++)
+            output[i] = ingredients[i];
+        for (int i = 0; i < userDefineIngredients.size(); i++)
+            output[i + ingredients.length] = true;
         return output;
     }
 

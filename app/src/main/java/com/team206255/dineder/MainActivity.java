@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ScrollView;
 
 import java.util.Random;
 
@@ -155,6 +156,7 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Singleton.getInstance().setRecipeFilter((RecipeFilter) data.getSerializableExtra("OUTPUTFILTER"));
                 mainScreen.filterDrawerHandler.setValueByFilter(Singleton.getInstance().getRecipeFilter());
+                mainScreen.filterView.scrollTo(0, mainScreen.filterView.getBottom());
             }
         }
         else if (requestCode == InfoDefine.REQUEST_FOR_SEARCH){

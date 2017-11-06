@@ -4,8 +4,8 @@ Oct04 - Oct10 week 3
 Oct11 - Oct17 week 4
 Oct18 - Oct24 week 5
 Oct25 - Oct31 week 6
-Nov01 - Nov07 week 7    << this week
-Nov08 - Nov14 week 8
+Nov01 - Nov07 week 7 
+Nov08 - Nov14 week 8 <- Current
 Nov15 - Nov21 week 9
 Nov22 - Nov28 week 10
 Nov29 - Dec05 week 11

@@ -48,6 +48,7 @@ public class MainScreen extends Fragment{
     //set up the handler here
     ListDrawerHandler listDrawerHandler;
     FilterDrawerHandler filterDrawerHandler;
+    ScrollView filterView;
 
     //drag container for the non-transparent drag shader
     DragContainer dragContainer;
@@ -248,7 +249,7 @@ public class MainScreen extends Fragment{
             }
         });
 
-        ScrollView filterView = (ScrollView) rightView.findViewById(R.id.filterScrollView);
+        filterView = (ScrollView) rightView.findViewById(R.id.filterScrollView);
         //disable scrolling for background but enable it for listview
         filterView.setOnTouchListener(new ScrollView.OnTouchListener() {
             @Override

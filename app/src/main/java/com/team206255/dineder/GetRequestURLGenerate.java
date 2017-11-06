@@ -1,6 +1,7 @@
 package com.team206255.dineder;
 
 import android.content.Context;
+import android.util.Log;
 
 import java.util.Random;
 
@@ -25,13 +26,20 @@ public class GetRequestURLGenerate {
 
     public static String getRandomURL()
     {
-        String ingredients = combineString(Singleton.getInstance().getRecipeFilter().ingredientToList(mcontext, rand.nextInt(3) + 2));
-        return "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=1&tags=" + ingredients;
+        String[] ingredients = randomElement(Singleton.getInstance().getRecipeFilter().ingredientToList(mcontext),
+                                            Singleton.getInstance().getRecipeFilter().ingredientChance(),
+                                            rand.nextInt(3) + 2);
+        String ingre = combineString(ingredients);
+        Log.d("result", "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=1&tags=" + ingre);
+        return "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=1&tags=" + ingre;
     }
 
     public static String getComplexURL()
     {
-        String ingredients = combineString(Singleton.getInstance().getRecipeFilter().ingredientToList(mcontext, rand.nextInt(3) + 2));
+        String[] ingredients = randomElement(Singleton.getInstance().getRecipeFilter().ingredientToList(mcontext),
+                                            Singleton.getInstance().getRecipeFilter().ingredientChance(),
+                                            rand.nextInt(3) + 2);
+        String ingre = combineString(ingredients);
         String cuisine = Singleton.getInstance().getRecipeFilter().randomSelectedCuisine(mcontext);
 
         return "";
@@ -45,6 +53,44 @@ public class GetRequestURLGenerate {
             output += list[i] + "%2C";
         }
         output = output.substring(0, output.length() - 3);
+        return output;
+    }
+
+    private static String[] randomElement(String[] list, boolean[] chance, int num)
+    {
+        String[] output = new String[num];
+        for (int i = 0; i < num; i++)
+        {
+            int index = rand.nextInt(output.length);
+            if (chance[index])
+            {
+                if (rand.nextInt(100) < 50) {
+                    output[i] = list[index];
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (output[i] == output[j])
+                            i--;
+                    }
+                }
+                else
+                    i--;
+            }
+            else
+            {
+                if (rand.nextInt(100) < 10)
+                {
+                    output[i] = list[index];
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (output[i] == output[j])
+                            i--;
+                    }
+                }
+                else
+                    i--;
+
+            }
+        }
         return output;
     }
 }
