@@ -8,17 +8,17 @@ Finished List:
 - fixing recipe filter (now it can generate a request link for random ingredients)
 - created a user preferences class lol
 - url generator
+- setting alpha when dragging!!!!
 
 Haven’t done list:
 1. Ugly layout for some activities (not sure if any left)
 2. “Missing ingredients” features
 3. Animation for liking and disliking instead of just disappearing 
-4. If possible, setting the aplha of the picture when dragging
-5. User preferences
+4. User preferences
    two ways to achieve this:
        -randomly select one recipe, then pass it to SimilarRecipe Request <-- do this first, later change
        -increase chance for different type of food, and generate a recipefilter to combine with the user defined recipe filter
-6. Setup class to convert list to url
+5. Setup class to convert list to url
 
 Challenge:
 1. Timer in recipes <— could be difficult because it will duel with another widget type

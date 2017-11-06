@@ -3,6 +3,7 @@ package com.team206255.dineder;
 import android.content.ClipData;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.util.AttributeSet;
@@ -21,6 +22,8 @@ import android.widget.FrameLayout;
 
 public class DragContainer extends ViewGroup {
     private View target;
+
+    private int alpha = 255;
 
     public DragContainer(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
@@ -93,7 +96,14 @@ public class DragContainer extends ViewGroup {
         int h = target.getHeight();
         int w = target.getWidth();
         canvas.translate(mDragX - w / 2, mDragY - h / 2);
+        canvas.saveLayerAlpha(0, 0, canvas.getWidth(), canvas.getHeight(), alpha);
         target.draw(canvas);
+    }
+
+    public void setAlpha(int opacity)
+    {
+        alpha = opacity;
+        invalidate();
     }
 
     protected float getDragX() {

@@ -25,8 +25,6 @@ import com.squareup.picasso.Target;
 
 public class ImageProcessor {
 
-    static boolean loaded = false;
-
     //to scale the image according to the screen width
     public static Bitmap scaleImage(DisplayMetrics displayMetrics, Resources res, int pic, float ratio)
     {
@@ -120,7 +118,7 @@ public class ImageProcessor {
         p.setXfermode(null);
         p.setStyle(Paint.Style.STROKE);
         p.setColor(Color.BLUE);
-        p.setStrokeWidth(15);
+        p.setStrokeWidth(10);
         c.drawCircle((h / 2) + 4, (h / 2) + 4, radius, p);
 
         return output;
@@ -140,7 +138,6 @@ public class ImageProcessor {
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, 1.0f);
                 callback.onSuccess(bitmap);
-                loaded = true;
             }
 
             @Override
@@ -183,7 +180,7 @@ public class ImageProcessor {
                 bitmap = getCroppedBitmap(bitmap);
                 bitmap = drawCircleBorder(bitmap);
                 bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
-                callback.onSuccess(bitmap);
+                callback.onSuccess((Bitmap)null);
             }
         };
 

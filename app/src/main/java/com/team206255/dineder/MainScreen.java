@@ -315,7 +315,22 @@ public class MainScreen extends Fragment{
             int event = dragEvent.getAction();
             switch(event)
             {
+                case DragEvent.ACTION_DRAG_LOCATION:
+                    //set up alpha
+                    //towards liking
+                    if (getTouchPosition(view, dragEvent).x >= (int)(metrics.widthPixels * 0.5))
+                    {
+                        dragContainer.setAlpha(255 - (int)(((getTouchPosition(view, dragEvent).x - metrics.widthPixels * 0.5) / metrics.widthPixels) * 255));
+                    }
+                    //towards disliking
+                    else
+                    {
+                        dragContainer.setAlpha(255 - (int)(((metrics.widthPixels * 0.5 - getTouchPosition(view, dragEvent).x) / metrics.widthPixels) * 255));
+                    }
+
+                    break;
                 case DragEvent.ACTION_DRAG_ENDED:
+                    dragContainer.setAlpha(255);
                     view.setAlpha(1);
                     view.setVisibility(View.VISIBLE);
                     break;
