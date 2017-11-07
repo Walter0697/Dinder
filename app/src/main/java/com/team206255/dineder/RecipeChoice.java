@@ -44,7 +44,7 @@ public class RecipeChoice {
             @Override
             public void onSuccess(JSONObject result) {
                 //parsing into recipe
-                //Log.d("result", result.toString());
+                Log.d("result", result.toString());
 
 
                 //--->I set it so whenever you clicked dislike, it will get one recipe from the api

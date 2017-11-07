@@ -28,9 +28,9 @@ public class GetRequestURLGenerate {
     {
         String[] ingredients = randomElement(Singleton.getInstance().getRecipeFilter().ingredientToList(mcontext),
                                             Singleton.getInstance().getRecipeFilter().ingredientChance(),
-                                            rand.nextInt(3) + 2);
+                                            1);
         String ingre = combineString(ingredients);
-        Log.d("result", "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=1&tags=" + ingre);
+        Log.d("results", "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=1&tags=" + ingre);
         return "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=1&tags=" + ingre;
     }
 
