@@ -75,6 +75,8 @@ public class RecipeChoice {
                 //String instructions = rec.optString("instructions");
                 int duration = rec.optInt("readyInMinutes");
                 int health = rec.optInt("healthScore");
+                int id = rec.optInt("id");
+                int serving = rec.optInt("servings");
                 JSONArray ingredients = rec.optJSONArray("extendedIngredients");
 
                 String[] ingred = new String[100];
@@ -89,9 +91,13 @@ public class RecipeChoice {
                 }
 
                 Log.d("TITLE",title);
+                Log.d("id", String.valueOf(id));
+                Log.d("serving", String.valueOf(serving));
                 Log.d("URL",URL);
                 Log.d("INSTRUCTIONS",instructionsArray[0]);
                 Log.d("ingredients",ingred[0]);
+                Log.d("duration", String.valueOf(duration));
+                Log.d("health", String.valueOf(health));
 
 
             }
