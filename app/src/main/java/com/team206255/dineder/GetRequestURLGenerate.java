@@ -9,7 +9,7 @@ import java.util.Random;
  * Created by walter on 2017-11-03.
  */
 
-//complex one : "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=true&cuisine=hongkong&fillIngredients=true&includeIngredients=onions%2Clettuce%2Ctomato&instructionsRequired=true&intolerances=peanut%2C+shellfish&limitLicense=true&maxCalories=1500&maxCarbs=100&maxFat=100&maxProtein=100&number=1&offset=0&query=0&ranking=1"
+//complex one : "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=true&cuisine=chinese&fillIngredients=true&includeIngredients=tomato&instructionsRequired=true&intolerances=peanut%2C+shellfish&limitLicense=true&maxCalories=1500&maxCarbs=100&maxFat=100&maxProtein=100&number=1&offset=0&query=0&ranking=1"
 //random one : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1&tags=vegetarian%2Cdessert
 //similar one : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/156992/similar
 //food information : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/479101/information?includeNutrition=true

@@ -21,7 +21,7 @@ The project for 3004
 - Factory pattern
 #### Style:
 - Client and Server between the app and the api
-- to be determined
+- Object Oriented (?)
 
 ### Files include:
 
