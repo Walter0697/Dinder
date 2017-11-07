@@ -265,6 +265,6 @@ public class RandomRecipeGenerator {
                 return params;
             }
         };
-        //queue.add(getRequest);
+        queue.add(getRequest);
     }
 }

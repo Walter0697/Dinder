@@ -66,14 +66,21 @@ public class RecipeChoice {
                 //JsonParser parser = new JsonParser();
                 //JSONArray recipes = result.getJSONArray("recipes");
 
+                // int id, String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie
+
                 JSONArray recipes = result.optJSONArray("recipes");
                 JSONObject rec = recipes.optJSONObject(0);
                 String title = rec.optString("title");
                 String URL = rec.optString("image");
-                String instructions = rec.optString("instructions");
+                //String instructions = rec.optString("instructions");
+                int duration = rec.optInt("readyInMinutes");
+                int health = rec.optInt("healthScore");
                 JSONArray ingredients = rec.optJSONArray("extendedIngredients");
 
                 String[] ingred = new String[100];
+                String[] instructionsArray = new String[100];
+
+                instructionsArray[0] = rec.optString("instructions");
 
                 for(int k = 0; k < ingredients.length(); k++)
                 {
@@ -83,7 +90,7 @@ public class RecipeChoice {
 
                 Log.d("TITLE",title);
                 Log.d("URL",URL);
-                Log.d("INSTRUCTIONS",instructions);
+                Log.d("INSTRUCTIONS",instructionsArray[0]);
                 Log.d("ingredients",ingred[0]);
 
 
