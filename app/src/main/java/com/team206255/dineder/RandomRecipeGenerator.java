@@ -252,6 +252,7 @@ public class RandomRecipeGenerator {
         getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
+                Log.d("result", result.toString());
                 //-->use Recipe(int id, String name, String pictureUrl)
                 //****************DO THIS FIRST TO SEE IF IT WILL WORK***************
                 //Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
@@ -277,6 +278,7 @@ public class RandomRecipeGenerator {
             @Override
             public void onSuccess(JSONObject result) {
 
+                //retrieveInformation(String[] ingredients, String[] steps, float duration, float calorie, float fat, float protein, float carbs, int healthScore)
                 switch(list)
                 {
                     case 0:
