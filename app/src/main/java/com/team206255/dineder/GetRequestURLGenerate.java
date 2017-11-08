@@ -67,7 +67,7 @@ public class GetRequestURLGenerate {
         String[] output = new String[num];
         for (int i = 0; i < num; i++)
         {
-            int index = rand.nextInt(output.length);
+            int index = rand.nextInt(list.length);
             if (chance[index])
             {
                 if (rand.nextInt(100) < 50) {
