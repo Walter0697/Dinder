@@ -99,6 +99,14 @@ public class RecipeChoice {
                 Log.d("duration", String.valueOf(duration));
                 Log.d("health", String.valueOf(health));
 
+                // int id, String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie
+
+                float dur = (float)duration;
+                float healthScore = (float)health;
+
+                //serving number is being sent in as difficulty for now 
+                Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
+
 
             }
 
