@@ -396,7 +396,9 @@ public class MainScreen extends Fragment{
     {
         testing.setText("Dislike");
         Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
-        Singleton.getInstance().getRecipeChoice().getRecipe();
+        //***********ONLY FOR TESTING!!!!**************
+        Singleton.getInstance().getRecipeChoice().getRecipeTest();
+        //*********************************************
         //updating shared perference
         Singleton.getInstance().updateSharedPreference();
 

@@ -246,9 +246,61 @@ public class RandomRecipeGenerator {
         return list.get(rand.nextInt(list.size()));
     }
 
+    public static void getNutrientsRecipeAPI()
+    {
+        setURL(GetRequestURLGenerate.getNutrientsURL());
+        getJSONObject(new CallbackHelper() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                //-->use Recipe(int id, String name, String pictureUrl)
+                //Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
+            }
+
+            @Override
+            public void onSuccess(Bitmap result) {
+
+            }
+        });
+    }
+
+    //list information
+    //-> 0. Swiping one
+    //-> 1. Liked List
+    //-> 2. CalendarStorage (for the current day)
+    public static void setToRecipeAPI(int id, final int list, final int position)
+    {
+        setURL(GetRequestURLGenerate.getFoodinfoURL(id));
+        //return for invalid number
+        if (list > 2 || list < 0) return;
+        getJSONObject(new CallbackHelper() {
+            @Override
+            public void onSuccess(JSONObject result) {
+
+                switch(list)
+                {
+                    case 0:
+                        //Singleton.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation();
+                        break;
+                    case 1:
+                        //Singleton.getInstance().getRecipeList().getRecipe(position).retrieveInformation();
+                        break;
+                    case 2:
+                        //Singleton.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation();
+                        break;
+                }
+            }
+
+            @Override
+            public void onSuccess(Bitmap result) {
+
+            }
+        });
+    }
+
     //to get the json file and parse them into Recipe class
     public static void getRandomRecipeAPI()
     {
+        //setURL(GetRequestURLGenerate.getRandomURL());
         getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
@@ -291,6 +343,7 @@ public class RandomRecipeGenerator {
                 //serving number is being sent in as difficulty for now
                 Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
 
+                //later should be change to adding to recipe choice
                 Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
             }
 
@@ -328,6 +381,6 @@ public class RandomRecipeGenerator {
                 return params;
             }
         };
-        queue.add(getRequest);
+        //queue.add(getRequest);
     }
 }

@@ -38,11 +38,10 @@ public class RecipeChoice {
         showlist[MAX_WAIT_CHOICE - 1] = recipe;
     }
 
-    public void getRecipe()
+    public void getRecipeTest()
     {
         //RandomRecipeGenerator.setURL(GetRequestURLGenerate.getNutrientsURL());
-        RandomRecipeGenerator.setURL(GetRequestURLGenerate.getRandomURL());
-        RandomRecipeGenerator.getRandomRecipeAPI();
+        RandomRecipeGenerator.getNutrientsRecipeAPI();
     }
 
     public Recipe getChoiceRecipe()

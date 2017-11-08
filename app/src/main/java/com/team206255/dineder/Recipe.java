@@ -35,6 +35,17 @@ public class Recipe implements Serializable{
         this.id = id;
         this.name = name;
         this.pictureView = pictureUrl;
+        this.steps = new String[1];
+        steps[0] = "loading";
+        ingredients = new String[1];
+        ingredients[0] = "loading";
+        duration = 0;
+        calorie = 0;
+        fat = 0;
+        protein = 0;
+        carbs = 0;
+        healthScore = 0;
+
         fullyLoaded = false;
     }
 
