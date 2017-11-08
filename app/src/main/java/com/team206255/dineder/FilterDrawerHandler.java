@@ -27,12 +27,10 @@ public class FilterDrawerHandler {
     private Context context;
 
     //set the widgets here so that we can use for all function
-    private Spinner cuisineSelect;
     private SeekBar durationSeekBar;
     private EditText durationNum;
     private SeekBar calorieSeekBar;
     private EditText calorieNum;
-    private ListView ingredientView;
 
     public FilterDrawerHandler(Context c)
     {
@@ -53,26 +51,6 @@ public class FilterDrawerHandler {
         ImageView drawerIcon = (ImageView) headerView.findViewById(R.id.drawerRightIcon);
         Bitmap drawerImage = ImageProcessor.scaleImage(metrics, headerView.getResources(), R.drawable.filterdrawer, 0.1f);
         drawerIcon.setImageBitmap(drawerImage);
-
-        ///////////////////////////////////////////////////////////////////
-        //CURSINE SPINNER
-        //setting up the spinner and set up its listener
-        cuisineSelect = (Spinner) headerView.findViewById(R.id.selectCuisine);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.cuisine, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        cuisineSelect.setAdapter(adapter);
-
-        cuisineSelect.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                Singleton.getInstance().getRecipeFilter().cuisine_selected_by_position(i);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
 
         ///////////////////////////////////////////////////////////////////
         //DURATION SEEKBAR + EDITTEXT
@@ -166,23 +144,11 @@ public class FilterDrawerHandler {
             }
         });
 
-        ///////////////////////////////////////////////////////////////////
-        //INGREDIENT CHECK BOX
-        StringAdapter ingredientAdapter = new StringAdapter(context, R.layout.check_box_detail, context.getResources().getStringArray(R.array.ingredient), InfoDefine.ListType.INGREDIENT_BOX);
-        ingredientView = (ListView) headerView.findViewById(R.id.ingredientList);
-        ingredientView.setAdapter(ingredientAdapter);
-
         setValueByFilter(Singleton.getInstance().getRecipeFilter());
     }
 
     public void setValueByFilter(RecipeFilter filter)
     {
-        //if multiple cuisines are selected, then it will select "ALL"
-        if (filter.number_of_selected_cuisine() == 1)
-            cuisineSelect.setSelection(filter.get_first_selected_cuisine());
-        else
-            cuisineSelect.setSelection(0);
-
         //getting the value from the filter
         durationNum.setText(Integer.toString((int)filter.duration));
         durationSeekBar.setProgress((int)filter.duration);
@@ -190,9 +156,5 @@ public class FilterDrawerHandler {
         //getting the value from the filter
         calorieNum.setText(Integer.toString((int)filter.calorie));
         calorieSeekBar.setProgress((int)filter.calorie);
-
-        ingredientView.invalidate();
-        ((StringAdapter)ingredientView.getAdapter()).items2 = filter.userDefineIngredients;
-        ((BaseAdapter)ingredientView.getAdapter()).notifyDataSetChanged();
     }
 }

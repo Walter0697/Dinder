@@ -79,7 +79,7 @@ public class RecipeChoice {
                 int serving = rec.optInt("servings");
                 JSONArray ingredients = rec.optJSONArray("extendedIngredients");
 
-                String[] ingred = new String[100];
+                String[] ingred = new String[ingredients.length()];
                 String[] instructionsArray = new String[100];
 
                 instructionsArray[0] = rec.optString("instructions");
@@ -107,7 +107,7 @@ public class RecipeChoice {
                 //serving number is being sent in as difficulty for now 
                 Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
 
-
+                Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
             }
 
             @Override

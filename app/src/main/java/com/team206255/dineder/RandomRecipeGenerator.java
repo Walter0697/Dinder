@@ -1,6 +1,7 @@
 package com.team206255.dineder;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -245,6 +246,7 @@ public class RandomRecipeGenerator {
     public static void getJSONObject(final CallbackHelper callback)
     {
         url = GetRequestURLGenerate.getRandomURL();
+        Log.d("api", "running");
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -265,6 +267,6 @@ public class RandomRecipeGenerator {
                 return params;
             }
         };
-        //queue.add(getRequest);
+        queue.add(getRequest);
     }
 }
