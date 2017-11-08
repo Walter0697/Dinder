@@ -253,6 +253,7 @@ public class RandomRecipeGenerator {
             @Override
             public void onSuccess(JSONObject result) {
                 //-->use Recipe(int id, String name, String pictureUrl)
+                //****************DO THIS FIRST TO SEE IF IT WILL WORK***************
                 //Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
             }
 
