@@ -1,0 +1,4 @@
+Name:  Afifa AsadWeek 7:(4 hours per day)
+0. Preparing for D31. Met with group members to discuss architecture and design.
+2. Used Volley to send requests to API.
+3. Parsing data received from API (worked with Zahra)
