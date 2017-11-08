@@ -1,0 +1,8 @@
+Week 7
+
+- Prepared for demo
+- Preparing for D3
+- Parsing data received from API (worked with Afifa)
+- Met with group, discussed architecture for D3
+  - Facade pattern?
+  - Layered style?
