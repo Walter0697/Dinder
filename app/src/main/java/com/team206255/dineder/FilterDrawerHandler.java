@@ -31,6 +31,12 @@ public class FilterDrawerHandler {
     private EditText durationNum;
     private SeekBar calorieSeekBar;
     private EditText calorieNum;
+    private SeekBar carbsSeekBar;
+    private EditText carbsNum;
+    private SeekBar fatSeekBar;
+    private EditText fatNum;
+    private SeekBar proteinSeekBar;
+    private EditText proteinNum;
 
     public FilterDrawerHandler(Context c)
     {
@@ -57,7 +63,7 @@ public class FilterDrawerHandler {
         //setting up the seekbar and edittext for duration
         durationSeekBar = (SeekBar) headerView.findViewById(R.id.durationSeekBar);
         durationNum = (EditText) headerView.findViewById(R.id.durationNum);
-        durationNum.setFilters(new InputFilter[] {new InputFilterMinMax(1, InfoDefine.maxDuration)});
+        durationNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxDuration)});
         //setting up min and max range for the seekbar
         //durationSeekBar.setMin(InfoDefine.minDuration);
         durationSeekBar.setMax(InfoDefine.maxDuration);
@@ -103,7 +109,7 @@ public class FilterDrawerHandler {
         //setting up the seekbar and edittext for duration
         calorieSeekBar = (SeekBar) headerView.findViewById(R.id.calorieSeekBar);
         calorieNum = (EditText) headerView.findViewById(R.id.calorieNum);
-        calorieNum.setFilters(new InputFilter[] {new InputFilterMinMax(1, InfoDefine.maxCalorie)});
+        calorieNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxCalorie)});
         //setting up min and max range for the seekbar
         //calorieSeekBar.setMin(InfoDefine.minCalorie);
         calorieSeekBar.setMax(InfoDefine.maxCalorie);
@@ -111,7 +117,7 @@ public class FilterDrawerHandler {
         calorieSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Singleton.getInstance().getRecipeFilter().calorie = 1;
+                Singleton.getInstance().getRecipeFilter().calorie = i;
                 calorieNum.setText(Integer.toString(i));
             }
 
@@ -144,17 +150,162 @@ public class FilterDrawerHandler {
             }
         });
 
+        ///////////////////////////////////////////////////////////////////
+        //CARBS SEEKBAR + EDITTEXT
+        //setting up the seekbar and edittext for carbs
+        carbsSeekBar = (SeekBar) headerView.findViewById(R.id.carbsSeekBar);
+        carbsNum = (EditText) headerView.findViewById(R.id.carbsNum);
+        carbsNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxCarbs)});
+        //setting up min and max range for the seekbar
+        carbsSeekBar.setMax(InfoDefine.maxCarbs);
+        //setting up the on seekbar listener
+        carbsSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Singleton.getInstance().getRecipeFilter().carbs = i;
+                carbsNum.setText(Integer.toString(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        //setting up the edittext on change listener
+        carbsNum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Singleton.getInstance().getRecipeFilter().carbs = Integer.parseInt(editable.toString());
+                carbsSeekBar.setProgress(Integer.parseInt(editable.toString()));
+            }
+        });
+
+        ///////////////////////////////////////////////////////////////////
+        //FAT SEEKBAR + EDITTEXT
+        //setting up the seekbar and edittext for fat
+        fatSeekBar = (SeekBar) headerView.findViewById(R.id.fatSeekBar);
+        fatNum = (EditText) headerView.findViewById(R.id.fatNum);
+        fatNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxFat)});
+        //setting up min and max range for the seekbar
+        fatSeekBar.setMax(InfoDefine.maxFat);
+        //setting up the on seekbar listener
+        fatSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Singleton.getInstance().getRecipeFilter().fat = i;
+                fatNum.setText(Integer.toString(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        //setting up the edittext on change listener
+        fatNum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Singleton.getInstance().getRecipeFilter().fat = Integer.parseInt(editable.toString());
+                fatSeekBar.setProgress(Integer.parseInt(editable.toString()));
+            }
+        });
+        ///////////////////////////////////////////////////////////////////
+        //PROTEIN SEEKBAR + EDITTEXT
+        //setting up the seekbar and edittext for protein
+        proteinSeekBar = (SeekBar) headerView.findViewById(R.id.proteinSeekBar);
+        proteinNum = (EditText) headerView.findViewById(R.id.proteinNum);
+        proteinNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxProtein)});
+        //setting up min and max range for the seekbar
+        proteinSeekBar.setMax(InfoDefine.maxProtein);
+        //setting up the on seekbar listener
+        proteinSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Singleton.getInstance().getRecipeFilter().protein = i;
+                proteinNum.setText(Integer.toString(i));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+        //setting up the edittext on change listener
+        proteinNum.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                Singleton.getInstance().getRecipeFilter().protein = Integer.parseInt(editable.toString());
+                proteinSeekBar.setProgress(Integer.parseInt(editable.toString()));
+            }
+        });
         setValueByFilter(Singleton.getInstance().getRecipeFilter());
     }
 
     public void setValueByFilter(RecipeFilter filter)
     {
-        //getting the value from the filter
+        //getting the duration value from the filter
         durationNum.setText(Integer.toString((int)filter.duration));
         durationSeekBar.setProgress((int)filter.duration);
 
-        //getting the value from the filter
+        //getting the calorie value from the filter
         calorieNum.setText(Integer.toString((int)filter.calorie));
         calorieSeekBar.setProgress((int)filter.calorie);
+
+        //getting the carbs value from the filter
+        carbsNum.setText(Integer.toString((int)filter.carbs));
+        carbsSeekBar.setProgress((int)filter.carbs);
+
+        //getting the fat vaule from the filter
+        fatNum.setText(Integer.toString((int)filter.fat));
+        fatSeekBar.setProgress((int)filter.fat);
+
+        //getting the protein value from the filter
+        proteinNum.setText(Integer.toString((int)filter.protein));
+        proteinSeekBar.setProgress((int)filter.protein);
     }
 }

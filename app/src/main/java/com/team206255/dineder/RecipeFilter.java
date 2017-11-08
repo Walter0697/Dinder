@@ -18,6 +18,9 @@ public class RecipeFilter implements Serializable{
     boolean[] ingredients = new boolean[Ingredient.values().length];
     float duration;
     float calorie;
+    float carbs;
+    float fat;
+    float protein;
 
     ArrayList<String> userDefineIngredients = new ArrayList<>();
 
@@ -27,6 +30,9 @@ public class RecipeFilter implements Serializable{
         ingredientsSelectAll();
         duration = InfoDefine.maxDuration;
         calorie = InfoDefine.maxCalorie;
+        carbs = InfoDefine.maxCarbs;
+        fat = InfoDefine.maxFat;
+        protein = InfoDefine.maxProtein;
     }
 
     //select all of the ingredients

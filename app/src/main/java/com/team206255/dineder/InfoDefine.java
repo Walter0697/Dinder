@@ -6,9 +6,15 @@ package com.team206255.dineder;
 
 public class InfoDefine {
     //static final int minDuration = 5;
-    static final int maxDuration = 300;
+    static final int maxDuration = 1000;
     //static final int minCalorie = 5;
     static final int maxCalorie = 1000;
+
+    static final int maxCarbs = 1000;
+
+    static final int maxFat = 1000;
+
+    static final int maxProtein = 1000;
 
     public enum Cuisine {
         ALL, HONGKONG, CHINESE, JAPANESE, KOREAN,

@@ -210,7 +210,7 @@ public class MainScreen extends Fragment{
         filterDrawerHandler.handleDrawerSetup(rightView);
 
         //set up the button for filter screen and recipe detail screen
-        TextView advancedFilter = (TextView) rightView.findViewById(R.id.advancedButton);
+        /*TextView advancedFilter = (TextView) rightView.findViewById(R.id.advancedButton);
         advancedFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -218,7 +218,7 @@ public class MainScreen extends Fragment{
                 filterScreen.putExtra("RECIPEFILTER", Singleton.getInstance().getRecipeFilter());
                 getActivity().startActivityForResult(filterScreen, InfoDefine.REQUEST_FOR_FILTER);
             }
-        });
+        });*/
 
         //list view for liked drawer
         ListView likedListView = (ListView) leftView.findViewById(R.id.likedListView);
