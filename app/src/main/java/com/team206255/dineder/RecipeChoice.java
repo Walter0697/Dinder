@@ -40,6 +40,8 @@ public class RecipeChoice {
 
     public void getRecipe()
     {
+        //RandomRecipeGenerator.setURL(GetRequestURLGenerate.getNutrientsURL());
+        RandomRecipeGenerator.setURL(GetRequestURLGenerate.getRandomURL());
         RandomRecipeGenerator.getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {

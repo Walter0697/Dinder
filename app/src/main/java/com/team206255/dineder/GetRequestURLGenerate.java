@@ -10,7 +10,7 @@ import java.util.Random;
  */
 
 //complex one : "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=true&cuisine=chinese&fillIngredients=true&includeIngredients=tomato&instructionsRequired=true&intolerances=peanut%2C+shellfish&limitLicense=true&maxCalories=1500&maxCarbs=100&maxFat=100&maxProtein=100&number=1&offset=0&query=0&ranking=1"
-//nutrition : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?maxCalories=250&maxCarbs=100&maxFat=20&maxProtein=100&number=1&offset=0&random=true
+//nutrients one : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?maxCalories=250&maxCarbs=100&maxFat=20&maxProtein=100&number=1&offset=0&random=true
 //random one : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1&tags=vegetarian%2Cdessert
 //similar one : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/156992/similar
 //food information : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/479101/information?includeNutrition=true
@@ -44,6 +44,23 @@ public class GetRequestURLGenerate {
         String cuisine = Singleton.getInstance().getRecipeFilter().randomSelectedCuisine(mcontext);
 
         return "";
+    }
+
+    public static String getNutrientsURL()
+    {
+        int calories = (int)Singleton.getInstance().getRecipeFilter().calorie;
+        int carbs = (int)Singleton.getInstance().getRecipeFilter().carbs;
+        int fat = (int)Singleton.getInstance().getRecipeFilter().fat;
+        int protein = (int)Singleton.getInstance().getRecipeFilter().protein;
+
+        String output = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?" +
+                "maxCalories=" + Integer.toString(calories) +
+                "&maxCarbs=" + Integer.toString(carbs) +
+                "&maxFat=" + Integer.toString(fat) +
+                "&maxProtein=" + Integer.toString(protein) +
+                "&number=1&offset=0&random=true";
+        Log.d("results", output);
+        return output;
     }
 
     public static String getFoodinfoURL(int id)

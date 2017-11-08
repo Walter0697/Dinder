@@ -243,10 +243,13 @@ public class RandomRecipeGenerator {
         return list.get(rand.nextInt(list.size()));
     }
 
+    public static void setURL(String input)
+    {
+        url = input;
+    }
+
     public static void getJSONObject(final CallbackHelper callback)
     {
-        url = GetRequestURLGenerate.getRandomURL();
-        Log.d("api", "running");
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
                     @Override

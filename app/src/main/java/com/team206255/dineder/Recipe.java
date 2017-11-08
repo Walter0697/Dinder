@@ -23,7 +23,20 @@ public class Recipe implements Serializable{
     float calorie;
     Cuisine type;
 
-    //add whatever you want
+    float fat;
+    float protein;
+    float carbs;
+    int healthScore;
+
+    boolean fullyLoaded;
+
+    public Recipe(int id, String name, String pictureUrl)
+    {
+        this.id = id;
+        this.name = name;
+        this.pictureView = pictureUrl;
+        fullyLoaded = false;
+    }
 
     public Recipe(int id, String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     {
@@ -36,11 +49,13 @@ public class Recipe implements Serializable{
         this.duration = duration;
         this.calorie = calorie;
         this.type = Cuisine.HONGKONG;
+        fullyLoaded = true;
     }
 
     //this should be the recipe information when the recipe isn't passing thought the activity correctly
     //picture should be something like error picture
     public Recipe(){
+        fullyLoaded = true;
         pictureView = "";
         name = "No Recipe";
         steps = new String[2];
@@ -56,6 +71,7 @@ public class Recipe implements Serializable{
 
     public Recipe(int i)
     {
+        fullyLoaded = true;
         steps = new String[1];
         steps[0] = "Just buy an apple";
         ingredients = new String[1];
