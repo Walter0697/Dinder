@@ -1,6 +1,7 @@
 package com.team206255.dineder;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -11,8 +12,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -243,12 +246,67 @@ public class RandomRecipeGenerator {
         return list.get(rand.nextInt(list.size()));
     }
 
+    //to get the json file and parse them into Recipe class
+    public static void getRandomRecipeAPI()
+    {
+        getJSONObject(new CallbackHelper() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                JSONArray recipes = result.optJSONArray("recipes");
+                JSONObject rec = recipes.optJSONObject(0);
+                String title = rec.optString("title");
+                String URL = rec.optString("image");
+                //String instructions = rec.optString("instructions");
+                int duration = rec.optInt("readyInMinutes");
+                int health = rec.optInt("healthScore");
+                int id = rec.optInt("id");
+                int serving = rec.optInt("servings");
+                JSONArray ingredients = rec.optJSONArray("extendedIngredients");
+
+                String[] ingred = new String[ingredients.length()];
+                String[] instructionsArray = new String[100];
+
+                instructionsArray[0] = rec.optString("instructions");
+
+                for(int k = 0; k < ingredients.length(); k++)
+                {
+                    JSONObject indaviualIngred = ingredients.optJSONObject(k);
+                    ingred[k] = indaviualIngred.optString("originalString");
+                }
+
+                Log.d("TITLE",title);
+                Log.d("id", String.valueOf(id));
+                Log.d("serving", String.valueOf(serving));
+                Log.d("URL",URL);
+                Log.d("INSTRUCTIONS",instructionsArray[0]);
+                Log.d("ingredients",ingred[0]);
+                Log.d("duration", String.valueOf(duration));
+                Log.d("health", String.valueOf(health));
+
+                // int id, String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie
+
+                float dur = (float)duration;
+                float healthScore = (float)health;
+
+                //serving number is being sent in as difficulty for now
+                Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
+
+                Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
+            }
+
+            @Override
+            public void onSuccess(Bitmap result){
+            }
+        });
+    }
+
     public static void setURL(String input)
     {
         url = input;
     }
 
-    public static void getJSONObject(final CallbackHelper callback)
+    //the method that will get a json object from the api
+    private static void getJSONObject(final CallbackHelper callback)
     {
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONObject>() {
@@ -270,6 +328,6 @@ public class RandomRecipeGenerator {
                 return params;
             }
         };
-        //queue.add(getRequest);
+        queue.add(getRequest);
     }
 }

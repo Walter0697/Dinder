@@ -107,6 +107,19 @@ public class Recipe implements Serializable{
         }
     }
 
+    public void retrieveInformation(String[] ingredients, String[] steps, float duration, float calorie, float fat, float protein, float carbs, int healthScore)
+    {
+        this.ingredients = ingredients;
+        this.steps = steps;
+        this.duration = duration;
+        this.calorie = calorie;
+        this.fat = fat;
+        this.protein = protein;
+        this.carbs = carbs;
+        this.healthScore = healthScore;
+        fullyLoaded = true;
+    }
+
     public String getCuisine(Context context)
     {
         String[] allType = context.getResources().getStringArray(R.array.cuisine);
