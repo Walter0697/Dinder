@@ -25,20 +25,11 @@
         android:layout_toEndOf="@+id/searchRecipeImage" />
 
     <TextView
-        android:id="@+id/searchCuisine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Cuisine"
-        android:textSize="15dp"
-        android:layout_below="@+id/searchRecipeName"
-        android:layout_alignStart="@+id/searchRecipeName" />
-
-    <TextView
         android:id="@+id/searchDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/searchCuisine"
-        android:layout_alignLeft="@+id/searchCuisine"
+        android:layout_below="@+id/searchRecipeName"
+        android:layout_alignLeft="@+id/searchRecipeName"
         android:text="Duration"
         android:textSize="15dp"/>
 
@@ -46,9 +37,8 @@
         android:id="@+id/searchCalorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/searchCuisine"
-        android:layout_toEndOf="@+id/searchDuration"
-        android:layout_marginStart="10dp"
+        android:layout_below="@+id/searchDuration"
+        android:layout_alignLeft="@+id/searchDuration"
         android:text="Calorie"
         android:textSize="15dp"/>
 

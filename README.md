@@ -19,10 +19,11 @@ The project for 3004
 #### Pattern:
 - Singleton pattern
 - Facade pattern
-- Possibly adapter pattern
-- Possibly iterator pattern
+- Adapter pattern
+- Iterator pattern
 #### Style:
 - Client and Server between the app and the api
+- Object-oriented 
 
 ### Files include:
 

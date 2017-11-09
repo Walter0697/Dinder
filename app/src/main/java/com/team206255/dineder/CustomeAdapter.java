@@ -118,10 +118,7 @@ public class CustomeAdapter extends BaseAdapter {
                 break;
             case SEARCH_LIST:
                 TextView searchRecipeName = (TextView) v.findViewById(R.id.searchRecipeName);
-                searchRecipeName.setText(items.getRecipe(i).name);
-
-                TextView searchCuisine = (TextView) v.findViewById(R.id.searchCuisine);
-                searchCuisine.setText(items.getRecipe(i).getCuisine(context));
+                searchRecipeName.setText(items.getRecipe(i).name); 
 
                 TextView searchDuration = (TextView) v.findViewById(R.id.searchDuration);
                 searchDuration.setText(Float.toString(items.getRecipe(i).duration) + " mins");
