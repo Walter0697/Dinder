@@ -60,6 +60,11 @@ public class Recipe implements Serializable{
         this.duration = duration;
         this.calorie = calorie;
         this.type = Cuisine.HONGKONG;
+        fat = 0;
+        protein = 0;
+        carbs = 0;
+        healthScore = 0;
+
         fullyLoaded = true;
     }
 

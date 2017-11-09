@@ -361,7 +361,11 @@ public class RandomRecipeGenerator {
         url = input;
     }
 
-    //the method that will get a json object from the api
+    /**************************************************************************/
+    /******* Function that get json from api, using callback to set value *****/
+    /******* Don't have to change it, url can be set in different method ******/
+    /******* api key can be found in the very top, don't have to change *******/
+    /**************************************************************************/
     private static void getJSONObject(final CallbackHelper callback)
     {
         JsonObjectRequest getRequest = new JsonObjectRequest(Request.Method.GET, url, null,

@@ -84,7 +84,6 @@ public class CalendarAdapter extends BaseAdapter {
         TextView calendarName = (TextView) v.findViewById(R.id.calendarFoodName);
         TextView calendarDuration = (TextView) v.findViewById(R.id.calendarDuration);
         TextView calendarCalorie = (TextView) v.findViewById(R.id.calendarCalorie);
-        TextView calendarCuisine = (TextView) v.findViewById(R.id.calendarCuisine);
         ImageView removeButton = (ImageView) v.findViewById(R.id.removeButton);
 
         Recipe currentRecipe = (Recipe)getItem(i);
@@ -96,7 +95,6 @@ public class CalendarAdapter extends BaseAdapter {
             calendarName.setVisibility(View.VISIBLE);
             calendarDuration.setVisibility(View.VISIBLE);
             calendarCalorie.setVisibility(View.VISIBLE);
-            calendarCuisine.setVisibility(View.VISIBLE);
             removeButton.setVisibility(View.VISIBLE);
 
             ImageProcessor.setURLImage(context, currentRecipe.pictureView, 0.2f,
@@ -114,7 +112,6 @@ public class CalendarAdapter extends BaseAdapter {
             calendarName.setText(currentRecipe.name);
             calendarDuration.setText("Duration: " + Float.toString(currentRecipe.duration) + "mins");
             calendarCalorie.setText("Calorie: " + Float.toString(currentRecipe.calorie));
-            calendarCuisine.setText(currentRecipe.getCuisine(context));
             Bitmap removeBitmap = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.05f);
             removeButton.setImageBitmap(removeBitmap);
             removeButton.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +132,6 @@ public class CalendarAdapter extends BaseAdapter {
             calendarName.setVisibility(View.INVISIBLE);
             calendarDuration.setVisibility(View.INVISIBLE);
             calendarCalorie.setVisibility(View.INVISIBLE);
-            calendarCuisine.setVisibility(View.INVISIBLE);
             removeButton.setVisibility(View.INVISIBLE);
         }
         return v;

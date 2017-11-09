@@ -55,14 +55,23 @@ public class RecipeInformation extends AppCompatActivity {
         TextView nameText = (TextView) findViewById(R.id.recipeNameText);
         nameText.setText(currentRecipe.name);
 
-        TextView cuisineText = (TextView) findViewById(R.id.cuisineView);
-        cuisineText.setText(currentRecipe.getCuisine(getApplicationContext()));
-
         TextView durationText = (TextView) findViewById(R.id.durationView);
         durationText.setText("Duration: " + currentRecipe.duration + " mins");
 
-        TextView calorieText = (TextView) findViewById(R.id.calorieView);
-        calorieText.setText("Calorie: " + currentRecipe.calorie);
+        TextView healthScoreText = (TextView) findViewById(R.id.healthScoreView);
+        healthScoreText.setText("Health score: " + currentRecipe.healthScore);
+
+        TextView caloriesText = (TextView) findViewById(R.id.calories);
+        caloriesText.setText(Float.toString(currentRecipe.calorie));
+
+        TextView fatText = (TextView) findViewById(R.id.fat);
+        fatText.setText(Float.toString(currentRecipe.fat));
+
+        TextView carbsText = (TextView) findViewById(R.id.carbs);
+        carbsText.setText(Float.toString(currentRecipe.carbs));
+
+        TextView proteinText = (TextView) findViewById(R.id.protein);
+        proteinText.setText(Float.toString(currentRecipe.protein));
 
         StringAdapter ingredientsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.ingredients, InfoDefine.ListType.INGREDIENT_LIST);
         ListView ingredients = (ListView) findViewById(R.id.ingredientList);

@@ -35,20 +35,11 @@
         android:textSize="20dp"/>
 
     <TextView
-        android:id="@+id/calendarCuisine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/calendarFoodName"
-        android:layout_below="@+id/calendarFoodName"
-        android:text="Cuisine"
-        android:textSize="15dp"/>
-
-    <TextView
         android:id="@+id/calendarDuration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/calendarFoodName"
-        android:layout_below="@+id/calendarCuisine"
+        android:layout_below="@+id/calendarFoodName"
         android:text="Duration"
         android:textSize="15dp"/>
 
@@ -56,19 +47,10 @@
         android:id="@+id/calendarCalorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/calendarDuration"
-        android:layout_marginStart="24dp"
-        android:layout_toEndOf="@+id/calendarDuration"
+        android:layout_alignStart="@+id/calendarDuration"
+        android:layout_below="@+id/calendarDuration"
         android:text="Calorie"
         android:textSize="15dp"/>
-
-    <TextView
-        android:id="@+id/nullText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/calendarCalorie"
-        android:layout_alignStart="@+id/calendarType"
-        android:text="No Recipe" />
 
     <ImageView
         android:id="@+id/removeButton"
@@ -78,6 +60,14 @@
         android:layout_alignTop="@+id/calendarFoodName"
         android:layout_marginEnd="13dp"
         app:srcCompat="@mipmap/ic_launcher_round" />
+
+    <TextView
+        android:id="@+id/nullText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/calendarType"
+        android:layout_alignBottom="@+id/removeButton"
+        android:text="No Recipe" />
 
 
 </RelativeLayout>

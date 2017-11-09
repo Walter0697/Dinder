@@ -20,18 +20,6 @@
         android:layout_marginStart="8dp"
         android:clickable="true"/>
 
-    <TextView
-        android:id="@+id/recipeNameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Recipe Name"
-        android:textSize="30dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/RecipeView"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp" />
-
     <Button
         android:id="@+id/backButton"
         android:layout_width="wrap_content"
@@ -44,14 +32,15 @@
         android:layout_marginEnd="8dp" />
 
     <TextView
-        android:id="@+id/cuisineView"
+        android:id="@+id/recipeNameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="29dp"
-        android:text="Cuisine"
-        android:textSize="15dp"
+        android:text="Recipe Name"
+        android:textSize="30dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toRightOf="@+id/RecipeView"
-        app:layout_constraintTop_toBottomOf="@+id/recipeNameText"
+        android:layout_marginLeft="29dp"
         android:layout_marginStart="29dp" />
 
     <TextView
@@ -60,34 +49,138 @@
         android:layout_height="wrap_content"
         android:text="Duration: "
         android:textSize="15dp"
-        app:layout_constraintTop_toBottomOf="@+id/cuisineView"
-        app:layout_constraintLeft_toRightOf="@+id/RecipeView"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp" />
+        app:layout_constraintTop_toBottomOf="@+id/recipeNameText"
+        app:layout_constraintLeft_toLeftOf="@+id/recipeNameText"
+        android:layout_marginTop="2dp" />
 
     <TextView
-        android:id="@+id/calorieView"
+        android:id="@+id/healthScoreView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="29dp"
-        android:text="Calorie: "
+        android:text="HealthScore: "
         android:textSize="15dp"
-        app:layout_constraintLeft_toRightOf="@+id/RecipeView"
         app:layout_constraintTop_toBottomOf="@+id/durationView"
-        android:layout_marginStart="29dp" />
+        app:layout_constraintLeft_toLeftOf="@+id/durationView"
+        android:layout_marginTop="2dp"/>
+
+    <LinearLayout
+        android:id="@+id/nutrientsText"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        app:layout_constraintTop_toBottomOf="@+id/RecipeView"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp">
+
+        <TextView
+            android:text="Calories"
+            android:background="@drawable/textborder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="0.25"/>
+
+        <TextView
+            android:text="Fat"
+            android:background="@drawable/textborder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="0.25"/>
+
+        <TextView
+            android:text="Carbs"
+            android:background="@drawable/textborder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="0.25"/>
+
+        <TextView
+            android:text="Protein"
+            android:background="@drawable/textborder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="0.25"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nutrientsValue"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nutrientsText">
+
+        <TextView
+            android:text="0"
+            android:id="@+id/calories"
+            android:background="@drawable/textborder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="0.25" />
+
+        <TextView
+            android:text="0"
+            android:id="@+id/fat"
+            android:background="@drawable/textborder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="0.25" />
+
+        <TextView
+            android:text="0"
+            android:id="@+id/carbs"
+            android:background="@drawable/textborder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="0.25" />
+
+        <TextView
+            android:text="0"
+            android:id="@+id/protein"
+            android:background="@drawable/textborder"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textAlignment="center"
+            android:layout_weight="0.25" />
+
+    </LinearLayout>
+
+    <!--TextView
+    android:text="sometext"
+    android:background="@drawable/textborder-->
 
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
         app:layout_constraintBottom_toTopOf="@+id/backButton"
         android:layout_marginBottom="2dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="0dp"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/RecipeView"
+        app:layout_constraintTop_toBottomOf="@+id/nutrientsValue"
         android:layout_marginTop="5dp" >
 
         <LinearLayout
