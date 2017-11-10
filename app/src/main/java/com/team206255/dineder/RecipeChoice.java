@@ -40,8 +40,8 @@ public class RecipeChoice {
 
     public void getRecipeTest()
     {
-        //RandomRecipeGenerator.setURL(GetRequestURLGenerate.getNutrientsURL());
         RandomRecipeGenerator.getNutrientsRecipeAPI();
+        //RandomRecipeGenerator.getRandomRecipeAPI();
     }
 
     public Recipe getChoiceRecipe()

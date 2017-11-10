@@ -37,6 +37,7 @@ public class CalendarChoice extends AppCompatActivity {
         else
             currentRecipe = new Recipe();
 
+        //set up the image in the very top
         final ImageView foodView = (ImageView) findViewById(R.id.recipeImage);
         ImageProcessor.setURLImage(this, currentRecipe.pictureView, 0.75f,
                 new CallbackHelper() {
@@ -67,7 +68,7 @@ public class CalendarChoice extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setResult(RESULT_OK);
-                Singleton.getInstance().getCalendarStorage().addRecipe(currentDate, currentRecipe, index);
+                UserInformation.getInstance().getCalendarStorage().addRecipe(currentDate, currentRecipe, index);
                 finish();
             }
         });
@@ -95,6 +96,7 @@ public class CalendarChoice extends AppCompatActivity {
         calendar.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int y, int m, int d) {
+                //deprecated but i still want to use
                 currentDate = new Date(y-1900, m, d);
             }
         });

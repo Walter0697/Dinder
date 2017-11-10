@@ -25,6 +25,7 @@ public class CalendarStorage {
         return dateWithWeek.format(currentDate);
     }
 
+    //add recipe into the selectedDate
     public void addRecipe(Date selectedDate, Recipe addRecipe, int index)
     {
         String selectedDay = dateFormat.format(selectedDate);
@@ -45,6 +46,9 @@ public class CalendarStorage {
         }
     }
 
+    //remove recipe from the current date
+    //remove can only be done inside calendar screen
+    //therefore the current date should be valid
     public void removeRecipe(int index)
     {
         String selectedDay = dateFormat.format(currentDate);
@@ -56,6 +60,7 @@ public class CalendarStorage {
         }
     }
 
+    //set current date to today, nextday and lastday
     public void today()
     {
         currentDate = new Date();
@@ -87,6 +92,7 @@ public class CalendarStorage {
         }
     }
 
+    //get current date recipes
     public Recipe[] getRecipe()
     {
         String selectedDay = dateFormat.format(currentDate);
@@ -94,6 +100,7 @@ public class CalendarStorage {
         return storage.get(selectedDay);
     }
 
+    //get recipe according to index
     public Recipe getRecipe(int i)
     {
         //directly return if i is bigger than 4

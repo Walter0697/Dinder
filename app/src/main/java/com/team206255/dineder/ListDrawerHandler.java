@@ -2,11 +2,9 @@ package com.team206255.dineder;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -48,7 +46,7 @@ public class ListDrawerHandler {
         drawerIcon.setImageBitmap(drawerImage);
 
         //setting up the list view
-        customeAdapter = new CustomeAdapter(context, Singleton.getInstance().getRecipeList(), R.layout.liked_list_detail, ListType.LIKED_LIST, activity);
+        customeAdapter = new CustomeAdapter(context, UserInformation.getInstance().getRecipeList(), R.layout.liked_list_detail, ListType.LIKED_LIST, activity);
         likedView = (ListView) headerView.findViewById(R.id.likedListView);
         likedView.setAdapter(customeAdapter);
     }

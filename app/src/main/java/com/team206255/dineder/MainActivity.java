@@ -9,7 +9,6 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 
 import java.util.Random;
 
@@ -42,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         metrics = this.getResources().getDisplayMetrics();
         setContentView(R.layout.activity_main);
 
-        //setting up the context for the recipe filter so you can accesss R.string
-        //Singleton.getInstance().getRecipeFilter().setUpContext(getApplicationContext());
         //creating new class
         searchScreen = new SearchScreen();
         mainScreen = new MainScreen();
@@ -52,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         //set up the view pager
         viewPager = (NonSwipeableViewPager) findViewById(R.id.container);
         setUpViewPager(viewPager);
+        //1 -> Mainscreen
         viewPager.setCurrentItem(1);
 
         //set up the button and their listener
@@ -89,8 +87,6 @@ public class MainActivity extends AppCompatActivity {
         mainFeatureButton.setLayoutParams(layoutParams);
 
         //setup the image of the rest of the icons
-
-
         searchButton.setImageBitmap(searchFeatureImage);
         favouriteButton.setImageBitmap(calendarFeatureImage);
 
@@ -133,7 +129,9 @@ public class MainActivity extends AppCompatActivity {
                     mainFeatureButton.setImageBitmap(mainFeatureImage);
                     favouriteButton.setImageBitmap(calendarFeatureClick);
 
-                    Singleton.getInstance().getCalendarStorage().today();
+                    //whenever this button is clicked
+                    //current day for calendar screen will become today
+                    UserInformation.getInstance().getCalendarStorage().today();
                     calendarScreen.updateCalendarView();
                     viewPager.setCurrentItem(2, true);
                     break;
@@ -149,20 +147,30 @@ public class MainActivity extends AppCompatActivity {
         }
     };
 
+    //this is for interacting with other class
+    //since main three screens are fragment
+    //it cannot support the return value for the startActivityForResult
+    //therefore we will set every result here
+    //and call the function inside the corresponding class
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
+        //After calling the filter screen
+        //Called by : Filter Drawer (not anymore)
         if (requestCode == InfoDefine.REQUEST_FOR_FILTER) {
             if (resultCode == RESULT_OK) {
-                Singleton.getInstance().setRecipeFilter((RecipeFilter) data.getSerializableExtra("OUTPUTFILTER"));
-                mainScreen.filterDrawerHandler.setValueByFilter(Singleton.getInstance().getRecipeFilter());
+                UserInformation.getInstance().setRecipeFilter((RecipeFilter) data.getSerializableExtra("OUTPUTFILTER"));
+                mainScreen.filterDrawerHandler.setValueByFilter(UserInformation.getInstance().getRecipeFilter());
                 mainScreen.filterView.scrollTo(0, mainScreen.filterView.getBottom());
             }
         }
+        //Called by : Search Screen
         else if (requestCode == InfoDefine.REQUEST_FOR_SEARCH){
             if (requestCode == RESULT_OK)
                 searchScreen.searchFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
         }
+        //After saving recipes inside calendar
+        //Called by : Main Screen
         else if (requestCode == InfoDefine.REQUEST_FOR_CALENDAR){
             if (resultCode == RESULT_OK) {
                 calendarScreen.updateCalendarView();

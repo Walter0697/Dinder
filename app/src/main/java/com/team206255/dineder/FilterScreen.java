@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.SeekBar;
 
 public class FilterScreen extends AppCompatActivity {
@@ -156,7 +155,7 @@ public class FilterScreen extends AppCompatActivity {
         moreButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Singleton.getInstance().getRecipeFilter().addIngredient(moreTextBox.getText().toString());
+                UserInformation.getInstance().getRecipeFilter().addIngredient(moreTextBox.getText().toString());
                 ingredientList.invalidate();
                 ((BaseAdapter)ingredientList.getAdapter()).notifyDataSetChanged();
                 moreTextBox.setText("");
@@ -171,8 +170,8 @@ public class FilterScreen extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recipeFilter.ingredients = Singleton.getInstance().getRecipeFilter().ingredients;
-                recipeFilter.userDefineIngredients = Singleton.getInstance().getRecipeFilter().userDefineIngredients;
+                recipeFilter.ingredients = UserInformation.getInstance().getRecipeFilter().ingredients;
+                recipeFilter.userDefineIngredients = UserInformation.getInstance().getRecipeFilter().userDefineIngredients;
                 Intent output = new Intent();
                 output.putExtra("OUTPUTFILTER", recipeFilter);
                 setResult(RESULT_OK, output);

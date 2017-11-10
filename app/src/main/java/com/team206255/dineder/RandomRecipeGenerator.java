@@ -252,10 +252,10 @@ public class RandomRecipeGenerator {
         getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
-                Log.d("result", result.toString());
+                Log.d("json", result.toString());
                 //-->use Recipe(int id, String name, String pictureUrl)
                 //****************DO THIS FIRST TO SEE IF IT WILL WORK***************
-                //Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
+                //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
             }
 
             @Override
@@ -282,13 +282,13 @@ public class RandomRecipeGenerator {
                 switch(list)
                 {
                     case 0:
-                        //Singleton.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation();
+                        //UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation();
                         break;
                     case 1:
-                        //Singleton.getInstance().getRecipeList().getRecipe(position).retrieveInformation();
+                        //UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation();
                         break;
                     case 2:
-                        //Singleton.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation();
+                        //UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation();
                         break;
                 }
             }
@@ -303,7 +303,7 @@ public class RandomRecipeGenerator {
     //to get the json file and parse them into Recipe class
     public static void getRandomRecipeAPI()
     {
-        //setURL(GetRequestURLGenerate.getRandomURL());
+        setURL(GetRequestURLGenerate.getRandomURL());
         getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
@@ -347,7 +347,7 @@ public class RandomRecipeGenerator {
                 Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
 
                 //later should be change to adding to recipe choice
-                Singleton.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
+                UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
             }
 
             @Override

@@ -36,7 +36,7 @@ public class CalendarScreen extends Fragment {
 
         //setting up the text view
         dateText = (TextView) view.findViewById(R.id.dateText);
-        dateText.setText(Singleton.getInstance().getCalendarStorage().dateToString());
+        dateText.setText(UserInformation.getInstance().getCalendarStorage().dateToString());
 
         //setting up the left and right button
         ImageView rightButton = (ImageView) view.findViewById(R.id.rightButton);
@@ -46,7 +46,7 @@ public class CalendarScreen extends Fragment {
         rightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Singleton.getInstance().getCalendarStorage().nextDay();
+                UserInformation.getInstance().getCalendarStorage().nextDay();
                 updateCalendarView();
             }
         });
@@ -58,20 +58,20 @@ public class CalendarScreen extends Fragment {
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Singleton.getInstance().getCalendarStorage().lastDay();
+                UserInformation.getInstance().getCalendarStorage().lastDay();
                 updateCalendarView();
             }
         });
 
         calendarList = (ListView) view.findViewById(R.id.calendarList);
-        adapter = new CalendarAdapter(getContext(), Singleton.getInstance().getCalendarStorage());
+        adapter = new CalendarAdapter(getContext(), UserInformation.getInstance().getCalendarStorage());
         calendarList.setAdapter(adapter);
         calendarList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                if (Singleton.getInstance().getCalendarStorage().getRecipe(i) != null) {
+                if (UserInformation.getInstance().getCalendarStorage().getRecipe(i) != null) {
                     Intent informationIntent = new Intent(getContext(), RecipeInformation.class);
-                    informationIntent.putExtra("RECIPE", Singleton.getInstance().getCalendarStorage().getRecipe(i));
+                    informationIntent.putExtra("RECIPE", UserInformation.getInstance().getCalendarStorage().getRecipe(i));
                     startActivity(informationIntent);
                 }
             }
@@ -79,11 +79,11 @@ public class CalendarScreen extends Fragment {
 
         //festival related widgets
         ImageView festiv = (ImageView) view.findViewById(R.id.festival3);
-        if (Singleton.getInstance().getFestival() == InfoDefine.HALLOWEEN) {
+        if (UserInformation.getInstance().getFestival() == InfoDefine.HALLOWEEN) {
             Bitmap halloween = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow1, 0.4f);
             festiv.setImageBitmap(halloween);
         }
-        else if (Singleton.getInstance().getFestival() == InfoDefine.CHRISTMAS)
+        else if (UserInformation.getInstance().getFestival() == InfoDefine.CHRISTMAS)
         {
             Bitmap christmas = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.xmas1, 0.4f);
             festiv.setImageBitmap(christmas);
@@ -98,7 +98,7 @@ public class CalendarScreen extends Fragment {
 
     public void updateCalendarView()
     {
-        dateText.setText(Singleton.getInstance().getCalendarStorage().dateToString());
+        dateText.setText(UserInformation.getInstance().getCalendarStorage().dateToString());
         calendarList.invalidate();
         adapter.notifyDataSetChanged();
     }

@@ -12,7 +12,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -54,6 +53,8 @@ public class MainScreen extends Fragment{
     DragContainer dragContainer;
     private static final String IMAGEVIEW_TAG = "icon bitmap";
 
+    //animation
+    //i dont know if im gonna work on this
     private ImageView foodView;
     Animation animation;
 
@@ -107,14 +108,15 @@ public class MainScreen extends Fragment{
         leftNavigationView = (NavigationView) view.findViewById(R.id.nav_view);
         rightNavigationView = (NavigationView) view.findViewById(R.id.right_nav_view);
 
-        leftView = leftNavigationView.inflateHeaderView(R.layout.nav_header_main_screen);
         //getting the view object from the navigation view
+        leftView = leftNavigationView.inflateHeaderView(R.layout.nav_header_main_screen);
         rightView = rightNavigationView.getHeaderView(0);
 
         //setup the button(image) and resize them, then setup their listeners
+        //setting up list button
         ImageView listButton = (ImageView) view.findViewById(R.id.leftDrawer);
         Bitmap listImage;
-        if (Singleton.getInstance().getFestival() == InfoDefine.HALLOWEEN)
+        if (UserInformation.getInstance().getFestival() == InfoDefine.HALLOWEEN)
             listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.halloweenlist, 0.12f);
         else
             listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.listdrawer, 0.12f);
@@ -125,9 +127,11 @@ public class MainScreen extends Fragment{
                 drawer.openDrawer(Gravity.LEFT);
             }
         });
+
+        //setting up filter button
         ImageView filterButton = (ImageView) view.findViewById(R.id.rightDrawer);
         Bitmap filterImage;
-        if (Singleton.getInstance().getFestival() == InfoDefine.CHRISTMAS)
+        if (UserInformation.getInstance().getFestival() == InfoDefine.CHRISTMAS)
             filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.christinefilter, 0.12f);
         else
             filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filterdrawer, 0.12f);
@@ -139,10 +143,17 @@ public class MainScreen extends Fragment{
             }
         });
 
+        //set drag and touch listener
+        dragContainer = (DragContainer) view.findViewById(R.id.root);
+        ViewGroup.LayoutParams layoutParams = dragContainer.getLayoutParams();
+        layoutParams.height = metrics.heightPixels;
+        layoutParams.width = metrics.widthPixels;
+        dragContainer.setLayoutParams(layoutParams);
+
         //getting the recipe picture from the first recipe in the list
         //also set up the drag and drop listener for the food picture view
         foodView = (ImageView) view.findViewById(R.id.foodView);
-        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
+        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -155,22 +166,14 @@ public class MainScreen extends Fragment{
                     }
                 });
 
-        //set drag and touch listener
-        dragContainer = (DragContainer) view.findViewById(R.id.root);
-        ViewGroup.LayoutParams layoutParams = dragContainer.getLayoutParams();
-        layoutParams.height = metrics.heightPixels;
-        layoutParams.width = metrics.widthPixels;
-        dragContainer.setLayoutParams(layoutParams);
-
         foodView.setTag(IMAGEVIEW_TAG);
         foodView.setOnTouchListener(touchListener);
         foodView.setOnDragListener(dragListener);
 
-
         //getting the background recipe picture from the second recipe in the list
-        //dont need to set up listener cuz it is just for the background
+        //don't need to set up listener cuz it is just for the background
         final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
+        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -183,7 +186,7 @@ public class MainScreen extends Fragment{
                     }
                 });
         final ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
-        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
+        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -206,12 +209,13 @@ public class MainScreen extends Fragment{
             public void onClick(View view) {
                 //go to the recipe information screen
                 Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
-                detailIntent.putExtra("RECIPE", Singleton.getInstance().getRecipeChoice().getChoiceRecipe());
+                detailIntent.putExtra("RECIPE", UserInformation.getInstance().getRecipeChoice().getChoiceRecipe());
                 startActivity(detailIntent);
             }
         });
 
         //setup both drawer and also their listener
+        //just don't want a large amount of code right here
         listDrawerHandler = new ListDrawerHandler(getActivity().getApplicationContext(), getActivity());
         listDrawerHandler.handleDrawerSetup(leftView);
         filterDrawerHandler = new FilterDrawerHandler(getActivity().getApplicationContext());
@@ -223,18 +227,20 @@ public class MainScreen extends Fragment{
             @Override
             public void onClick(View view) {
                 Intent filterScreen = new Intent(getActivity().getApplicationContext(), FilterScreen.class);
-                filterScreen.putExtra("RECIPEFILTER", Singleton.getInstance().getRecipeFilter());
+                filterScreen.putExtra("RECIPEFILTER", UserInformation.getInstance().getRecipeFilter());
                 getActivity().startActivityForResult(filterScreen, InfoDefine.REQUEST_FOR_FILTER);
             }
         });*/
 
         //list view for liked drawer
         ListView likedListView = (ListView) leftView.findViewById(R.id.likedListView);
+        //setting up on click listener
+        //put it here because ListDrawerHandler is not an activity class
         likedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
-                detailIntent.putExtra("RECIPE", Singleton.getInstance().getRecipeList().getRecipe(i));
+                detailIntent.putExtra("RECIPE", UserInformation.getInstance().getRecipeList().getRecipe(i));
                 startActivity(detailIntent);
             }
         });
@@ -257,6 +263,7 @@ public class MainScreen extends Fragment{
             }
         });
 
+        //filter view for the filter drawer
         filterView = (ScrollView) rightView.findViewById(R.id.filterScrollView);
         //disable scrolling for background but enable it for listview
         filterView.setOnTouchListener(new ScrollView.OnTouchListener() {
@@ -281,6 +288,9 @@ public class MainScreen extends Fragment{
         leftView.setVerticalScrollBarEnabled(false);
         rightView.setVerticalScrollBarEnabled(false);
 
+        ////////////////////////////////////////////////////////////////////////////////
+        //DOWN HERE IS JUST FOR THE IMAGE, NO FUNCTIONAITY
+
         //icon of the app
         ImageView mainIcon = (ImageView) view.findViewById(R.id.mainIcon);
 
@@ -289,7 +299,7 @@ public class MainScreen extends Fragment{
         ImageView festi2 = (ImageView) view.findViewById(R.id.festival2);
 
         //set up some pictures according to the current festival
-        if (Singleton.getInstance().getFestival() == InfoDefine.HALLOWEEN) {
+        if (UserInformation.getInstance().getFestival() == InfoDefine.HALLOWEEN) {
             Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinderhalloween, 0.4f);
             mainIcon.setImageBitmap(mainImage);
             Bitmap halloweenImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow2, 0.4f);
@@ -297,7 +307,7 @@ public class MainScreen extends Fragment{
             Bitmap halloweenImage2 = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow3, 0.4f);
             festi2.setImageBitmap(halloweenImage2);
         }
-        else if (Singleton.getInstance().getFestival() == InfoDefine.CHRISTMAS)
+        else if (UserInformation.getInstance().getFestival() == InfoDefine.CHRISTMAS)
         {
             Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinder_christmas_yellow, 0.4f);
             mainIcon.setImageBitmap(mainImage);
@@ -401,34 +411,35 @@ public class MainScreen extends Fragment{
         animation.start();
     }
 
+    //swiping the recipes
     private void swipe()
     {
-        Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
         setFoodView();
     }
 
     private void swipeLike()
     {
         testing.setText("Like");
-        Singleton.getInstance().getRecipeList().addRecipe(Singleton.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
-        Singleton.getInstance().getUserpreference().likedID.add(Singleton.getInstance().getRecipeChoice().getChoiceRecipe().id);
-        Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        UserInformation.getInstance().getRecipeList().addRecipe(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
+        UserInformation.getInstance().getUserpreference().likedID.add(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().id);
+        UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
 
         listDrawerHandler.updateLikedView();
         //updating shared perference
-        Singleton.getInstance().updateSharedPreference();
+        UserInformation.getInstance().updateSharedPreference();
         setFoodView();
     }
 
     private void swipeDislike()
     {
         testing.setText("Dislike");
-        Singleton.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
         //***********ONLY FOR TESTING!!!!**************
-        Singleton.getInstance().getRecipeChoice().getRecipeTest();
+        UserInformation.getInstance().getRecipeChoice().getRecipeTest();
         //*********************************************
         //updating shared perference
-        Singleton.getInstance().updateSharedPreference();
+        UserInformation.getInstance().updateSharedPreference();
 
         //Log.d("link", GetRequestURLGenerate.getRandomURL());
         setFoodView();
@@ -438,15 +449,17 @@ public class MainScreen extends Fragment{
     {
         testing.setText("Save!");
         Intent calendarIntent = new Intent(getActivity().getApplicationContext(), CalendarChoice.class);
-        calendarIntent.putExtra("RECIPE", Singleton.getInstance().getRecipeChoice().getChoiceRecipe());
+        calendarIntent.putExtra("RECIPE", UserInformation.getInstance().getRecipeChoice().getChoiceRecipe());
         getActivity().startActivityForResult(calendarIntent, InfoDefine.REQUEST_FOR_CALENDAR);
     }
 
+    //setting the recipe image
+    //should be called everytime the image changes
     private void setFoodView()
     {
 
         final ImageView foregroundView = (ImageView) view.findViewById(R.id.foodView);
-        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
+        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -458,7 +471,7 @@ public class MainScreen extends Fragment{
                 });
 
         final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
+        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -472,7 +485,7 @@ public class MainScreen extends Fragment{
                 });
 
         final ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
-        ImageProcessor.setURLImage(getContext(), Singleton.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
+        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {

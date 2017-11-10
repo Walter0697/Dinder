@@ -2,14 +2,12 @@ package com.team206255.dineder;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.media.Rating;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import org.json.JSONObject;
@@ -120,7 +118,7 @@ public class CalendarAdapter extends BaseAdapter {
                     calendarStorage.removeRecipe(i);
                     notifyDataSetChanged();
                     //update shared preference
-                    Singleton.getInstance().updateSharedPreference();
+                    UserInformation.getInstance().updateSharedPreference();
                 }
             });
         }

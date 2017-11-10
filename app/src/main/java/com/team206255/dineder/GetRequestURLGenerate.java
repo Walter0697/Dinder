@@ -27,31 +27,30 @@ public class GetRequestURLGenerate {
 
     public static String getRandomURL()
     {
-        String[] ingredients = randomElement(Singleton.getInstance().getRecipeFilter().ingredientToList(mcontext),
-                                            Singleton.getInstance().getRecipeFilter().ingredientChance(),
+        String[] ingredients = randomElement(UserInformation.getInstance().getRecipeFilter().ingredientToList(mcontext),
+                                            UserInformation.getInstance().getRecipeFilter().ingredientChance(),
                                             1);
         String ingre = combineString(ingredients);
-        Log.d("results", "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=1&tags=" + ingre);
         return "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=1&tags=" + ingre;
     }
 
     public static String getComplexURL()
     {
-        String[] ingredients = randomElement(Singleton.getInstance().getRecipeFilter().ingredientToList(mcontext),
-                                            Singleton.getInstance().getRecipeFilter().ingredientChance(),
+        String[] ingredients = randomElement(UserInformation.getInstance().getRecipeFilter().ingredientToList(mcontext),
+                                            UserInformation.getInstance().getRecipeFilter().ingredientChance(),
                                             rand.nextInt(3) + 2);
         String ingre = combineString(ingredients);
-        String cuisine = Singleton.getInstance().getRecipeFilter().randomSelectedCuisine(mcontext);
+        String cuisine = UserInformation.getInstance().getRecipeFilter().randomSelectedCuisine(mcontext);
 
         return "";
     }
 
     public static String getNutrientsURL()
     {
-        int calories = (int)Singleton.getInstance().getRecipeFilter().calorie;
-        int carbs = (int)Singleton.getInstance().getRecipeFilter().carbs;
-        int fat = (int)Singleton.getInstance().getRecipeFilter().fat;
-        int protein = (int)Singleton.getInstance().getRecipeFilter().protein;
+        int calories = (int) UserInformation.getInstance().getRecipeFilter().calorie;
+        int carbs = (int) UserInformation.getInstance().getRecipeFilter().carbs;
+        int fat = (int) UserInformation.getInstance().getRecipeFilter().fat;
+        int protein = (int) UserInformation.getInstance().getRecipeFilter().protein;
 
         String output = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?" +
                 "maxCalories=" + Integer.toString(calories) +

@@ -20,10 +20,11 @@ public class SplashActivity extends AppCompatActivity {
         GetRequestURLGenerate.setContact(this);
 
         //setting up everything from the shared preference
-        Singleton.getInstance().setSharedPreferences(this);
+        UserInformation.getInstance().setSharedPreferences(this);
         //if for testing ,wanna reset everything inside the app
-        Singleton.getInstance().resetSharedPreference();
+        UserInformation.getInstance().resetSharedPreference();
 
+        //starting the splashscreen and then start the main screen
         Thread startThread = new Thread(){
             @Override
             public void run(){

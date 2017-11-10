@@ -2,7 +2,6 @@ package com.team206255.dineder;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -10,8 +9,8 @@ import com.google.gson.Gson;
  * Created by walter on 2017-10-22.
  */
 
-public class Singleton {
-    private static Singleton instance = null;
+public class UserInformation {
+    private static UserInformation instance = null;
 
     private int festival = InfoDefine.NONE;
 
@@ -24,11 +23,11 @@ public class Singleton {
 
     private SharedPreferences sharedPreferences;
 
-    private Singleton() { }
+    private UserInformation() { }
 
-    public static Singleton getInstance()
+    public static UserInformation getInstance()
     {
-        if (instance == null) instance = new Singleton();
+        if (instance == null) instance = new UserInformation();
         return instance;
     }
 

@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.team206255.dineder.InfoDefine.*;
@@ -97,10 +96,10 @@ public class CustomeAdapter extends BaseAdapter {
                 removeButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        Singleton.getInstance().getRecipeList().removeRecipe(i);
+                        UserInformation.getInstance().getRecipeList().removeRecipe(i);
                         notifyDataSetChanged();
                         //update the shared preference
-                        Singleton.getInstance().updateSharedPreference();
+                        UserInformation.getInstance().updateSharedPreference();
                     }
                 });
 

@@ -7,16 +7,10 @@ import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RatingBar;
 import android.widget.SeekBar;
-import android.widget.Spinner;
 
 /**
  * Created by walter on 2017-09-29.
@@ -71,7 +65,7 @@ public class FilterDrawerHandler {
         durationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Singleton.getInstance().getRecipeFilter().duration = i;
+                UserInformation.getInstance().getRecipeFilter().duration = i;
                 durationNum.setText(Integer.toString(i));
             }
 
@@ -99,7 +93,7 @@ public class FilterDrawerHandler {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                Singleton.getInstance().getRecipeFilter().duration = Integer.parseInt(editable.toString());
+                UserInformation.getInstance().getRecipeFilter().duration = Integer.parseInt(editable.toString());
                 durationSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
@@ -117,7 +111,7 @@ public class FilterDrawerHandler {
         calorieSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Singleton.getInstance().getRecipeFilter().calorie = i;
+                UserInformation.getInstance().getRecipeFilter().calorie = i;
                 calorieNum.setText(Integer.toString(i));
             }
 
@@ -145,7 +139,7 @@ public class FilterDrawerHandler {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                Singleton.getInstance().getRecipeFilter().calorie = Integer.parseInt(editable.toString());
+                UserInformation.getInstance().getRecipeFilter().calorie = Integer.parseInt(editable.toString());
                 calorieSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
@@ -162,7 +156,7 @@ public class FilterDrawerHandler {
         carbsSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Singleton.getInstance().getRecipeFilter().carbs = i;
+                UserInformation.getInstance().getRecipeFilter().carbs = i;
                 carbsNum.setText(Integer.toString(i));
             }
 
@@ -190,7 +184,7 @@ public class FilterDrawerHandler {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                Singleton.getInstance().getRecipeFilter().carbs = Integer.parseInt(editable.toString());
+                UserInformation.getInstance().getRecipeFilter().carbs = Integer.parseInt(editable.toString());
                 carbsSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
@@ -207,7 +201,7 @@ public class FilterDrawerHandler {
         fatSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Singleton.getInstance().getRecipeFilter().fat = i;
+                UserInformation.getInstance().getRecipeFilter().fat = i;
                 fatNum.setText(Integer.toString(i));
             }
 
@@ -235,7 +229,7 @@ public class FilterDrawerHandler {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                Singleton.getInstance().getRecipeFilter().fat = Integer.parseInt(editable.toString());
+                UserInformation.getInstance().getRecipeFilter().fat = Integer.parseInt(editable.toString());
                 fatSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
@@ -251,7 +245,7 @@ public class FilterDrawerHandler {
         proteinSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Singleton.getInstance().getRecipeFilter().protein = i;
+                UserInformation.getInstance().getRecipeFilter().protein = i;
                 proteinNum.setText(Integer.toString(i));
             }
 
@@ -279,11 +273,11 @@ public class FilterDrawerHandler {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                Singleton.getInstance().getRecipeFilter().protein = Integer.parseInt(editable.toString());
+                UserInformation.getInstance().getRecipeFilter().protein = Integer.parseInt(editable.toString());
                 proteinSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });
-        setValueByFilter(Singleton.getInstance().getRecipeFilter());
+        setValueByFilter(UserInformation.getInstance().getRecipeFilter());
     }
 
     public void setValueByFilter(RecipeFilter filter)

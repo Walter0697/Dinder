@@ -91,7 +91,7 @@ The project for 3004
 - to browse the image of the recipe
 
 ##### Storage type classes:
-###### Singleton.java
+###### UserInformation.java
 - To keep all the information in the center so that we can have a better architecture.
 ###### CalendarStorage.java
 - to store the recipes inside the calendar

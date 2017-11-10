@@ -36,7 +36,7 @@ public class StringAdapter extends BaseAdapter {
 
         inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (type == ListType.INGREDIENT_BOX)
-            items2 = Singleton.getInstance().getRecipeFilter().userDefineIngredients;
+            items2 = UserInformation.getInstance().getRecipeFilter().userDefineIngredients;
     }
 
     @Override
@@ -69,18 +69,18 @@ public class StringAdapter extends BaseAdapter {
                 checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        Singleton.getInstance().getRecipeFilter().removeIngredient(i-items.length);
+                        UserInformation.getInstance().getRecipeFilter().removeIngredient(i-items.length);
                         notifyDataSetChanged();
                     }
                 });
             }
             else {
                 checkBox.setText(items[i]);
-                checkBox.setChecked(Singleton.getInstance().getRecipeFilter().ingredients[i]);
+                checkBox.setChecked(UserInformation.getInstance().getRecipeFilter().ingredients[i]);
                 checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                        Singleton.getInstance().getRecipeFilter().ingredients[i] = b;
+                        UserInformation.getInstance().getRecipeFilter().ingredients[i] = b;
                     }
                 });
             }
@@ -96,14 +96,14 @@ public class StringAdapter extends BaseAdapter {
         else if (type == ListType.CUISINE_BOX){
             CheckBox checkBox = (CheckBox) v.findViewById(R.id.checkBox);
             checkBox.setText(items[i]);
-            checkBox.setChecked(Singleton.getInstance().getRecipeFilter().cuisine[i]);
+            checkBox.setChecked(UserInformation.getInstance().getRecipeFilter().cuisine[i]);
             checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if (i == 0 && b)
-                        Singleton.getInstance().getRecipeFilter().cuisine_selected_by_position(0);
+                        UserInformation.getInstance().getRecipeFilter().cuisine_selected_by_position(0);
                     else
-                        Singleton.getInstance().getRecipeFilter().cuisine[i] = b;
+                        UserInformation.getInstance().getRecipeFilter().cuisine[i] = b;
                 }
             });
 
