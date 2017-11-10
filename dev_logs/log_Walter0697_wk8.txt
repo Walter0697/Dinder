@@ -1,7 +1,7 @@
 (5 hours per days in average)
 
 Finished List:
-- nothing yet
+- scrolling by volume key
 
 Haven’t done list:
 1. Ugly layout for some activities (fixed part of them, don’t know if there are more)

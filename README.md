@@ -7,6 +7,14 @@ The project for 3004
 - ./app/src/main/java/com/team206255/dineder/
 ##### Assets inside:
 - ./app/src/main/res/drawable/
+
+### Fun features:
+##### Recipe Information Screen:
+- You can scroll the recipe instruction by volume key
+- In case you are cooking, washing dishes and your hand is wet
+- Hard to use touch screen in that situation
+- that way you can use volume key to scroll up and down
+
 ### library include:
 ##### Picasso : 'com.squareup.picasso.picasso:2.5.2'
 - Use for processing the image from internet 

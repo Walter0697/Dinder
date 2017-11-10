@@ -5,11 +5,12 @@ import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.RatingBar;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import org.json.JSONObject;
@@ -17,6 +18,7 @@ import org.json.JSONObject;
 public class RecipeInformation extends AppCompatActivity {
 
     Recipe currentRecipe = new Recipe();
+    private ScrollView scroll;
 
     DisplayMetrics metrics;
 
@@ -25,10 +27,12 @@ public class RecipeInformation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recipe_information);
 
+        scroll = (ScrollView) findViewById(R.id.scrolling);
+
         metrics = getResources().getDisplayMetrics();
 
         if (getIntent().hasExtra("RECIPE"))
-            currentRecipe = (Recipe)getIntent().getSerializableExtra("RECIPE");
+            currentRecipe = (Recipe) getIntent().getSerializableExtra("RECIPE");
 
         final ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
         ImageProcessor.setURLImage(getApplicationContext(), currentRecipe.pictureView, 0.35f,
@@ -89,4 +93,34 @@ public class RecipeInformation extends AppCompatActivity {
             }
         });
     }
+
+    //scrolling controlled by volume key!!!!
+    //won't affect the volume of the device
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event)
+    {
+
+        int action = event.getAction();
+        int keyCode = event.getKeyCode();
+        switch(keyCode)
+        {
+            case KeyEvent.KEYCODE_VOLUME_UP:
+                if (action == KeyEvent.ACTION_DOWN)
+                {
+                    int yposition = scroll.getScrollY();
+                    scroll.scrollTo(0, yposition - 50);
+                }
+                return true;
+            case KeyEvent.KEYCODE_VOLUME_DOWN:
+                if (action == KeyEvent.ACTION_DOWN)
+                {
+                    int yposition = scroll.getScrollY();
+                    scroll.scrollTo(0, yposition + 50);
+                }
+                return true;
+            default:
+                return super.dispatchKeyEvent(event);
+        }
+    }
 }
+
