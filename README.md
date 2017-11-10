@@ -102,10 +102,6 @@ The project for 3004
 ###### GetRequestURLGenerate.java
 - to generate url for get request
 
-##### Classes that will be deleted soon:
-###### JsonFactory.java
-- similar usage can be found in randomRecipeGenerator
-
 ##### Images/Icons from:
 - https://www.flaticon.com/authors/smashicons
 - https://www.flaticon.com/authors/freepik

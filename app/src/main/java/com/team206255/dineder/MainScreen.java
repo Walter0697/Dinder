@@ -113,7 +113,11 @@ public class MainScreen extends Fragment{
 
         //setup the button(image) and resize them, then setup their listeners
         ImageView listButton = (ImageView) view.findViewById(R.id.leftDrawer);
-        Bitmap listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.halloweenlist, 0.12f);
+        Bitmap listImage;
+        if (Singleton.getInstance().getFestival() == InfoDefine.HALLOWEEN)
+            listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.halloweenlist, 0.12f);
+        else
+            listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.listdrawer, 0.12f);
         listButton.setImageBitmap(listImage);
         listButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,8 +125,12 @@ public class MainScreen extends Fragment{
                 drawer.openDrawer(Gravity.LEFT);
             }
         });
-        final ImageView filterButton = (ImageView) view.findViewById(R.id.rightDrawer);
-        Bitmap filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filterdrawer, 0.12f);
+        ImageView filterButton = (ImageView) view.findViewById(R.id.rightDrawer);
+        Bitmap filterImage;
+        if (Singleton.getInstance().getFestival() == InfoDefine.CHRISTMAS)
+            filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.christinefilter, 0.12f);
+        else
+            filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filterdrawer, 0.12f);
         filterButton.setImageBitmap(filterImage);
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,17 +283,37 @@ public class MainScreen extends Fragment{
 
         //icon of the app
         ImageView mainIcon = (ImageView) view.findViewById(R.id.mainIcon);
-        Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinderhalloween, 0.4f);
-        mainIcon.setImageBitmap(mainImage);
 
-        //things for halloween edition!!!!!
-        ImageView halloween1 = (ImageView) view.findViewById(R.id.halloween1);
-        Bitmap halloweenImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow2, 0.4f);
-        halloween1.setImageBitmap(halloweenImage);
+        //festival related widgets
+        ImageView festi1 = (ImageView) view.findViewById(R.id.festival1);
+        ImageView festi2 = (ImageView) view.findViewById(R.id.festival2);
 
-        ImageView halloween2 = (ImageView) view.findViewById(R.id.halloween2);
-        Bitmap halloweenImage2 = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow3, 0.4f);
-        halloween2.setImageBitmap(halloweenImage2);
+        //set up some pictures according to the current festival
+        if (Singleton.getInstance().getFestival() == InfoDefine.HALLOWEEN) {
+            Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinderhalloween, 0.4f);
+            mainIcon.setImageBitmap(mainImage);
+            Bitmap halloweenImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow2, 0.4f);
+            festi1.setImageBitmap(halloweenImage);
+            Bitmap halloweenImage2 = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow3, 0.4f);
+            festi2.setImageBitmap(halloweenImage2);
+        }
+        else if (Singleton.getInstance().getFestival() == InfoDefine.CHRISTMAS)
+        {
+            Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinder_christmas_yellow, 0.4f);
+            mainIcon.setImageBitmap(mainImage);
+            Bitmap christmasImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.xmas2, 0.6f);
+            festi1.setImageBitmap(christmasImage);
+
+            Bitmap christmasImage2 = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.xmas3, 0.3f);
+            festi2.setImageBitmap(christmasImage2);
+        }
+        else
+        {
+            Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinder2special, 0.4f);
+            mainIcon.setImageBitmap(mainImage);
+            festi1.setVisibility(View.INVISIBLE);
+            festi2.setVisibility(View.INVISIBLE);
+        }
 
         //testing textview only
         testing = (TextView) view.findViewById(R.id.testing);

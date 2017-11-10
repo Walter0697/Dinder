@@ -13,6 +13,8 @@ import com.google.gson.Gson;
 public class Singleton {
     private static Singleton instance = null;
 
+    private int festival = InfoDefine.NONE;
+
     private RecipeFilter recipeFilter;
 
     private RecipeChoice recipeChoice;
@@ -175,4 +177,6 @@ public class Singleton {
     public void setCalendarStorage(CalendarStorage calendarStorage) { this.calendarStorage = calendarStorage; }
 
     public void setUserpreference(Userpreference userpreference) { this.userpreference = userpreference; }
+
+    public int getFestival() { return festival; }
 }

@@ -33,4 +33,8 @@ public class InfoDefine {
     public enum ListType {
         LIKED_LIST, SEARCH_LIST, INGREDIENT_BOX, CUISINE_BOX, INGREDIENT_LIST, STEPS
     }
+
+    static final int NONE = 100;
+    static final int HALLOWEEN = 101;
+    static final int CHRISTMAS = 102;
 }

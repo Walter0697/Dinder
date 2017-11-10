@@ -7,7 +7,7 @@
     tools:context="com.team206255.dineder.CalendarScreen">
 
     <ImageView
-        android:id="@+id/halloween3"
+        android:id="@+id/festival3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:srcCompat="@mipmap/ic_launcher_round"
