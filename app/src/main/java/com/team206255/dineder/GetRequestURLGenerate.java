@@ -1,7 +1,6 @@
 package com.team206255.dineder;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.Random;
 
@@ -52,13 +51,13 @@ public class GetRequestURLGenerate {
         int fat = (int) UserInformation.getInstance().getRecipeFilter().fat;
         int protein = (int) UserInformation.getInstance().getRecipeFilter().protein;
 
+        //https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?maxCalories=250&maxCarbs=100&maxFat=100&maxProtein=100&number=1&offset=0&random=true
         String output = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?" +
                 "maxCalories=" + Integer.toString(calories) +
-                "&maxCarbs=" + Integer.toString(carbs) +
-                "&maxFat=" + Integer.toString(fat) +
-                "&maxProtein=" + Integer.toString(protein) +
+                //"&maxCarbs=" + Integer.toString(carbs) +
+                //"&maxFat=" + Integer.toString(fat) +
+                //"&maxProtein=" + Integer.toString(protein) +
                 "&number=1&offset=0&random=true";
-        Log.d("results", output);
         return output;
     }
 

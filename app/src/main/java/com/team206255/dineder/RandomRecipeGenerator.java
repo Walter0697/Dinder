@@ -9,10 +9,12 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Date;
@@ -249,7 +251,8 @@ public class RandomRecipeGenerator {
     public static void getNutrientsRecipeAPI()
     {
         setURL(GetRequestURLGenerate.getNutrientsURL());
-        getJSONObject(new CallbackHelper() {
+        Log.d("url", url);
+        getJSONArray(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
                 Log.d("json", result.toString());
@@ -378,7 +381,7 @@ public class RandomRecipeGenerator {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        Log.d("error", error.toString());
                     }
                 }) {
             @Override
@@ -388,6 +391,37 @@ public class RandomRecipeGenerator {
                 return params;
             }
         };
-        //queue.add(getRequest);
+        Log.d("request", "starting");
+        queue.add(getRequest);
+    }
+
+    private static void getJSONArray(final CallbackHelper callbackHelper)
+    {
+        JsonArrayRequest getRequest = new JsonArrayRequest(Request.Method.GET, url, null,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        try {
+                            callbackHelper.onSuccess(response.getJSONObject(0));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("error", error.toString());
+                    }
+                }) {
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("X-Mashape-Key", APIKey);
+                return params;
+            }
+        };
+        Log.d("request", "starting");
+        queue.add(getRequest);
     }
 }
