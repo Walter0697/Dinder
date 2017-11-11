@@ -255,7 +255,7 @@ public class RandomRecipeGenerator {
         getJSONArray(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
-                Log.d("json", result.toString());
+                Log.d("jsonForNutrients", result.toString());
                 //-->use Recipe(int id, String name, String pictureUrl)
                 //****************DO THIS FIRST TO SEE IF IT WILL WORK***************
                 //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
@@ -280,7 +280,8 @@ public class RandomRecipeGenerator {
         getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
-
+                Log.d("jsonForInfo", result.toString());
+                //*******************************************TRY THIS ONE
                 //retrieveInformation(String[] ingredients, String[] steps, float duration, float calorie, float fat, float protein, float carbs, int healthScore)
                 switch(list)
                 {
@@ -350,7 +351,7 @@ public class RandomRecipeGenerator {
                 //Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
                 Recipe recipe = new Recipe(id, title, URL);
                 //later should be change to adding to recipe choice
-                //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
+                UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
                 //UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
             }
 

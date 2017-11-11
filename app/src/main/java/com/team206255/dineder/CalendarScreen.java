@@ -70,6 +70,10 @@ public class CalendarScreen extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 if (UserInformation.getInstance().getCalendarStorage().getRecipe(i) != null) {
+
+                    //load information from the api in case if there is no information
+                    if (UserInformation.getInstance().getCalendarStorage().getRecipe(i).fullyLoaded == false)
+                        RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getCalendarStorage().getRecipe(i).id, 2, i);
                     Intent informationIntent = new Intent(getContext(), RecipeInformation.class);
                     informationIntent.putExtra("RECIPE", UserInformation.getInstance().getCalendarStorage().getRecipe(i));
                     startActivity(informationIntent);

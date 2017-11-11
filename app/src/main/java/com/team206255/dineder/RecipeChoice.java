@@ -49,7 +49,7 @@ public class RecipeChoice {
     public void getRecipeTest()
     {
         //RandomRecipeGenerator.getNutrientsRecipeAPI();
-        //RandomRecipeGenerator.getRandomRecipeAPI();
+        RandomRecipeGenerator.getRandomRecipeAPI();
     }
 
     public Recipe getChoiceRecipe()
