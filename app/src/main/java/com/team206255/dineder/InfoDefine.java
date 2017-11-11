@@ -8,13 +8,13 @@ public class InfoDefine {
     //static final int minDuration = 5;
     static final int maxDuration = 1000;
     //static final int minCalorie = 5;
-    static final int maxCalorie = 800;
+    static final int maxCalorie = 4000;
 
-    static final int maxCarbs = 400;
+    static final int maxCarbs = 2000;
 
-    static final int maxFat = 400;
+    static final int maxFat = 2000;
 
-    static final int maxProtein = 400;
+    static final int maxProtein = 2000;
 
     public enum Cuisine {
         ALL, HONGKONG, CHINESE, JAPANESE, KOREAN,

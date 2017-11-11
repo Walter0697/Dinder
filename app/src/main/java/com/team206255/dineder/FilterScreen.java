@@ -41,7 +41,6 @@ public class FilterScreen extends AppCompatActivity {
         setContentView(R.layout.activity_filter_screen);
 
         //getting the display metrics
-        DisplayMetrics metrics = getResources().getDisplayMetrics();
 
         if (getIntent().hasExtra("RECIPEFILTER"))
             recipeFilter = (RecipeFilter)getIntent().getSerializableExtra("RECIPEFILTER");
@@ -50,7 +49,7 @@ public class FilterScreen extends AppCompatActivity {
 
         //setting up the icon image
         ImageView topIcon = (ImageView) findViewById(R.id.filterScreenIcon);
-        Bitmap topImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filterdrawer, 0.2f);
+        Bitmap topImage = ImageProcessor.scaleImage(R.drawable.filterdrawer, 0.2f);
         topIcon.setImageBitmap(topImage);
 
         //duration seek bar and edit num

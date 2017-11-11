@@ -24,7 +24,7 @@ public class ImageViewScreen extends AppCompatActivity {
             viewRecipe = new Recipe();
 
         final ImageView viewImage = (ImageView)findViewById(R.id.imageView);
-        ImageProcessor.setFullURLImage(this, viewRecipe.pictureView, new CallbackHelper() {
+        ImageProcessor.setFullURLImage(viewRecipe.pictureView, new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
                 //do nothing here

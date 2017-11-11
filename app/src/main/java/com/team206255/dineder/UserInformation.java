@@ -35,7 +35,7 @@ public class UserInformation {
     public void setSharedPreferences(Context context)
     {
         Gson gson = new Gson();
-        sharedPreferences = context.getSharedPreferences("com.team206255.dineder", Context.MODE_PRIVATE);
+        sharedPreferences = context.getSharedPreferences("com.team206255.dinder", Context.MODE_PRIVATE);
         //check for recipe list
         if (sharedPreferences.contains("recipeList"))
         {

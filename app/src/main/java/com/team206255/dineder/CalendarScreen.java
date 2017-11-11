@@ -31,7 +31,7 @@ public class CalendarScreen extends Fragment {
 
         //setting up the calendar icon
         final ImageView calendarIcon = (ImageView) view.findViewById(R.id.CalendarIcon);
-        Bitmap calendarImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.calendar_icon, 0.1f);
+        Bitmap calendarImage = ImageProcessor.scaleImage(R.drawable.calendar_icon, 0.1f);
         calendarIcon.setImageBitmap(calendarImage);
 
         //setting up the text view
@@ -40,7 +40,7 @@ public class CalendarScreen extends Fragment {
 
         //setting up the left and right button
         ImageView rightButton = (ImageView) view.findViewById(R.id.rightButton);
-        Bitmap rightImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.right, 0.1f);
+        Bitmap rightImage = ImageProcessor.scaleImage(R.drawable.right, 0.1f);
         rightButton.setImageBitmap(rightImage);
         //setting up the on click listener
         rightButton.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +52,7 @@ public class CalendarScreen extends Fragment {
         });
 
         ImageView leftButton = (ImageView) view.findViewById(R.id.leftButton);
-        Bitmap leftImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.left, 0.1f);
+        Bitmap leftImage = ImageProcessor.scaleImage(R.drawable.left, 0.1f);
         leftButton.setImageBitmap(leftImage);
         //setting up the on click listener
         leftButton.setOnClickListener(new View.OnClickListener() {
@@ -80,12 +80,12 @@ public class CalendarScreen extends Fragment {
         //festival related widgets
         ImageView festiv = (ImageView) view.findViewById(R.id.festival3);
         if (UserInformation.getInstance().getFestival() == InfoDefine.HALLOWEEN) {
-            Bitmap halloween = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow1, 0.4f);
+            Bitmap halloween = ImageProcessor.scaleImage(R.drawable.hallow1, 0.4f);
             festiv.setImageBitmap(halloween);
         }
         else if (UserInformation.getInstance().getFestival() == InfoDefine.CHRISTMAS)
         {
-            Bitmap christmas = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.xmas1, 0.4f);
+            Bitmap christmas = ImageProcessor.scaleImage(R.drawable.xmas1, 0.4f);
             festiv.setImageBitmap(christmas);
         }
         else

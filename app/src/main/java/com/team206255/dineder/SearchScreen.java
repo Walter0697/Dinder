@@ -30,7 +30,7 @@ public class SearchScreen extends Fragment{
         DisplayMetrics metrics = getContext().getResources().getDisplayMetrics();
 
         ImageView searchIcon = (ImageView) view.findViewById(R.id.SearchIcon);
-        Bitmap searchImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.search_icon, 0.1f);
+        Bitmap searchImage = ImageProcessor.scaleImage(R.drawable.search_icon, 0.1f);
         searchIcon.setImageBitmap(searchImage);
 
         customeAdapter = new CustomeAdapter(getContext(), recipeList, R.layout.search_list_detail, InfoDefine.ListType.SEARCH_LIST, getActivity());

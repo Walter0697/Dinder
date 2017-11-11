@@ -347,10 +347,11 @@ public class RandomRecipeGenerator {
                 float healthScore = (float)health;
 
                 //serving number is being sent in as difficulty for now
-                Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
-
+                //Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
+                Recipe recipe = new Recipe(id, title, URL);
                 //later should be change to adding to recipe choice
-                UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
+                //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
+                //UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
             }
 
             @Override

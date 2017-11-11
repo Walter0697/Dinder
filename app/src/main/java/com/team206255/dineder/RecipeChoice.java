@@ -18,6 +18,7 @@ import java.util.Date;
 
 public class RecipeChoice {
     final int MAX_WAIT_CHOICE = 5;
+    private int current;
 
     Recipe[] showlist;
 
@@ -28,6 +29,12 @@ public class RecipeChoice {
         {
             addRecipe(RandomRecipeGenerator.getRandomRecipe());
         }
+        current = 0;
+    }
+
+    public void swipe()
+    {
+        current++;
     }
 
     public void addRecipe(Recipe recipe) {
@@ -36,18 +43,19 @@ public class RecipeChoice {
             showlist[i] = showlist[i+1];
         }
         showlist[MAX_WAIT_CHOICE - 1] = recipe;
+        current--;
     }
 
     public void getRecipeTest()
     {
-        RandomRecipeGenerator.getNutrientsRecipeAPI();
+        //RandomRecipeGenerator.getNutrientsRecipeAPI();
         //RandomRecipeGenerator.getRandomRecipeAPI();
     }
 
     public Recipe getChoiceRecipe()
     {
-        return showlist[0];
+        return showlist[current];
     }
 
-    public Recipe getBackgroundRecipe() { return showlist[1]; }
+    public Recipe getBackgroundRecipe() { return showlist[current + 1]; }
 }

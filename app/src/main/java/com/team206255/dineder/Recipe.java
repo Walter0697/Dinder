@@ -46,6 +46,8 @@ public class Recipe implements Serializable{
         carbs = 0;
         healthScore = 0;
 
+        ImageProcessor.preLoad(pictureUrl);
+
         fullyLoaded = false;
     }
 
@@ -64,6 +66,8 @@ public class Recipe implements Serializable{
         protein = 0;
         carbs = 0;
         healthScore = 0;
+
+        ImageProcessor.preLoad(pictureUrl);
 
         fullyLoaded = true;
     }
@@ -121,6 +125,8 @@ public class Recipe implements Serializable{
             pictureView = "https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg";
             name = "Green Onion";
         }
+
+        ImageProcessor.preLoad(pictureView);
     }
 
     public void retrieveInformation(String[] ingredients, String[] steps, float duration, float calorie, float fat, float protein, float carbs, int healthScore)

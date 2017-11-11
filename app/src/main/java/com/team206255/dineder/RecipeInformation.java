@@ -20,8 +20,6 @@ public class RecipeInformation extends AppCompatActivity {
     Recipe currentRecipe = new Recipe();
     private ScrollView scroll;
 
-    DisplayMetrics metrics;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +27,11 @@ public class RecipeInformation extends AppCompatActivity {
 
         scroll = (ScrollView) findViewById(R.id.scrolling);
 
-        metrics = getResources().getDisplayMetrics();
-
         if (getIntent().hasExtra("RECIPE"))
             currentRecipe = (Recipe) getIntent().getSerializableExtra("RECIPE");
 
         final ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
-        ImageProcessor.setURLImage(getApplicationContext(), currentRecipe.pictureView, 0.35f,
+        ImageProcessor.setURLImage(currentRecipe.pictureView, 0.35f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {

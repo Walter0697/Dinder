@@ -75,27 +75,29 @@ public class MainScreen extends Fragment{
 
         //handle the tick and cross button
         ImageView tickButton = (ImageView) view.findViewById(R.id.tickButton);
-        Bitmap tickImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.checked, 0.2f);
+        Bitmap tickImage = ImageProcessor.scaleImage(R.drawable.checked, 0.2f);
         tickButton.setImageBitmap(tickImage);
         tickButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 swipeLike();
+                setFoodView();
             }
         });
 
         ImageView crossButton = (ImageView) view.findViewById(R.id.crossButton);
-        Bitmap crossImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.unchecked, 0.2f);
+        Bitmap crossImage = ImageProcessor.scaleImage(R.drawable.unchecked, 0.2f);
         crossButton.setImageBitmap(crossImage);
         crossButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 swipeDislike();
+                setFoodView();
             }
         });
 
         ImageView loveButton = (ImageView) view.findViewById(R.id.loveButton);
-        Bitmap loveImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.savebutton, 0.25f);
+        Bitmap loveImage = ImageProcessor.scaleImage(R.drawable.savebutton, 0.25f);
         loveButton.setImageBitmap(loveImage);
         loveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,9 +119,9 @@ public class MainScreen extends Fragment{
         ImageView listButton = (ImageView) view.findViewById(R.id.leftDrawer);
         Bitmap listImage;
         if (UserInformation.getInstance().getFestival() == InfoDefine.HALLOWEEN)
-            listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.halloweenlist, 0.12f);
+            listImage = ImageProcessor.scaleImage(R.drawable.halloweenlist, 0.12f);
         else
-            listImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.listdrawer, 0.12f);
+            listImage = ImageProcessor.scaleImage(R.drawable.listdrawer, 0.12f);
         listButton.setImageBitmap(listImage);
         listButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -132,9 +134,9 @@ public class MainScreen extends Fragment{
         ImageView filterButton = (ImageView) view.findViewById(R.id.rightDrawer);
         Bitmap filterImage;
         if (UserInformation.getInstance().getFestival() == InfoDefine.CHRISTMAS)
-            filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.christinefilter, 0.12f);
+            filterImage = ImageProcessor.scaleImage(R.drawable.christinefilter, 0.12f);
         else
-            filterImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.filterdrawer, 0.12f);
+            filterImage = ImageProcessor.scaleImage(R.drawable.filterdrawer, 0.12f);
         filterButton.setImageBitmap(filterImage);
         filterButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,7 +155,7 @@ public class MainScreen extends Fragment{
         //getting the recipe picture from the first recipe in the list
         //also set up the drag and drop listener for the food picture view
         foodView = (ImageView) view.findViewById(R.id.foodView);
-        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
+        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -173,7 +175,7 @@ public class MainScreen extends Fragment{
         //getting the background recipe picture from the second recipe in the list
         //don't need to set up listener cuz it is just for the background
         final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
+        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -186,7 +188,7 @@ public class MainScreen extends Fragment{
                     }
                 });
         final ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
-        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
+        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -202,7 +204,7 @@ public class MainScreen extends Fragment{
         //getting the detail icon to handle viewing recipe information for now
         //might change it to touch the recipe image in the future
         ImageView detailView = (ImageView) view.findViewById(R.id.detailIcon);
-        final Bitmap detailImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.information, 0.1f);
+        final Bitmap detailImage = ImageProcessor.scaleImage(R.drawable.information, 0.1f);
         detailView.setImageBitmap(detailImage);
         detailView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -300,26 +302,26 @@ public class MainScreen extends Fragment{
 
         //set up some pictures according to the current festival
         if (UserInformation.getInstance().getFestival() == InfoDefine.HALLOWEEN) {
-            Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinderhalloween, 0.4f);
+            Bitmap mainImage = ImageProcessor.scaleImage(R.drawable.dinderhalloween, 0.4f);
             mainIcon.setImageBitmap(mainImage);
-            Bitmap halloweenImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow2, 0.4f);
+            Bitmap halloweenImage = ImageProcessor.scaleImage(R.drawable.hallow2, 0.4f);
             festi1.setImageBitmap(halloweenImage);
-            Bitmap halloweenImage2 = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.hallow3, 0.4f);
+            Bitmap halloweenImage2 = ImageProcessor.scaleImage(R.drawable.hallow3, 0.4f);
             festi2.setImageBitmap(halloweenImage2);
         }
         else if (UserInformation.getInstance().getFestival() == InfoDefine.CHRISTMAS)
         {
-            Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinder_christmas_yellow, 0.4f);
+            Bitmap mainImage = ImageProcessor.scaleImage(R.drawable.dinder_christmas_yellow, 0.4f);
             mainIcon.setImageBitmap(mainImage);
-            Bitmap christmasImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.xmas2, 0.6f);
+            Bitmap christmasImage = ImageProcessor.scaleImage(R.drawable.xmas2, 0.6f);
             festi1.setImageBitmap(christmasImage);
 
-            Bitmap christmasImage2 = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.xmas3, 0.3f);
+            Bitmap christmasImage2 = ImageProcessor.scaleImage(R.drawable.xmas3, 0.3f);
             festi2.setImageBitmap(christmasImage2);
         }
         else
         {
-            Bitmap mainImage = ImageProcessor.scaleImage(metrics, getResources(), R.drawable.dinder2special, 0.4f);
+            Bitmap mainImage = ImageProcessor.scaleImage(R.drawable.dinder2special, 0.4f);
             mainIcon.setImageBitmap(mainImage);
             festi1.setVisibility(View.INVISIBLE);
             festi2.setVisibility(View.INVISIBLE);
@@ -356,6 +358,7 @@ public class MainScreen extends Fragment{
             {
                 case DragEvent.ACTION_DRAG_LOCATION:
                     //set up alpha
+                    //it will change the alpha of the image when it is further away from the center
                     //towards liking
                     if (getTouchPosition(view, dragEvent).x >= (int)(metrics.widthPixels * 0.5))
                     {
@@ -372,16 +375,18 @@ public class MainScreen extends Fragment{
                     dragContainer.setAlpha(255);
                     view.setAlpha(1);
                     view.setVisibility(View.VISIBLE);
+                    testing.setText(getTouchPosition(view, dragEvent).toString());
                     break;
                 case DragEvent.ACTION_DROP:
                     if (getTouchPosition(view, dragEvent).x >= (int)(metrics.widthPixels * 0.75))
                     {
-                        animateImage(getTouchPosition(view, dragEvent).x, getTouchPosition(view, dragEvent).y, getTouchPosition(view, dragEvent).x, metrics.widthPixels, foodView);
                         swipeLike();
+                        setFoodView();
                     }
                     else if (getTouchPosition(view, dragEvent).x <= (int)(metrics.widthPixels * 0.25))
                     {
                         swipeDislike();
+                        setFoodView();
                     }
                     else if (getTouchPosition(view, dragEvent).y <= (int)(metrics.heightPixels * 0.5))
                     {
@@ -400,15 +405,37 @@ public class MainScreen extends Fragment{
         return new Point(rItem.left + Math.round(event.getX()),
                          rItem.right + Math.round(event.getY()));
     }
+
+    private static Point getItemTopRight(View item)
+    {
+        Rect rItem = new Rect();
+        item.getGlobalVisibleRect(rItem);
+        return new Point(rItem.left, rItem.right);
+    }
     //end of drag and drop functionality
 
     private void animateImage(float startx, float starty, float endx, float endy, ImageView view)
     {
-        animation = new TranslateAnimation(startx, starty, endx, endy);
+        animation = new TranslateAnimation(startx, endx, starty, endy);
         animation.setDuration(1000);
         animation.setRepeatCount(0);
         view.setAnimation(animation);
         animation.start();
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
     }
 
     //swiping the recipes
@@ -421,6 +448,8 @@ public class MainScreen extends Fragment{
     private void swipeLike()
     {
         testing.setText("Like");
+        UserInformation.getInstance().getRecipeChoice().swipe();
+
         UserInformation.getInstance().getRecipeList().addRecipe(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
         UserInformation.getInstance().getUserpreference().likedID.add(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().id);
         UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
@@ -428,21 +457,19 @@ public class MainScreen extends Fragment{
         listDrawerHandler.updateLikedView();
         //updating shared perference
         UserInformation.getInstance().updateSharedPreference();
-        setFoodView();
     }
 
     private void swipeDislike()
     {
         testing.setText("Dislike");
+        UserInformation.getInstance().getRecipeChoice().swipe();
+
         UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
         //***********ONLY FOR TESTING!!!!**************
         UserInformation.getInstance().getRecipeChoice().getRecipeTest();
         //*********************************************
         //updating shared perference
         UserInformation.getInstance().updateSharedPreference();
-
-        //Log.d("link", GetRequestURLGenerate.getRandomURL());
-        setFoodView();
     }
 
     private void swipeLove()
@@ -459,7 +486,7 @@ public class MainScreen extends Fragment{
     {
 
         final ImageView foregroundView = (ImageView) view.findViewById(R.id.foodView);
-        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
+        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -471,7 +498,7 @@ public class MainScreen extends Fragment{
                 });
 
         final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
+        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {
@@ -485,7 +512,7 @@ public class MainScreen extends Fragment{
                 });
 
         final ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
-        ImageProcessor.setURLImage(getContext(), UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
+        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {

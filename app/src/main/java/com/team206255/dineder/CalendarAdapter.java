@@ -21,7 +21,6 @@ public class CalendarAdapter extends BaseAdapter {
     CalendarStorage calendarStorage;
 
     Context context;
-    DisplayMetrics metrics;
     LayoutInflater inflater;
 
     public CalendarAdapter(Context c, CalendarStorage cs)
@@ -29,7 +28,6 @@ public class CalendarAdapter extends BaseAdapter {
         context = c;
         calendarStorage = cs;
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        metrics = c.getResources().getDisplayMetrics();
     }
 
     public void setCalendarStorage(CalendarStorage cs)
@@ -95,7 +93,7 @@ public class CalendarAdapter extends BaseAdapter {
             calendarCalorie.setVisibility(View.VISIBLE);
             removeButton.setVisibility(View.VISIBLE);
 
-            ImageProcessor.setURLImage(context, currentRecipe.pictureView, 0.2f,
+            ImageProcessor.setURLImage(currentRecipe.pictureView, 0.2f,
                     new CallbackHelper() {
                         @Override
                         public void onSuccess(JSONObject result) {
@@ -110,7 +108,7 @@ public class CalendarAdapter extends BaseAdapter {
             calendarName.setText(currentRecipe.name);
             calendarDuration.setText("Duration: " + Float.toString(currentRecipe.duration) + "mins");
             calendarCalorie.setText("Calorie: " + Float.toString(currentRecipe.calorie));
-            Bitmap removeBitmap = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.05f);
+            Bitmap removeBitmap = ImageProcessor.scaleImage(R.drawable.unchecked, 0.05f);
             removeButton.setImageBitmap(removeBitmap);
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override

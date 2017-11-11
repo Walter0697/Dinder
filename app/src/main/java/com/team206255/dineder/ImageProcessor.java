@@ -25,20 +25,27 @@ import com.squareup.picasso.Target;
 
 public class ImageProcessor {
 
-    //to scale the image according to the screen width
-    public static Bitmap scaleImage(DisplayMetrics displayMetrics, Resources res, int pic, float ratio)
+    static Context context;
+
+    public static void setContext(Context c)
     {
-        Bitmap icon = ResourceDrawableToBitmap(res, pic);
-        return scaleImage(displayMetrics, res, icon, ratio);
+        context = c;
     }
 
-    public static Bitmap scaleImage(DisplayMetrics displayMetrics, Resources res, Bitmap pic, float ratio)
+    //to scale the image according to the screen width
+    public static Bitmap scaleImage(int pic, float ratio)
+    {
+        Bitmap icon = ResourceDrawableToBitmap(pic);
+        return scaleImage(icon, ratio);
+    }
+
+    public static Bitmap scaleImage(Bitmap pic, float ratio)
     {
         int width = pic.getWidth();
         int height = pic.getHeight();
         float ratioBitmap = (float) width / (float) height;
 
-        int screenWidth = displayMetrics.widthPixels;
+        int screenWidth = context.getResources().getDisplayMetrics().widthPixels;
         int maxWidth = (int)(screenWidth * ratio);
         int maxHeight = (int)((float) maxWidth / ratioBitmap);
         Bitmap image = Bitmap.createScaledBitmap(pic, maxWidth, maxHeight, true);
@@ -125,30 +132,30 @@ public class ImageProcessor {
     }
 
     //turning R.drawable into bitmap
-    public static Bitmap ResourceDrawableToBitmap(Resources res, int image)
+    public static Bitmap ResourceDrawableToBitmap(int image)
     {
-        return BitmapFactory.decodeResource(res, image);
+        return BitmapFactory.decodeResource(context.getResources(), image);
     }
 
     //setting the full iamge into the screen
-    public static void setFullURLImage(final Context context, final String url, final CallbackHelper callback)
+    public static void setFullURLImage(final String url, final CallbackHelper callback)
     {
         final Target target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-                bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, 1.0f);
+                bitmap = scaleImage(bitmap, 1.0f);
                 callback.onSuccess(bitmap);
             }
 
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
-                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.failed, 0.1f);
+                Bitmap bitmap = scaleImage(R.drawable.failed, 0.1f);
                 callback.onSuccess(bitmap);
             }
 
             @Override
             public void onPrepareLoad(Drawable placeHolderDrawable) {
-                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 0.1f);
+                Bitmap bitmap = scaleImage(R.drawable.loading, 0.1f);
                 //callback.onSuccess(bitmap);
             }
         };
@@ -157,33 +164,39 @@ public class ImageProcessor {
     }
 
     //setting the scaled cropped image into the imageview
-    public static void setURLImage(final Context context, final String url, final float scale, final CallbackHelper callback)
+    public static void setURLImage(final String url, final float scale, final CallbackHelper callback)
     {
         final Target target = new Target() {
             @Override
             public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
                 bitmap = getCroppedBitmap(bitmap);
                 bitmap = drawCircleBorder(bitmap);
-                bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
+                bitmap = scaleImage(bitmap, scale);
                 callback.onSuccess(bitmap);
             }
 
             @Override
             public void onBitmapFailed(Drawable errorDrawable) {
-                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.failed, 0.1f);
+                Bitmap bitmap = scaleImage(R.drawable.failed, 0.1f);
                 callback.onSuccess(bitmap);
             }
 
             @Override
             public void onPrepareLoad(Drawable placeHolderDrawable) {
-                Bitmap bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), R.drawable.loading, 1.0f);
+                Bitmap bitmap = scaleImage(R.drawable.loading, 1.0f);
                 bitmap = getCroppedBitmap(bitmap);
                 bitmap = drawCircleBorder(bitmap);
-                bitmap = scaleImage(context.getResources().getDisplayMetrics(), context.getResources(), bitmap, scale);
+                bitmap = scaleImage(bitmap, scale);
                 callback.onSuccess((Bitmap)null);
             }
         };
 
         Picasso.with(context).load(url).into(target);
+    }
+
+    //preload the image before showing
+    public static void preLoad(String url)
+    {
+        Picasso.with(context).load(url).fetch();
     }
 }

@@ -39,7 +39,7 @@ public class CalendarChoice extends AppCompatActivity {
 
         //set up the image in the very top
         final ImageView foodView = (ImageView) findViewById(R.id.recipeImage);
-        ImageProcessor.setURLImage(this, currentRecipe.pictureView, 0.75f,
+        ImageProcessor.setURLImage(currentRecipe.pictureView, 0.75f,
                 new CallbackHelper() {
                     @Override
                     public void onSuccess(JSONObject result) {

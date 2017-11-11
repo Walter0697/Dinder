@@ -27,7 +27,6 @@ public class CustomeAdapter extends BaseAdapter {
 
     Context context;
     Activity activity;
-    DisplayMetrics metrics;
     LayoutInflater inflater;
     RecipeList items;
 
@@ -44,7 +43,6 @@ public class CustomeAdapter extends BaseAdapter {
         this.items = items;
         inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         context = c;
-        metrics = c.getResources().getDisplayMetrics();
     }
 
     public CustomeAdapter(Context c, RecipeList items, int layout, ListType type, Activity a)
@@ -54,7 +52,6 @@ public class CustomeAdapter extends BaseAdapter {
         this.items = items;
         inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         context = c;
-        metrics = c.getResources().getDisplayMetrics();
         activity = a;
     }
 
@@ -86,11 +83,11 @@ public class CustomeAdapter extends BaseAdapter {
                 addedTime.setText(items.getDateToString(i));
 
                 ImageView saveButton = (ImageView) v.findViewById(R.id.saveButton);
-                Bitmap saveImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.heart, 0.04f);
+                Bitmap saveImage = ImageProcessor.scaleImage(R.drawable.heart, 0.04f);
                 saveButton.setImageBitmap(saveImage);
 
                 ImageView removeButton = (ImageView) v.findViewById(R.id.removeButton);
-                final Bitmap removeImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.unchecked, 0.04f);
+                final Bitmap removeImage = ImageProcessor.scaleImage(R.drawable.unchecked, 0.04f);
                 removeButton.setImageBitmap(removeImage);
 
                 removeButton.setOnClickListener(new View.OnClickListener() {
@@ -126,7 +123,7 @@ public class CustomeAdapter extends BaseAdapter {
                 searchCalorie.setText("Calorie: " + Float.toString(items.getRecipe(i).calorie));
 
                 ImageView searchSaveButton = (ImageView) v.findViewById(R.id.searchSave);
-                Bitmap searchSaveImage = ImageProcessor.scaleImage(metrics, context.getResources(), R.drawable.heart, 0.05f);
+                Bitmap searchSaveImage = ImageProcessor.scaleImage(R.drawable.heart, 0.05f);
                 searchSaveButton.setImageBitmap(searchSaveImage);
                 searchSaveButton.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -139,7 +136,7 @@ public class CustomeAdapter extends BaseAdapter {
                 });
 
                 final ImageView searchRecipe = (ImageView) v.findViewById(R.id.searchRecipeImage);
-                ImageProcessor.setURLImage(context, items.getRecipe(i).pictureView, 0.2f,
+                ImageProcessor.setURLImage(items.getRecipe(i).pictureView, 0.2f,
                         new CallbackHelper() {
                             @Override
                             public void onSuccess(JSONObject result) {
