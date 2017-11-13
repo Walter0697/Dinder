@@ -103,6 +103,7 @@ public class CalendarAdapter extends BaseAdapter {
                         @Override
                         public void onSuccess(Bitmap result) {
                             calendarImage.setImageBitmap(result);
+                            notifyDataSetChanged();
                         }
                     });
             calendarName.setText(currentRecipe.name);
