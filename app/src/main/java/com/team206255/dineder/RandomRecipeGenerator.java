@@ -346,13 +346,13 @@ public class RandomRecipeGenerator {
                 switch(list)
                 {
                     case 0:
-                        //UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation();
+                        //UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
                         break;
                     case 1:
-                        //UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation();
+                        UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
                         break;
                     case 2:
-                        //UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation();
+                        //UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
                         break;
                 }
             }
