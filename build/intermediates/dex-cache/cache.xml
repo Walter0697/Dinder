@@ -21,15 +21,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.1"
-        sha1="d8abc6dfbf950ec3e1211da9c15ed7e0a286ef95">
-        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_12938c6faa5df3ae43285bc13a7c7a5c0d9df51c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"

@@ -9,3 +9,4 @@
 /captures
 .externalNativeBuild
 repo/local.properties
+build/intermediates/dex-cache/cache.xml

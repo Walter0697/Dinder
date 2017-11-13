@@ -282,17 +282,77 @@ public class RandomRecipeGenerator {
             public void onSuccess(JSONObject result) {
                 Log.d("jsonForInfo", result.toString());
                 //*******************************************TRY THIS ONE
-                //retrieveInformation(String[] ingredients, String[] steps, float duration, float calorie, float fat, float protein, float carbs, int healthScore)
+                //retrieveInformation(String[] ingredients, String[] steps, float duration,
+                //float calorie, float fat, float protein, float carbs, int healthScore)
+
+                int duration = result.optInt("readyInMinutes");
+                float dur = (float)duration;
+                int health = result.optInt("healthScore");
+
+                Log.d("duration", String.valueOf(dur));
+                Log.d("health", String.valueOf(health));
+
+                JSONArray ingredients = result.optJSONArray("extendedIngredients");
+
+                String[] ingred = new String[ingredients.length()];
+                for(int k = 0; k < ingredients.length(); k++)
+                {
+                    JSONObject indaviualIngred = ingredients.optJSONObject(k);
+                    ingred[k] = indaviualIngred.optString("originalString");
+                }
+
+                Log.d("ingredients", String.valueOf(ingred[0]));
+
+                JSONObject nutrition = result.optJSONObject("nutrition");
+                JSONArray nutrients = nutrition.optJSONArray("nutrients");
+                JSONObject calObj = nutrients.optJSONObject(0);
+                double calories = calObj.optDouble("amount");
+                float cal = (float)calories;
+
+                Log.d("calories", String.valueOf(cal));
+
+                JSONObject fatObj = nutrients.optJSONObject(1);
+                double ft = fatObj.optDouble("amount");
+                float fat = (float)ft;
+
+                Log.d("FAT", String.valueOf(fat));
+
+                JSONObject proObj = nutrients.optJSONObject(7);
+                double pro = proObj.optDouble("amount");
+                float protein = (float)pro;
+
+                JSONObject carbObj = nutrients.optJSONObject(3);
+                double carb = proObj.optDouble("amount");
+                float carbs = (float)carb;
+
+                Log.d("PROTEINN", String.valueOf(protein));
+                Log.d("CARBS", String.valueOf(carbs));
+
+                JSONArray analyzedInstructions = result.optJSONArray("analyzedInstructions");
+                JSONObject instrucObj = analyzedInstructions.optJSONObject(0);
+                JSONArray steps = instrucObj.optJSONArray("steps");
+                String[] instruc = new String[steps.length()];
+                for(int k = 0; k < steps.length(); k++)
+                {
+                    JSONObject individualStep = steps.optJSONObject(k);
+                    instruc[k] = individualStep.optString("step");
+                }
+
+                Log.d("INSTRUCTIONS", instruc[0]);
+
+                //retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+
+
                 switch(list)
                 {
                     case 0:
-                        //UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation();
+                        //UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
                         break;
                     case 1:
-                        //UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation();
+                        UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
                         break;
                     case 2:
-                        //UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation();
+                        //UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
                         break;
                 }
             }
@@ -333,14 +393,14 @@ public class RandomRecipeGenerator {
                     ingred[k] = indaviualIngred.optString("originalString");
                 }
 
-                Log.d("TITLE",title);
-                Log.d("id", String.valueOf(id));
-                Log.d("serving", String.valueOf(serving));
-                Log.d("URL",URL);
-                Log.d("INSTRUCTIONS",instructionsArray[0]);
-                Log.d("ingredients",ingred[0]);
-                Log.d("duration", String.valueOf(duration));
-                Log.d("health", String.valueOf(health));
+                //Log.d("TITLE",title);
+                //Log.d("id", String.valueOf(id));
+                //Log.d("serving", String.valueOf(serving));
+                //Log.d("URL",URL);
+                //Log.d("INSTRUCTIONS",instructionsArray[0]);
+                //Log.d("ingredients",ingred[0]);
+                //Log.d("duration", String.valueOf(duration));
+                //Log.d("health", String.valueOf(health));
 
                 // int id, String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie
 
