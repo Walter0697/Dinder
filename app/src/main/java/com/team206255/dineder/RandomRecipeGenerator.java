@@ -288,6 +288,10 @@ public class RandomRecipeGenerator {
                 int duration = result.optInt("readyInMinutes");
                 float dur = (float)duration;
                 int health = result.optInt("healthScore");
+
+                Log.d("duration", String.valueOf(dur));
+                Log.d("health", String.valueOf(health));
+
                 JSONArray ingredients = result.optJSONArray("extendedIngredients");
 
                 String[] ingred = new String[ingredients.length()];
@@ -297,15 +301,21 @@ public class RandomRecipeGenerator {
                     ingred[k] = indaviualIngred.optString("originalString");
                 }
 
+                Log.d("ingredients", String.valueOf(ingred[0]));
+
                 JSONObject nutrition = result.optJSONObject("nutrition");
                 JSONArray nutrients = nutrition.optJSONArray("nutrients");
                 JSONObject calObj = nutrients.optJSONObject(0);
                 double calories = calObj.optDouble("amount");
                 float cal = (float)calories;
 
+                Log.d("calories", String.valueOf(cal));
+
                 JSONObject fatObj = nutrients.optJSONObject(1);
                 double ft = fatObj.optDouble("amount");
                 float fat = (float)ft;
+
+                Log.d("FAT", String.valueOf(fat));
 
                 JSONObject proObj = nutrients.optJSONObject(7);
                 double pro = proObj.optDouble("amount");
@@ -314,6 +324,9 @@ public class RandomRecipeGenerator {
                 JSONObject carbObj = nutrients.optJSONObject(3);
                 double carb = proObj.optDouble("amount");
                 float carbs = (float)carb;
+
+                Log.d("PROTEINN", String.valueOf(protein));
+                Log.d("CARBS", String.valueOf(carbs));
 
                 JSONArray analyzedInstructions = result.optJSONArray("analyzedInstructions");
                 JSONObject instrucObj = analyzedInstructions.optJSONObject(0);
@@ -325,12 +338,10 @@ public class RandomRecipeGenerator {
                     instruc[k] = individualStep.optString("step");
                 }
 
+                Log.d("INSTRUCTIONS", instruc[0]);
 
-                Log.d("INSTRUCTIONS",instruc[0]);
-                Log.d("ingredients",ingred[0]);
-                Log.d("duration", String.valueOf(dur));
-                Log.d("health", String.valueOf(health));
-                Log.d("CALORIES", String.valueOf(cal));
+                //retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+
 
                 switch(list)
                 {
