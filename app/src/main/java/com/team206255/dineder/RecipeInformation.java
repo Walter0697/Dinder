@@ -95,28 +95,28 @@ public class RecipeInformation extends AppCompatActivity {
     @Override
     public boolean dispatchKeyEvent(KeyEvent event)
     {
-
-        int action = event.getAction();
-        int keyCode = event.getKeyCode();
-        switch(keyCode)
-        {
-            case KeyEvent.KEYCODE_VOLUME_UP:
-                if (action == KeyEvent.ACTION_DOWN)
-                {
-                    int yposition = scroll.getScrollY();
-                    scroll.scrollTo(0, yposition - 50);
-                }
-                return true;
-            case KeyEvent.KEYCODE_VOLUME_DOWN:
-                if (action == KeyEvent.ACTION_DOWN)
-                {
-                    int yposition = scroll.getScrollY();
-                    scroll.scrollTo(0, yposition + 50);
-                }
-                return true;
-            default:
-                return super.dispatchKeyEvent(event);
+        if (UserInformation.getInstance().getEnableSwiping()) {
+            int action = event.getAction();
+            int keyCode = event.getKeyCode();
+            switch (keyCode) {
+                case KeyEvent.KEYCODE_VOLUME_UP:
+                    if (action == KeyEvent.ACTION_DOWN) {
+                        int yposition = scroll.getScrollY();
+                        scroll.scrollTo(0, yposition - 50);
+                    }
+                    return true;
+                case KeyEvent.KEYCODE_VOLUME_DOWN:
+                    if (action == KeyEvent.ACTION_DOWN) {
+                        int yposition = scroll.getScrollY();
+                        scroll.scrollTo(0, yposition + 50);
+                    }
+                    return true;
+                default:
+                    return super.dispatchKeyEvent(event);
+            }
         }
+        else
+            return super.dispatchKeyEvent(event);
     }
 }
 

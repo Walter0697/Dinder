@@ -147,7 +147,7 @@ public class FilterDrawerHandler {
         ///////////////////////////////////////////////////////////////////
         //CARBS SEEKBAR + EDITTEXT
         //setting up the seekbar and edittext for carbs
-        carbsSeekBar = (SeekBar) headerView.findViewById(R.id.carbsSeekBar);
+        /*carbsSeekBar = (SeekBar) headerView.findViewById(R.id.carbsSeekBar);
         carbsNum = (EditText) headerView.findViewById(R.id.carbsNum);
         carbsNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxCarbs)});
         //setting up min and max range for the seekbar
@@ -187,7 +187,7 @@ public class FilterDrawerHandler {
                 UserInformation.getInstance().getRecipeFilter().carbs = Integer.parseInt(editable.toString());
                 carbsSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
-        });
+        });*/
 
         ///////////////////////////////////////////////////////////////////
         //FAT SEEKBAR + EDITTEXT
@@ -236,7 +236,7 @@ public class FilterDrawerHandler {
         ///////////////////////////////////////////////////////////////////
         //PROTEIN SEEKBAR + EDITTEXT
         //setting up the seekbar and edittext for protein
-        proteinSeekBar = (SeekBar) headerView.findViewById(R.id.proteinSeekBar);
+        /*proteinSeekBar = (SeekBar) headerView.findViewById(R.id.proteinSeekBar);
         proteinNum = (EditText) headerView.findViewById(R.id.proteinNum);
         proteinNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxProtein)});
         //setting up min and max range for the seekbar
@@ -276,7 +276,7 @@ public class FilterDrawerHandler {
                 UserInformation.getInstance().getRecipeFilter().protein = Integer.parseInt(editable.toString());
                 proteinSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
-        });
+        });*/
         setValueByFilter(UserInformation.getInstance().getRecipeFilter());
     }
 
@@ -291,15 +291,15 @@ public class FilterDrawerHandler {
         calorieSeekBar.setProgress((int)filter.calorie);
 
         //getting the carbs value from the filter
-        carbsNum.setText(Integer.toString((int)filter.carbs));
-        carbsSeekBar.setProgress((int)filter.carbs);
+        //carbsNum.setText(Integer.toString((int)filter.carbs));
+        //carbsSeekBar.setProgress((int)filter.carbs);
 
         //getting the fat vaule from the filter
         fatNum.setText(Integer.toString((int)filter.fat));
         fatSeekBar.setProgress((int)filter.fat);
 
         //getting the protein value from the filter
-        proteinNum.setText(Integer.toString((int)filter.protein));
-        proteinSeekBar.setProgress((int)filter.protein);
+        //proteinNum.setText(Integer.toString((int)filter.protein));
+        //proteinSeekBar.setProgress((int)filter.protein);
     }
 }

@@ -111,7 +111,7 @@ public class MainScreen extends Fragment{
         rightNavigationView = (NavigationView) view.findViewById(R.id.right_nav_view);
 
         //getting the view object from the navigation view
-        leftView = leftNavigationView.inflateHeaderView(R.layout.nav_header_main_screen);
+        leftView = leftNavigationView.inflateHeaderView(R.layout.list_drawer);
         rightView = rightNavigationView.getHeaderView(0);
 
         //setup the button(image) and resize them, then setup their listeners
@@ -224,15 +224,14 @@ public class MainScreen extends Fragment{
         filterDrawerHandler.handleDrawerSetup(rightView);
 
         //set up the button for filter screen and recipe detail screen
-        /*TextView advancedFilter = (TextView) rightView.findViewById(R.id.advancedButton);
+        TextView advancedFilter = (TextView) rightView.findViewById(R.id.Setting);
         advancedFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent filterScreen = new Intent(getActivity().getApplicationContext(), FilterScreen.class);
-                filterScreen.putExtra("RECIPEFILTER", UserInformation.getInstance().getRecipeFilter());
-                getActivity().startActivityForResult(filterScreen, InfoDefine.REQUEST_FOR_FILTER);
+                Intent settingScreen = new Intent(getActivity().getApplicationContext(), SettingScreen.class);
+                getActivity().startActivity(settingScreen);
             }
-        });*/
+        });
 
         //list view for liked drawer
         ListView likedListView = (ListView) leftView.findViewById(R.id.likedListView);
@@ -375,7 +374,7 @@ public class MainScreen extends Fragment{
                     dragContainer.setAlpha(255);
                     view.setAlpha(1);
                     view.setVisibility(View.VISIBLE);
-                    testing.setText(getTouchPosition(view, dragEvent).toString());
+                    //testing.setText(getTouchPosition(view, dragEvent).toString());
                     break;
                 case DragEvent.ACTION_DROP:
                     if (getTouchPosition(view, dragEvent).x >= (int)(metrics.widthPixels * 0.75))

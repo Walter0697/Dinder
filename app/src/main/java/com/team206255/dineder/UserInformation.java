@@ -21,6 +21,9 @@ public class UserInformation {
     private CalendarStorage calendarStorage;
     private Userpreference userpreference;
 
+    private boolean enableSwiping;
+    private boolean enableScreenOn;
+
     private SharedPreferences sharedPreferences;
 
     private UserInformation() { }
@@ -106,6 +109,29 @@ public class UserInformation {
             prefsEditor.putString("userPreference", userJson);
             prefsEditor.commit();
         }
+
+        //user setting
+        if (sharedPreferences.contains("swipingSetting"))
+        {
+            enableSwiping = sharedPreferences.getBoolean("swipingSetting", true);
+        }
+        else
+        {
+            SharedPreferences.Editor prefEditor = sharedPreferences.edit();
+            prefEditor.putBoolean("swipingSetting", enableSwiping);
+            prefEditor.commit();
+        }
+
+        if (sharedPreferences.contains("screenOnSetting"))
+        {
+            enableScreenOn = sharedPreferences.getBoolean("screenOnSetting", true);
+        }
+        else
+        {
+            SharedPreferences.Editor prefEditor = sharedPreferences.edit();
+            prefEditor.putBoolean("screenOnSetting", enableScreenOn);
+            prefEditor.commit();
+        }
     }
 
     //updating the shared preference
@@ -132,6 +158,16 @@ public class UserInformation {
         prefsEditor.commit();
     }
 
+    //updating setting
+    public void updateSetting()
+    {
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        prefsEditor.putBoolean("swipingSetting", enableSwiping);
+        prefsEditor.putBoolean("screenOnSetting", enableScreenOn);
+
+        prefsEditor.commit();
+    }
+
     //resetting the shared preference
     public void resetSharedPreference()
     {
@@ -145,7 +181,11 @@ public class UserInformation {
         recipeList = new RecipeList();
         userpreference = new Userpreference();
 
+        enableSwiping = true;
+        enableScreenOn = true;
+
         updateSharedPreference();
+        updateSetting();
     }
 
     public RecipeChoice getRecipeChoice()
@@ -178,4 +218,13 @@ public class UserInformation {
     public void setUserpreference(Userpreference userpreference) { this.userpreference = userpreference; }
 
     public int getFestival() { return festival; }
+
+    //getter and setter for user setting
+    public boolean getEnableSwiping() { return enableSwiping; }
+
+    public void setEnableSwiping(boolean value) { enableSwiping = value; }
+
+    public boolean getEnableScreenOn() { return enableScreenOn; }
+
+    public void setEnableScreenOn(boolean value) { enableScreenOn = value; }
 }

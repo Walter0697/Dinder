@@ -9,6 +9,7 @@ import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -177,6 +178,12 @@ public class FilterScreen extends AppCompatActivity {
                 finish();
             }
         });
+
+        //set that so the screen won't turn off
+        if (UserInformation.getInstance().getEnableScreenOn())
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        else
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     private void setupByFilter(RecipeFilter filter)

@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ImageView;
 
 import java.util.Random;
@@ -89,6 +90,12 @@ public class MainActivity extends AppCompatActivity {
         searchButton.setOnClickListener(fragmentListener);
         favouriteButton.setOnClickListener(fragmentListener);
         mainFeatureButton.setOnClickListener(fragmentListener);
+
+        //set that so the screen won't turn off
+        if (UserInformation.getInstance().getEnableScreenOn())
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        else
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     //adding all the pages into the viewPager
