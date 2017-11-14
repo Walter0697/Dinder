@@ -1,10 +1,7 @@
 (5 hours per days in average)
 
 Finished List:
-- scrolling by volume key
-- setting screen
-- prevent screen turn off itself
-- preload picture
+- nothing yet
 
 Haven’t done list:
 1. Ugly layout for some activities (fixed part of them, don’t know if there are more)
