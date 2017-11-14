@@ -346,10 +346,10 @@ public class RandomRecipeGenerator {
                 switch(list)
                 {
                     case 0:
-                        //UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+                        UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
                         break;
                     case 1:
-                        //UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+                        UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
                         break;
                     case 2:
                         UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
@@ -485,6 +485,6 @@ public class RandomRecipeGenerator {
             }
         };
         Log.d("request", "starting");
-        queue.add(getRequest);
+        //queue.add(getRequest);
     }
 }
