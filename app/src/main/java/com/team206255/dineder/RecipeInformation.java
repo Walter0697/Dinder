@@ -88,6 +88,8 @@ public class RecipeInformation extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
     //scrolling controlled by volume key!!!!

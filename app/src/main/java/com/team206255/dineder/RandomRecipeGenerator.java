@@ -353,7 +353,6 @@ public class RandomRecipeGenerator {
                         break;
                     case 2:
                         UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
-
                         break;
                 }
             }
@@ -412,8 +411,8 @@ public class RandomRecipeGenerator {
                 //Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
                 Recipe recipe = new Recipe(id, title, URL);
                 //later should be change to adding to recipe choice
-                UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
-                //UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
+                //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
+                UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
             }
 
             @Override
@@ -485,6 +484,6 @@ public class RandomRecipeGenerator {
             }
         };
         Log.d("request", "starting");
-        //queue.add(getRequest);
+        queue.add(getRequest);
     }
 }

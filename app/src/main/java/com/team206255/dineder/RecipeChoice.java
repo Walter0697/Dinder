@@ -43,12 +43,14 @@ public class RecipeChoice {
             showlist[i] = showlist[i+1];
         }
         showlist[MAX_WAIT_CHOICE - 1] = recipe;
+
         current--;
+        if (current < 0) current = 0;
     }
 
     public void getRecipeTest()
     {
-        RandomRecipeGenerator.getNutrientsRecipeAPI();
+        //RandomRecipeGenerator.getNutrientsRecipeAPI();
         //RandomRecipeGenerator.getRandomRecipeAPI();
     }
 

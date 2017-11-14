@@ -209,8 +209,10 @@ public class MainScreen extends Fragment{
         detailView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
                 //go to the recipe information screen
-                Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
+                if (UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().fullyLoaded == false)
+                    RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().id, 0, 0);
                 detailIntent.putExtra("RECIPE", UserInformation.getInstance().getRecipeChoice().getChoiceRecipe());
                 startActivity(detailIntent);
             }
@@ -240,7 +242,9 @@ public class MainScreen extends Fragment{
         likedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
+                final Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
+                if (UserInformation.getInstance().getRecipeList().getRecipe(i).fullyLoaded == false)
+                    RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getRecipeList().getRecipe(i).id, 1, i);
                 detailIntent.putExtra("RECIPE", UserInformation.getInstance().getRecipeList().getRecipe(i));
                 startActivity(detailIntent);
             }
@@ -480,7 +484,7 @@ public class MainScreen extends Fragment{
     }
 
     //setting the recipe image
-    //should be called everytime the image changes
+    //should be called every time the image changes
     private void setFoodView()
     {
 
