@@ -467,7 +467,7 @@ public class MainScreen extends Fragment{
         testing.setText("Dislike");
         UserInformation.getInstance().getRecipeChoice().swipe();
 
-        UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        //UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
         //***********ONLY FOR TESTING!!!!**************
         UserInformation.getInstance().getRecipeChoice().getRecipeTest();
         //*********************************************

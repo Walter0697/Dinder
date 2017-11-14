@@ -65,8 +65,9 @@
         android:id="@+id/nullText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/calendarType"
-        android:layout_alignBottom="@+id/removeButton"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/calendarType"
+        android:layout_marginTop="25dp"
         android:text="No Recipe" />
 
 
