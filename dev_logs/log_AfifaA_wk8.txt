@@ -1,0 +1,4 @@
+Name:  Afifa AsadWeek 8:(4 hours per day)
+1. Writing Architecture style and design pattern for D3.
+2. Showing patterns and design that fit in our app in the form of diagram.
+2. Making sequence diagram to show flow of our app. 
