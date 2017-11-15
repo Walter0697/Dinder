@@ -17,7 +17,7 @@ import java.util.Date;
  */
 
 public class RecipeChoice {
-    final int MAX_WAIT_CHOICE = 5;
+    final int MAX_WAIT_CHOICE = 10;
     private int current;
 
     Recipe[] showlist;

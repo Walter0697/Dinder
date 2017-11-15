@@ -211,8 +211,11 @@ public class MainScreen extends Fragment{
             public void onClick(View view) {
                 final Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
                 //go to the recipe information screen
-                if (UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().fullyLoaded == false)
-                    RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().id, 0, 0);
+                if (UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().fullyLoaded == false) {
+                    //RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().id, 0, 0);
+                    detailIntent.putExtra("LIST", 0);
+                    detailIntent.putExtra("INDEX", 0);
+                }
                 detailIntent.putExtra("RECIPE", UserInformation.getInstance().getRecipeChoice().getChoiceRecipe());
                 startActivity(detailIntent);
             }
@@ -243,8 +246,11 @@ public class MainScreen extends Fragment{
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
-                if (UserInformation.getInstance().getRecipeList().getRecipe(i).fullyLoaded == false)
-                    RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getRecipeList().getRecipe(i).id, 1, i);
+                if (UserInformation.getInstance().getRecipeList().getRecipe(i).fullyLoaded == false) {
+                    //RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getRecipeList().getRecipe(i).id, 1, i);
+                    detailIntent.putExtra("LIST", 1);
+                    detailIntent.putExtra("INDEX", i);
+                }
                 detailIntent.putExtra("RECIPE", UserInformation.getInstance().getRecipeList().getRecipe(i));
                 startActivity(detailIntent);
             }
@@ -409,12 +415,6 @@ public class MainScreen extends Fragment{
                          rItem.right + Math.round(event.getY()));
     }
 
-    private static Point getItemTopRight(View item)
-    {
-        Rect rItem = new Rect();
-        item.getGlobalVisibleRect(rItem);
-        return new Point(rItem.left, rItem.right);
-    }
     //end of drag and drop functionality
 
     private void animateImage(float startx, float starty, float endx, float endy, ImageView view)

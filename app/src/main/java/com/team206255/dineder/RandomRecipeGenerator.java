@@ -275,6 +275,7 @@ public class RandomRecipeGenerator {
     public static void setToRecipeAPI(int id, final int list, final int position)
     {
         setURL(GetRequestURLGenerate.getFoodinfoURL(id));
+        Log.d("request", "list"+list+",position"+position);
         //return for invalid number
         if (list > 2 || list < 0) return;
         getJSONObject(new CallbackHelper() {
@@ -371,6 +372,7 @@ public class RandomRecipeGenerator {
         getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
+                Log.d("randomJSON", result.toString());
                 JSONArray recipes = result.optJSONArray("recipes");
                 JSONObject rec = recipes.optJSONObject(0);
                 String title = rec.optString("title");
