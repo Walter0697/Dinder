@@ -73,7 +73,6 @@ public class CalendarScreen extends Fragment {
                     final Intent informationIntent = new Intent(getContext(), RecipeInformation.class);
                     //load information from the api in case if there is no information
                     if (UserInformation.getInstance().getCalendarStorage().getRecipe(i).fullyLoaded == false) {
-                        //RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getCalendarStorage().getRecipe(i).id, 2, i);
                         informationIntent.putExtra("LIST", 2);
                         informationIntent.putExtra("INDEX", i);
                     }

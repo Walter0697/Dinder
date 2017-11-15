@@ -22,25 +22,21 @@ public class RecipeChoice {
 
     Recipe[] showlist;
 
-    public RecipeChoice()
-    {
+    public RecipeChoice() {
         showlist = new Recipe[MAX_WAIT_CHOICE];
-        for (int i = 0; i < MAX_WAIT_CHOICE; i++)
-        {
+        for (int i = 0; i < MAX_WAIT_CHOICE; i++) {
             addRecipe(RandomRecipeGenerator.getRandomRecipe());
         }
         current = 0;
     }
 
-    public void swipe()
-    {
-        current++;
+    public void swipe() {
+        if (current != MAX_WAIT_CHOICE - 1) current++;
     }
 
     public void addRecipe(Recipe recipe) {
-        for (int i = 0; i < MAX_WAIT_CHOICE - 1; i++)
-        {
-            showlist[i] = showlist[i+1];
+        for (int i = 0; i < MAX_WAIT_CHOICE - 1; i++) {
+            showlist[i] = showlist[i + 1];
         }
         showlist[MAX_WAIT_CHOICE - 1] = recipe;
 
@@ -50,7 +46,7 @@ public class RecipeChoice {
 
     public void getRecipeTest()
     {
-        RandomRecipeGenerator.getNutrientsRecipeAPI();
+        //RandomRecipeGenerator.getNutrientsRecipeAPI();
         //RandomRecipeGenerator.getRandomRecipeAPI();
     }
 
@@ -59,5 +55,9 @@ public class RecipeChoice {
         return showlist[current];
     }
 
-    public Recipe getBackgroundRecipe() { return showlist[current + 1]; }
+    public Recipe getBackgroundRecipe()
+    {
+        if (current == MAX_WAIT_CHOICE - 1) return null;
+        return showlist[current + 1];
+    }
 }

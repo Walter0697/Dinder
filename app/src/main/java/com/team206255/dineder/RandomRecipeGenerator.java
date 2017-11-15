@@ -258,7 +258,14 @@ public class RandomRecipeGenerator {
                 Log.d("jsonForNutrients", result.toString());
                 //-->use Recipe(int id, String name, String pictureUrl)
                 //****************DO THIS FIRST TO SEE IF IT WILL WORK***************
-                //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
+
+                String title = result.optString("title");
+                String URL = result.optString("image");
+                int id = result.optInt("id");
+
+                Recipe recipe = new Recipe(id,title,URL);
+
+                UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
             }
 
             @Override
@@ -272,7 +279,7 @@ public class RandomRecipeGenerator {
     //-> 0. Swiping one
     //-> 1. Liked List
     //-> 2. CalendarStorage (for the current day)
-    public static void setToRecipeAPI(int id, final int list, final int position)
+    public static void setToRecipeAPI(int id, final int list, final int position, final UpdateCallBack updateCallBack)
     {
         setURL(GetRequestURLGenerate.getFoodinfoURL(id));
         Log.d("request", "list"+list+",position"+position);
@@ -348,12 +355,15 @@ public class RandomRecipeGenerator {
                 {
                     case 0:
                         UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+                        updateCallBack.update();
                         break;
                     case 1:
                         UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+                        updateCallBack.update();
                         break;
                     case 2:
                         UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+                        updateCallBack.update();
                         break;
                 }
             }

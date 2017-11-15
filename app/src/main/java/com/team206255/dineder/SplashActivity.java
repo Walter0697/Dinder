@@ -14,17 +14,19 @@ public class SplashActivity extends AppCompatActivity {
 
         //set up context inside imageprocessor
         ImageProcessor.setContext(this);
+
         //loading everything before getting inside the main screen
+        //set up context for getrequestgenerator
+        GetRequestURLGenerate.setContact(this);
         //set up things for the random recipe generator
         RandomRecipeGenerator.setupDummy();
         RandomRecipeGenerator.setUpQueue(this);
-        //set up context for getrequestgenerator
-        GetRequestURLGenerate.setContact(this);
 
         //setting up everything from the shared preference
         UserInformation.getInstance().setSharedPreferences(this);
         //if for testing ,wanna reset everything inside the app
         UserInformation.getInstance().resetSharedPreference();
+
 
         //starting the splashscreen and then start the main screen
         Thread startThread = new Thread(){

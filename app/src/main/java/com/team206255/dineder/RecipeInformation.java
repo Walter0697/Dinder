@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
@@ -20,6 +20,11 @@ public class RecipeInformation extends AppCompatActivity {
     Recipe currentRecipe = new Recipe();
     private ScrollView scroll;
 
+    StringAdapter ingredientsAdapter;
+    ListView ingredients;
+    StringAdapter stepsAdapter;
+    ListView steps;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +34,31 @@ public class RecipeInformation extends AppCompatActivity {
 
         if (getIntent().hasExtra("RECIPE"))
             currentRecipe = (Recipe) getIntent().getSerializableExtra("RECIPE");
+        else
+            currentRecipe = new Recipe();
+
+
+        if (currentRecipe.fullyLoaded == false)
+        {
+            final int list = (int)getIntent().getIntExtra("LIST", -1);
+            final int index = (int)getIntent().getIntExtra("INDEX", -1);
+            RandomRecipeGenerator.setToRecipeAPI(currentRecipe.id, list, index, new UpdateCallBack() {
+                @Override
+                public void update() {
+                    Log.d("called?", "yes");
+                    //-> 0. Swiping one
+                    //-> 1. Liked List
+                    //-> 2. CalendarStorage (for the current day)
+                    if (list == 0)
+                        currentRecipe = UserInformation.getInstance().getRecipeChoice().getChoiceRecipe();
+                    else if (list == 1)
+                        currentRecipe = UserInformation.getInstance().getRecipeList().getRecipe(index);
+                    else if (list == 2)
+                        currentRecipe = UserInformation.getInstance().getCalendarStorage().getRecipe(index);
+                    updateLayout();
+                }
+            });
+        }
 
         final ImageView recipeView = (ImageView) findViewById(R.id.RecipeView);
         ImageProcessor.setURLImage(currentRecipe.pictureView, 0.35f,
@@ -73,12 +103,12 @@ public class RecipeInformation extends AppCompatActivity {
         TextView proteinText = (TextView) findViewById(R.id.protein);
         proteinText.setText(Float.toString(currentRecipe.protein));
 
-        StringAdapter ingredientsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.ingredients, InfoDefine.ListType.INGREDIENT_LIST);
-        ListView ingredients = (ListView) findViewById(R.id.ingredientList);
+        ingredientsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.ingredients, InfoDefine.ListType.INGREDIENT_LIST);
+        ingredients = (ListView) findViewById(R.id.ingredientList);
         ingredients.setAdapter(ingredientsAdapter);
 
-        StringAdapter stepsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.steps, InfoDefine.ListType.STEPS);
-        ListView steps = (ListView) findViewById(R.id.stepList);
+        stepsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.steps, InfoDefine.ListType.STEPS);
+        steps = (ListView) findViewById(R.id.stepList);
         steps.setAdapter(stepsAdapter);
 
         Button backButton = (Button) findViewById(R.id.backButton);
@@ -119,6 +149,36 @@ public class RecipeInformation extends AppCompatActivity {
         }
         else
             return super.dispatchKeyEvent(event);
+    }
+
+    public void updateLayout()
+    {
+        ingredientsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.ingredients, InfoDefine.ListType.INGREDIENT_LIST);
+        ingredients = (ListView) findViewById(R.id.ingredientList);
+        ingredients.setAdapter(ingredientsAdapter);
+
+        stepsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.steps, InfoDefine.ListType.STEPS);
+        steps = (ListView) findViewById(R.id.stepList);
+        steps.setAdapter(stepsAdapter);
+
+        TextView durationText = (TextView) findViewById(R.id.durationView);
+        durationText.setText("Duration: " + currentRecipe.duration + " mins");
+
+        TextView healthScoreText = (TextView) findViewById(R.id.healthScoreView);
+        healthScoreText.setText("Health score: " + currentRecipe.healthScore);
+
+        TextView caloriesText = (TextView) findViewById(R.id.calories);
+        caloriesText.setText(Float.toString(currentRecipe.calorie));
+
+        TextView fatText = (TextView) findViewById(R.id.fat);
+        fatText.setText(Float.toString(currentRecipe.fat));
+
+        TextView carbsText = (TextView) findViewById(R.id.carbs);
+        carbsText.setText(Float.toString(currentRecipe.carbs));
+
+        TextView proteinText = (TextView) findViewById(R.id.protein);
+        proteinText.setText(Float.toString(currentRecipe.protein));
+
     }
 }
 

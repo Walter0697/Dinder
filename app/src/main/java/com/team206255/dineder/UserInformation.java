@@ -68,20 +68,6 @@ public class UserInformation {
             prefsEditor.commit();
         }
 
-        if (sharedPreferences.contains("recipeChoice"))
-        {
-            String choiceJson = sharedPreferences.getString("recipeChoice", "");
-            recipeChoice = gson.fromJson(choiceJson, RecipeChoice.class);
-        }
-        else
-        {
-            recipeChoice = new RecipeChoice();
-            SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
-            String choiceJson = gson.toJson(recipeChoice);
-            prefsEditor.putString("recipeChoice", choiceJson);
-            prefsEditor.commit();
-        }
-
         if (sharedPreferences.contains("recipeFilter"))
         {
             String filterJson = sharedPreferences.getString("recipeFilter", "");
@@ -107,6 +93,20 @@ public class UserInformation {
             SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
             String userJson = gson.toJson(userpreference);
             prefsEditor.putString("userPreference", userJson);
+            prefsEditor.commit();
+        }
+
+        if (sharedPreferences.contains("recipeChoice"))
+        {
+            String choiceJson = sharedPreferences.getString("recipeChoice", "");
+            recipeChoice = gson.fromJson(choiceJson, RecipeChoice.class);
+        }
+        else
+        {
+            recipeChoice = new RecipeChoice();
+            SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+            String choiceJson = gson.toJson(recipeChoice);
+            prefsEditor.putString("recipeChoice", choiceJson);
             prefsEditor.commit();
         }
 
@@ -146,14 +146,15 @@ public class UserInformation {
         String storageJson = gson.toJson(calendarStorage);
         prefsEditor.putString("calendarStorage", storageJson);
 
-        String choiceJson = gson.toJson(recipeChoice);
-        prefsEditor.putString("recipeChoice", choiceJson);
-
         String filterJson = gson.toJson(recipeFilter);
         prefsEditor.putString("recipeFilter", filterJson);
 
         String userJson = gson.toJson(userpreference);
         prefsEditor.putString("userPreference", userJson);
+
+        String choiceJson = gson.toJson(recipeChoice);
+        prefsEditor.putString("recipeChoice", choiceJson);
+
 
         prefsEditor.commit();
     }
@@ -175,11 +176,11 @@ public class UserInformation {
         prefsEditor.clear();
         prefsEditor.commit();
 
-        recipeChoice = new RecipeChoice();
         recipeFilter = new RecipeFilter();
         calendarStorage = new CalendarStorage();
         recipeList = new RecipeList();
         userpreference = new Userpreference();
+        recipeChoice = new RecipeChoice();
 
         enableSwiping = true;
         enableScreenOn = true;

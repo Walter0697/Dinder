@@ -1,19 +1,17 @@
 (5 hours per days in average)
 
 Finished List:
-- nothing yet
+- updating string after call back function
 
 Haven’t done list:
 1. Ugly layout for some activities (fixed part of them, don’t know if there are more)
-2. “Missing ingredients” features (Really depends on the api)
-3. User preferences
+2. User preferences
    two ways to achieve this:
        -randomly select one recipe, then pass it to SimilarRecipe Request <-- do this first, later change
        -increase chance for different type of food, and generate a recipefilter to combine with the user defined recipe filter
 
 Problems:
-1. Complex request seems to have too long time to run
-2. Search and filter should be different to make main function more random
+1. BASICALLY API THINGS!!!!!!
 
 Challenge:
 1. Timer in recipes <— could be difficult because it will duel with another widget type

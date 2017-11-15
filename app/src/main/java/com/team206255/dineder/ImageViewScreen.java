@@ -24,12 +24,6 @@ public class ImageViewScreen extends AppCompatActivity {
         else
             viewRecipe = new Recipe();
 
-        if (viewRecipe.fullyLoaded == false)
-        {
-            int list = (int)getIntent().getIntExtra("LIST", -1);
-            int index = (int)getIntent().getIntExtra("INDEX", -1);
-            RandomRecipeGenerator.setToRecipeAPI(viewRecipe.id, list, index);
-        }
         final ImageView viewImage = (ImageView)findViewById(R.id.imageView);
         ImageProcessor.setFullURLImage(viewRecipe.pictureView, new CallbackHelper() {
             @Override

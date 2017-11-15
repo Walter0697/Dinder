@@ -155,51 +155,12 @@ public class MainScreen extends Fragment{
         //getting the recipe picture from the first recipe in the list
         //also set up the drag and drop listener for the food picture view
         foodView = (ImageView) view.findViewById(R.id.foodView);
-        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
-                new CallbackHelper() {
-                    @Override
-                    public void onSuccess(JSONObject result) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(Bitmap result) {
-                        foodView.setImageBitmap(result);
-                    }
-                });
 
         foodView.setTag(IMAGEVIEW_TAG);
         foodView.setOnTouchListener(touchListener);
         foodView.setOnDragListener(dragListener);
 
-        //getting the background recipe picture from the second recipe in the list
-        //don't need to set up listener cuz it is just for the background
-        final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
-                new CallbackHelper() {
-                    @Override
-                    public void onSuccess(JSONObject result) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(Bitmap result) {
-                        backgroundView.setImageBitmap(result);
-                    }
-                });
-        final ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
-        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
-                new CallbackHelper() {
-                    @Override
-                    public void onSuccess(JSONObject result) {
-
-                    }
-
-                    @Override
-                    public void onSuccess(Bitmap result) {
-                        background2View.setImageBitmap(result);
-                    }
-                });
+        setFoodView();
 
         //getting the detail icon to handle viewing recipe information for now
         //might change it to touch the recipe image in the future
@@ -212,7 +173,6 @@ public class MainScreen extends Fragment{
                 final Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
                 //go to the recipe information screen
                 if (UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().fullyLoaded == false) {
-                    //RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().id, 0, 0);
                     detailIntent.putExtra("LIST", 0);
                     detailIntent.putExtra("INDEX", 0);
                 }
@@ -247,7 +207,6 @@ public class MainScreen extends Fragment{
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 final Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
                 if (UserInformation.getInstance().getRecipeList().getRecipe(i).fullyLoaded == false) {
-                    //RandomRecipeGenerator.setToRecipeAPI(UserInformation.getInstance().getRecipeList().getRecipe(i).id, 1, i);
                     detailIntent.putExtra("LIST", 1);
                     detailIntent.putExtra("INDEX", i);
                 }
@@ -339,8 +298,6 @@ public class MainScreen extends Fragment{
         //testing textview only
         testing = (TextView) view.findViewById(R.id.testing);
         testing.setText("Welcome");
-
-        setFoodView();
 
         return view;
     }
@@ -467,9 +424,9 @@ public class MainScreen extends Fragment{
         testing.setText("Dislike");
         UserInformation.getInstance().getRecipeChoice().swipe();
 
-        //UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
         //***********ONLY FOR TESTING!!!!**************
-        UserInformation.getInstance().getRecipeChoice().getRecipeTest();
+        //UserInformation.getInstance().getRecipeChoice().getRecipeTest();
         //*********************************************
         //updating shared perference
         UserInformation.getInstance().updateSharedPreference();
@@ -489,43 +446,52 @@ public class MainScreen extends Fragment{
     {
 
         final ImageView foregroundView = (ImageView) view.findViewById(R.id.foodView);
-        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
-                new CallbackHelper() {
-                    @Override
-                    public void onSuccess(JSONObject result) {
+        if (UserInformation.getInstance().getRecipeChoice().getChoiceRecipe() == null)
+        {
+            foregroundView.setImageBitmap(ImageProcessor.scaleImage(R.drawable.failed, 0.5f));
+        }
+        else
+        {
+            ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().pictureView, 0.95f,
+                    new CallbackHelper() {
+                        @Override
+                        public void onSuccess(JSONObject result) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onSuccess(Bitmap result) { foregroundView.setImageBitmap(result); }
-                });
+                        @Override
+                        public void onSuccess(Bitmap result) {
+                            foregroundView.setImageBitmap(result);
+                        }
+                    });
 
-        final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
-        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
-                new CallbackHelper() {
-                    @Override
-                    public void onSuccess(JSONObject result) {
+            final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
+            ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
+                    new CallbackHelper() {
+                        @Override
+                        public void onSuccess(JSONObject result) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onSuccess(Bitmap result) {
-                        backgroundView.setImageBitmap(result);
-                    }
-                });
+                        @Override
+                        public void onSuccess(Bitmap result) {
+                            backgroundView.setImageBitmap(result);
+                        }
+                    });
 
-        final ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
-        ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
-                new CallbackHelper() {
-                    @Override
-                    public void onSuccess(JSONObject result) {
+            final ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
+            ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
+                    new CallbackHelper() {
+                        @Override
+                        public void onSuccess(JSONObject result) {
 
-                    }
+                        }
 
-                    @Override
-                    public void onSuccess(Bitmap result) {
-                        background2View.setImageBitmap(result);
-                    }
-                });
+                        @Override
+                        public void onSuccess(Bitmap result) {
+                            background2View.setImageBitmap(result);
+                        }
+                    });
+        }
     }
 }

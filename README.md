@@ -62,7 +62,9 @@ The project for 3004
 ###### InfoDefine.java
 - defining the value, such as list of ingredients, good for keeping useful values in the center.
 ###### CallbackHelper.java
-- Interface for the helping call back function
+- Interface for helping call back function
+###### UpdateCallBack.java
+- Interface for updating layout after call back function
 
 ##### Layout related classes:
 ###### SplashActivity.java
@@ -89,6 +91,8 @@ The project for 3004
 - to save the recipes to the calendar
 ###### ImageViewScreen.java
 - to browse the image of the recipe
+###### SettingScreen.java
+- changing the setting of the app
 
 ##### Storage type classes:
 ###### UserInformation.java
