@@ -2,31 +2,13 @@
 <items version="2" >
 
     <item
-        is-multidex="false"
-        jar="/Users/walter/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
-        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/pre-dexed/debug/gson-2.7_abf1ee787e1f1705eb399b503bdd30712770f2b5.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/walter/.android/build-cache/316c0a908f036d4cc9dda269b77360a95f7d5d16/output/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="26.0.1"
-        sha1="2cd4b982617e544728de0782d718a58ce1b06e3f">
-        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/pre-dexed/debug/classes_eca936c9b01a623d915c6c0dcfeffbf5450e5214.jar" />
-    </item>
-    <item
         is-multidex="true"
-        jar="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="C:\Users\ZA\AndroidStudioProjects\Team-206255\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_e51ec9fc3724ccbe36dacf0bad8301cfd148c5d3/classes.dex" />
+        sha1="56cc01ff264bf9e59675c13b2899779e6b30595e">
+        <dex dex="C:\Users\ZA\AndroidStudioProjects\Team-206255\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6915343158d70a7e06b00a4e9f9c30aa652a9b50\classes.dex" />
     </item>
 
 </items>
