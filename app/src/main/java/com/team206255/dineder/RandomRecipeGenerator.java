@@ -258,7 +258,14 @@ public class RandomRecipeGenerator {
                 Log.d("jsonForNutrients", result.toString());
                 //-->use Recipe(int id, String name, String pictureUrl)
                 //****************DO THIS FIRST TO SEE IF IT WILL WORK***************
-                //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
+
+                String title = result.optString("title");
+                String URL = result.optString("image");
+                int id = result.optInt("id");
+
+                Recipe recipe = new Recipe(id,title,URL);
+
+                UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
             }
 
             @Override
