@@ -4,6 +4,9 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorWhite">#FFFFFF</color>
+
+    <color name="colorSwitch">#FFFF00</color>
+
     <color name="colorHalloween">#F15802</color>
     <color name="colorChristmas">#992114</color>
     <color name="colorTree">#1A3112</color>

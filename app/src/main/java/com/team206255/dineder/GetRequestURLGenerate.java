@@ -33,6 +33,12 @@ public class GetRequestURLGenerate {
         return "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=true&number=1&tags=" + ingre;
     }
 
+    public static String getSimilarURL()
+    {
+        int similarid = UserInformation.getInstance().getUserpreference().getRandomID();
+        return "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+similarid+"/similar";
+    }
+
     public static String getComplexURL()
     {
         String[] ingredients = randomElement(UserInformation.getInstance().getRecipeFilter().ingredientToList(mcontext),

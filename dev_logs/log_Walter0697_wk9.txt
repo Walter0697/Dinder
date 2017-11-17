@@ -2,6 +2,7 @@
 
 Finished List:
 - updating string after call back function
+- adding picture inside switch button
 
 Haven’t done list:
 1. Ugly layout for some activities (fixed part of them, don’t know if there are more)

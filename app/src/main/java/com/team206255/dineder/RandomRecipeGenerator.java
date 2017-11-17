@@ -462,6 +462,7 @@ public class RandomRecipeGenerator {
             public Map<String, String> getHeaders() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
                 params.put("X-Mashape-Key", APIKey);
+                params.put("Accept", "application/json");
                 return params;
             }
         };
@@ -492,6 +493,7 @@ public class RandomRecipeGenerator {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("X-Mashape-Key", APIKey);
+                params.put("Accept", "application/json");
                 return params;
             }
         };

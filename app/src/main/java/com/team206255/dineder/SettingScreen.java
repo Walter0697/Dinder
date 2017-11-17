@@ -1,11 +1,13 @@
 package com.team206255.dineder;
 
+import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 
 public class SettingScreen extends AppCompatActivity {
@@ -14,6 +16,11 @@ public class SettingScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting_screen);
+
+        //setting up the icon image
+        ImageView topIcon = (ImageView) findViewById(R.id.settingScreenIcon);
+        Bitmap topImage = ImageProcessor.scaleImage(R.drawable.gears, 0.2f);
+        topIcon.setImageBitmap(topImage);
 
         //////////////////////////////////////////////////////////
         //SETTING BUTTON

@@ -3,12 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="C:\Users\ZA\AndroidStudioProjects\Team-206255\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jar="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="56cc01ff264bf9e59675c13b2899779e6b30595e">
-        <dex dex="C:\Users\ZA\AndroidStudioProjects\Team-206255\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_6915343158d70a7e06b00a4e9f9c30aa652a9b50\classes.dex" />
+        sha1="9c48f8420d70ccdf9ed9e11f1e33c923b44adf1e">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_12938c6faa5df3ae43285bc13a7c7a5c0d9df51c/classes.dex" />
     </item>
 
 </items>

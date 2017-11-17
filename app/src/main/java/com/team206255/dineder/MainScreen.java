@@ -12,6 +12,7 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.DragEvent;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -401,20 +402,20 @@ public class MainScreen extends Fragment{
     //swiping the recipes
     private void swipe()
     {
-        UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        UserInformation.getInstance().getRecipeChoice().swipe();
         setFoodView();
     }
 
     private void swipeLike()
     {
         testing.setText("Like");
-        UserInformation.getInstance().getRecipeChoice().swipe();
 
         UserInformation.getInstance().getRecipeList().addRecipe(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
         UserInformation.getInstance().getUserpreference().likedID.add(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().id);
-        UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
-
         listDrawerHandler.updateLikedView();
+
+        UserInformation.getInstance().getRecipeChoice().swipe();
+        setFoodView();
         //updating shared perference
         UserInformation.getInstance().updateSharedPreference();
     }
@@ -423,11 +424,7 @@ public class MainScreen extends Fragment{
     {
         testing.setText("Dislike");
         UserInformation.getInstance().getRecipeChoice().swipe();
-
-        UserInformation.getInstance().getRecipeChoice().addRecipe(RandomRecipeGenerator.getRandomRecipe());
-        //***********ONLY FOR TESTING!!!!**************
-        //UserInformation.getInstance().getRecipeChoice().getRecipeTest();
-        //*********************************************
+        setFoodView();
         //updating shared perference
         UserInformation.getInstance().updateSharedPreference();
     }
@@ -464,8 +461,14 @@ public class MainScreen extends Fragment{
                             foregroundView.setImageBitmap(result);
                         }
                     });
+        }
 
-            final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
+        final ImageView backgroundView = (ImageView) view.findViewById(R.id.backgroundfoodView);
+        if (UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe() == null)
+        {
+            backgroundView.setImageBitmap(ImageProcessor.scaleImage(R.drawable.failed, 0.5f));
+        }
+        else {
             ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().getBackgroundRecipe().pictureView, 0.95f,
                     new CallbackHelper() {
                         @Override
@@ -476,20 +479,6 @@ public class MainScreen extends Fragment{
                         @Override
                         public void onSuccess(Bitmap result) {
                             backgroundView.setImageBitmap(result);
-                        }
-                    });
-
-            final ImageView background2View = (ImageView) view.findViewById(R.id.background2foodView);
-            ImageProcessor.setURLImage(UserInformation.getInstance().getRecipeChoice().showlist[2].pictureView, 0.95f,
-                    new CallbackHelper() {
-                        @Override
-                        public void onSuccess(JSONObject result) {
-
-                        }
-
-                        @Override
-                        public void onSuccess(Bitmap result) {
-                            background2View.setImageBitmap(result);
                         }
                     });
         }
