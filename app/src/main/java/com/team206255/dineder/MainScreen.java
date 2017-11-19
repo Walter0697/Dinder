@@ -171,6 +171,7 @@ public class MainScreen extends Fragment{
         detailView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                setFoodView();
                 final Intent detailIntent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
                 //go to the recipe information screen
                 if (UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().fullyLoaded == false) {
@@ -299,6 +300,8 @@ public class MainScreen extends Fragment{
         //testing textview only
         testing = (TextView) view.findViewById(R.id.testing);
         testing.setText("Welcome");
+
+        setFoodView();
 
         return view;
     }

@@ -25,13 +25,16 @@ public class RecipeChoice {
     public RecipeChoice() {
         showlist = new Recipe[MAX_WAIT_CHOICE];
         for (int i = 0; i < MAX_WAIT_CHOICE; i++) {
-            addRecipe(RandomRecipeGenerator.getRandomRecipe());
+            //addRecipe(RandomRecipeGenerator.getRandomRecipe());
+            generateRecipe();
         }
         current = 0;
     }
 
     public void swipe() {
         if (current != MAX_WAIT_CHOICE - 1) current++;
+        Log.d("current", Integer.toString(current));
+
         if (current > 0) generateRecipe();
     }
 
@@ -42,8 +45,10 @@ public class RecipeChoice {
         showlist[MAX_WAIT_CHOICE - 1] = recipe;
 
         current--;
+        Log.d("currentadd", Integer.toString(current));
         if (current < 0) current = 0;
         else if (current > 0) generateRecipe();
+
     }
 
     public void generateRecipe()

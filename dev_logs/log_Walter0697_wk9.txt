@@ -12,9 +12,9 @@ Haven’t done list:
        -increase chance for different type of food, and generate a recipefilter to combine with the user defined recipe filter
 
 Problems:
-1. BASICALLY API THINGS!!!!!!
+1. BASICALLY API THINGS!!!!!!    <—— TRY TO FIGURE OUT SLOWLY
 
 Challenge:
 1. Timer in recipes <— could be difficult because it will duel with another widget type
 2. Notification for the app <- might require me to use server/another api
-3. Animation for liking and disliking
+3. Animation for liking and disliking    <———TRY THIS RIGHT NOW

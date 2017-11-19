@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -32,8 +33,11 @@ public class RandomRecipeGenerator {
 
     //setting up the queue of the http request
     static RequestQueue queue;
+    static int MYSOCKET_TIMEOUT_MS = 5000;
+
     static String url = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/random?limitLicense=false&number=1";
     static String APIKey = "4WH5shG2ShmshNOHlTLcGuvisDXkp1FGULPjsnb2ImIUrqcMW6";
+    static String currentAPI = APIKey;
 
     //setting up context
     static Context mcontext;
@@ -248,6 +252,23 @@ public class RandomRecipeGenerator {
         return list.get(rand.nextInt(list.size()));
     }
 
+    public static void getSimilarRecipeAPI()
+    {
+        setURL(GetRequestURLGenerate.getSimilarURL());
+        Log.d("url", url);
+        getJSONArray(new CallbackHelper() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                
+            }
+
+            @Override
+            public void onSuccess(Bitmap result) {
+
+            }
+        });
+    }
+
     public static void getNutrientsRecipeAPI()
     {
         setURL(GetRequestURLGenerate.getNutrientsURL());
@@ -265,7 +286,7 @@ public class RandomRecipeGenerator {
 
                 Recipe recipe = new Recipe(id,title,URL);
 
-                UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 1);
+                UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
             }
 
             @Override
@@ -333,7 +354,7 @@ public class RandomRecipeGenerator {
                 double carb = proObj.optDouble("amount");
                 float carbs = (float)carb;
 
-                Log.d("PROTEINN", String.valueOf(protein));
+                Log.d("PROTEIN", String.valueOf(protein));
                 Log.d("CARBS", String.valueOf(carbs));
 
                 JSONArray analyzedInstructions = result.optJSONArray("analyzedInstructions");
@@ -461,7 +482,7 @@ public class RandomRecipeGenerator {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError{
                 Map<String, String> params = new HashMap<>();
-                params.put("X-Mashape-Key", APIKey);
+                params.put("X-Mashape-Key", currentAPI);
                 params.put("Accept", "application/json");
                 return params;
             }
@@ -492,11 +513,17 @@ public class RandomRecipeGenerator {
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
-                params.put("X-Mashape-Key", APIKey);
+                params.put("X-Mashape-Key", currentAPI);
                 params.put("Accept", "application/json");
                 return params;
             }
         };
+
+        getRequest.setRetryPolicy(new DefaultRetryPolicy(
+            MYSOCKET_TIMEOUT_MS,
+            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT
+        ));
         Log.d("request", "starting");
         queue.add(getRequest);
     }
