@@ -53,9 +53,14 @@ public class RecipeChoice {
 
     public void generateRecipe()
     {
-        //RandomRecipeGenerator.getNutrientsRecipeAPI();
+        RandomRecipeGenerator.getNutrientsRecipeAPI();
         //RandomRecipeGenerator.getRandomRecipeAPI();
-        addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        //addRecipe(RandomRecipeGenerator.getRandomRecipe());
+    }
+
+    public void testing()
+    {
+        RandomRecipeGenerator.getSimilarRecipeAPI();
     }
 
     public Recipe getChoiceRecipe()

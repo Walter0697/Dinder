@@ -259,7 +259,7 @@ public class RandomRecipeGenerator {
         getJSONArray(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
-                
+                Log.d("result", result.toString());
             }
 
             @Override
@@ -498,7 +498,9 @@ public class RandomRecipeGenerator {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
-                            callbackHelper.onSuccess(response.getJSONObject(0));
+                            Random rand = new Random();
+                            callbackHelper.onSuccess(response.getJSONObject(rand.nextInt(response.length())));
+                            //callbackHelper.onSuccess(response.getJSONObject(0));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
