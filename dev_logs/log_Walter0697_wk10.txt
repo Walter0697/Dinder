@@ -1,0 +1,9 @@
+(2 hours per days in average)
+
+Finished List:
+- working on the callback function, api, I think I got an idea about how to work with the api, should be fine later
+
+Challenge:
+1. Timer in recipes <— could be difficult because it will duel with another widget type
+2. Notification for the app <- might require me to use server/another api
+3. Animation for liking and disliking    <———TRY THIS RIGHT NOW
