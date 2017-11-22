@@ -412,6 +412,34 @@ public class RandomRecipeGenerator {
         });
     }
 
+    public static void getChristmasRecipeAPI()
+    {
+        setURL(GetRequestURLGenerate.getChristmasURL());
+        getJSONObject(new CallbackHelper() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                JSONArray recipes = result.optJSONArray("recipes");
+                JSONObject rec = recipes.optJSONObject(0);
+                String title = rec.optString("title");
+                String URL = rec.optString("image");
+                //String instructions = rec.optString("instructions");
+                int duration = rec.optInt("readyInMinutes");
+                int health = rec.optInt("healthScore");
+                int id = rec.optInt("id");
+
+                Recipe recipe = new Recipe(id, title, URL);
+                //later should be change to adding to recipe choice
+                //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
+                UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
+            }
+
+            @Override
+            public void onSuccess(Bitmap result) {
+
+            }
+        });
+    }
+
     //to get the json file and parse them into Recipe class
     public static void getRandomRecipeAPI()
     {

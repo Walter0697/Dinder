@@ -2,11 +2,13 @@ package com.team206255.dineder;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.support.v7.widget.SwitchCompat;
 import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,6 +33,7 @@ public class FilterDrawerHandler {
     private EditText fatNum;
     private SeekBar proteinSeekBar;
     private EditText proteinNum;
+    private SwitchCompat switchButton;
 
     public FilterDrawerHandler(Context c)
     {
@@ -277,6 +280,17 @@ public class FilterDrawerHandler {
                 proteinSeekBar.setProgress(Integer.parseInt(editable.toString()));
             }
         });*/
+
+        ///////////////////////////////////////////////////////////////////
+        //FOR CHRISTMAS ONLY!!!!!!!
+        switchButton = (SwitchCompat) headerView.findViewById(R.id.switchbutton);
+        switchButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                UserInformation.getInstance().getRecipeFilter().festivalFilter = b;
+            }
+        });
+
         setValueByFilter(UserInformation.getInstance().getRecipeFilter());
     }
 
@@ -301,5 +315,8 @@ public class FilterDrawerHandler {
         //getting the protein value from the filter
         //proteinNum.setText(Integer.toString((int)filter.protein));
         //proteinSeekBar.setProgress((int)filter.protein);
+
+        //getting the switch value from the filter
+        switchButton.setChecked(UserInformation.getInstance().getRecipeFilter().festivalFilter);
     }
 }

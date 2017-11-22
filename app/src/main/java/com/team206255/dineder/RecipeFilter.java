@@ -22,6 +22,8 @@ public class RecipeFilter implements Serializable{
     float fat;
     float protein;
 
+    boolean festivalFilter;
+
     ArrayList<String> userDefineIngredients = new ArrayList<>();
 
     public RecipeFilter()
@@ -33,6 +35,8 @@ public class RecipeFilter implements Serializable{
         carbs = InfoDefine.maxCarbs;
         fat = InfoDefine.maxFat;
         protein = InfoDefine.maxProtein;
+
+        festivalFilter = false;
     }
 
     //select all of the ingredients

@@ -55,7 +55,12 @@ public class RecipeChoice {
     {
         //RandomRecipeGenerator.getNutrientsRecipeAPI();
         //RandomRecipeGenerator.getRandomRecipeAPI();
-        addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        if (UserInformation.getInstance().getRecipeFilter().festivalFilter)
+        {
+            RandomRecipeGenerator.getChristmasRecipeAPI();
+        }
+        else
+            addRecipe(RandomRecipeGenerator.getRandomRecipe());
     }
 
     public void testing()

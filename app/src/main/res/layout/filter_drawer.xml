@@ -242,12 +242,31 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginLeft="10dp"/-->
 
-            <android.support.v7.widget.SwitchCompat
-                style="@style/switchStyle"
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
                 android:layout_marginTop="10dp"
+                android:text="Christmas Option  "
+                android:textSize="20dp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="2dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <android.support.v7.widget.SwitchCompat
+                android:id="@+id/switchbutton"
+                style="@style/switchStyle"
+                android:layout_marginTop="2dp"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
+
+            </LinearLayout>
 
             <TextView
                 android:id="@+id/Setting"

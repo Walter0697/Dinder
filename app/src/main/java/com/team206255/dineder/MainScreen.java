@@ -4,6 +4,7 @@ import android.content.ClipData;
 import android.content.ClipDescription;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Point;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -71,31 +72,14 @@ public class MainScreen extends Fragment{
         view = inflater.inflate(R.layout.activity_main_screen, container, false);
         metrics = getContext().getResources().getDisplayMetrics();
 
+        //set up the background when the festival is christmas
+        if (UserInformation.getInstance().getFestival() == InfoDefine.CHRISTMAS)
+        {
+            view.setBackgroundColor(Color.argb(255, 60, 141, 13));
+        }
+
         //getting the drawerLayout from the view
         drawer = (DrawerLayout) view.findViewById(R.id.main_fragment);
-
-        //handle the tick and cross button
-        ImageView tickButton = (ImageView) view.findViewById(R.id.tickButton);
-        Bitmap tickImage = ImageProcessor.scaleImage(R.drawable.checked, 0.2f);
-        tickButton.setImageBitmap(tickImage);
-        tickButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                swipeLike();
-                setFoodView();
-            }
-        });
-
-        ImageView crossButton = (ImageView) view.findViewById(R.id.crossButton);
-        Bitmap crossImage = ImageProcessor.scaleImage(R.drawable.unchecked, 0.2f);
-        crossButton.setImageBitmap(crossImage);
-        crossButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                swipeDislike();
-                setFoodView();
-            }
-        });
 
         ImageView loveButton = (ImageView) view.findViewById(R.id.loveButton);
         Bitmap loveImage = ImageProcessor.scaleImage(R.drawable.savebutton, 0.25f);
@@ -260,6 +244,29 @@ public class MainScreen extends Fragment{
         leftView.setVerticalScrollBarEnabled(false);
         rightView.setVerticalScrollBarEnabled(false);
 
+        //handle the tick and cross button
+        ImageView tickButton = (ImageView) view.findViewById(R.id.tickButton);
+        Bitmap tickImage = ImageProcessor.scaleImage(R.drawable.checked, 0.2f);
+        tickButton.setImageBitmap(tickImage);
+        tickButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeLike();
+                setFoodView();
+            }
+        });
+
+        ImageView crossButton = (ImageView) view.findViewById(R.id.crossButton);
+        Bitmap crossImage = ImageProcessor.scaleImage(R.drawable.unchecked, 0.2f);
+        crossButton.setImageBitmap(crossImage);
+        crossButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                swipeDislike();
+                setFoodView();
+            }
+        });
+
         ////////////////////////////////////////////////////////////////////////////////
         //DOWN HERE IS JUST FOR THE IMAGE, NO FUNCTIONAITY
 
@@ -380,19 +387,21 @@ public class MainScreen extends Fragment{
 
     private void animateImage(float startx, float starty, float endx, float endy, ImageView view)
     {
+        //Log.d("animation", "function");
         animation = new TranslateAnimation(startx, endx, starty, endy);
         animation.setDuration(1000);
         animation.setRepeatCount(0);
-        view.setAnimation(animation);
-        animation.start();
+
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
             public void onAnimationStart(Animation animation) {
-
+                Log.d("animation", "start");
             }
 
             @Override
             public void onAnimationEnd(Animation animation) {
+                //setFoodView();
+                Log.d("animation", "end");
             }
 
             @Override
@@ -400,6 +409,8 @@ public class MainScreen extends Fragment{
 
             }
         });
+        animation.startNow();
+        view.setAnimation(animation);
     }
 
     //swiping the recipes
@@ -418,7 +429,6 @@ public class MainScreen extends Fragment{
         listDrawerHandler.updateLikedView();
 
         UserInformation.getInstance().getRecipeChoice().swipe();
-        setFoodView();
         //updating shared perference
         UserInformation.getInstance().updateSharedPreference();
     }
@@ -428,7 +438,6 @@ public class MainScreen extends Fragment{
         testing.setText("Dislike");
         UserInformation.getInstance().getRecipeChoice().swipe();
         UserInformation.getInstance().getRecipeChoice().testing();
-        setFoodView();
         //updating shared perference
         UserInformation.getInstance().updateSharedPreference();
     }

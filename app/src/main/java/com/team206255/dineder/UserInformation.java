@@ -12,7 +12,7 @@ import com.google.gson.Gson;
 public class UserInformation {
     private static UserInformation instance = null;
 
-    private int festival = InfoDefine.NONE;
+    private int festival = InfoDefine.CHRISTMAS;
 
     private RecipeFilter recipeFilter;
 
