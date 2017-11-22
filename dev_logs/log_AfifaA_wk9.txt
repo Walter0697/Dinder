@@ -1,0 +1,4 @@
+Name:  Afifa AsadWeek 9:(4 hours per day)
+1. Preparing for the d3 presentation.
+2. Writing Architecture style and design pattern for D3.
+3. Making sequence diagram to show flow of our app. 
