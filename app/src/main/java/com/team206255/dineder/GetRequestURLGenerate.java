@@ -14,6 +14,9 @@ import java.util.Random;
 //similar one : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/156992/similar
 //food information : https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/479101/information?includeNutrition=true
 
+//for search feature
+//multiple requests : "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=false&cuisine=chinese&excludeIngredients=mango&fillIngredients=false&includeIngredients=onions%2C+lettuce%2C+tomato&instructionsRequired=false&maxCalories=1500&maxCarbs=100&maxFat=100&maxProtein=100&number=5&offset=0&ranking=1"
+
 public class GetRequestURLGenerate {
 
     static Context mcontext;
@@ -39,15 +42,31 @@ public class GetRequestURLGenerate {
         return "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+similarid+"/similar";
     }
 
-    public static String getComplexURL()
+    public static String getSearchURL(int offset)
     {
         String[] ingredients = randomElement(UserInformation.getInstance().getRecipeFilter().ingredientToList(mcontext),
-                                            UserInformation.getInstance().getRecipeFilter().ingredientChance(),
-                                            rand.nextInt(3) + 2);
+                                UserInformation.getInstance().getRecipeFilter().ingredientChance(),
+                                2);
         String ingre = combineString(ingredients);
-        String cuisine = UserInformation.getInstance().getRecipeFilter().randomSelectedCuisine(mcontext);
 
-        return "";
+        int calories = (int) UserInformation.getInstance().getRecipeFilter().calorie;
+        int carbs = (int) UserInformation.getInstance().getRecipeFilter().carbs;
+        int fat = (int) UserInformation.getInstance().getRecipeFilter().fat;
+        int protein = (int) UserInformation.getInstance().getRecipeFilter().protein;
+
+        String output = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=false&" +
+                "cuisine=american" +
+                "&fillIngredients=false" +
+                "&includeIngredients=" + ingre +
+                "&instructionsRequired=false" +
+                "&maxCalories=" + Integer.toString(calories) +
+                "&maxCarbs=100" + Integer.toString(carbs) +
+                "&maxFat=100" + Integer.toString(fat) +
+                "&maxProtein=100" + Integer.toString(protein) +
+                "&number=5" +
+                "&offset=" + Integer.toString(offset) +
+                "&ranking=1";
+        return output;
     }
 
     public static String getNutrientsURL()

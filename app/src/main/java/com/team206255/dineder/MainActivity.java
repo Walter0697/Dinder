@@ -7,6 +7,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -155,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
     //therefore we will set every result here
     //and call the function inside the corresponding class
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    protected void onActivityResult(final int requestCode, int resultCode, Intent data)
     {
         //After calling the filter screen
         //Called by : Filter Drawer (not anymore)
@@ -168,8 +169,20 @@ public class MainActivity extends AppCompatActivity {
         }
         //Called by : Search Screen
         else if (requestCode == InfoDefine.REQUEST_FOR_SEARCH){
-            if (requestCode == RESULT_OK)
+            if (resultCode == RESULT_OK) {
                 searchScreen.searchFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
+                UserInformation.getInstance().setRecipeFilter(searchScreen.searchFilter);
+                //set up the call back function for the search result
+                Log.d("request", "running");
+                RandomRecipeGenerator.getSearchResultAPI(new SearchCallback() {
+                    @Override
+                    public void onSuccess(RecipeList result) {
+                        searchScreen.recipeList = result;
+                        searchScreen.setUpRecipeList();
+                    }
+                });
+
+            }
         }
         //After saving recipes inside calendar
         //Called by : Main Screen

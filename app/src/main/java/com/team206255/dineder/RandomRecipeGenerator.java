@@ -18,7 +18,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -250,6 +249,23 @@ public class RandomRecipeGenerator {
     {
         //return new Recipe(rand.nextInt(5));
         return list.get(rand.nextInt(list.size()));
+    }
+
+    public static void getSearchResultAPI(final SearchCallback callback)
+    {
+        setURL(GetRequestURLGenerate.getSearchURL(0));
+        Log.d("url", url);
+        getJSONObject(new CallbackHelper() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                Log.d("result", result.toString());
+            }
+
+            @Override
+            public void onSuccess(Bitmap result) {
+
+            }
+        });
     }
 
     public static void getSimilarRecipeAPI()
@@ -498,9 +514,7 @@ public class RandomRecipeGenerator {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
-                            Random rand = new Random();
-                            callbackHelper.onSuccess(response.getJSONObject(rand.nextInt(response.length())));
-                            //callbackHelper.onSuccess(response.getJSONObject(0));
+                            callbackHelper.onSuccess(response.getJSONObject(0));
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
