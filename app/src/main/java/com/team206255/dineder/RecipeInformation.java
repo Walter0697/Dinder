@@ -45,7 +45,6 @@ public class RecipeInformation extends AppCompatActivity {
             RandomRecipeGenerator.setToRecipeAPI(currentRecipe.id, list, index, new UpdateCallBack() {
                 @Override
                 public void update() {
-                    Log.d("called?", "yes");
                     //-> 0. Swiping one
                     //-> 1. Liked List
                     //-> 2. CalendarStorage (for the current day)
@@ -73,6 +72,7 @@ public class RecipeInformation extends AppCompatActivity {
                         recipeView.setImageBitmap(result);
                     }
                 });
+
         recipeView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

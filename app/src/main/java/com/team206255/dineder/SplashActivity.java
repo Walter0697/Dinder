@@ -22,10 +22,10 @@ public class SplashActivity extends AppCompatActivity {
         RandomRecipeGenerator.setupDummy();
         RandomRecipeGenerator.setUpQueue(this);
 
+        //if for testing ,wanna reset everything inside the app
+        UserInformation.getInstance().resetSharedPreference(this);
         //setting up everything from the shared preference
         UserInformation.getInstance().setSharedPreferences(this);
-        //if for testing ,wanna reset everything inside the app
-        UserInformation.getInstance().resetSharedPreference();
 
 
         //starting the splashscreen and then start the main screen

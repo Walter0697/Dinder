@@ -104,6 +104,7 @@ public class UserInformation {
         else
         {
             recipeChoice = new RecipeChoice();
+            recipeChoice.initializeChoice();
             SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
             String choiceJson = gson.toJson(recipeChoice);
             prefsEditor.putString("recipeChoice", choiceJson);
@@ -170,8 +171,9 @@ public class UserInformation {
     }
 
     //resetting the shared preference
-    public void resetSharedPreference()
+    public void resetSharedPreference(Context context)
     {
+        sharedPreferences = context.getSharedPreferences("com.team206255.dinder", Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor.clear();
         prefsEditor.commit();
@@ -181,6 +183,8 @@ public class UserInformation {
         recipeList = new RecipeList();
         userpreference = new Userpreference();
         recipeChoice = new RecipeChoice();
+
+        recipeChoice.initializeChoice();
 
         enableSwiping = true;
         enableScreenOn = true;

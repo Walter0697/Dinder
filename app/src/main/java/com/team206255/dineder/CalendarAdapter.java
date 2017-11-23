@@ -106,6 +106,7 @@ public class CalendarAdapter extends BaseAdapter {
                             notifyDataSetChanged();
                         }
                     });
+
             calendarName.setText(currentRecipe.name);
             calendarDuration.setText("Duration: " + Float.toString(currentRecipe.duration) + "mins");
             calendarCalorie.setText("Calorie: " + Float.toString(currentRecipe.calorie));

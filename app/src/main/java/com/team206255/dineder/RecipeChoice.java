@@ -24,11 +24,16 @@ public class RecipeChoice {
 
     public RecipeChoice() {
         showlist = new Recipe[MAX_WAIT_CHOICE];
-        for (int i = 0; i < MAX_WAIT_CHOICE; i++) {
-            //addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        for (int i = 0; i < MAX_WAIT_CHOICE; i++)
+            addRecipe(RandomRecipeGenerator.getTutorial());
+        current = 0;
+    }
+
+    public void initializeChoice()
+    {
+        for (int i = 0; i < MAX_WAIT_CHOICE - 1; i++) {
             generateRecipe();
         }
-        current = 0;
     }
 
     public void swipe() {
@@ -53,14 +58,16 @@ public class RecipeChoice {
 
     public void generateRecipe()
     {
-        //RandomRecipeGenerator.getNutrientsRecipeAPI();
-        //RandomRecipeGenerator.getRandomRecipeAPI();
+
         if (UserInformation.getInstance().getRecipeFilter().festivalFilter)
         {
             RandomRecipeGenerator.getChristmasRecipeAPI();
         }
-        else
+        else{
+            //RandomRecipeGenerator.getNutrientsRecipeAPI();
+            //RandomRecipeGenerator.getRandomRecipeAPI();
             addRecipe(RandomRecipeGenerator.getRandomRecipe());
+        }
     }
 
     public void testing()

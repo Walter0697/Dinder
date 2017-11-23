@@ -26,6 +26,6 @@ public class Userpreference {
     public int getRandomID()
     {
         Random rand = new Random();
-        return likedID.get(rand.nextInt(likedID.size()));
+        return likedID.get(rand.nextInt(likedID.size() - 1) + 1);
     }
 }

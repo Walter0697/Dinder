@@ -245,6 +245,22 @@ public class RandomRecipeGenerator {
         list.add(recipe14);
     }
 
+    public static Recipe getTutorial()
+    {
+        String[] ingredient = new String[] {
+                "You can like this recipe to save this 'tutorial'!",
+                "You can click on the image to maximize the size!",
+                "This is where you see the ingredients!"};
+        String[] steps = new String[] {
+                "Left drawer is 'liked list', you can find all recipes that you liked before!",
+                "Right drawer is 'filter and setting', you can set up calorie to make the recipes fit you more!",
+                "Left corner is 'Search screen', set up the filter, and we will have couples recipes for you to pick!",
+                "Right corner is 'Calendar screen', save the recipe to your calendar, so that you can use it whenever you want!"};
+
+
+        return new Recipe(-1, "How to use our app?", "https://i.imgur.com/Gujx7wC.png", steps, ingredient, 0, 0.0f, 0.0f);
+    }
+
     public static Recipe getRandomRecipe()
     {
         //return new Recipe(rand.nextInt(5));

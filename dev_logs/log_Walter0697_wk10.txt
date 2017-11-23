@@ -5,5 +5,6 @@ Finished List:
 
 Challenge:
 1. Timer in recipes <— could be difficult because it will duel with another widget type
-2. Notification for the app <- might require me to use server/another api
+2. Notification for the app <- might require me to use server/another api 
+   / Calendar inside android studio
 3. Animation for liking and disliking    <———TRY THIS RIGHT NOW

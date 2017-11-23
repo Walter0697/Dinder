@@ -305,8 +305,8 @@ public class MainScreen extends Fragment{
         }
 
         //testing textview only
-        testing = (TextView) view.findViewById(R.id.testing);
-        testing.setText("Welcome");
+        //testing = (TextView) view.findViewById(R.id.testing);
+        //testing.setText("Welcome");
 
         setFoodView();
 
@@ -422,7 +422,7 @@ public class MainScreen extends Fragment{
 
     private void swipeLike()
     {
-        testing.setText("Like");
+        //testing.setText("Like");
 
         UserInformation.getInstance().getRecipeList().addRecipe(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
         UserInformation.getInstance().getUserpreference().likedID.add(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().id);
@@ -435,7 +435,7 @@ public class MainScreen extends Fragment{
 
     private void swipeDislike()
     {
-        testing.setText("Dislike");
+        //testing.setText("Dislike");
         UserInformation.getInstance().getRecipeChoice().swipe();
         UserInformation.getInstance().getRecipeChoice().testing();
         //updating shared perference
@@ -444,7 +444,7 @@ public class MainScreen extends Fragment{
 
     private void swipeLove()
     {
-        testing.setText("Save!");
+        //testing.setText("Save!");
         Intent calendarIntent = new Intent(getActivity().getApplicationContext(), CalendarChoice.class);
         calendarIntent.putExtra("RECIPE", UserInformation.getInstance().getRecipeChoice().getChoiceRecipe());
         getActivity().startActivityForResult(calendarIntent, InfoDefine.REQUEST_FOR_CALENDAR);
@@ -454,8 +454,8 @@ public class MainScreen extends Fragment{
     //should be called every time the image changes
     private void setFoodView()
     {
-
         final ImageView foregroundView = (ImageView) view.findViewById(R.id.foodView);
+
         if (UserInformation.getInstance().getRecipeChoice().getChoiceRecipe() == null)
         {
             foregroundView.setImageBitmap(ImageProcessor.scaleImage(R.drawable.failed, 0.5f));
