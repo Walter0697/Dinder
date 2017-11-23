@@ -51,6 +51,27 @@ public class Recipe implements Serializable{
         fullyLoaded = false;
     }
 
+    public Recipe(int id, String name, String pictureUrl, int calorie)
+    {
+        this.id = id;
+        this.name = name;
+        this.pictureView = pictureUrl;
+        this.steps = new String[1];
+        steps[0] = "loading";
+        ingredients = new String[1];
+        ingredients[0] = "loading";
+        duration = 0;
+        this.calorie = calorie;
+        fat = 0;
+        protein = 0;
+        carbs = 0;
+        healthScore = 0;
+
+        ImageProcessor.preLoad(pictureUrl);
+
+        fullyLoaded = false;
+    }
+
     public Recipe(int id, String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
     {
         this.id = id;
@@ -87,46 +108,6 @@ public class Recipe implements Serializable{
         duration = 10.f;
         calorie = 10.f;
         type = Cuisine.ALL;
-    }
-
-    public Recipe(int i)
-    {
-        fullyLoaded = true;
-        steps = new String[1];
-        steps[0] = "Just buy an apple";
-        ingredients = new String[1];
-        ingredients[0] = "apple";
-        difficulty = 1;
-        duration = 10.f;
-        calorie = 10.f;
-        type = Cuisine.INDIAN;
-        if (i == 0)
-        {
-            pictureView = "https://spoonacular.com/recipeImages/Ramen-Noodle-Coleslaw-556177.jpg";
-            name = "Milk";
-        }
-        else if (i == 1)
-        {
-            pictureView = "https://spoonacular.com/recipeImages/Grandmas-Apple-Crisp-645152.jpg";
-            name = "Almond";
-        }
-        else if (i == 2)
-        {
-            pictureView = "https://spoonacular.com/recipeImages/Quick-Apple-Ginger-Pie-657563.jpg";
-            name = "No reason but almond2";
-        }
-        else if (i == 3)
-        {
-            pictureView = "https://spoonacular.com/recipeImages/Cinnamon-Sugar-Fried-Apples-639487.jpg";
-            name = "chicken soup";
-        }
-        else if (i == 4)
-        {
-            pictureView = "https://spoonacular.com/recipeImages/Fresh-Apple-Cake-With-Caramel-Sauce-643426.jpg";
-            name = "Green Onion";
-        }
-
-        ImageProcessor.preLoad(pictureView);
     }
 
     public void retrieveInformation(String[] ingredients, String[] steps, float duration, float calorie, float fat, float protein, float carbs, int healthScore)

@@ -17,7 +17,7 @@ import java.util.Date;
  */
 
 public class RecipeChoice {
-    final int MAX_WAIT_CHOICE = 5;
+    final int MAX_WAIT_CHOICE = 3;
     private int current;
 
     Recipe[] showlist;
@@ -72,7 +72,8 @@ public class RecipeChoice {
 
     public void testing()
     {
-        RandomRecipeGenerator.getSimilarRecipeAPI();
+        //RandomRecipeGenerator.getSimilarRecipeAPI();
+        RandomRecipeGenerator.getComplexRecipeAPI();
     }
 
     public Recipe getChoiceRecipe()

@@ -267,6 +267,23 @@ public class RandomRecipeGenerator {
         return list.get(rand.nextInt(list.size()));
     }
 
+    public static void getComplexRecipeAPI()
+    {
+        setURL(GetRequestURLGenerate.getComplexURL());
+        Log.d("url", url);
+        getJSONObject(new CallbackHelper() {
+            @Override
+            public void onSuccess(JSONObject result) {
+                Log.d("result", result.toString());
+            }
+
+            @Override
+            public void onSuccess(Bitmap result) {
+
+            }
+        });
+    }
+
     public static void getSearchResultAPI(final SearchCallback callback)
     {
         setURL(GetRequestURLGenerate.getSearchURL(0));
@@ -315,8 +332,9 @@ public class RandomRecipeGenerator {
                 String title = result.optString("title");
                 String URL = result.optString("image");
                 int id = result.optInt("id");
+                int calories = result.optInt("calories");
 
-                Recipe recipe = new Recipe(id,title,URL);
+                Recipe recipe = new Recipe(id,title,URL, calories);
 
                 UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
             }
@@ -431,9 +449,11 @@ public class RandomRecipeGenerator {
     public static void getChristmasRecipeAPI()
     {
         setURL(GetRequestURLGenerate.getChristmasURL());
+        Log.d("url", url);
         getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
+                Log.d("result", result.toString());
                 JSONArray recipes = result.optJSONArray("recipes");
                 JSONObject rec = recipes.optJSONObject(0);
                 String title = rec.optString("title");

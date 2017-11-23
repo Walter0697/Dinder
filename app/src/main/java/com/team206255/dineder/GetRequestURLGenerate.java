@@ -47,6 +47,30 @@ public class GetRequestURLGenerate {
         return "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/"+similarid+"/similar";
     }
 
+    public static String getComplexURL()
+    {
+        int offset = rand.nextInt(30);
+
+        int calories = (int) UserInformation.getInstance().getRecipeFilter().calorie;
+        int carbs = (int) UserInformation.getInstance().getRecipeFilter().carbs;
+        int fat = (int) UserInformation.getInstance().getRecipeFilter().fat;
+        int protein = (int) UserInformation.getInstance().getRecipeFilter().protein;
+
+        String output = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=false&" +
+                "cuisine=american" +
+                "&fillIngredients=false" +
+                "&instructionsRequired=false" +
+                "&maxCalories=" + Integer.toString(calories) +
+                "&maxCarbs=100" + Integer.toString(carbs) +
+                "&maxFat=100" + Integer.toString(fat) +
+                "&maxProtein=100" + Integer.toString(protein) +
+                "&number=1" +
+                "&offset=" + Integer.toString(offset) +
+                "&ranking=1";
+        return output;
+
+    }
+
     public static String getSearchURL(int offset)
     {
         String[] ingredients = randomElement(UserInformation.getInstance().getRecipeFilter().ingredientToList(mcontext),

@@ -35,20 +35,11 @@
         android:textSize="20dp"/>
 
     <TextView
-        android:id="@+id/calendarDuration"
+        android:id="@+id/calendarCalorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/calendarFoodName"
         android:layout_below="@+id/calendarFoodName"
-        android:text="Duration"
-        android:textSize="15dp"/>
-
-    <TextView
-        android:id="@+id/calendarCalorie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/calendarDuration"
-        android:layout_below="@+id/calendarDuration"
         android:text="Calorie"
         android:textSize="15dp"/>
 
