@@ -23,6 +23,7 @@ public class UserInformation {
 
     private boolean enableSwiping;
     private boolean enableScreenOn;
+    private boolean enableCalendar;
 
     private SharedPreferences sharedPreferences;
 
@@ -133,6 +134,17 @@ public class UserInformation {
             prefEditor.putBoolean("screenOnSetting", enableScreenOn);
             prefEditor.commit();
         }
+
+        if (sharedPreferences.contains("calendarSaving"))
+        {
+            enableCalendar = sharedPreferences.getBoolean("calendarSaving", true);
+        }
+        else
+        {
+            SharedPreferences.Editor prefEditor = sharedPreferences.edit();
+            prefEditor.putBoolean("calendarSaving", enableCalendar);
+            prefEditor.commit();
+        }
     }
 
     //updating the shared preference
@@ -166,6 +178,7 @@ public class UserInformation {
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor.putBoolean("swipingSetting", enableSwiping);
         prefsEditor.putBoolean("screenOnSetting", enableScreenOn);
+        prefsEditor.putBoolean("calendarSaving", enableCalendar);
 
         prefsEditor.commit();
     }
@@ -188,6 +201,7 @@ public class UserInformation {
 
         enableSwiping = true;
         enableScreenOn = true;
+        enableCalendar = true;
 
         updateSharedPreference();
         updateSetting();
@@ -232,4 +246,8 @@ public class UserInformation {
     public boolean getEnableScreenOn() { return enableScreenOn; }
 
     public void setEnableScreenOn(boolean value) { enableScreenOn = value; }
+
+    public boolean getEnableCalendar() { return enableCalendar; }
+
+    public void setEnableCalendar(boolean value) { enableCalendar = value; }
 }

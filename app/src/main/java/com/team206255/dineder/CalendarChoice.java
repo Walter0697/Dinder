@@ -77,7 +77,9 @@ public class CalendarChoice extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 setResult(RESULT_OK);
-                addEventToCalendar(index, currentDate);
+                //add the recipe to google calendar if this function is enabled
+                if (UserInformation.getInstance().getEnableCalendar())
+                    addEventToCalendar(index, currentDate);
                 UserInformation.getInstance().getCalendarStorage().addRecipe(currentDate, currentRecipe, index);
                 UserInformation.getInstance().updateSharedPreference();
                 finish();

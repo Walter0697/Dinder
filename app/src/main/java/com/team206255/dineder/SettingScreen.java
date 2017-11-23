@@ -46,6 +46,17 @@ public class SettingScreen extends AppCompatActivity {
             }
         });
 
+        //enable calendar save
+        Switch calendarSave = (Switch) findViewById(R.id.calendarSave);
+        //set it to current user preference first
+        calendarSave.setChecked(UserInformation.getInstance().getEnableCalendar());
+        calendarSave.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                UserInformation.getInstance().setEnableCalendar(b);
+            }
+        });
+
         //back button to close this activity
         Button backButton = (Button)findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {

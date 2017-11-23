@@ -71,6 +71,16 @@
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center"/>
 
+            <Switch
+                android:id="@+id/calendarSave"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Save recipe into Google Calendar"
+                android:textSize="20dp"
+                android:hint="We won't add the recipe inside your google calendar if this is not enabled"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center" />
+
         </LinearLayout>
 
     </ScrollView>
