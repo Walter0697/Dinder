@@ -2,6 +2,7 @@ package com.team206255.dineder;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.provider.CalendarContract;
 import android.support.design.widget.AppBarLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -37,6 +38,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if (getIntent().hasExtra(CalendarContract.EXTRA_CUSTOM_APP_URI))
+        {
+            //set up everything that splash screen setted up
+            ImageProcessor.setContext(this);
+            GetRequestURLGenerate.setContact(this);
+            RandomRecipeGenerator.setupDummy();
+            RandomRecipeGenerator.setUpQueue(this);
+            UserInformation.getInstance().setSharedPreferences(this);
+        }
 
         //creating new class
         searchScreen = new SearchScreen();
@@ -173,7 +184,6 @@ public class MainActivity extends AppCompatActivity {
                 searchScreen.searchFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
                 UserInformation.getInstance().setRecipeFilter(searchScreen.searchFilter);
                 //set up the call back function for the search result
-                Log.d("request", "running");
                 RandomRecipeGenerator.getSearchResultAPI(new SearchCallback() {
                     @Override
                     public void onSuccess(RecipeList result) {

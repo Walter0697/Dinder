@@ -2,9 +2,8 @@
 
 Finished List:
 - working on the callback function, api, I think I got an idea about how to work with the api, should be fine later
+- set up so that whenever it saved inside our calendar, will also save it inside google calendar
 
 Challenge:
 1. Timer in recipes <— could be difficult because it will duel with another widget type
-2. Notification for the app <- might require me to use server/another api 
-   / Calendar inside android studio
-3. Animation for liking and disliking    <———TRY THIS RIGHT NOW
+2. Animation for liking and disliking    <———TRY THIS RIGHT NOW
