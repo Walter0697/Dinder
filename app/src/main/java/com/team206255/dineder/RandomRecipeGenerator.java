@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -275,6 +276,14 @@ public class RandomRecipeGenerator {
             @Override
             public void onSuccess(JSONObject result) {
                 Log.d("result", result.toString());
+
+                JSONArray results = result.optJSONArray("results");
+                JSONObject recipe = results.optJSONObject(0);
+                int id = recipe.optInt("id");
+                String title = recipe.optString("title");
+                String URL = recipe.optString("image");
+
+                Recipe parsedRecipe = new Recipe(id,title,URL);
             }
 
             @Override
@@ -292,6 +301,25 @@ public class RandomRecipeGenerator {
             @Override
             public void onSuccess(JSONObject result) {
                 Log.d("result", result.toString());
+
+                RecipeList recipes = new RecipeList();
+
+                JSONArray recs = result.optJSONArray("results");
+
+                Date date = new Date();
+
+                for (int i = 0; i < 5; i++)
+                {
+                    JSONObject recipe = recs.optJSONObject(i);
+                    int id = recipe.optInt("id");
+                    String title = recipe.optString("title");
+                    String URL = recipe.optString("image");
+
+                    Recipe rec = new Recipe(id, title, URL);
+                    recipes.addRecipe(rec, date);
+
+                }
+
             }
 
             @Override
@@ -309,6 +337,13 @@ public class RandomRecipeGenerator {
             @Override
             public void onSuccess(JSONObject result) {
                 Log.d("result", result.toString());
+
+
+                String title = result.optString("title");
+                String URL = result.optString("image");
+                int id = result.optInt("id");
+
+                Recipe recipe = new Recipe(id, title, URL);
             }
 
             @Override
