@@ -1,0 +1,5 @@
+Week 10
+
+- D3 Oral Exam
+- Started working on D4
+- Parsing data received from API - different API requests

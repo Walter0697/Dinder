@@ -3,12 +3,201 @@
 
     <item
         is-multidex="true"
+        jar="/Users/walter/.android/build-cache/77d6b83bf1e58064a2a9d5e97ecd3eddb8bd2585/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f428e2fbc9ed0b297e3a3f420e51e6982f66822d">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3e907dd69b6c9ccabb83e50fa01c2d6592f5a57c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/379a5b9882af3707e1f4da5a7f8f1ad011bb9a81/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="869a1d15fa9d8e8aa36587b042f553c1baea46bc">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2964d598933147a44bcd0818b2abb5c1617529e0/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/d0ce99fff28d2d90b5050bf64a77d18a37da04b6/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="58b12bdb21a84f22e0dc3b047aeceb0a546b1b44">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_3ef16674550235fe4501ed2fb6805811ac9be8c3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.1"
-        sha1="b8d7411f231f2ab4e81b1a9ec9705c59f2dfa1ce">
+        sha1="90d493041e1c4b9e4959d8ac751b600829c04967">
         <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_12938c6faa5df3ae43285bc13a7c7a5c0d9df51c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_e51ec9fc3724ccbe36dacf0bad8301cfd148c5d3/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.0.0/a2d487452376193fc8c103dd2b9bd5f2b1b44563/common-1.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a2d487452376193fc8c103dd2b9bd5f2b1b44563">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/common-1.0.0_2d6fe881d18522714d5f5a18aaa539e053552a95/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/526a7f07e30d24f8af47036cb6e8678b0127c569/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="a37fc31c5ceeaa4532a37358add1b189d8db4af1">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8e59b96777c192c27ea43679acfc420682943a54/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/ee81ec8000f0d4d639e1486a39e8404f14986d19/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b1a9377553f36949950d90d77bc3c64f442cd291">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e37dcf810f3c800f42b92ba484cd432a3ad53b08/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/3196c5430db94cf487fdb4ccd5e9ccca798b3433/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="508f50705b4fde51a16259f29c854201a3044516">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_a99ce3dee32d4784d1e8b659b4e4a72a9882e1f2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/e2b653a877dcdd08a6147bdfb360e8095d593697/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b62fdc4cfef174c1e456014195c83fa7de7dc041">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ab060c5818a00ceffe0f39b57ce4d528fdc83bac/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/f988c52d72d7fcd2f6db464982718a5d51d969b0/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6744a722b558c994eb23504c7871807f3fa35533">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e5d6df588485d16c3d50524f660379b39c519d12/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/c98d047cced9ba46e456e644a73ef69ffbba7e32/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="6f4138a4e065826cb044d49faea4cfd7191773d1">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_89a1b8265f4cf1cac26f80626537bb488df12bf7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/7dbfedee174f9748ff9ed8ce477608b2943296b4/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="7efef32744ca4a436492d5cf28c08698cc2af256">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_e6ac887c3940426f74daecb77d332d9c6d985a30/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.0.0/e414a4cb28434e25c4f6aa71426eb20cf4874ae9/common-1.0.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="e414a4cb28434e25c4f6aa71426eb20cf4874ae9">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/common-1.0.0_8349edf48025ccd6f0de13c28c4834ef5d2b0a49/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/1661e7f94993677fcbd0720737834149d1f75315/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2442771a5590dd4eb4bce00c2e9dca9e22e4c963">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7b2921bb0bf8740aaf351004d4ef5601e95e4061/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/8510435ae5b258643e39e32eb3056c34037f0a12/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="40392f30a601db5675cdf18192aab013d6fee6ec">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_b381181d5101d8728637ba4fa0b86a08ed949fb7/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/088e83a981cc15b96cea888e43c0da95c61436a4/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="2b0cb1d3587fcae786438f623e9131d4e3b9d35b">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_97b88a5170f6ef00fe40ac9b6432016594b2559b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/9c07b0f89243439a6f0273e4dc28558e1418bbfe/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="b12cd9c87c3dfb012a911b6e38d2444ed0a65e1f">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_bed3addfa31cf67b6c4ed2f95e900b3a416b5748/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/60cb0e18806061a10229a54ab91f6368be41d206/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="f97cf85b0fe70d37a705111dafa6b1b418ea1650">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2f0a3190305b468de196fff80975df8f11ad855b/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/231651a9cfe9dfb6e8db2548c66609661dbbf0eb/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_5e7d5c36c94e80ebeeaaebea13e2394362ad36e1/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.android/build-cache/23e06daded53c4e850fb82778bc71591da8c2f3c/output/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="233f60a165ae622c8b36731502ebbda0f65e1930">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_4a3e57d0907eddbd7bcda67b610a3a53f9694993/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/walter/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/814258103cf26a15fcc26ecce35f5b7d24b73f8/support-annotations-26.1.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="26.0.1"
+        sha1="0814258103cf26a15fcc26ecce35f5b7d24b73f8">
+        <dex dex="/Users/walter/AndroidStudioProjects/Dineder/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-26.1.0_4cd1f4effcca28469b1fb4e188bf278c65454fc7/classes.dex" />
     </item>
 
 </items>

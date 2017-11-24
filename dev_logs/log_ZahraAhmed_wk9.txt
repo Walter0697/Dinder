@@ -1,0 +1,6 @@
+Week 9
+
+- D3 Writeup
+- Parsing data received from API - differnt API requests
+- Met with group, discussed architecture for D3
+- Practiced for oral exam
