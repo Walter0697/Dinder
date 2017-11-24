@@ -11,6 +11,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.Date;
+import java.util.Random;
 
 /**
  * Created by walter on 2017-10-01.
@@ -64,16 +65,20 @@ public class RecipeChoice {
             RandomRecipeGenerator.getChristmasRecipeAPI();
         }
         else{
-            //RandomRecipeGenerator.getNutrientsRecipeAPI();
-            //RandomRecipeGenerator.getRandomRecipeAPI();
             addRecipe(RandomRecipeGenerator.getRandomRecipe());
-        }
-    }
+            /*Random rand = new Random();
+            if (rand.nextInt() >= 50)
+            {
+                RandomRecipeGenerator.getNutrientsRecipeAPI();
+            }
+            else
+            {
+                RandomRecipeGenerator.getRandomRecipeAPI();
+            }*/
 
-    public void testing()
-    {
-        //RandomRecipeGenerator.getSimilarRecipeAPI();
-        RandomRecipeGenerator.getComplexRecipeAPI();
+            //if (UserInformation.getInstance().getUserpreference().getRandomID() == -1) RandomRecipeGenerator.getComplexRecipeAPI();
+            //else RandomRecipeGenerator.getSimilarRecipeAPI();
+        }
     }
 
     public Recipe getChoiceRecipe()

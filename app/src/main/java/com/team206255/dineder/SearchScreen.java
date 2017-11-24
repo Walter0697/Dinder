@@ -35,7 +35,7 @@ public class SearchScreen extends Fragment{
 
         customeAdapter = new CustomeAdapter(getContext(), recipeList, R.layout.search_list_detail, InfoDefine.ListType.SEARCH_LIST, getActivity());
         searchList = (ListView) view.findViewById(R.id.searchList);
-        searchList.getLayoutParams().height = (int)(metrics.heightPixels * 0.7);
+        //searchList.getLayoutParams().height = (int)(metrics.heightPixels * 0.7);
         searchList.setAdapter(customeAdapter);
 
         Button searchButton = (Button) view.findViewById(R.id.searchButton);
@@ -51,10 +51,11 @@ public class SearchScreen extends Fragment{
         return view;
     }
 
-    public void setUpRecipeList()
+    public void setUpRecipeList(RecipeList list)
     {
+        recipeList = list;
         //request for the recipes again!
         searchList.invalidate();
-        ((BaseAdapter)searchList.getAdapter()).notifyDataSetChanged();
+        customeAdapter.notifyDataSetChanged();
     }
 }

@@ -437,7 +437,6 @@ public class MainScreen extends Fragment{
     {
         //testing.setText("Dislike");
         UserInformation.getInstance().getRecipeChoice().swipe();
-        UserInformation.getInstance().getRecipeChoice().testing();
         //updating shared perference
         UserInformation.getInstance().updateSharedPreference();
     }

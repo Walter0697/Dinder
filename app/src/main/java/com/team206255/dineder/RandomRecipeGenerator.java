@@ -284,6 +284,8 @@ public class RandomRecipeGenerator {
                 String URL = recipe.optString("image");
 
                 Recipe parsedRecipe = new Recipe(id,title,URL);
+
+                UserInformation.getInstance().getRecipeChoice().addRecipe(parsedRecipe);
             }
 
             @Override
@@ -320,6 +322,7 @@ public class RandomRecipeGenerator {
 
                 }
 
+                callback.onSuccess(recipes);
             }
 
             @Override
@@ -344,6 +347,7 @@ public class RandomRecipeGenerator {
                 int id = result.optInt("id");
 
                 Recipe recipe = new Recipe(id, title, URL);
+                UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
             }
 
             @Override

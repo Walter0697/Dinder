@@ -25,20 +25,11 @@
         android:layout_toEndOf="@+id/searchRecipeImage" />
 
     <TextView
-        android:id="@+id/searchDuration"
+        android:id="@+id/searchCalorie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/searchRecipeName"
         android:layout_alignLeft="@+id/searchRecipeName"
-        android:text="Duration"
-        android:textSize="15dp"/>
-
-    <TextView
-        android:id="@+id/searchCalorie"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/searchDuration"
-        android:layout_alignLeft="@+id/searchDuration"
         android:text="Calorie"
         android:textSize="15dp"/>
 
