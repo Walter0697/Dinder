@@ -39,6 +39,76 @@ public class RecipeFilter implements Serializable{
         festivalFilter = false;
     }
 
+    public void fat_set_by_spinner(int index)
+    {
+        switch(index)
+        {
+            case 0:
+                fat = 100;
+                break;
+            case 1:
+                fat = 80;
+                break;
+            case 2:
+                fat = 60;
+                break;
+            case 3:
+                fat = 40;
+                break;
+            case 4:
+                fat = 20;
+                break;
+        }
+    }
+
+    public int fat_spinner_position()
+    {
+        if (fat == 80)
+            return 1;
+        else if (fat == 60)
+            return 2;
+        else if (fat == 40)
+            return 3;
+        else if (fat == 20)
+            return 4;
+        return 0;
+    }
+
+    public void calorie_set_by_spinner(int index)
+    {
+        switch (index)
+        {
+            case 0:
+                calorie = 1000;
+                break;
+            case 1:
+                calorie = 800;
+                break;
+            case 2:
+                calorie = 500;
+                break;
+            case 3:
+                calorie = 300;
+                break;
+            case 4:
+                calorie = 100;
+                break;
+        }
+    }
+
+    public int calorie_spinner_position()
+    {
+        if (calorie == 800)
+            return 1;
+        else if (calorie == 500)
+            return 2;
+        else if (calorie == 300)
+            return 3;
+        else if (calorie == 100)
+            return 4;
+        return 0;
+    }
+
     //select all of the ingredients
     //later might be useful for button
     public void ingredientsSelectAll()
@@ -161,21 +231,5 @@ public class RecipeFilter implements Serializable{
         String[] list = selectedCuisine(context);
         Random rand = new Random();
         return list[rand.nextInt(list.length)];
-    }
-
-    public void combineRecipe(RecipeFilter other)
-    {
-        //do some shits
-        //later
-    }
-
-    public String combineString(String a, String b, String middle)
-    {
-        return a + middle + b;
-    }
-
-    public String combineString(String a, String b)
-    {
-        return a + ", " + b;
     }
 }

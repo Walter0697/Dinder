@@ -61,9 +61,9 @@ public class GetRequestURLGenerate {
                 "&fillIngredients=false" +
                 "&instructionsRequired=false" +
                 "&maxCalories=" + Integer.toString(calories) +
-                "&maxCarbs=100" + Integer.toString(carbs) +
-                "&maxFat=100" + Integer.toString(fat) +
-                "&maxProtein=100" + Integer.toString(protein) +
+                "&maxCarbs=" + Integer.toString(carbs) +
+                "&maxFat=" + Integer.toString(fat) +
+                "&maxProtein=" + Integer.toString(protein) +
                 "&number=1" +
                 "&offset=" + Integer.toString(offset) +
                 "&ranking=1";
@@ -89,9 +89,9 @@ public class GetRequestURLGenerate {
                 "&includeIngredients=" + ingre +
                 "&instructionsRequired=false" +
                 "&maxCalories=" + Integer.toString(calories) +
-                "&maxCarbs=100" + Integer.toString(carbs) +
-                "&maxFat=100" + Integer.toString(fat) +
-                "&maxProtein=100" + Integer.toString(protein) +
+                "&maxCarbs=" + Integer.toString(carbs) +
+                "&maxFat=" + Integer.toString(fat) +
+                "&maxProtein=" + Integer.toString(protein) +
                 "&number=5" +
                 "&offset=" + Integer.toString(offset) +
                 "&ranking=1";

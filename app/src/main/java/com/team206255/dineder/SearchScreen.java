@@ -18,7 +18,6 @@ import android.widget.ListView;
 public class SearchScreen extends Fragment{
 
     ListView searchList;
-    RecipeFilter searchFilter = new RecipeFilter();
     RecipeList recipeList = new RecipeList();
 
     CustomeAdapter customeAdapter;

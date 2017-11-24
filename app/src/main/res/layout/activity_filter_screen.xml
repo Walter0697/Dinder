@@ -72,45 +72,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
 
-            <!--DURATION-->
-            <TextView
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:layout_weight="0.35"
-                android:text="Duration:"
-                android:textSize="20dp"
-                android:layout_gravity="left"/>
-
-            <LinearLayout
-                android:layout_height="wrap_content"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="10dp"
-                android:layout_gravity="center"
-                android:weightSum="1">
-                <SeekBar
-                    android:id="@+id/advancedDurationSeekBar"
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:layout_gravity="center"/>
-
-                <EditText
-                    android:id="@+id/advancedDurationNum"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_weight="0.2"
-                    android:background="@android:color/white"
-                    android:textColor="@android:color/black"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:text="0"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
-
             <!--CALORIE-->
             <TextView
                 android:layout_height="wrap_content"
@@ -119,35 +80,31 @@
                 android:text="Calorie:"
                 android:textSize="20dp"
                 android:layout_gravity="left"/>
-            <LinearLayout
+
+            <Spinner
+                android:id="@+id/calorieSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dropdown" />
+
+            <!--FAT-->
+            <TextView
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_weight="0.35"
+                android:text="Fat:"
+                android:textSize="20dp"
+                android:layout_gravity="left"/>
+
+            <Spinner
+                android:id="@+id/fatSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_gravity="center"
-                android:weightSum="1">
-                <SeekBar
-                    android:id="@+id/advancedCalorieSeekBar"
-                    android:layout_height="wrap_content"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.8"
-                    android:layout_gravity="center"/>
-
-                <EditText
-                    android:id="@+id/advancedCalorieNum"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_weight="0.2"
-                    android:background="@android:color/white"
-                    android:textColor="@android:color/black"
-                    android:ems="10"
-                    android:inputType="number"
-                    android:text="0"
-                    android:textSize="15dp" />
-
-            </LinearLayout>
+                android:layout_marginTop="5dp"
+                android:spinnerMode="dropdown" />
 
             <!--INGREDIENTS-->
             <TextView

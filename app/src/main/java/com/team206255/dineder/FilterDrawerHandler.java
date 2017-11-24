@@ -7,12 +7,16 @@ import android.text.Editable;
 import android.text.InputFilter;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 
 /**
  * Created by walter on 2017-09-29.
@@ -23,17 +27,14 @@ public class FilterDrawerHandler {
     private Context context;
 
     //set the widgets here so that we can use for all function
-    private SeekBar durationSeekBar;
-    private EditText durationNum;
-    private SeekBar calorieSeekBar;
-    private EditText calorieNum;
-    private SeekBar carbsSeekBar;
-    private EditText carbsNum;
-    private SeekBar fatSeekBar;
-    private EditText fatNum;
-    private SeekBar proteinSeekBar;
-    private EditText proteinNum;
+    //private SeekBar durationSeekBar;
+    //private EditText durationNum;
+    //private SeekBar proteinSeekBar;
+    //private EditText proteinNum;
     private SwitchCompat switchButton;
+
+    private Spinner calorieSpinner;
+    private Spinner fatSpinner;
 
     public FilterDrawerHandler(Context c)
     {
@@ -55,187 +56,43 @@ public class FilterDrawerHandler {
         Bitmap drawerImage = ImageProcessor.scaleImage(R.drawable.filterdrawer, 0.1f);
         drawerIcon.setImageBitmap(drawerImage);
 
-        ///////////////////////////////////////////////////////////////////
-        //DURATION SEEKBAR + EDITTEXT
-        //setting up the seekbar and edittext for duration
-        durationSeekBar = (SeekBar) headerView.findViewById(R.id.durationSeekBar);
-        durationNum = (EditText) headerView.findViewById(R.id.durationNum);
-        durationNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxDuration)});
-        //setting up min and max range for the seekbar
-        //durationSeekBar.setMin(InfoDefine.minDuration);
-        durationSeekBar.setMax(InfoDefine.maxDuration);
-        //setting up the on seekbar listener
-        durationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        ////////////////////////////
+        //CALORIE SPINNER
+        calorieSpinner = (Spinner) headerView.findViewById(R.id.calorieSpinner);
+        String[] calorieChoice = {"1000", "800", "500", "300", "100"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, calorieChoice);
+        calorieSpinner.setAdapter(adapter);
+        calorieSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserInformation.getInstance().getRecipeFilter().duration = i;
-                durationNum.setText(Integer.toString(i));
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                UserInformation.getInstance().getRecipeFilter().calorie_set_by_spinner(i);
             }
 
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-        //setting up the edittext on change listener
-        durationNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
+        ////////////////////////////
+        //FAT SPINNER
+        fatSpinner = (Spinner) headerView.findViewById(R.id.fatSpinner);
+        String[] fatChoice = {"100", "80", "60", "40", "20"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_dropdown_item, fatChoice);
+        fatSpinner.setAdapter(adapter2);
+        fatSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                 UserInformation.getInstance().getRecipeFilter().fat_set_by_spinner(i);
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                UserInformation.getInstance().getRecipeFilter().duration = Integer.parseInt(editable.toString());
-                durationSeekBar.setProgress(Integer.parseInt(editable.toString()));
-            }
-        });
-
-        ///////////////////////////////////////////////////////////////////
-        //CALORIE SEEKBAR + EDITTEXT
-        //setting up the seekbar and edittext for duration
-        calorieSeekBar = (SeekBar) headerView.findViewById(R.id.calorieSeekBar);
-        calorieNum = (EditText) headerView.findViewById(R.id.calorieNum);
-        calorieNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxCalorie)});
-        //setting up min and max range for the seekbar
-        //calorieSeekBar.setMin(InfoDefine.minCalorie);
-        calorieSeekBar.setMax(InfoDefine.maxCalorie);
-        //setting up the on seekbar listener
-        calorieSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserInformation.getInstance().getRecipeFilter().calorie = i;
-                calorieNum.setText(Integer.toString(i));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
+            public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
         });
-        //setting up the edittext on change listener
-        calorieNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-            }
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                UserInformation.getInstance().getRecipeFilter().calorie = Integer.parseInt(editable.toString());
-                calorieSeekBar.setProgress(Integer.parseInt(editable.toString()));
-            }
-        });
-
-        ///////////////////////////////////////////////////////////////////
-        //CARBS SEEKBAR + EDITTEXT
-        //setting up the seekbar and edittext for carbs
-        /*carbsSeekBar = (SeekBar) headerView.findViewById(R.id.carbsSeekBar);
-        carbsNum = (EditText) headerView.findViewById(R.id.carbsNum);
-        carbsNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxCarbs)});
-        //setting up min and max range for the seekbar
-        carbsSeekBar.setMax(InfoDefine.maxCarbs);
-        //setting up the on seekbar listener
-        carbsSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserInformation.getInstance().getRecipeFilter().carbs = i;
-                carbsNum.setText(Integer.toString(i));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        //setting up the edittext on change listener
-        carbsNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                UserInformation.getInstance().getRecipeFilter().carbs = Integer.parseInt(editable.toString());
-                carbsSeekBar.setProgress(Integer.parseInt(editable.toString()));
-            }
-        });*/
-
-        ///////////////////////////////////////////////////////////////////
-        //FAT SEEKBAR + EDITTEXT
-        //setting up the seekbar and edittext for fat
-        fatSeekBar = (SeekBar) headerView.findViewById(R.id.fatSeekBar);
-        fatNum = (EditText) headerView.findViewById(R.id.fatNum);
-        fatNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxFat)});
-        //setting up min and max range for the seekbar
-        fatSeekBar.setMax(InfoDefine.maxFat);
-        //setting up the on seekbar listener
-        fatSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserInformation.getInstance().getRecipeFilter().fat = i;
-                fatNum.setText(Integer.toString(i));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        //setting up the edittext on change listener
-        fatNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                UserInformation.getInstance().getRecipeFilter().fat = Integer.parseInt(editable.toString());
-                fatSeekBar.setProgress(Integer.parseInt(editable.toString()));
-            }
-        });
         ///////////////////////////////////////////////////////////////////
         //PROTEIN SEEKBAR + EDITTEXT
         //setting up the seekbar and edittext for protein
@@ -296,21 +153,8 @@ public class FilterDrawerHandler {
 
     public void setValueByFilter(RecipeFilter filter)
     {
-        //getting the duration value from the filter
-        durationNum.setText(Integer.toString((int)filter.duration));
-        durationSeekBar.setProgress((int)filter.duration);
-
-        //getting the calorie value from the filter
-        calorieNum.setText(Integer.toString((int)filter.calorie));
-        calorieSeekBar.setProgress((int)filter.calorie);
-
-        //getting the carbs value from the filter
-        //carbsNum.setText(Integer.toString((int)filter.carbs));
-        //carbsSeekBar.setProgress((int)filter.carbs);
-
-        //getting the fat vaule from the filter
-        fatNum.setText(Integer.toString((int)filter.fat));
-        fatSeekBar.setProgress((int)filter.fat);
+        calorieSpinner.setSelection(filter.calorie_spinner_position());
+        fatSpinner.setSelection(filter.fat_spinner_position());
 
         //getting the protein value from the filter
         //proteinNum.setText(Integer.toString((int)filter.protein));

@@ -18,6 +18,7 @@ import android.widget.CalendarView;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import org.json.JSONObject;
 
@@ -147,6 +148,8 @@ public class CalendarChoice extends AppCompatActivity {
         values.put(CalendarContract.Events.CUSTOM_APP_URI, "CALENDAR");
 
         cr.insert(CalendarContract.Events.CONTENT_URI, values);
+
+        Toast.makeText(this, "added to Google Calendar!", Toast.LENGTH_SHORT).show();
 
     }
 

@@ -181,8 +181,8 @@ public class MainActivity extends AppCompatActivity {
         //Called by : Search Screen
         else if (requestCode == InfoDefine.REQUEST_FOR_SEARCH){
             if (resultCode == RESULT_OK) {
-                searchScreen.searchFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
-                UserInformation.getInstance().setRecipeFilter(searchScreen.searchFilter);
+                RecipeFilter searchFilter = (RecipeFilter) data.getSerializableExtra("OUTPUTFILTER");
+                UserInformation.getInstance().setRecipeFilter(searchFilter);
                 //set up the call back function for the search result
                 RandomRecipeGenerator.getSearchResultAPI(new SearchCallback() {
                     @Override

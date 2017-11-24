@@ -10,19 +10,20 @@ import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SeekBar;
+import android.widget.Spinner;
 
 public class FilterScreen extends AppCompatActivity {
 
-    private SeekBar durationSeekBar;
-    private EditText durationNum;
-    private SeekBar calorieSeekBar;
-    private EditText calorieNum;
+    private Spinner calorieSpinner;
+    private Spinner fatSpinner;
 
     private StringAdapter cuisineCheck;
     private ListView cuisineList;
@@ -43,101 +44,12 @@ public class FilterScreen extends AppCompatActivity {
 
         //getting the display metrics
 
-        if (getIntent().hasExtra("RECIPEFILTER"))
-            recipeFilter = (RecipeFilter)getIntent().getSerializableExtra("RECIPEFILTER");
-        else
-            recipeFilter = new RecipeFilter();
+        recipeFilter = UserInformation.getInstance().getRecipeFilter();
 
         //setting up the icon image
         ImageView topIcon = (ImageView) findViewById(R.id.filterScreenIcon);
         Bitmap topImage = ImageProcessor.scaleImage(R.drawable.filterdrawer, 0.2f);
         topIcon.setImageBitmap(topImage);
-
-        //duration seek bar and edit num
-        durationSeekBar = (SeekBar) findViewById(R.id.advancedDurationSeekBar);
-        durationNum = (EditText) findViewById(R.id.advancedDurationNum);
-        durationNum.setFilters(new InputFilter[] {new InputFilterMinMax(1, InfoDefine.maxDuration)});
-        //setting up range
-        //durationSeekBar.setMin(InfoDefine.minDuration);
-        durationSeekBar.setMax(InfoDefine.maxDuration);
-        //setting up listener
-        durationSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                recipeFilter.duration = i;
-                durationNum.setText(Integer.toString(i));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        durationNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                recipeFilter.duration = Integer.parseInt(editable.toString());
-                durationSeekBar.setProgress(Integer.parseInt(editable.toString()));
-            }
-        });
-
-        //calorie seek bar and edit num
-        calorieSeekBar = (SeekBar) findViewById(R.id.advancedCalorieSeekBar);
-        calorieNum = (EditText) findViewById(R.id.advancedCalorieNum);
-        calorieNum.setFilters(new InputFilter[] {new InputFilterMinMax(1, InfoDefine.maxCalorie)});
-        //setting up range
-        //calorieSeekBar.setMin(InfoDefine.minCalorie);
-        calorieSeekBar.setMax(InfoDefine.maxCalorie);
-        //setting up listener
-        calorieSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                recipeFilter.calorie = i;
-                calorieNum.setText(Integer.toString(i));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        calorieNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                recipeFilter.calorie = Integer.parseInt(editable.toString());
-                calorieSeekBar.setProgress(Integer.parseInt(editable.toString()));
-            }
-        });
 
         //set up the cuisine checkbox
         cuisineCheck = new StringAdapter(this, R.layout.check_box_detail, getResources().getStringArray(R.array.cuisine), InfoDefine.ListType.CUISINE_BOX);
@@ -148,6 +60,40 @@ public class FilterScreen extends AppCompatActivity {
         ingredientCheck = new StringAdapter(this, R.layout.check_box_detail, getResources().getStringArray(R.array.ingredient), InfoDefine.ListType.INGREDIENT_BOX);
         ingredientList = (ListView) findViewById(R.id.ingredientCheck);
         ingredientList.setAdapter(ingredientCheck);
+
+        //set up the calorie spinner
+        calorieSpinner = (Spinner) findViewById(R.id.calorieSpinner);
+        String[] calorieChoice = {"1000", "800", "500", "300", "100"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, calorieChoice);
+        calorieSpinner.setAdapter(adapter);
+        calorieSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                UserInformation.getInstance().getRecipeFilter().calorie_set_by_spinner(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        //set up the fat spinner
+        fatSpinner = (Spinner) findViewById(R.id.fatSpinner);
+        String[] fatChoice = {"100", "80", "60", "40", "20"};
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, fatChoice);
+        fatSpinner.setAdapter(adapter2);
+        fatSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                UserInformation.getInstance().getRecipeFilter().fat_set_by_spinner(i);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
         //set up the add more ingredients text box
         moreTextBox = (EditText) findViewById(R.id.moreTextbox);
@@ -188,10 +134,7 @@ public class FilterScreen extends AppCompatActivity {
 
     private void setupByFilter(RecipeFilter filter)
     {
-        durationSeekBar.setProgress((int)filter.duration);
-        durationNum.setText(Integer.toString((int)filter.duration));
-
-        calorieSeekBar.setProgress((int)filter.calorie);
-        calorieNum.setText(Integer.toString((int)filter.calorie));
+        calorieSpinner.setSelection(recipeFilter.calorie_spinner_position());
+        fatSpinner.setSelection(recipeFilter.fat_spinner_position());
     }
 }
