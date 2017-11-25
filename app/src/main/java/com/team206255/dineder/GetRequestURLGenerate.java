@@ -109,7 +109,7 @@ public class GetRequestURLGenerate {
         String output = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/findByNutrients?" +
                 "maxCalories=" + Integer.toString(calories) +
                 //"&maxCarbs=" + Integer.toString(carbs) +
-                //"&maxFat=" + Integer.toString(fat) +
+                "&maxFat=" + Integer.toString(fat) +
                 //"&maxProtein=" + Integer.toString(protein) +
                 "&number=1&offset=0&random=true";
         return output;

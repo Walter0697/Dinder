@@ -29,4 +29,14 @@ public class Userpreference {
         Random rand = new Random();
         return likedID.get(rand.nextInt(likedID.size() - 1) + 1);
     }
+
+    public String toString()
+    {
+        String output = "";
+        for (int i = 0; i < likedID.size(); i++)
+        {
+            output += Integer.toString(likedID.get(i)) + ",";
+        }
+        return output;
+    }
 }

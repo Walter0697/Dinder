@@ -187,8 +187,6 @@ public class MainActivity extends AppCompatActivity {
                 RandomRecipeGenerator.getSearchResultAPI(new SearchCallback() {
                     @Override
                     public void onSuccess(RecipeList result) {
-                        Log.d("result", "it is result");
-                        Log.d("length", result.getDateToString(4));
                         searchScreen.setUpRecipeList(result);
                     }
                 });

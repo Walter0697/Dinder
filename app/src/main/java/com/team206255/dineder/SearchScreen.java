@@ -10,15 +10,17 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import java.util.Date;
+
 public class SearchScreen extends Fragment{
 
     ListView searchList;
-    RecipeList recipeList = new RecipeList();
 
     CustomeAdapter customeAdapter;
 
@@ -33,10 +35,25 @@ public class SearchScreen extends Fragment{
         Bitmap searchImage = ImageProcessor.scaleImage(R.drawable.search_icon, 0.1f);
         searchIcon.setImageBitmap(searchImage);
 
-        customeAdapter = new CustomeAdapter(getContext(), recipeList, R.layout.search_list_detail, InfoDefine.ListType.SEARCH_LIST, getActivity());
+        customeAdapter = new CustomeAdapter(getContext(), UserInformation.getInstance().getSearchResult(), R.layout.search_list_detail, InfoDefine.ListType.SEARCH_LIST, getActivity());
         searchList = (ListView) view.findViewById(R.id.searchList);
         //searchList.getLayoutParams().height = (int)(metrics.heightPixels * 0.7);
         searchList.setAdapter(customeAdapter);
+
+        //setting up the item on click listener
+        searchList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final Intent detailintent = new Intent(getActivity().getApplicationContext(), RecipeInformation.class);
+                if (UserInformation.getInstance().getSearchResult().getRecipe(i).fullyLoaded == false)
+                {
+                    detailintent.putExtra("LIST", 3);
+                    detailintent.putExtra("INDEX", i);
+                }
+                detailintent.putExtra("RECIPE", UserInformation.getInstance().getSearchResult().getRecipe(i));
+                startActivity(detailintent);
+            }
+        });
 
         Button searchButton = (Button) view.findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -53,9 +70,12 @@ public class SearchScreen extends Fragment{
 
     public void setUpRecipeList(RecipeList list)
     {
-        recipeList = list;
+        UserInformation.getInstance().setSearchResult(list);
+        Log.d("searchresult", UserInformation.getInstance().getSearchResult().toString());
+        customeAdapter = new CustomeAdapter(getContext(), UserInformation.getInstance().getSearchResult(), R.layout.search_list_detail, InfoDefine.ListType.SEARCH_LIST, getActivity());
+        searchList.setAdapter(customeAdapter);
         //request for the recipes again!
-        searchList.invalidate();
         customeAdapter.notifyDataSetChanged();
+        searchList.invalidate();
     }
 }

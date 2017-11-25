@@ -48,12 +48,15 @@ public class RecipeInformation extends AppCompatActivity {
                     //-> 0. Swiping one
                     //-> 1. Liked List
                     //-> 2. CalendarStorage (for the current day)
+                    //-> 3. SearchList
                     if (list == 0)
                         currentRecipe = UserInformation.getInstance().getRecipeChoice().getChoiceRecipe();
                     else if (list == 1)
                         currentRecipe = UserInformation.getInstance().getRecipeList().getRecipe(index);
                     else if (list == 2)
                         currentRecipe = UserInformation.getInstance().getCalendarStorage().getRecipe(index);
+                    else if (list == 3)
+                        currentRecipe = UserInformation.getInstance().getSearchResult().getRecipe(index);
                     updateLayout();
                 }
             });

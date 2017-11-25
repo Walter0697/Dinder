@@ -316,8 +316,9 @@ public class RandomRecipeGenerator {
                     int id = recipe.optInt("id");
                     String title = recipe.optString("title");
                     String URL = recipe.optString("image");
+                    int calories = recipe.optInt("calories");
 
-                    Recipe rec = new Recipe(id, title, URL);
+                    Recipe rec = new Recipe(id, title, URL, calories);
                     recipes.addRecipe(rec, date);
 
                 }
@@ -345,6 +346,7 @@ public class RandomRecipeGenerator {
                 String title = result.optString("title");
                 String URL = result.optString("image");
                 int id = result.optInt("id");
+                int calories = result.optInt("calories");
 
                 Recipe recipe = new Recipe(id, title, URL);
                 UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
@@ -389,12 +391,13 @@ public class RandomRecipeGenerator {
     //-> 0. Swiping one
     //-> 1. Liked List
     //-> 2. CalendarStorage (for the current day)
+    //-> 3. SearchResult
     public static void setToRecipeAPI(int id, final int list, final int position, final UpdateCallBack updateCallBack)
     {
         setURL(GetRequestURLGenerate.getFoodinfoURL(id));
-        Log.d("request", "list"+list+",position"+position);
+        Log.d("url", url);
         //return for invalid number
-        if (list > 2 || list < 0) return;
+        if (list > 3 || list < 0) return;
         getJSONObject(new CallbackHelper() {
             @Override
             public void onSuccess(JSONObject result) {
@@ -475,6 +478,10 @@ public class RandomRecipeGenerator {
                         UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
                         updateCallBack.update();
                         break;
+                    case 3:
+                        UserInformation.getInstance().getSearchResult().getRecipe(position).retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health);
+                        updateCallBack.update();
+                        break;
                 }
             }
 
@@ -501,8 +508,9 @@ public class RandomRecipeGenerator {
                 int duration = rec.optInt("readyInMinutes");
                 int health = rec.optInt("healthScore");
                 int id = rec.optInt("id");
+                int calories = rec.optInt("calories");
 
-                Recipe recipe = new Recipe(id, title, URL);
+                Recipe recipe = new Recipe(id, title, URL, calories);
                 //later should be change to adding to recipe choice
                 //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
                 UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);

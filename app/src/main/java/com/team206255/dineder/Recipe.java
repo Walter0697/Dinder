@@ -128,4 +128,9 @@ public class Recipe implements Serializable{
         String[] allType = context.getResources().getStringArray(R.array.cuisine);
         return allType[type.ordinal()];
     }
+
+    public String idtoString()
+    {
+        return Integer.toString(id);
+    }
 }

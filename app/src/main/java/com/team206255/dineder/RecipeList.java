@@ -56,4 +56,14 @@ public class RecipeList {
 
     //convert date to string
     public String getDateToString(int position) { return dateFormat.format(getDate(position)); }
+
+    public String toString()
+    {
+        String output = "";
+        for (int i = 0 ;i < getSize(); i++)
+        {
+            output += getRecipe(i).idtoString() + ",";
+        }
+        return output;
+    }
 }

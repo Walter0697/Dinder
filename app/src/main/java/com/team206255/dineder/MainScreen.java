@@ -427,6 +427,7 @@ public class MainScreen extends Fragment{
         UserInformation.getInstance().getRecipeList().addRecipe(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe(), new Date());
         UserInformation.getInstance().getUserpreference().likedID.add(UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().id);
         listDrawerHandler.updateLikedView();
+        Log.d("userpreference", UserInformation.getInstance().getUserpreference().toString());
 
         UserInformation.getInstance().getRecipeChoice().swipe();
         //updating shared perference

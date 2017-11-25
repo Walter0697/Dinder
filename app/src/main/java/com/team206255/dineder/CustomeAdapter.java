@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -83,7 +84,7 @@ public class CustomeAdapter extends BaseAdapter {
                 addedTime.setText(items.getDateToString(i));
 
                 ImageView saveButton = (ImageView) v.findViewById(R.id.saveButton);
-                Bitmap saveImage = ImageProcessor.scaleImage(R.drawable.heart, 0.04f);
+                Bitmap saveImage = ImageProcessor.scaleImage(R.drawable.listsave, 0.04f);
                 saveButton.setImageBitmap(saveImage);
 
                 ImageView removeButton = (ImageView) v.findViewById(R.id.removeButton);
@@ -120,7 +121,7 @@ public class CustomeAdapter extends BaseAdapter {
                 searchCalorie.setText("Calorie: " + Float.toString(items.getRecipe(i).calorie));
 
                 ImageView searchSaveButton = (ImageView) v.findViewById(R.id.searchSave);
-                Bitmap searchSaveImage = ImageProcessor.scaleImage(R.drawable.heart, 0.05f);
+                Bitmap searchSaveImage = ImageProcessor.scaleImage(R.drawable.listsave, 0.05f);
                 searchSaveButton.setImageBitmap(searchSaveImage);
                 searchSaveButton.setOnClickListener(new View.OnClickListener() {
                     @Override

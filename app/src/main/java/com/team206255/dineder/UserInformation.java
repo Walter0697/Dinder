@@ -14,13 +14,19 @@ public class UserInformation {
 
     private int festival = InfoDefine.CHRISTMAS;
 
+    //won't save this information
+    private RecipeList searchResult;
+
+    //recipe filter for filter drawer and also search screen
     private RecipeFilter recipeFilter;
 
+    //all information or the users that will be saved
     private RecipeChoice recipeChoice;
     private RecipeList recipeList;
     private CalendarStorage calendarStorage;
     private Userpreference userpreference;
 
+    //setting of the app
     private boolean enableSwiping;
     private boolean enableScreenOn;
     private boolean enableCalendar;
@@ -197,6 +203,8 @@ public class UserInformation {
         userpreference = new Userpreference();
         recipeChoice = new RecipeChoice();
 
+        searchResult = new RecipeList();
+
         recipeChoice.initializeChoice();
 
         enableSwiping = true;
@@ -226,6 +234,8 @@ public class UserInformation {
 
     public Userpreference getUserpreference() { return userpreference; }
 
+    public RecipeList getSearchResult() { return searchResult; }
+
     public void setRecipeChoice(RecipeChoice recipeChoice) { this.recipeChoice = recipeChoice; }
 
     public void setRecipeFilter(RecipeFilter recipeFilter) { this.recipeFilter = recipeFilter; }
@@ -235,6 +245,8 @@ public class UserInformation {
     public void setCalendarStorage(CalendarStorage calendarStorage) { this.calendarStorage = calendarStorage; }
 
     public void setUserpreference(Userpreference userpreference) { this.userpreference = userpreference; }
+
+    public void setSearchResult(RecipeList result) { this.searchResult = result; }
 
     public int getFestival() { return festival; }
 
