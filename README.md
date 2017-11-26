@@ -15,6 +15,10 @@ The project for 3004
 - Hard to use touch screen in that situation
 - that way you can use volume key to scroll up and down
 
+##### Google Calendar:
+- A reminder will be saved into google calendar when saving recipes
+- Can be disabled in setting screen
+
 ### library include:
 ##### Picasso : 'com.squareup.picasso.picasso:2.5.2'
 - Use for processing the image from internet 

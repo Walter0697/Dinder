@@ -259,7 +259,7 @@ public class RandomRecipeGenerator {
                 "Right corner is 'Calendar screen', save the recipe to your calendar, so that you can use it whenever you want!"};
 
 
-        return new Recipe(-1, "How to use our app?", "https://i.imgur.com/Gujx7wC.png", steps, ingredient, 0, 0.0f, 0.0f);
+        return new Recipe(-1, "How to use our app?", "https://i.imgur.com/BXeaPYY.png", steps, ingredient, 0, 0.0f, 0.0f);
     }
 
     public static Recipe getRandomRecipe()

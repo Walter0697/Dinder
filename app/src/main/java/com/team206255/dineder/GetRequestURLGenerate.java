@@ -92,7 +92,7 @@ public class GetRequestURLGenerate {
                 "&maxCarbs=" + Integer.toString(carbs) +
                 "&maxFat=" + Integer.toString(fat) +
                 "&maxProtein=" + Integer.toString(protein) +
-                "&number=5" +
+                "&number=8" +
                 "&offset=" + Integer.toString(offset) +
                 "&ranking=1";
         return output;
