@@ -66,4 +66,14 @@ public class RecipeList {
         }
         return output;
     }
+
+    public String imageToString()
+    {
+        String output = "";
+        for (int i = 0; i < getSize(); i++)
+        {
+            output += getRecipe(i).pictureView + ",";
+        }
+        return output;
+    }
 }

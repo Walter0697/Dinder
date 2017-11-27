@@ -14,6 +14,7 @@ public class SplashActivity extends AppCompatActivity {
 
         //set up context inside imageprocessor
         ImageProcessor.setContext(this);
+        ImageProcessor.preLoad("https://i.imgur.com/BXeaPYY.png");
 
         //loading everything before getting inside the main screen
         //set up context for getrequestgenerator

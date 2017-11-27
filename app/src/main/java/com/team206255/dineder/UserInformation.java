@@ -2,6 +2,7 @@ package com.team206255.dineder;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 
 import com.google.gson.Gson;
 
@@ -31,6 +32,8 @@ public class UserInformation {
     private boolean enableScreenOn;
     private boolean enableCalendar;
 
+    private boolean calendarInstalled;
+
     private SharedPreferences sharedPreferences;
 
     private UserInformation() { }
@@ -44,6 +47,8 @@ public class UserInformation {
     //setting up the shared preference from the database if any
     public void setSharedPreferences(Context context)
     {
+        calendarInstalled = isPackageInstalled("com.android.calendar", context);
+
         Gson gson = new Gson();
         sharedPreferences = context.getSharedPreferences("com.team206255.dinder", Context.MODE_PRIVATE);
         //check for recipe list
@@ -192,6 +197,8 @@ public class UserInformation {
     //resetting the shared preference
     public void resetSharedPreference(Context context)
     {
+        calendarInstalled = isPackageInstalled("com.android.calendar", context);
+
         sharedPreferences = context.getSharedPreferences("com.team206255.dinder", Context.MODE_PRIVATE);
         SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
         prefsEditor.clear();
@@ -209,7 +216,9 @@ public class UserInformation {
 
         enableSwiping = true;
         enableScreenOn = true;
-        enableCalendar = true;
+        enableCalendar = false;
+        if (isPackageInstalled("com.android.calendar", context))
+            enableCalendar = true;
 
         updateSharedPreference();
         updateSetting();
@@ -261,5 +270,19 @@ public class UserInformation {
 
     public boolean getEnableCalendar() { return enableCalendar; }
 
-    public void setEnableCalendar(boolean value) { enableCalendar = value; }
+    public void setEnableCalendar(boolean value) {
+        if (calendarInstalled)
+            enableCalendar = value;
+    }
+
+    private boolean isPackageInstalled(String packagename, Context context)
+    {
+        PackageManager pm = context.getPackageManager();
+        try {
+            pm.getPackageInfo(packagename, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
 }

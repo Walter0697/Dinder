@@ -2,11 +2,13 @@ package com.team206255.dineder;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -113,6 +115,16 @@ public class RecipeInformation extends AppCompatActivity {
         stepsAdapter = new StringAdapter(this, R.layout.string_detail, currentRecipe.steps, InfoDefine.ListType.STEPS);
         steps = (ListView) findViewById(R.id.stepList);
         steps.setAdapter(stepsAdapter);
+
+        steps.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                if (currentRecipe.sourceURL != "") {
+                    Intent sourceIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(currentRecipe.sourceURL));
+                    startActivity(sourceIntent);
+                }
+            }
+        });
 
         Button backButton = (Button) findViewById(R.id.backButton);
         backButton.setOnClickListener(new View.OnClickListener() {

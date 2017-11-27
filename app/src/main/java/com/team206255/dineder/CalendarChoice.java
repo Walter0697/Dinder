@@ -142,7 +142,7 @@ public class CalendarChoice extends AppCompatActivity {
         values.put(CalendarContract.Events.DTEND, time[1].getTimeInMillis());
         values.put(CalendarContract.Events.TITLE, "Dinder reminder!");
         values.put(CalendarContract.Events.DESCRIPTION, "You saved '" + currentRecipe.name + "' before. \nIt's time to cook your saved recipe!");
-        values.put(CalendarContract.Events.CALENDAR_ID, 2);
+        values.put(CalendarContract.Events.CALENDAR_ID, 1);
         values.put(CalendarContract.Events.EVENT_TIMEZONE, TimeZone.getDefault().getDisplayName());
         values.put(CalendarContract.Events.CUSTOM_APP_PACKAGE, getPackageName());
         values.put(CalendarContract.Events.CUSTOM_APP_URI, "CALENDAR");

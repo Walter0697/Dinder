@@ -84,7 +84,7 @@ public class CustomeAdapter extends BaseAdapter {
                 addedTime.setText(items.getDateToString(i));
 
                 ImageView saveButton = (ImageView) v.findViewById(R.id.saveButton);
-                Bitmap saveImage = ImageProcessor.scaleImage(R.drawable.listsave, 0.04f);
+                Bitmap saveImage = ImageProcessor.scaleImage(R.drawable.listsave, 0.08f);
                 saveButton.setImageBitmap(saveImage);
 
                 ImageView removeButton = (ImageView) v.findViewById(R.id.removeButton);

@@ -264,7 +264,6 @@ public class RandomRecipeGenerator {
 
     public static Recipe getRandomRecipe()
     {
-        //return new Recipe(rand.nextInt(5));
         return list.get(rand.nextInt(list.size()));
     }
 
@@ -310,7 +309,7 @@ public class RandomRecipeGenerator {
 
                 Date date = new Date();
 
-                for (int i = 0; i < 5; i++)
+                for (int i = 0; i < recs.length(); i++)
                 {
                     JSONObject recipe = recs.optJSONObject(i);
                     int id = recipe.optInt("id");
@@ -367,8 +366,6 @@ public class RandomRecipeGenerator {
             @Override
             public void onSuccess(JSONObject result) {
                 Log.d("jsonForNutrients", result.toString());
-                //-->use Recipe(int id, String name, String pictureUrl)
-                //****************DO THIS FIRST TO SEE IF IT WILL WORK***************
 
                 String title = result.optString("title");
                 String URL = result.optString("image");
@@ -402,9 +399,6 @@ public class RandomRecipeGenerator {
             @Override
             public void onSuccess(JSONObject result) {
                 Log.d("jsonForInfo", result.toString());
-                //*******************************************TRY THIS ONE
-                //retrieveInformation(String[] ingredients, String[] steps, float duration,
-                //float calorie, float fat, float protein, float carbs, int healthScore)
 
                 int duration = result.optInt("readyInMinutes");
                 float dur = (float)duration;
@@ -449,37 +443,54 @@ public class RandomRecipeGenerator {
                 Log.d("PROTEIN", String.valueOf(protein));
                 Log.d("CARBS", String.valueOf(carbs));
 
-                JSONArray analyzedInstructions = result.optJSONArray("analyzedInstructions");
-                JSONObject instrucObj = analyzedInstructions.optJSONObject(0);
-                JSONArray steps = instrucObj.optJSONArray("steps");
-                String[] instruc = new String[steps.length()];
-                for(int k = 0; k < steps.length(); k++)
+                String[] instruc = new String[1];
+                String source = "";
+                if (result.optString("instructions") == "null")
                 {
-                    JSONObject individualStep = steps.optJSONObject(k);
-                    instruc[k] = individualStep.optString("step");
+                    instruc = new String[1];
+                    instruc[0] = "sourceURL here : " + result.optString("sourceUrl");
+                    source = result.optString("sourceUrl");
                 }
-
-                Log.d("INSTRUCTIONS", instruc[0]);
-
-                //retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
-
+                else
+                {
+                    JSONArray analyzedInstructions = result.optJSONArray("analyzedInstructions");
+                    JSONObject instrucObj = analyzedInstructions.optJSONObject(0);
+                    JSONArray steps = instrucObj.optJSONArray("steps");
+                    instruc = new String[steps.length()];
+                    for (int k = 0; k < steps.length(); k++) {
+                        JSONObject individualStep = steps.optJSONObject(k);
+                        instruc[k] = individualStep.optString("step");
+                    }
+                }
 
                 switch(list)
                 {
                     case 0:
-                        UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+                        if (source == "")
+                            UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health);
+                        else
+                            UserInformation.getInstance().getRecipeChoice().getChoiceRecipe().retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health, source);
                         updateCallBack.update();
                         break;
                     case 1:
-                        UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+                        if (source == "")
+                            UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health);
+                        else
+                            UserInformation.getInstance().getRecipeList().getRecipe(position).retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health, source);
                         updateCallBack.update();
                         break;
                     case 2:
-                        UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation(ingred, instruc, dur,cal,fat,protein,carbs,health);
+                        if (source == "")
+                            UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health);
+                        else
+                            UserInformation.getInstance().getCalendarStorage().getRecipe(position).retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health, source);
                         updateCallBack.update();
                         break;
                     case 3:
-                        UserInformation.getInstance().getSearchResult().getRecipe(position).retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health);
+                        if (source == "")
+                            UserInformation.getInstance().getSearchResult().getRecipe(position).retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health);
+                        else
+                            UserInformation.getInstance().getSearchResult().getRecipe(position).retrieveInformation(ingred, instruc, dur, cal, fat, protein, carbs, health, source);
                         updateCallBack.update();
                         break;
                 }
@@ -504,15 +515,12 @@ public class RandomRecipeGenerator {
                 JSONObject rec = recipes.optJSONObject(0);
                 String title = rec.optString("title");
                 String URL = rec.optString("image");
-                //String instructions = rec.optString("instructions");
                 int duration = rec.optInt("readyInMinutes");
                 int health = rec.optInt("healthScore");
                 int id = rec.optInt("id");
                 int calories = rec.optInt("calories");
 
                 Recipe recipe = new Recipe(id, title, URL, calories);
-                //later should be change to adding to recipe choice
-                //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
                 UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
             }
 
@@ -535,7 +543,6 @@ public class RandomRecipeGenerator {
                 JSONObject rec = recipes.optJSONObject(0);
                 String title = rec.optString("title");
                 String URL = rec.optString("image");
-                //String instructions = rec.optString("instructions");
                 int duration = rec.optInt("readyInMinutes");
                 int health = rec.optInt("healthScore");
                 int id = rec.optInt("id");
@@ -552,26 +559,11 @@ public class RandomRecipeGenerator {
                     JSONObject indaviualIngred = ingredients.optJSONObject(k);
                     ingred[k] = indaviualIngred.optString("originalString");
                 }
-
-                //Log.d("TITLE",title);
-                //Log.d("id", String.valueOf(id));
-                //Log.d("serving", String.valueOf(serving));
-                //Log.d("URL",URL);
-                //Log.d("INSTRUCTIONS",instructionsArray[0]);
-                //Log.d("ingredients",ingred[0]);
-                //Log.d("duration", String.valueOf(duration));
-                //Log.d("health", String.valueOf(health));
-
-                // int id, String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie
-
                 float dur = (float)duration;
                 float healthScore = (float)health;
 
-                //serving number is being sent in as difficulty for now
-                //Recipe recipe = new Recipe(id,title,URL,instructionsArray,ingred,serving, dur, healthScore);
                 Recipe recipe = new Recipe(id, title, URL);
-                //later should be change to adding to recipe choice
-                //UserInformation.getInstance().getCalendarStorage().addRecipe(new Date(), recipe, 0);
+
                 UserInformation.getInstance().getRecipeChoice().addRecipe(recipe);
             }
 
@@ -597,6 +589,7 @@ public class RandomRecipeGenerator {
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+                        Log.d("jsonobject", response.toString());
                         callback.onSuccess(response);
                     }
                 },
@@ -625,6 +618,7 @@ public class RandomRecipeGenerator {
                     @Override
                     public void onResponse(JSONArray response) {
                         try {
+                            Log.d("jsonarray", response.toString());
                             callbackHelper.onSuccess(response.getJSONObject(0));
                         } catch (JSONException e) {
                             e.printStackTrace();

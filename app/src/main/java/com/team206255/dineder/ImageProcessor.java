@@ -28,8 +28,7 @@ public class ImageProcessor {
     static Context context;
 
     public static void setContext(Context c)
-    {
-        context = c;
+    {context = c;
     }
 
     //to scale the image according to the screen width

@@ -4,7 +4,11 @@ Finished List:
 - working on the callback function, api, I think I got an idea about how to work with the api, should be fine later
 - set up so that whenever it saved inside our calendar, will also save it inside google calendar
 - buggy but implemented search screen
+- upload the app into play store (beta)
+
+want to do list:
+1. API not always give what i want, so i should do some checks about it
 
 Challenge:
 1. Timer in recipes <— could be difficult because it will duel with another widget type
-2. Animation for liking and disliking    <———TRY THIS RIGHT NOW
+2. Animation for liking and disliking    

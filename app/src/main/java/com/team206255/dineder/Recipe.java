@@ -29,6 +29,7 @@ public class Recipe implements Serializable{
     int healthScore;
 
     boolean fullyLoaded;
+    String sourceURL;
 
     public Recipe(int id, String name, String pictureUrl)
     {
@@ -49,6 +50,7 @@ public class Recipe implements Serializable{
         ImageProcessor.preLoad(pictureUrl);
 
         fullyLoaded = false;
+        sourceURL = "";
     }
 
     public Recipe(int id, String name, String pictureUrl, int calorie)
@@ -70,6 +72,7 @@ public class Recipe implements Serializable{
         ImageProcessor.preLoad(pictureUrl);
 
         fullyLoaded = false;
+        sourceURL = "";
     }
 
     public Recipe(int id, String name, String pictureUrl, String[] steps, String[] ingredients, int difficulty, float duration, float calorie)
@@ -82,7 +85,7 @@ public class Recipe implements Serializable{
         this.difficulty = difficulty;
         this.duration = duration;
         this.calorie = calorie;
-        this.type = Cuisine.HONGKONG;
+        this.type = Cuisine.AMERICAN;
         fat = 0;
         protein = 0;
         carbs = 0;
@@ -91,12 +94,14 @@ public class Recipe implements Serializable{
         ImageProcessor.preLoad(pictureUrl);
 
         fullyLoaded = true;
+        sourceURL = "";
     }
 
     //this should be the recipe information when the recipe isn't passing thought the activity correctly
     //picture should be something like error picture
     public Recipe(){
         fullyLoaded = true;
+        sourceURL = "";
         pictureView = "";
         name = "No Recipe";
         steps = new String[2];
@@ -121,6 +126,23 @@ public class Recipe implements Serializable{
         this.carbs = carbs;
         this.healthScore = healthScore;
         fullyLoaded = true;
+
+        sourceURL = "";
+    }
+
+    public void retrieveInformation(String[] ingredients, String[] steps, float duration, float calorie, float fat, float protein, float carbs, int healthScore, String source)
+    {
+        this.ingredients = ingredients;
+        this.steps = steps;
+        this.duration = duration;
+        this.calorie = calorie;
+        this.fat = fat;
+        this.protein = protein;
+        this.carbs = carbs;
+        this.healthScore = healthScore;
+        fullyLoaded = true;
+
+        sourceURL = source;
     }
 
     public String getCuisine(Context context)

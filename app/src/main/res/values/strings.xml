@@ -9,7 +9,6 @@
 
     <string-array name="cuisine">
         <item>ALL</item>
-        <item>HONGKONG</item>
         <item>CHINESE</item>
         <item>JAPANESE</item>
         <item>KOREAN</item>

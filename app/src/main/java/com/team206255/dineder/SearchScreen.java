@@ -71,7 +71,7 @@ public class SearchScreen extends Fragment{
     public void setUpRecipeList(RecipeList list)
     {
         UserInformation.getInstance().setSearchResult(list);
-        Log.d("searchresult", UserInformation.getInstance().getSearchResult().toString());
+        Log.d("searchresult", UserInformation.getInstance().getSearchResult().imageToString());
         customeAdapter = new CustomeAdapter(getContext(), UserInformation.getInstance().getSearchResult(), R.layout.search_list_detail, InfoDefine.ListType.SEARCH_LIST, getActivity());
         searchList.setAdapter(customeAdapter);
         //request for the recipes again!

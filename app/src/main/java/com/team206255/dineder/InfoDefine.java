@@ -17,7 +17,7 @@ public class InfoDefine {
     static final int maxProtein = 100;
 
     public enum Cuisine {
-        ALL, HONGKONG, CHINESE, JAPANESE, KOREAN,
+        ALL, CHINESE, JAPANESE, KOREAN,
         INDIAN, FRENCH, AMERICAN, ITALIAN, MEXICAN
     }
 
