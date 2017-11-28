@@ -47,7 +47,8 @@ public class Recipe implements Serializable{
         carbs = 0;
         healthScore = 0;
 
-        ImageProcessor.preLoad(pictureUrl);
+        if (pictureUrl != "")
+            ImageProcessor.preLoad(pictureUrl);
 
         fullyLoaded = false;
         sourceURL = "";
@@ -69,7 +70,8 @@ public class Recipe implements Serializable{
         carbs = 0;
         healthScore = 0;
 
-        ImageProcessor.preLoad(pictureUrl);
+        if (pictureUrl != "")
+            ImageProcessor.preLoad(pictureUrl);
 
         fullyLoaded = false;
         sourceURL = "";
@@ -91,7 +93,8 @@ public class Recipe implements Serializable{
         carbs = 0;
         healthScore = 0;
 
-        ImageProcessor.preLoad(pictureUrl);
+        if (pictureUrl != "")
+            ImageProcessor.preLoad(pictureUrl);
 
         fullyLoaded = true;
         sourceURL = "";
@@ -148,7 +151,7 @@ public class Recipe implements Serializable{
     public String getCuisine(Context context)
     {
         String[] allType = context.getResources().getStringArray(R.array.cuisine);
-        return allType[type.ordinal()];
+        return allType[type.ordinal()].toLowerCase();
     }
 
     public String idtoString()

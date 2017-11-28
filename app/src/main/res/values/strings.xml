@@ -9,18 +9,32 @@
 
     <string-array name="cuisine">
         <item>ALL</item>
+        <item>AFRICAN</item>
         <item>CHINESE</item>
         <item>JAPANESE</item>
         <item>KOREAN</item>
+        <item>VIETNAMESE</item>
+        <item>THAI</item>
         <item>INDIAN</item>
+        <item>BRITISH</item>
+        <item>IRISH</item>
         <item>FRENCH</item>
-        <item>AMERICAN</item>
         <item>ITALIAN</item>
         <item>MEXICAN</item>
+        <item>SPANISH</item>
+        <item>JEWISH</item>
+        <item>AMERICAN</item>
+        <item>CAJUN</item>
+        <item>SOUTHERN</item>
+        <item>GREEK</item>
+        <item>GERMAN</item>
+        <item>NORDIC</item>
+        <item>CARIBBEAN</item>
     </string-array>
 
     <string-array name="ingredient">
         <item>chicken</item>
+        <item>cheese</item>
         <item>beef</item>
         <item>salmon</item>
         <item>tomatoes</item>

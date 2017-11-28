@@ -1,0 +1,10 @@
+(4 hours per days in average)
+
+Finished List:
+- Upload youtube video
+- Upload to play store with closed beta
+- Working better on api
+
+Challenge:
+1. Timer in recipes <— could be difficult because it will duel with another widget type
+2. Animation for liking and disliking    

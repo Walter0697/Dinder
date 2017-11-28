@@ -84,11 +84,11 @@ public class CustomeAdapter extends BaseAdapter {
                 addedTime.setText(items.getDateToString(i));
 
                 ImageView saveButton = (ImageView) v.findViewById(R.id.saveButton);
-                Bitmap saveImage = ImageProcessor.scaleImage(R.drawable.listsave, 0.08f);
+                Bitmap saveImage = ImageProcessor.scaleImage(R.drawable.listsave, 0.05f);
                 saveButton.setImageBitmap(saveImage);
 
                 ImageView removeButton = (ImageView) v.findViewById(R.id.removeButton);
-                final Bitmap removeImage = ImageProcessor.scaleImage(R.drawable.unchecked, 0.04f);
+                final Bitmap removeImage = ImageProcessor.scaleImage(R.drawable.unchecked, 0.05f);
                 removeButton.setImageBitmap(removeImage);
 
                 removeButton.setOnClickListener(new View.OnClickListener() {
@@ -121,7 +121,7 @@ public class CustomeAdapter extends BaseAdapter {
                 searchCalorie.setText("Calorie: " + Float.toString(items.getRecipe(i).calorie));
 
                 ImageView searchSaveButton = (ImageView) v.findViewById(R.id.searchSave);
-                Bitmap searchSaveImage = ImageProcessor.scaleImage(R.drawable.listsave, 0.05f);
+                Bitmap searchSaveImage = ImageProcessor.scaleImage(R.drawable.listsave, 0.08f);
                 searchSaveButton.setImageBitmap(searchSaveImage);
                 searchSaveButton.setOnClickListener(new View.OnClickListener() {
                     @Override

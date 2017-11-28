@@ -61,24 +61,31 @@ public class RecipeChoice {
     public void generateRecipe()
     {
 
+        //addRecipe(RandomRecipeGenerator.getRandomRecipe());
+
         if (UserInformation.getInstance().getRecipeFilter().festivalFilter)
         {
             RandomRecipeGenerator.getChristmasRecipeAPI();
         }
         else{
-            addRecipe(RandomRecipeGenerator.getRandomRecipe());
-            /*Random rand = new Random();
-            if (rand.nextInt() >= 50)
+            //addRecipe(RandomRecipeGenerator.getRandomRecipe());
+            Random rand = new Random();
+            int getType = rand.nextInt();
+            if (getType >= 70)
             {
                 RandomRecipeGenerator.getNutrientsRecipeAPI();
             }
+            else if (getType >= 40)
+            {
+                RandomRecipeGenerator.getComplexRecipeAPI();
+            }
             else
             {
-                RandomRecipeGenerator.getRandomRecipeAPI();
-            }*/
-
-            //if (UserInformation.getInstance().getUserpreference().getRandomID() == -1) RandomRecipeGenerator.getComplexRecipeAPI();
-            //else RandomRecipeGenerator.getSimilarRecipeAPI();
+                if (UserInformation.getInstance().getUserpreference().getRandomID() == -1)
+                    RandomRecipeGenerator.getRandomRecipeAPI();
+                else
+                    RandomRecipeGenerator.getSimilarRecipeAPI();
+            }
         }
     }
 

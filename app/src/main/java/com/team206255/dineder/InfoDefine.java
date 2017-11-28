@@ -17,12 +17,14 @@ public class InfoDefine {
     static final int maxProtein = 100;
 
     public enum Cuisine {
-        ALL, CHINESE, JAPANESE, KOREAN,
-        INDIAN, FRENCH, AMERICAN, ITALIAN, MEXICAN
+        ALL, AFRICAN, CHINESE, JAPANESE, KOREAN, VIETNAMESE, THAI,
+        INDIAN, BRITISH, IRISH, FRENCH, ITALIAN, MEXICAN, SPANISH,
+        JEWISH, AMERICAN, CAJUN, SOUTHERN, GREEK, GERMAN, NORDIC,
+        CARIBBEAN
     }
 
     public enum Ingredient {
-        CHICKEN, BEEF, SALMON, TOMATOES, POTATOES,
+        CHICKEN, CHEESE, BEEF, SALMON, TOMATOES, POTATOES,
         LETTUCE, OIL, BREAD, EGGS, FLOUR, RICE
     }
 

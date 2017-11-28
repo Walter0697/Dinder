@@ -47,24 +47,10 @@ public class UserInformation {
     //setting up the shared preference from the database if any
     public void setSharedPreferences(Context context)
     {
-        calendarInstalled = isPackageInstalled("com.android.calendar", context);
+        setUpSharedPreference(context);
 
         Gson gson = new Gson();
         sharedPreferences = context.getSharedPreferences("com.team206255.dinder", Context.MODE_PRIVATE);
-        //check for recipe list
-        if (sharedPreferences.contains("recipeList"))
-        {
-            String listJson = sharedPreferences.getString("recipeList", "");
-            recipeList = gson.fromJson(listJson, RecipeList.class);
-        }
-        else
-        {
-            recipeList = new RecipeList();
-            SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
-            String listJson = gson.toJson(recipeList);
-            prefsEditor.putString("recipeList", listJson);
-            prefsEditor.commit();
-        }
 
         if (sharedPreferences.contains("calendarStorage"))
         {
@@ -120,6 +106,21 @@ public class UserInformation {
             SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
             String choiceJson = gson.toJson(recipeChoice);
             prefsEditor.putString("recipeChoice", choiceJson);
+            prefsEditor.commit();
+        }
+        //check for recipe list
+        if (sharedPreferences.contains("recipeList"))
+        {
+            String listJson = sharedPreferences.getString("recipeList", "");
+            recipeList = gson.fromJson(listJson, RecipeList.class);
+        }
+        else
+        {
+            recipeList = new RecipeList();
+            recipeChoice.initializeChoice();
+            SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+            String listJson = gson.toJson(recipeList);
+            prefsEditor.putString("recipeList", listJson);
             prefsEditor.commit();
         }
 
@@ -194,16 +195,8 @@ public class UserInformation {
         prefsEditor.commit();
     }
 
-    //resetting the shared preference
-    public void resetSharedPreference(Context context)
+    public void setUpSharedPreference(Context context)
     {
-        calendarInstalled = isPackageInstalled("com.android.calendar", context);
-
-        sharedPreferences = context.getSharedPreferences("com.team206255.dinder", Context.MODE_PRIVATE);
-        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
-        prefsEditor.clear();
-        prefsEditor.commit();
-
         recipeFilter = new RecipeFilter();
         calendarStorage = new CalendarStorage();
         recipeList = new RecipeList();
@@ -212,13 +205,23 @@ public class UserInformation {
 
         searchResult = new RecipeList();
 
-        recipeChoice.initializeChoice();
-
         enableSwiping = true;
         enableScreenOn = true;
-        enableCalendar = false;
-        if (isPackageInstalled("com.android.calendar", context))
-            enableCalendar = true;
+        enableCalendar = true;
+    }
+
+    //resetting the shared preference
+    public void resetSharedPreference(Context context)
+    {
+        setUpSharedPreference(context);
+
+        sharedPreferences = context.getSharedPreferences("com.team206255.dinder", Context.MODE_PRIVATE);
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+
+        prefsEditor.clear();
+        prefsEditor.commit();
+
+        recipeChoice.initializeChoice();
 
         updateSharedPreference();
         updateSetting();
@@ -270,10 +273,7 @@ public class UserInformation {
 
     public boolean getEnableCalendar() { return enableCalendar; }
 
-    public void setEnableCalendar(boolean value) {
-        if (calendarInstalled)
-            enableCalendar = value;
-    }
+    public void setEnableCalendar(boolean value) { enableCalendar = value; }
 
     private boolean isPackageInstalled(String packagename, Context context)
     {

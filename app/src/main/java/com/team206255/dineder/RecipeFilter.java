@@ -200,6 +200,16 @@ public class RecipeFilter implements Serializable{
         return output;
     }
 
+    public String[] cuisineToList(Context context)
+    {
+        return context.getResources().getStringArray(R.array.cuisine);
+    }
+
+    public boolean[] cuisineChance()
+    {
+        return cuisine;
+    }
+
     public String[] selectedIngredients(Context context)
     {
         String[] list = context.getResources().getStringArray(R.array.ingredient);

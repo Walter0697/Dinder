@@ -56,8 +56,13 @@ public class GetRequestURLGenerate {
         int fat = (int) UserInformation.getInstance().getRecipeFilter().fat;
         int protein = (int) UserInformation.getInstance().getRecipeFilter().protein;
 
+        String[] cuisine = randomElement(UserInformation.getInstance().getRecipeFilter().cuisineToList(mcontext),
+                                        UserInformation.getInstance().getRecipeFilter().cuisineChance(),
+                                        1);
+        String cuis = combineString(cuisine).toLowerCase();
+
         String output = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=false&" +
-                "cuisine=american" +
+                "cuisine=" + cuis +
                 "&fillIngredients=false" +
                 "&instructionsRequired=false" +
                 "&maxCalories=" + Integer.toString(calories) +
@@ -83,8 +88,13 @@ public class GetRequestURLGenerate {
         int fat = (int) UserInformation.getInstance().getRecipeFilter().fat;
         int protein = (int) UserInformation.getInstance().getRecipeFilter().protein;
 
+        String[] cuisine = randomElement(UserInformation.getInstance().getRecipeFilter().cuisineToList(mcontext),
+                UserInformation.getInstance().getRecipeFilter().cuisineChance(),
+                1);
+        String cuis = combineString(cuisine).toLowerCase();
+
         String output = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?addRecipeInformation=false&" +
-                "cuisine=american" +
+                "cuisine=" + cuis +
                 "&fillIngredients=false" +
                 "&includeIngredients=" + ingre +
                 "&instructionsRequired=false" +
