@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.google.android.gms.ads.MobileAds;
+
 //code from https://www.bignerdranch.com/blog/splash-screens-the-right-way/
 
 public class SplashActivity extends AppCompatActivity {
@@ -28,6 +30,8 @@ public class SplashActivity extends AppCompatActivity {
         //setting up everything from the shared preference
         UserInformation.getInstance().setSharedPreferences(this);
 
+        //set up ad initialization
+        //MobileAds.initialize(this, );
 
         //starting the splashscreen and then start the main screen
         Thread startThread = new Thread(){

@@ -102,7 +102,6 @@ public class UserInformation {
         else
         {
             recipeChoice = new RecipeChoice();
-            recipeChoice.initializeChoice();
             SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
             String choiceJson = gson.toJson(recipeChoice);
             prefsEditor.putString("recipeChoice", choiceJson);
@@ -117,7 +116,6 @@ public class UserInformation {
         else
         {
             recipeList = new RecipeList();
-            recipeChoice.initializeChoice();
             SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
             String listJson = gson.toJson(recipeList);
             prefsEditor.putString("recipeList", listJson);
@@ -157,6 +155,8 @@ public class UserInformation {
             prefEditor.putBoolean("calendarSaving", enableCalendar);
             prefEditor.commit();
         }
+
+        recipeChoice.initializeChoice();
     }
 
     //updating the shared preference

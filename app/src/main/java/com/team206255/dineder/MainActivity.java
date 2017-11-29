@@ -1,9 +1,12 @@
 package com.team206255.dineder;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.provider.CalendarContract;
 import android.support.design.widget.AppBarLayout;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -47,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
             RandomRecipeGenerator.setupDummy();
             RandomRecipeGenerator.setUpQueue(this);
             UserInformation.getInstance().setSharedPreferences(this);
+        }
+
+        //getting the permission for google calendar first
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_CALENDAR))
+            {}
+            else
+            {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CALENDAR}, 1);
+            }
         }
 
         //creating new class
