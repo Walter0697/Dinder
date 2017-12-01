@@ -36,7 +36,7 @@ public class RecipeFilter implements Serializable{
         fat = InfoDefine.maxFat;
         protein = InfoDefine.maxProtein;
 
-        festivalFilter = false;
+        festivalFilter = true;
     }
 
     public void fat_set_by_spinner(int index)

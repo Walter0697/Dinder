@@ -18,7 +18,7 @@ import java.util.Random;
  */
 
 public class RecipeChoice {
-    final int MAX_WAIT_CHOICE = 10;
+    final int MAX_WAIT_CHOICE = 15;
     private int current;
 
     Recipe[] showlist;

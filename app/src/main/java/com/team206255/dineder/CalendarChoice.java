@@ -124,6 +124,15 @@ public class CalendarChoice extends AppCompatActivity {
 
     private void addEventToCalendar(int index, Date currentDate)
     {
+        if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.WRITE_CALENDAR) != PackageManager.PERMISSION_GRANTED) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_CALENDAR))
+            {}
+            else
+            {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_CALENDAR}, 1);
+            }
+        }
+
         ContentResolver cr = getContentResolver();
 
         Calendar[] time = getTimeFromRecipe(index, currentDate);
@@ -141,7 +150,6 @@ public class CalendarChoice extends AppCompatActivity {
         cr.insert(CalendarContract.Events.CONTENT_URI, values);
 
         Toast.makeText(this, "added to Google Calendar!", Toast.LENGTH_SHORT).show();
-
     }
 
     //0 -> breakfast
