@@ -38,6 +38,7 @@ public class ImageProcessor {
         return scaleImage(icon, ratio);
     }
 
+    //to scale the bitmap image according to the screen width
     public static Bitmap scaleImage(Bitmap pic, float ratio)
     {
         int width = pic.getWidth();

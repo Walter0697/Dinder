@@ -101,6 +101,7 @@ public class CalendarScreen extends Fragment {
         return view;
     }
 
+    //updating the calendar view while information changed
     public void updateCalendarView()
     {
         dateText.setText(UserInformation.getInstance().getCalendarStorage().dateToString());

@@ -15,8 +15,11 @@ import java.util.Map;
 public class CalendarStorage {
     static DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 
+    //hashmap to store the recipes
+    //the values should always be the array of 4
     Map<String, Recipe[]> storage = new HashMap<>();
 
+    //storing current date to show
     Date currentDate = new Date();
 
     public String dateToString()

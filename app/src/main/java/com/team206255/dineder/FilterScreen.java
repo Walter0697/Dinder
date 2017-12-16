@@ -132,6 +132,7 @@ public class FilterScreen extends AppCompatActivity {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
+    //set up the filter when the data changed
     private void setupByFilter(RecipeFilter filter)
     {
         calorieSpinner.setSelection(recipeFilter.calorie_spinner_position());

@@ -18,8 +18,10 @@ import org.json.JSONObject;
 
 public class CalendarAdapter extends BaseAdapter {
 
+    //data structure for the calendar
     CalendarStorage calendarStorage;
 
+    //necessary variable
     Context context;
     LayoutInflater inflater;
 
@@ -28,11 +30,6 @@ public class CalendarAdapter extends BaseAdapter {
         context = c;
         calendarStorage = cs;
         inflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    }
-
-    public void setCalendarStorage(CalendarStorage cs)
-    {
-        calendarStorage = cs;
     }
 
     @Override
@@ -91,6 +88,7 @@ public class CalendarAdapter extends BaseAdapter {
             calendarCalorie.setVisibility(View.VISIBLE);
             removeButton.setVisibility(View.VISIBLE);
 
+            //set up the image of the recipe
             ImageProcessor.setURLImage(currentRecipe.pictureView, 0.2f,
                     new CallbackHelper() {
                         @Override
@@ -109,6 +107,8 @@ public class CalendarAdapter extends BaseAdapter {
             calendarCalorie.setText("Calorie: " + Float.toString(currentRecipe.calorie));
             Bitmap removeBitmap = ImageProcessor.scaleImage(R.drawable.unchecked, 0.05f);
             removeButton.setImageBitmap(removeBitmap);
+
+            //set up the on click listener
             removeButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -121,6 +121,7 @@ public class CalendarAdapter extends BaseAdapter {
         }
         else
         {
+            //set null text to visible if there is no recipe
             nullText.setVisibility(View.VISIBLE);
             //setting all other widgets invisible
             calendarImage.setVisibility(View.INVISIBLE);

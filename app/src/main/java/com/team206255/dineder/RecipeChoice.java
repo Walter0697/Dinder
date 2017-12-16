@@ -63,7 +63,7 @@ public class RecipeChoice {
 
         //addRecipe(RandomRecipeGenerator.getRandomRecipe());
 
-        if (UserInformation.getInstance().getRecipeFilter().festivalFilter)
+        /*if (UserInformation.getInstance().getRecipeFilter().festivalFilter)
         {
             RandomRecipeGenerator.getChristmasRecipeAPI();
         }
@@ -86,7 +86,8 @@ public class RecipeChoice {
                 else
                     RandomRecipeGenerator.getSimilarRecipeAPI();
             }
-        }
+        }*/
+        addRecipe(RandomRecipeGenerator.getRandomRecipe());
     }
 
     public Recipe getChoiceRecipe()

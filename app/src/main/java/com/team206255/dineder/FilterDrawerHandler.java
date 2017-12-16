@@ -27,10 +27,6 @@ public class FilterDrawerHandler {
     private Context context;
 
     //set the widgets here so that we can use for all function
-    //private SeekBar durationSeekBar;
-    //private EditText durationNum;
-    //private SeekBar proteinSeekBar;
-    //private EditText proteinNum;
     private SwitchCompat switchButton;
 
     private Spinner calorieSpinner;
@@ -92,52 +88,6 @@ public class FilterDrawerHandler {
             }
         });
 
-
-        ///////////////////////////////////////////////////////////////////
-        //PROTEIN SEEKBAR + EDITTEXT
-        //setting up the seekbar and edittext for protein
-        /*proteinSeekBar = (SeekBar) headerView.findViewById(R.id.proteinSeekBar);
-        proteinNum = (EditText) headerView.findViewById(R.id.proteinNum);
-        proteinNum.setFilters(new InputFilter[] {new InputFilterMinMax(0, InfoDefine.maxProtein)});
-        //setting up min and max range for the seekbar
-        proteinSeekBar.setMax(InfoDefine.maxProtein);
-        //setting up the on seekbar listener
-        proteinSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                UserInformation.getInstance().getRecipeFilter().protein = i;
-                proteinNum.setText(Integer.toString(i));
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
-        //setting up the edittext on change listener
-        proteinNum.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                UserInformation.getInstance().getRecipeFilter().protein = Integer.parseInt(editable.toString());
-                proteinSeekBar.setProgress(Integer.parseInt(editable.toString()));
-            }
-        });*/
-
         ///////////////////////////////////////////////////////////////////
         //FOR CHRISTMAS ONLY!!!!!!!
         switchButton = (SwitchCompat) headerView.findViewById(R.id.switchbutton);
@@ -151,14 +101,12 @@ public class FilterDrawerHandler {
         setValueByFilter(UserInformation.getInstance().getRecipeFilter());
     }
 
+    //set up the filter
     public void setValueByFilter(RecipeFilter filter)
     {
+        //set up the spinner
         calorieSpinner.setSelection(filter.calorie_spinner_position());
         fatSpinner.setSelection(filter.fat_spinner_position());
-
-        //getting the protein value from the filter
-        //proteinNum.setText(Integer.toString((int)filter.protein));
-        //proteinSeekBar.setProgress((int)filter.protein);
 
         //getting the switch value from the filter
         switchButton.setChecked(UserInformation.getInstance().getRecipeFilter().festivalFilter);

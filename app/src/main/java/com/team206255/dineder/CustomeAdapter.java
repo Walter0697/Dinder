@@ -37,15 +37,6 @@ public class CustomeAdapter extends BaseAdapter {
     int layout;
     ListType type;
 
-    public CustomeAdapter(Context c, RecipeList items, int layout, ListType type)
-    {
-        this.type = type;
-        this.layout = layout;
-        this.items = items;
-        inflater = (LayoutInflater)c.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        context = c;
-    }
-
     public CustomeAdapter(Context c, RecipeList items, int layout, ListType type, Activity a)
     {
         this.type = type;

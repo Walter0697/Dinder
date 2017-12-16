@@ -30,8 +30,7 @@ public class SplashActivity extends AppCompatActivity {
         //setting up everything from the shared preference
         UserInformation.getInstance().setSharedPreferences(this);
 
-        //set up ad initialization
-        //MobileAds.initialize(this, );
+        MobileAds.initialize(this, "ca-app-pub-4789487684703353/9890663700");
 
         //starting the splashscreen and then start the main screen
         Thread startThread = new Thread(){
