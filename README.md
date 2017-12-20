@@ -1,6 +1,7 @@
-# Team-206255
+# Dinder
 The project for 3004
-##### Project Name : ~~Dineder~~  Dinder
+##### Project Name : Dinder
+##### Team Name : Team-206255
 
 ### Quick guide:
 ##### Codes inside:
@@ -118,10 +119,19 @@ The project for 3004
 ###### GetRequestURLGenerate.java
 - to generate url for get request
 
-##### Images/Icons from:
+### Images/Icons from:
 - https://www.flaticon.com/authors/smashicons
 - https://www.flaticon.com/authors/freepik
 - https://www.flaticon.com/authors/eight-black-dots
 - from https://www.flaticon.com
 - Font :
 - https://www.dafont.com/grandstander.font
+
+### Group Member:
+##### Walter Cheng
+- Handle UI Part, front end and a little back end
+##### Zahra Ahmed
+- Parsing json file to the app
+##### Afifa Asad
+- Handling API Request
+
