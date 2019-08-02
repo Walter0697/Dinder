@@ -3,6 +3,10 @@ The project for 3004
 ##### Project Name : Dinder
 ##### Team Name : Team-206255
 
+- ![](https://github.com/Walter0697/PersonalWebsite/blob/master/src/sprite/screenshot/dd003.gif)
+- ![](https://github.com/Walter0697/PersonalWebsite/blob/master/src/sprite/screenshot/dd001.png)
+- ![](https://github.com/Walter0697/PersonalWebsite/blob/master/src/sprite/screenshot/dd002.png)
+
 ### Quick guide:
 ##### Codes inside:
 - ./app/src/main/java/com/team206255/dineder/
